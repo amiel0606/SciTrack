@@ -1,19 +1,3 @@
-function toggleSidebarAndHome() {
-    const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
-    const sidebar = document.querySelector('.side-bar');
-    const aHomeContainer = document.querySelector('.aHome-container');
-
-    sidebarToggleBtn.addEventListener('click', function () {
-        sidebar.classList.toggle('active');
-        aHomeContainer.classList.toggle('hide');
-    });
-
-    sidebar.addEventListener('click', function () {
-        sidebar.classList.remove('active');
-        aHomeContainer.classList.remove('hide');
-    });
-}
-
 function toggleSidebar() {
     const sideBar = document.querySelector('.side-bar');
     const aHomeContainer = document.querySelector('.aHome-container');
