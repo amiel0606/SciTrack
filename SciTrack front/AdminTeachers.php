@@ -2,25 +2,25 @@
     include_once('./includes/sidebar.php');
 ?>
 
-    <div class="aStudent-container">
-        <h1>Students</h1>
+    <div class="aTeacher-container">
+        <h1>Teachers</h1>
         <div class="cont">
-            <div class="addNewStudent">
+            <div class="addNewTeacher">
                 <img src="./image/plus.png" alt="">
-                <h5>Add New Student</h5>
+                <h5>Add New Teacher</h5>
             </div>
             <div class="tbl">
                 <table>
                     <tr>
-                        <th>#</th>
                         <th>Name</th>
                         <th>Username</th>
+                        <th>Subject</th>
                         <th>Actions</th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>Fullname</td>
-                        <td>username</td>
+                        <td>Teacher 1</td>
+                        <td>teacher1</td>
+                        <td>Science</td>
                         <td>
                             <div class="box-actions">
                                 <img src="./image/edit.png" alt="edit">
@@ -31,9 +31,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>Fullname</td>
-                        <td>username</td>
+                        <td>Teacher 2</td>
+                        <td>teacher2</td>
+                        <td>Science</td>
                         <td>
                             <div class="box-actions">
                                 <img src="./image/edit.png" alt="edit">
@@ -44,9 +44,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Fullname</td>
-                        <td>username</td>
+                        <td>Teacher 3</td>
+                        <td>teacher1</td>
+                        <td>Science</td>
                         <td>
                             <div class="box-actions">
                                 <img src="./image/edit.png" alt="edit">
@@ -57,9 +57,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>Fullname</td>
-                        <td>username</td>
+                        <td>Teacher 4</td>
+                        <td>teacher4</td>
+                        <td>Science</td>
                         <td>
                             <div class="box-actions">
                                 <img src="./image/edit.png" alt="edit">
@@ -70,9 +70,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td>Fullname</td>
-                        <td>username</td>
+                        <td>Teacher 5</td>
+                        <td>teacher5</td>
+                        <td>Science</td>
                         <td>
                             <div class="box-actions">
                                 <img src="./image/edit.png" alt="edit">
@@ -83,9 +83,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>6</td>
-                        <td>Fullname</td>
-                        <td>username</td>
+                        <td>Teacher 6</td>
+                        <td>teacher6</td>
+                        <td>Science</td>
                         <td>
                             <div class="box-actions">
                                 <img src="./image/edit.png" alt="edit">
@@ -103,7 +103,7 @@
     <div class="bg-modal">
         <div class="form-addNew">
             <div class="close">+</div>
-            <h2>Add New Student</h2>
+            <h2>Add New Teachers</h2>
             <form>
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
@@ -124,7 +124,7 @@
 
         <div class="form-edit">
             <div class="close">+</div>
-            <h2>Edit Student Information</h2>
+            <h2>Edit Teacher Information</h2>
             <form>
                 <label for="editFirstName">First Name</label>
                 <input type="text" id="editFirstName" name="editFirstName">
@@ -149,4 +149,4 @@
         </div>
     </div>
 
-<script src="js/aStudent.js"></script>
+<script src="js/aTeacher.js"></script>
