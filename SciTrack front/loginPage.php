@@ -2,7 +2,7 @@
     include_once('./includes/style.php');
 ?>
 <div class="container">
-    <img class= "bground" src="./image/bg.png" alt="">
+    <img class= "s-bground" src="./image/bg.png" alt="">
     <div class="box form-box" id="loginWrap">
         <h3>LOGIN</h3>
         <form action="" method="post" id="loginForm">
