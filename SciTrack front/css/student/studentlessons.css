@@ -1,0 +1,72 @@
+:root{
+    --fontMain: 'InriaSans-Regular';
+    --fontSec: 'InriaSans-Bold';
+    --color-text: #ffffff;
+    --color-text2: #4682A9;
+    --color-text3: #808080;
+    --color-text4: #C5EBAA;
+    --main-color: #F6F4EB;
+    --secondary-color: #f9f8fc;
+    --tertiary-color: #fffffe;
+    --body:#F6F4EB;
+}
+body{
+    min-height: 90vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.topic{
+    position: absolute;
+    width: 80%; 
+    height: 400px;
+    top: 80px;
+    left: 10%;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    padding: 10px; 
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.topic h1{
+    position: relative;
+    display: block;
+    top: 0;
+    font-family: var(--fontMain);
+    font-size: 18px;
+    color: var(--main-color);
+    text-align: center;
+}
+.topic h3{
+    position: relative;
+    display: block;
+    margin-top: -35px; 
+    font-family: var(--fontMain);
+    font-size: 18px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+.topic a{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-decoration: none; 
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    margin-top: -10px;
+}
+.topic img{
+    position: relative;
+    display: block;
+    width: 155px;
+    height: auto;
+    margin-top: -20%;
+    transition: transform 0.3s ease;
+}
+.topic a:hover img {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+.topic a:hover h3 {
+    color: #00ff55;
+}

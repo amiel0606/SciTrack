@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SciTrack</title>
-    <link rel="stylesheet" href="css/adminhome.css">
-    <link rel="stylesheet" href="css/adminstudents.css">
-    <link rel="stylesheet" href="css/adminteachers.css">
+    <link rel="stylesheet" href="css/admin/adminhome.css">
+    <link rel="stylesheet" href="css/admin/adminstudents.css">
+    <link rel="stylesheet" href="css/admin/adminteachers.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
