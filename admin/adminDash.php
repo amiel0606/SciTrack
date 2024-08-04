@@ -1,6 +1,25 @@
+<div class="content">
 <?php
     include_once './includes/sidebar.php'
 ?>
+<style>
+        .footer {
+    margin-top: 390px;
+    --bulma-footer-background-color: hsl(45, 43%, 95%);
+    --bulma-footer-padding: 3rem 1.5rem 3rem;
+}
+    body::-webkit-scrollbar {
+        height: 100vh;
+        overflow: hidden;
+        display: none;
+    }
+    body {
+        height: 100vh;
+        overflow: hidden;
+    }
+</style>
+
+<div class="container">
         <div class="column content">
             <p class="has-text-primary is-size-2 mt-6 ml-4 has-text-weight-semibold">Dashboard</p>
             <div class="columns">
@@ -23,5 +42,10 @@
                     </div>
                 </div>
                 </div>
+
         </div>
-</div>
+        <?php
+    include_once './includes/footer.php';
+?>
+        </div>
+        </div>

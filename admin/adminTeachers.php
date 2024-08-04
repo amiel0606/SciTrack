@@ -1,14 +1,32 @@
+
+<div class="content">
 <?php
     include_once('./includes/sidebar.php');
 ?>
+
 <style>
 
+.footer {
+    margin-top: 90px;
+    --bulma-footer-background-color: hsl(45, 43%, 95%);
+    --bulma-footer-padding: 3rem 1.5rem 3rem;
+}
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+  height: 100vh;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .addStudents {
-    --bulma-box-background-color: hsl(0, 0%, 100%);
+    --bulma-box-background-color: hsl(0, 0%, 100%); 
     height: 561px;
     width: 100%;
     font-family: 'InriaSans-Bold';
 }
+
 
 .input {
     background-color: #D4D4D4;
@@ -22,7 +40,7 @@
 
 .addNotification {
     width: 300px;
-}
+} 
 
 .modalArchive {
     font-family: 'InriaSans-Bold';
@@ -31,18 +49,29 @@
     --bulma-box-background-color: hsl(0, 0%, 100%);
 }
 
-.gitna {
-    display: flex;
-    justify-content: center;
+.editBox {
+    height: 650px;
 }
 
+
+:root {
+    --bulma-primary-h: 0deg;
+    --bulma-primary-s: 49%;
+    --bulma-primary-l: 28%;
+    --bulma-link-h: 0deg;
+    --bulma-link-s: 0%;
+    --bulma-link-l: 83%;
+}
+
+
+
 </style>
-<!-- ADD STUDENTS MODAL -->
+<!-- ADD TEACHER MODAL -->
 <div id="addStudentsModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box addStudents">
-            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Student</p>
+            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Teacher</p>
             <form action="" method="post" id="addStudentsForm" >
                 <div class="field">
                     <div class="control mb-5">
@@ -53,6 +82,18 @@
                         <div class="control mb-5">
                             <input class="input " type="text" name="lastName" placeholder="Enter Last Name">
                         </div>
+                </div>
+                <div class="field">
+                    <label class="label is-size-6 has-text-primary" for="section">Section</label>
+                    <div class="control mb-5">
+                        <div class="select is-link">
+                            <select name="section">
+                                <option>Papaya</option>
+                                <option>Mango</option>
+                                <option>Star Section</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="field">
                         <div class="control mb-5">
@@ -90,15 +131,15 @@
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
-<!-- END OF ADD STUDENTS MODAL -->
+<!-- END OF ADD TEACHER MODAL -->
 
 
-<!-- EDIT STUDENT MODAL -->
+<!-- EDIT TEACHER MODAL -->
 <div id="editStudentsModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <div class="box addStudents">
-            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Edit New Student</p>
+        <div class="box addStudents editBox">
+            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Edit Teacher's Details</p>
             <form action="" method="post" id="editStudentsForm" >
                 <div class="field">
                 <label class="label is-size-6 has-text-primary" for="firstName">First Name</label>
@@ -111,6 +152,18 @@
                         <div class="control mb-1">
                             <input class="input " type="text" name="lastName" placeholder="Edit Last Name">
                         </div>
+                </div>
+                <div class="field">
+                    <label class="label is-size-6 has-text-primary" for="section">Section</label>
+                    <div class="control">
+                        <div class="select is-link">
+                            <select name="section">
+                                <option>Papaya</option>
+                                <option>Mango</option>
+                                <option>Star Section</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="field">
                     <label class="label is-size-6 has-text-primary" for="userName">Username</label>
@@ -140,7 +193,7 @@
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
 
-<!-- END OF EDIT STUDENT MODAL -->
+<!-- END OF EDIT TEACHER MODAL -->
 
 <!-- ARCHIVE MODAL -->
 
@@ -167,8 +220,9 @@
 
 <!-- END OF ARCHIVE MODAL -->
 
+<div class="container">
 <div class="column mt-1 ml-3">
-    <p class="has-text-primary is-size-2 mt-6 ml-4 mb-6 has-text-weight-semibold">Students</p>
+    <p class="has-text-primary is-size-2 mt-6 ml-4 mb-6 has-text-weight-semibold">Teachers</p>
     <div class="columns mb-6">
         <div class="column is-1"></div>
         <div class="column mt-6">
@@ -179,16 +233,16 @@
                         <span class="icon is-small">
                         <i class="fa-solid fa-plus"></i>
                         </span>
-                        <span>Add New Student</span>
+                        <span>Add New Teacher</span>
                     </button>
                 </div>
             </div>
             <table class="table is-hoverable">
                 <thead class="has-text-centered">
                     <tr>
-                        <th>#</th>
                         <th>Name</th>
                         <th>Username</th>
+                        <th>Section</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -196,7 +250,7 @@
                     <tr>
                         <th>1</th>
                         <td>Amiel Carhyl Lapid</td>
-                        <td>amiel06</td>
+                        <td>Mango</td>
                         <td>
                             <a class="button is-success p-1 js-modal-trigger" data-target="editStudentsModal">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
@@ -213,7 +267,7 @@
                     <tr>
                         <th>2</th>
                         <td>Amiel Carhyl Lapid</td>
-                        <td>amielss</td>
+                        <td>Mango</td>
                         <td>
                             <a class="button is-success p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
@@ -230,7 +284,7 @@
                     <tr>
                         <th>3</th>
                         <td>Amiel Carhyl Lapid</td>
-                        <td>amielss</td>
+                        <td>Papaya</td>
                         <td>
                             <a class="button is-success p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
@@ -247,7 +301,7 @@
                     <tr>
                         <th>4</th>
                         <td>Amiel Carhyl Lapid</td>
-                        <td>amielss</td>
+                        <td>Star Section</td>
                         <td>
                             <a class="button is-success p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
@@ -264,7 +318,7 @@
                     <tr>
                         <th>5</th>
                         <td>Amiel Carhyl Lapid</td>
-                        <td>amielss</td>
+                        <td>Star Section</td>
                         <td>
                             <a class="button is-success p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
@@ -281,7 +335,7 @@
                     <tr>
                         <th>6</th>
                         <td>Amiel Carhyl Lapid</td>
-                        <td>amielss</td>
+                        <td>Papaya</td>
                         <td>
                             <a class="button is-success p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
@@ -298,7 +352,7 @@
                     <tr>
                         <th>7</th>
                         <td>Amiel Carhyl Lapid</td>
-                        <td>amielss</td>
+                        <td>Mango</td>
                         <td>
                             <a class="button is-success p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
@@ -315,16 +369,23 @@
                 </tbody>
             </table>
         </div>
+        
     </div>
     <div class="columns">
         <div class="column is-9"></div>
         <div class="column">
         <div class="notification is-success addNotification has-text-centered">
             <button class="delete"></button>
-                Added Student Successfully.
+                Added Teacher Successfully.
         </div>
         </div>
     </div>
+</div>
+<?php
+    include_once './includes/footer.php';
+?>
+</div>
 
 </div>
+
 <script src="./js/script.js"></script>

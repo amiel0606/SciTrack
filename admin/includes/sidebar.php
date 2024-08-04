@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,10 @@
 </head>
 <body>
     <style>
+
+li {
+    list-style-type: none;
+}
 :root {
     --bulma-primary-h: 0deg;
     --bulma-primary-s: 49%;
@@ -20,6 +24,7 @@
     --bulma-danger-s: 81%;
     --bulma-danger-l: 53%;
 }
+
 .menu {
     position: sticky;
     display: inline-block;
@@ -57,9 +62,9 @@
             <p class="menu-label has-text-white is-size-1 ">LOGO</p>
             <ul class="menu-list">
                 <li><p  class="menu-item has-background-primary mb-6 "><i class="fa-regular fa-circle-user fa-4x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-1">Amiel</span></p></li>
-                <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-house fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Home</span></a></li>
-                <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-graduation-cap fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Students</span></a></li>
-                <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Teachers</span></a></li>
+                <li><a href="./adminDash.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chart-line fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Dashboard</span></a></li>
+                <li><a href="./adminStudents.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-graduation-cap fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Students</span></a></li>
+                <li><a href="./adminTeachers.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Teachers</span></a></li>
                 <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
             </ul>
         </aside>

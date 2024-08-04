@@ -20,8 +20,10 @@
 }
 
 </style>
-<div class="container">
-    <div class="columns">
+<div class="content">
+    <p class="title is-invisible"> Welcome</p>
+    <div class="container">
+        <div class="columns">
     <div class="column is-7"></div>
 
     <div class="column is-5">
