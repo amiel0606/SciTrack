@@ -9,6 +9,14 @@
     --bulma-info-h: 270deg;
     --bulma-info-s: 79%;
     --bulma-info-l: 83%;
+    --bulma-link-h: 0deg;
+}
+
+.input {
+    height: 45px;
+    --bulma-input-focus-h: 310deg;
+    --bulma-input-focus-s: 63%;
+    --bulma-input-focus-l: 39%;
 }
 
 </style>
@@ -23,13 +31,13 @@
             <div class="field">
             <label class="label is-size-5 has-text-white" for="username">Username</label>
             <div class="control">
-                <input class="input" type="text" name="Username" placeholder="Enter your username">
+                <input class="input " type="text" name="userName" placeholder="Enter your username">
             </div>
             </div>
             <div class="field">
             <label class="label is-size-5 has-text-white" for="password">Password</label>
             <div class="control">
-                <input class="input" type="password" name="Password" placeholder="Enter your password">
+                <input class="input" type="password" name="password" placeholder="Enter your password">
             </div>
             </div>
             <input class="button is-primary " type="submit" name="Login" value="Login">

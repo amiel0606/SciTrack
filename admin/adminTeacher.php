@@ -4,6 +4,6 @@
 
 
 
-<script src="js/aHome.js"></script>
-</body>
-</html>
+
+
+<script src="js/script.js"></script>
