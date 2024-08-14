@@ -97,7 +97,16 @@ function loginUser($conn, $uName, $pwd) {
         session_start();
         $_SESSION["uID"] = $UserExists["uID"]; 
         $_SESSION["username"] = $UserExists["username"];
-        header("location: ../admin/adminDash.php");
-        exit();
+        $_SESSION["role"] = $UserExists["role"];
+        $role = $_SESSION["role"];
+        if ($role=='admin') {
+            header("location: ../admin/adminDash.php");
+            exit();
+        }
+        else if ($role=='Teacher') {
+            header("location: ../teacher/teacherMonitoring.php");
+            exit();
+        }
+
     }
 }
