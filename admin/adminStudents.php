@@ -1,4 +1,3 @@
-<div class="content">
 <?php
     include_once('./includes/sidebar.php');
 ?>
@@ -56,7 +55,7 @@ body::-webkit-scrollbar {
     <div class="modal-content">
         <div class="box addStudents">
             <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Student</p>
-            <form action="" method="post" id="addStudentsForm" >
+            <form action="./includes/addStaff/uploadStudents.php" method="post" id="addStudentsForm"  enctype="multipart/form-data">
                 <div class="field">
                     <div class="control mb-5">
                         <input class="input" type="text" name="firstName" placeholder="Enter First Name">
@@ -81,7 +80,7 @@ body::-webkit-scrollbar {
                     <div class="column is-8">
                         <div class="file is-primary">
                             <label class="file-label">
-                                <input class="file-input" type="file" name="csv" />
+                                <input class="file-input" type="file" name="file" id="file" accept=".csv"/>
                                 <span class="file-cta">
                                 <span class="file-icon">
                                     <i class="fas fa-upload"></i>
@@ -92,7 +91,7 @@ body::-webkit-scrollbar {
                         </div>
                     </div>
                     <div class="column">
-                        <button class="button is-primary has-text-white" type="submit" >Confirm</button>
+                        <button class="button is-primary has-text-white" name="submit" type="submit" >Confirm</button>
                     </div>
                     <div class="column">
                         <button class="button">Cancel</button>

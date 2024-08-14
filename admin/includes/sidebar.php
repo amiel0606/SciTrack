@@ -55,6 +55,7 @@ li {
 }
 .columns {
     margin-top: 0;
+    width: 100%;
 }
 
 
@@ -67,6 +68,7 @@ li {
                 <li><a href="./adminDash.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chart-line fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Dashboard</span></a></li>
                 <li><a href="./adminStudents.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-graduation-cap fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Students</span></a></li>
                 <li><a href="./adminTeachers.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Teachers</span></a></li>
-                <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
+                <li><a href="./adminRegister.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chart-area fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Add an Admin</span></a></li>
+                <li><a href="./includes/logout.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
             </ul>
         </aside>

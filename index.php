@@ -29,11 +29,11 @@
     <div class="column is-5">
         <div class="box has-background-info has-text-centered is-flex-direction-column is-justify-content-center p-3" style="margin-top: 220px;">
         <h3 id="title" class="is-size-1 has-text-white has-text-weight-bold mb-6 mt-6">LOGIN</h3>
-        <form action="" method="post" id="loginForm">
+        <form action="./includes/login.php" method="post" id="loginForm">
             <div class="field">
             <label class="label is-size-5 has-text-white" for="username">Username</label>
             <div class="control">
-                <input class="input " type="text" name="userName" placeholder="Enter your username">
+                <input class="input " type="text" name="username" placeholder="Enter your username">
             </div>
             </div>
             <div class="field">
