@@ -12,6 +12,9 @@
     .topic-container:hover figure img {
         filter: brightness(1.2);
     }
+    #button{
+        margin-top: -80%;
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -23,8 +26,8 @@
                         <img src="../image/board.png" alt="Board Image">
                     </figure>
 
-                    <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                        <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-2">CHOOSE TOPIC</h1>
+                    <div class="is-overlay is-flex is-flex-direction-column is-align-items-center p-6">
+                        <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mt-6 mb-2">CHOOSE TOPIC</h1>
                         
                         <div class="columns is-centered">
                             <!-- One-third -->
@@ -68,6 +71,15 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+
+                    <div class="column is-full is-flex is-justify-content-flex-end mt-7 mb-6">
+                        <a href="studentLesson.php">
+                            <button class="button is-success is-rounded is-size-4-widescreen is-size-5-desktop is-size-5-tablet mr-5" id="button">
+                                <i class="fas fa-arrow-left button-icon"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
