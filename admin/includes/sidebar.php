@@ -48,7 +48,7 @@ li {
     --bulma-table-background-color: hsl(0, 0%, 93%);
     --bulma-table-head-cell-color: hsl(0, 0%, 100%);
     --bulma-table-cell-text-align: center;
-    --bulma-table-head-background-color: hsl(0, 34%, 58%);
+    --bulma-table-head-background-color: hsl(240, 16%, 31%);
     --bulma-table-cell-padding: 5px;
     --bulma-table-row-hover-background-color: hsl(237, 68%, 94%);
     width: 1077px;
