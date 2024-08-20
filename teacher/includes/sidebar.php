@@ -15,10 +15,11 @@
 li {
     list-style-type: none;
 }
+
 :root {
-    --bulma-primary-h: 0deg;
-    --bulma-primary-s: 49%;
-    --bulma-primary-l: 28%;
+    --bulma-primary-h: 240deg;
+    --bulma-primary-s: 16%;
+    --bulma-primary-l: 31%;
     --bulma-danger-h: 0deg;
     --bulma-danger-s: 81%;
     --bulma-danger-l: 53%;
@@ -38,18 +39,19 @@ li {
 
 .dash {
     box-shadow: 10px 10px 14px 0px rgba(0,0,0,0.75);
-    height: 200px;
-    width: 650px;
+    height: 267px;
+    width: 100%;
 }
+
 
 .table {
     --bulma-table-color: hsl(0, 2%, 58%);
     --bulma-table-background-color: hsl(0, 0%, 93%);
-    --bulma-table-cell-heading-color: hsl(0, 2%, 58%);
+    --bulma-table-head-cell-color: hsl(0, 0%, 100%);
     --bulma-table-cell-text-align: center;
     --bulma-table-head-background-color: hsl(0, 34%, 58%);
     --bulma-table-cell-padding: 5px;
-    --bulma-table-row-hover-background-color: hsla(0deg,49%,28%,1);
+    --bulma-table-row-hover-background-color: hsl(237, 68%, 94%);
     width: 1077px;
 }
 

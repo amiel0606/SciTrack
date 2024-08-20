@@ -29,10 +29,10 @@ body::-webkit-scrollbar {
 
 .input {
     background-color: #D4D4D4;
-    --bulma-input-focus-h: 0deg;
-    --bulma-input-focus-s: 43%;
-    --bulma-input-focus-l: 28%;
-    color: #9B9898;
+    --bulma-input-focus-h: 240; 
+    --bulma-input-focus-s: 16%;
+    --bulma-input-focus-l: 31%;
+    color: #333333;
     border: 1px solid #D4D4D4;
     --bulma-input-placeholder-color: hsl(0, 0%, 20%);
 }
@@ -54,9 +54,9 @@ body::-webkit-scrollbar {
 
 
 :root {
-    --bulma-primary-h: 0deg;
-    --bulma-primary-s: 49%;
-    --bulma-primary-l: 28%;
+    --bulma-primary-h: 240deg;
+    --bulma-primary-s: 16%;
+    --bulma-primary-l: 31%;
     --bulma-link-h: 0deg;
     --bulma-link-s: 0%;
     --bulma-link-l: 83%;
@@ -105,7 +105,7 @@ body::-webkit-scrollbar {
                     </div>
                 </div>
                 <div class="columns mt-6">
-                    <div class="column is-8">
+                    <div class="column is-8 has-background-white">
                         <div class="file is-primary">
                             <label class="file-label">
                                 <input class="file-input" type="file" name="file" accept=".csv" />
@@ -118,10 +118,10 @@ body::-webkit-scrollbar {
                             </label>
                         </div>
                     </div>
-                    <div class="column">
+                    <div class="column has-background-white">
                         <button class="button is-primary has-text-white" type="submit" name="submit">Confirm</button>
                     </div>
-                    <div class="column">
+                    <div class="column has-background-white">
                         <button class="button">Cancel</button>
                     </div>
                 </div>
@@ -177,12 +177,12 @@ body::-webkit-scrollbar {
                     </div>
                 </div>
                 <div class="columns mt-6">
-                    <div class="column is-8">
+                    <div class="column is-8 has-background-white">
                     </div>
-                    <div class="column">
+                    <div class="column has-background-white">
                         <button class="button is-primary has-text-white" type="submit" >Confirm</button>
                     </div>
-                    <div class="column">
+                    <div class="column has-background-white">
                         <button class="button">Cancel</button>
                     </div>
                 </div>
@@ -204,11 +204,11 @@ body::-webkit-scrollbar {
             <i class="fa-solid fa-circle-exclamation fa-3x gitna"></i>
             </span>
         <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6" >Are you sure to archive records?</p>
-        <div class="columns">
-            <div class="column is-10 mt-6">
+        <div class="columns has-background-white">
+            <div class="column is-10 mt-6 has-background-white">
                 <button class="button is-success has-text-centered">Yes, Archive it</button>
             </div>
-            <div class="column mt-6">
+            <div class="column mt-6 has-background-white">
                 <button class="button has-text-centered">Cancel</button>
             </div>
         </div>
@@ -237,7 +237,7 @@ body::-webkit-scrollbar {
                 </div>
             </div>
             <table class="table is-hoverable">
-                <thead class="has-text-centered">
+                <thead class="has-text-centered has-background-primary">
                     <tr>
                         <th>Name</th>
                         <th>Username</th>
@@ -380,9 +380,7 @@ body::-webkit-scrollbar {
         </div>
     </div>
 </div>
-<?php
-    include_once './includes/footer.php';
-?>
+
 </div>
 
 </div>
