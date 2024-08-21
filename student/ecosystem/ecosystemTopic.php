@@ -12,6 +12,9 @@
     .topic-container:hover figure img {
         filter: brightness(1.1);
     }
+    #button{
+        margin-bottom: -50%;
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -28,36 +31,38 @@
                         
                         <div class="columns is-centered">
                             <!-- Lesson 1 and 2 -->
-                            <div class="column is-two-thirds">
+                            <div class="column is-two-thirds ml-6 mr-6">
                                 <div class="columns">
                                     <div class="column is-half has-text-centered">
                                         <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
-                                            <a href="./lesson1/motionDistance.php">
+                                            <a href="./lesson1/ecosystemEstuaris.php">
                                                 <figure class="image">
-                                                    <img src="../../image/motion1.png" alt="motion1">
+                                                    <img src="../../image/ecoLesson1.png" alt="ecoLesson1">
                                                 </figure>
                                             </a>
-                                            <p>Lesson 1: What is Motion?</p>
+                                            <p>Lesson 1: The Ecosystem Estuaries</p>
                                         </div>
                                     </div>
 
+                                    <div class="column is-narrow"></div>
+
                                     <div class="column is-half has-text-centered">
                                         <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
-                                            <a href="./lesson2/measuringDef.php">
+                                            <a href="./lesson2/ecosystemIntertidal.php">
                                                 <figure class="image">
-                                                    <img src="../../image/motion2.png" alt="motion2">
+                                                    <img src="../../image/ecoLesson2.png" alt="ecoLesson2">
                                                 </figure>
                                             </a>
-                                            <p>Lesson 2: Measuring Distance and Time</p>
+                                            <p>Lesson 2: The Ecosystem in the Intertidal Zone</p>
                                         </div>
-                                            
+                                    </div>
+                                    
                                         <!-- Button in bottom-right corner of Lesson 2 -->
-                                        <a href="motionDef.php" class="is-align-self-flex-end ml-6 pl-6">
-                                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mt-2">
+                                        <a href="ecosystemDef.php?show=ecosystemAbiotic" class="is-align-self-flex-end ml-5 p-1">
+                                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="button">
                                                 <i class="fas fa-arrow-left button-icon"></i>
                                             </button>
                                         </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

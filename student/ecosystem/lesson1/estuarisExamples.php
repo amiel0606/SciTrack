@@ -7,11 +7,11 @@
         width: 70%;
         height: auto;
     }
-    .measuring-content {
+    .ecosystem-content {
         display: none;
     }
 
-    .measuring-content.active {
+    .ecosystem-content.active {
         display: block;
     }
     #button{
@@ -29,89 +29,117 @@
                     </figure>
 
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                        <!-- Measuring Def -->
-                        <div class="measuring-content" id="measuringDef">
+                        <!-- Ecosystem Brackish -->
+                        <div class="ecosystem-content" id="ecosystemBrackish">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
-
-                                <!-- Content Layout -->
-                                <div class="columns is-centered">
-                                    <!-- Image Column -->
-                                    <div class="column is-half pl-6 ml-6">
-                                        <figure class="image example-image">
-                                            <img src="../../../image/measuring1.png" alt="measuring1">
-                                        </figure>
-                                    </div>
-                                    
-                                    <!-- Text Column -->
-                                    <div class="column is-half mt-6 pt-5 mr-6">
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
-                                        Measuring tools and devices provide us with a basis of how we view our surroundings. 
-                                        They have also paved the way for more credible research outputs
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        
-                        <!-- Measuring Ruler -->
-                        <div class="measuring-content" id="measuringRuler">
-                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
                                         <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
-                                            Ruler
+                                            Brackish
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
-                                        Ruler is a basic tool for measuring length and distance. 
-                                        It is a flat rod made of plastic, wood, or metal with calibrated lines to measure short objects and distances. 
-                                        A modification of the ruler is the meter stick which is calibrated to one meter
+                                            An estuary is found in an area where the river meets the sea. 
+                                            The water in an estuary is characterized to be between saltwater and fresh water.
                                         </p>
                                     </div>
                                     
                                     <!-- Image Column -->
                                     <div class="column is-half pl-6">
                                         <figure class="image example-image">
-                                            <img src="../../../image/measuring2.png" alt="measuring2">
+                                            <img src="../../../image/brackish.png" alt="brackish">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Ecosystem Sediment -->
+                        <div class="ecosystem-content" id="ecosystemSediment">
+                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
+
+                                <!-- Content Layout -->
+                                <div class="columns is-centered">
+                                    <!-- Text Column -->
+                                    <div class="column is-half pl-6">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                            Sediment
+                                        </p>
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        Nutrient are transported and trapped in the sediment as water flows. 
+                                        Sediment are the particles such as sand and soil which settle on the side and bottom  of water bodies
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- Image Column -->
+                                    <div class="column is-half pl-6">
+                                        <figure class="image example-image">
+                                            <img src="../../../image/sediment.png" alt="sediment">
                                         </figure>
                                     </div>
                                 </div>
                             </div>
                         </div>
                             
-                        <!-- Measuring Tape -->
-                        <div class="measuring-content" id="measuringTape">
+                        <!-- Ecosystem Murky -->
+                        <div class="ecosystem-content" id="ecosystemMurky">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
                                         <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
-                                            Tape Measure
+                                            Murky Water
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
-                                        For longer lengths, a retractable tape measure is used. 
-                                        They are usually made of thin metal sheet that can straighten up or fold as needed.
+                                        The murky water in an estuary is due to the presence of sediments. 
+                                        This provides a good camouflage for the small organism living in the area it protects them from potential predators 
                                         </p>
                                     </div>
                                     
                                     <!-- Image Column -->
                                     <div class="column is-half pl-6">
                                         <figure class="image example-image">
-                                            <img src="../../../image/measuring3.png" alt="measuring3">
+                                            <img src="../../../image/murky.png" alt="murky">
                                         </figure>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
+                        <!-- Ecosystem Estuary -->
+                        <div class="ecosystem-content" id="ecosystemEstuary">
+                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
+
+                                <!-- Content Layout -->
+                                <div class="columns is-centered">
+                                    <!-- Text Column -->
+                                    <div class="column is-half pl-6">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                            Estuary
+                                        </p>
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        An estuary, characterized by having brackish water, is home to many organisms. 
+                                        Its components interact with one another to support life in this ecosystem
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- Image Column -->
+                                    <div class="column is-half pl-6">
+                                        <figure class="image example-image">
+                                            <img src="../../../image/estuary.png" alt="estuary">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Left and Right Buttons-->
                         <div class="column is-full is-flex is-justify-content-flex-end" id="button">
@@ -135,46 +163,47 @@
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
         const content = {
-            1: document.getElementById('measuringDef'),
-            2: document.getElementById('measuringRuler'),
-            3: document.getElementById('measuringTape')
+            1: document.getElementById('ecosystemBrackish'),
+            2: document.getElementById('ecosystemSediment'),
+            3: document.getElementById('ecosystemMurky'),
+            4: document.getElementById('ecosystemEstuary')
         };
 
-        let currentQuiz = 1;
+        let currentContent = 1;
 
         function updateContent() {
             for (let key in content) {
-                content[key].classList.toggle('active', key == currentQuiz);
+                content[key].classList.toggle('active', key == currentContent);
             }
         }
 
         updateContent();
-
+        
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
         const showM = getQueryParam('show');
-        if (showM === 'measuringTape') {
-            currentQuiz = 3;
+        if (showM === 'ecosystemEstuary') {
+            currentContent = 4;
             updateContent();
         }
 
         leftButton.addEventListener('click', function () {
-            if (currentQuiz === 1) {
-                window.location.href = './.././motionTopic.php'; 
+            if (currentContent === 1) {
+                window.location.href = 'ecosystemEstuaris.php'; 
             } else {
-                currentQuiz--;
+                currentContent--;
                 updateContent();
             }
         });
 
         rightButton.addEventListener('click', function () {
-            if (currentQuiz === 3) {
-                window.location.href = 'measuringPopQuiz.php'; 
+            if (currentContent === 4) {
+                window.location.href = 'estuarisLetsTry.php'; 
             } else {
-                currentQuiz++;
+                currentContent++;
                 updateContent();
             }
         });

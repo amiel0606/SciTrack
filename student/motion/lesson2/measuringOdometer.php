@@ -29,34 +29,8 @@
                     </figure>
 
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                        <!-- Measuring Def -->
-                        <div class="measuring-content" id="measuringDef">
-                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
-
-                                <!-- Content Layout -->
-                                <div class="columns is-centered">
-                                    <!-- Image Column -->
-                                    <div class="column is-half pl-6 ml-6">
-                                        <figure class="image example-image">
-                                            <img src="../../../image/measuring1.png" alt="measuring1">
-                                        </figure>
-                                    </div>
-                                    
-                                    <!-- Text Column -->
-                                    <div class="column is-half mt-6 pt-5 mr-6">
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
-                                        Measuring tools and devices provide us with a basis of how we view our surroundings. 
-                                        They have also paved the way for more credible research outputs
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        
-                        <!-- Measuring Ruler -->
-                        <div class="measuring-content" id="measuringRuler">
+                        <!-- Measuring Odometer -->
+                        <div class="measuring-content" id="measuringOdometer">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
                                 <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
 
@@ -65,27 +39,54 @@
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
                                         <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
-                                            Ruler
+                                            Odometer and Speedometer
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
-                                        Ruler is a basic tool for measuring length and distance. 
-                                        It is a flat rod made of plastic, wood, or metal with calibrated lines to measure short objects and distances. 
-                                        A modification of the ruler is the meter stick which is calibrated to one meter
+                                        Vehicles have a build-in odometer, an electric device that measures distance. 
+                                        It works hand in hand with a speedometer which measures how fast a vehicle travels.
                                         </p>
                                     </div>
                                     
                                     <!-- Image Column -->
                                     <div class="column is-half pl-6">
                                         <figure class="image example-image">
-                                            <img src="../../../image/measuring2.png" alt="measuring2">
+                                            <img src="../../../image/measuring4.png" alt="measuring4">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Measuring Wheel -->
+                        <div class="measuring-content" id="measuringWheel">
+                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
+
+                                <!-- Content Layout -->
+                                <div class="columns is-centered">
+                                    <!-- Text Column -->
+                                    <div class="column is-half pl-6">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                            Surveyor’s wheel
+                                        </p>
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        It is an instrument that is used to measure short distances on the road or on land. 
+                                        One turn of the wheel is calibrated to a certain distance.
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- Image Column -->
+                                    <div class="column is-half pl-6">
+                                        <figure class="image example-image">
+                                            <img src="../../../image/measuring5.png" alt="measuring5">
                                         </figure>
                                     </div>
                                 </div>
                             </div>
                         </div>
                             
-                        <!-- Measuring Tape -->
-                        <div class="measuring-content" id="measuringTape">
+                        <!-- Measuring Caliper -->
+                        <div class="measuring-content" id="measuringCaliper">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
                                 <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
 
@@ -94,24 +95,51 @@
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
                                         <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
-                                            Tape Measure
+                                            Caliper
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
-                                        For longer lengths, a retractable tape measure is used. 
-                                        They are usually made of thin metal sheet that can straighten up or fold as needed.
+                                        The caliper is a device with two tips that are placed on both ends of the object being measured. 
+                                        Once object is secured in between the tips, the object can be removed and the length can be determined.
                                         </p>
                                     </div>
                                     
                                     <!-- Image Column -->
                                     <div class="column is-half pl-6">
                                         <figure class="image example-image">
-                                            <img src="../../../image/measuring3.png" alt="measuring3">
+                                            <img src="../../../image/measuring6.png" alt="measuring6">
                                         </figure>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
+                        <!-- Measuring Micrometer -->
+                        <div class="measuring-content" id="measuringMicrometer">
+                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
+
+                                <!-- Content Layout -->
+                                <div class="columns is-centered">
+                                    <!-- Text Column -->
+                                    <div class="column is-half pl-6">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                            Micrometer
+                                        </p>
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        A micrometer works in the same way. It looks like a c-clamp. 
+                                        It is used to take very fine measurements such as the thickness of paper or a leaf.
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- Image Column -->
+                                    <div class="column is-half pl-6">
+                                        <figure class="image example-image">
+                                            <img src="../../../image/measuring7.png" alt="measuring7">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Left and Right Buttons-->
                         <div class="column is-full is-flex is-justify-content-flex-end" id="button">
@@ -135,46 +163,47 @@
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
         const content = {
-            1: document.getElementById('measuringDef'),
-            2: document.getElementById('measuringRuler'),
-            3: document.getElementById('measuringTape')
+            1: document.getElementById('measuringOdometer'),
+            2: document.getElementById('measuringWheel'),
+            3: document.getElementById('measuringCaliper'),
+            4: document.getElementById('measuringMicrometer')
         };
 
-        let currentQuiz = 1;
+        let currentContent = 1;
 
         function updateContent() {
             for (let key in content) {
-                content[key].classList.toggle('active', key == currentQuiz);
+                content[key].classList.toggle('active', key == currentContent);
             }
         }
 
         updateContent();
-
+        
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
 
         const showM = getQueryParam('show');
-        if (showM === 'measuringTape') {
-            currentQuiz = 3;
+        if (showM === 'measuringMicrometer') {
+            currentContent = 4;
             updateContent();
         }
 
         leftButton.addEventListener('click', function () {
-            if (currentQuiz === 1) {
-                window.location.href = './.././motionTopic.php'; 
+            if (currentContent === 1) {
+                window.location.href = 'measuringDef.php?show=measuringTape'; 
             } else {
-                currentQuiz--;
+                currentContent--;
                 updateContent();
             }
         });
 
         rightButton.addEventListener('click', function () {
-            if (currentQuiz === 3) {
-                window.location.href = 'measuringPopQuiz.php'; 
+            if (currentContent === 4) {
+                window.location.href = 'measuringLetsTry.php'; 
             } else {
-                currentQuiz++;
+                currentContent++;
                 updateContent();
             }
         });
