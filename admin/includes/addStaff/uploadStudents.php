@@ -1,21 +1,20 @@
 <?php
 if (isset($_POST["submit"])) {
-    $filename = $_FILES["file"]["tmp_name"];
+    require_once '../../../includes/functions.php';
+    require_once '../dbCon.php';
 
-    if ($_FILES["file"]["size"] > 0) {
+    if (isset($_FILES["file"]) && $_FILES["file"]["size"] > 0) {
+        $filename = $_FILES["file"]["tmp_name"];
         $file = fopen($filename, "r");
-        
-        require_once '../../../includes/functions.php';
-        require_once '../dbCon.php';
 
-        fgetcsv($file);
+        fgetcsv($file); // Skip the header row
 
         while (($row = fgetcsv($file, 10000, ",")) !== FALSE) {
             $username = $row[0];
-            $password = $row[1];
-            $role = $row[2];
-            $firstName = $row[3];
-            $lastName = $row[4];
+            $firstName = $row[1];
+            $lastName = $row[2];
+            $password = $lastName;
+            $role = "Student";
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
@@ -25,12 +24,9 @@ if (isset($_POST["submit"])) {
         }
 
         fclose($file);
-        $stmt->close();
-        $conn->close();
-
         echo "CSV file has been successfully imported.";
-    } else {
-        echo "Please upload a valid CSV file.";
     }
-}
 
+    $stmt->close();
+    $conn->close();
+}

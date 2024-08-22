@@ -39,7 +39,6 @@
 }
 </style>
 
-<div class="container is-max-desktop">
     <!-- <nav class="navbar has-shadow" role="navigation" aria-label="dropdown navigation">
     <div class="navbar-menu">
         <div class="navbar-start">
@@ -61,7 +60,7 @@
         </div>
     </div>
 </nav> -->
-
+<div class="container is-max-desktop">
     <div class="column ">
             <div class="columns">
                 <div class="column is-two-thirds">

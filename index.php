@@ -12,6 +12,13 @@
     --bulma-link-h: 0deg;
 }
 
+body {
+    background-image: url("./image/bg.png");
+    min-height: 100vh;
+    background-size: cover;
+    color: #ffffff;
+}
+
 .input {
     height: 45px;
     --bulma-input-focus-h: 310deg;
@@ -20,12 +27,10 @@
 }
 
 </style>
-<div class="content">
     <p class="title is-invisible"> Welcome</p>
     <div class="container">
         <div class="columns">
     <div class="column is-7"></div>
-
     <div class="column is-5">
         <div class="box has-background-info has-text-centered is-flex-direction-column is-justify-content-center p-3" style="margin-top: 220px;">
         <h3 id="title" class="is-size-1 has-text-white has-text-weight-bold mb-6 mt-6">LOGIN</h3>
@@ -48,4 +53,3 @@
         </div>
     </div>
     </div>
-</div>
