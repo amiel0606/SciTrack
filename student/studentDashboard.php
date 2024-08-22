@@ -9,6 +9,9 @@
     .studentdb:hover {
         transform: scale(1.05);
     }
+    .dtext{
+        margin-top: -5%;
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -28,7 +31,7 @@
                                         <figure class="image">
                                             <img src="../image/lesson.png" alt="Lesson Image" class="lesson-image">
                                         </figure>
-                                        <p class="has-text-white">LESSON</p>
+                                        <p class="has-text-white dtext">LESSON</p>
                                     </a>
                                 </div>
                                 <div class="column is-half has-text-centered title is-size-3 studentdb">
@@ -36,7 +39,7 @@
                                         <figure class="image">
                                             <img src="../image/assessment.png" alt="Assessment Image" class="lesson-image">
                                         </figure>
-                                        <p class="has-text-white">ASSESSMENT</p>
+                                        <p class="has-text-white dtext">ASSESSMENT</p>
                                     </a>
                                 </div>
                             </div>
