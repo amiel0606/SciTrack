@@ -6,9 +6,10 @@ if (isset($_POST["submit"])) {
     $username = $_POST["userName"];
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
-    $password = $lastName . $firstName;
+    $password = $lastName;
     $role = "Student";
     $section = $_POST["section"];
+    $name = $firstName . " " . $lastName;
 
     $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
@@ -16,7 +17,14 @@ if (isset($_POST["submit"])) {
     $stmt->bind_param("ssssss", $username, $hashedPass, $role, $section, $firstName, $lastName);
     $stmt->execute();
 
-    echo "Single user has been successfully added.";
+    $last_id = $conn->insert_id;
+
+
+    $stmt = $conn->prepare("INSERT INTO tbl_students (id, name, username, section) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isss", $last_id, $name, $username, $section);
+    $stmt->execute();
+
+    echo "Student have been successfully added.";
 
     $stmt->close();
     $conn->close();

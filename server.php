@@ -28,9 +28,25 @@ class UserLoader implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg) {
         $data = json_decode($msg, true);
         if ($data['type'] === 'loadStudents') {
-            $this->loadStudents($from, $data['section']);
+            $this->loadStudents($from);
         } elseif ($data['type'] === 'loadTeachers') {
             $this->loadTeachers($from);
+        }
+    }
+
+    private function loadStudents(ConnectionInterface $conn) {
+        $students = fetchStudents($this->db);
+        foreach ($students as $student) {
+            $student['type'] = 'student';
+            $conn->send(json_encode($student));
+        }
+    }
+
+    private function loadTeachers(ConnectionInterface $conn) {
+        $teachers = fetchTeachers($this->db);
+        foreach ($teachers as $teacher) {
+            $teacher['type'] = 'teacher';
+            $conn->send(json_encode($teacher));
         }
     }
 
@@ -44,35 +60,14 @@ class UserLoader implements MessageComponentInterface {
         $conn->close();
     }
 
-    private function loadStudents(ConnectionInterface $conn, $section) {
-        $stmt = $this->db->prepare('SELECT * FROM tbl_users WHERE role = "Student" AND section = ?');
-        $stmt->bind_param('s', $section);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $students = [];
-        while ($row = $result->fetch_assoc()) {
-            $students[] = $row;
-        }
-        $stmt->close();
-    
-    
-        $conn->send(json_encode($students));
-    }
-    
 
-    private function loadTeachers(ConnectionInterface $conn) {
-        $teachers = fetchTeachers($this->db);
-        foreach ($teachers as $teacher) {
-            $conn->send(json_encode($teacher));
-        }
-    }
 }
 
 $loop = Factory::create();
 $server = IoServer::factory(
     new HttpServer(
         new WsServer(
-            new UserLoader($conn) // Pass the database connection
+            new UserLoader($conn)
         )
     ),
     8080

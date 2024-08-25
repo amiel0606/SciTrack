@@ -39,27 +39,6 @@
 }
 </style>
 
-    <!-- <nav class="navbar has-shadow" role="navigation" aria-label="dropdown navigation">
-    <div class="navbar-menu">
-        <div class="navbar-start">
-            <a href="#" class="navbar-item">
-                <i class="fa-solid fa-bars fa-2x"></i>
-            </a>
-            <a class="navbar-brand ml-2">
-                <img class="logo" src="../image/1.png" alt="logo1">
-                <img src="../image/2.png" alt="logo1">
-            </a>
-        </div>
-        <div class="navbar-end">
-            <a href="#" class="navbar-item">
-                <i class="fa-regular fa-circle-user fa-2x"></i>
-            </a>
-            <p class="title mr-6">
-                Admin
-            </p>
-        </div>
-    </div>
-</nav> -->
 <div class="container is-max-desktop">
     <div class="column ">
             <div class="columns">
@@ -98,7 +77,8 @@
                         <option>Star Section</option>
                     </select>
                 </div>
-                <table class="table dash-table is-hoverable ">
+                <div class="table-container">
+                <table id="students" class="table dash-table is-hoverable ">
                     <thead class="has-text-centered has-background-primary">
                         <tr>
                             <th>#</th>
@@ -107,34 +87,11 @@
                         </tr>
                     </thead>
                     <tbody class="has-text-centered">
-                        <tr>
-                            <td>1</td>
-                            <td>Amiel Carhyl Lapid</td>
-                            <td>aclapid</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Mark Nelson Garcia</td>
-                            <td>mngarcia</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Joshua Baker</td>
-                            <td>jbaker</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Michael Williams</td>
-                            <td>mwilliams</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Daniel Johnson</td>
-                            <td>djohnson</td>
-                        </tr>
 
                     </tbody>
                 </table>
+                </div>
+                
             </div>
         </div>
 
@@ -144,7 +101,7 @@
                     <p class="has-text-primary is-size-3 has-text-weight-bold">Teachers: <span class="has-text-primary is-size-4 has-text-weight-normal">5</span></p>
                     <a href="./adminTeachers.php" class="has-text-primary">View All</a>
                 </div>
-                <table class="table dash-table is-hoverable ">
+                <table id="teachers" class="table dash-table is-hoverable ">
                     <thead class="has-text-centered has-background-primary">
                         <tr>
                             <th>#</th>
@@ -153,31 +110,7 @@
                         </tr>
                     </thead>
                     <tbody class="has-text-centered">
-                        <tr>
-                            <td>1</td>
-                            <td>Amiel Carhyl Lapid</td>
-                            <td>aclapid</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Mark Nelson Garcia</td>
-                            <td>mngarcia</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Joshua Baker</td>
-                            <td>jbaker</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Michael Williams</td>
-                            <td>mwilliams</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Daniel Johnson</td>
-                            <td>djohnson</td>
-                        </tr>
+
 
                     </tbody>
                 </table>
@@ -259,6 +192,44 @@ document.addEventListener('DOMContentLoaded', () => {
     nextButton.addEventListener('click', () => changeMonth(1));
 
     generateCalendar(currentMonth, currentYear);
+
+
+    // WebSocket connection
+var conn = new WebSocket('ws://localhost:8080');
+conn.onopen = function() {
+    conn.send(JSON.stringify({ type: 'loadStudents' }));
+    conn.send(JSON.stringify({ type: 'loadTeachers' }));
+};
+conn.onmessage = function(e) {
+    var data = JSON.parse(e.data);
+    console.log(data);
+    if (data.type === "student") {
+        var table = document.getElementById('students').getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow();
+        newRow.insertCell(0).innerText = data.id;
+        newRow.insertCell(1).innerText = data.name;
+        newRow.insertCell(2).innerText = data.username;
+    } else if (data.type === "teacher") {
+        var table = document.getElementById('teachers').getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow();
+        newRow.insertCell(0).innerText = data.id;
+        newRow.insertCell(1).innerText = data.name;
+        newRow.insertCell(2).innerText = data.username;
+    }
+
+
+};
+
+// Error handling for WebSocket
+conn.onerror = function(error) {
+    console.error('WebSocket Error: ', error);
+};
+
+conn.onclose = function() {
+    console.log('WebSocket connection closed');
+};
+
 });
+
 
 </script>

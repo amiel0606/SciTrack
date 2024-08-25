@@ -80,8 +80,8 @@ body {
                 <li><a href="./teacherDash.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-house fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Home</span></a></li>
                 <li><a href="./studentProgress.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-chart-line fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Student Progress</span></a></li>
                 <li><a href="./assessmentResult.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-regular fa-newspaper fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-5"> Assessment Results</span></a></li>
-                <li><a href="./teacherMonitoring.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Class/Section</span></a></li>
-                <li><a href="./teacherMonitoring.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Settings</span></a></li>
+                <li><a href="./teacherLessons.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Class/Section</span></a></li>
+                <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Settings</span></a></li>
                 <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
             </ul>
         </aside>

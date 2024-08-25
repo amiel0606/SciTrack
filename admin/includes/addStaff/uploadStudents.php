@@ -14,12 +14,19 @@ if (isset($_POST["submit"])) {
             $firstName = $row[1];
             $lastName = $row[2];
             $password = $lastName;
+            $name = $firstName. " ". $lastName;
+            $section = $_POST["section"];
             $role = "Student";
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
-            $stmt = $conn->prepare("INSERT INTO tbl_users (username, password, role, firstName, lastName) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $username, $hashedPass, $role, $firstName, $lastName);
+            $stmt = $conn->prepare("INSERT INTO tbl_users (username, password, role, firstName, lastName, section) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssss", $username, $hashedPass, $role, $firstName, $lastName, $section);
+            $stmt->execute();
+            $last_id = $conn->insert_id;
+
+            $stmt = $conn->prepare("INSERT INTO tbl_students (id, name, username, section) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("isss", $last_id, $name, $username, $section);
             $stmt->execute();
         }
 

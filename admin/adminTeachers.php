@@ -71,7 +71,7 @@ body::-webkit-scrollbar {
     <div class="modal-content">
         <div class="box addStudents">
             <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Teacher</p>
-            <form action="./includes/addStaff/addSingleTeacher.php" method="post" id="addTeachersForm"  enctype="multipart/form-data">
+            <form action="./includes/addStaff/uploadSingleTeacher.php" method="post" id="addTeachersForm"  enctype="multipart/form-data">
             <div class="field">
                     <label class="label is-size-6 has-text-primary" for="section">Section</label>
                     <div class="control mb-5">
@@ -365,8 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 var table = document.getElementById('teacher').getElementsByTagName('tbody')[0];
                 var newRow = table.insertRow();
                 console.log(teacher);
-                var name = teacher.firstName + " " + teacher.lastname;
-                newRow.insertCell(0).innerText = name;
+                newRow.insertCell(0).innerText = teacher.name;
                 newRow.insertCell(1).innerText = teacher.username;
                 newRow.insertCell(2).innerText = teacher.section;
                 var buttonCell = newRow.insertCell(3);
@@ -403,4 +402,3 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 });
     </script>
-
