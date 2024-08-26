@@ -39,7 +39,7 @@ th {
 
 </style>
 <div class="column mt-1 ml-3">
-    <p class="has-text-primary is-size-2 mt-6 ml-4 mb-6 has-text-weight-semibold">Students Progress</p>
+    <p class="has-text-primary is-size-2 mt-6 ml-4 mb-6 has-text-weight-semibold">Students Progress <br><span class="subtitle">Section: Papaya <br> Lesson: Motion </span> </p>
     <div class="columns mb-6">
         <div class="column is-1"></div>
         <div class="column mt-6">
@@ -48,94 +48,94 @@ th {
                     <thead class="has-text-centered">
                         <tr>
                             <th>Name</th>
-                            <th>Section</th>
+                            <th>Lesson</th>
                             <th>Overall Progress</th>
                         </tr>
                         </thead>
                         <tbody class="has-text-centered">
                         <tr>
                             <td>Amiel Carhyl Lapid</td>
-                            <td>Papaya</td>
+                            <td>Lesson</td>
                             <td>69%</td>
                         </tr>
                         <tr>
                             <td>Mark Nelson Garcia</td>
-                            <td>Papaya</td>
+                            <td>Motion</td>
                             <td>71%</td>
                         </tr>
                         <tr>
                             <td>Joseph Lorenzo Ferrer</td>
-                            <td>Papaya</td>
+                            <td>Motion</td>
                             <td>98%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Papaya</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                         <tr>
                             <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
+                            <td>Motion</td>
                             <td>92%</td>
                         </tr>
                     </tbody>

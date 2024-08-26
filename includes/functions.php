@@ -83,14 +83,14 @@ function loginUser($conn, $uName, $pwd) {
     $UserExists = userExist($conn,$uName);
 
     if ($UserExists == false) {
-        header("location: ./admin/adminDash.php?error=WrongLogin");
+        header("location: ../index.php?error=WrongLogin");
         exit();
     }
     $pwdHashed = $UserExists["password"];
     $checkPass = password_verify($pwd, $pwdHashed);
 
     if ($checkPass === false) {
-        header("location: ./admin/adminDash.php?error=WrongLogin");
+        header("location: ../index.php?error=WrongLogin");
         exit();
     }
     else if ($checkPass === true) {
@@ -104,7 +104,7 @@ function loginUser($conn, $uName, $pwd) {
             exit();
         }
         else if ($role=='Teacher') {
-            header("location: ../teacher/teacherMonitoring.php");
+            header("location: ../teacher/teacherDash.php");
             exit();
         }
 
