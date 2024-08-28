@@ -7,6 +7,17 @@
         width: 70%;
         height: auto;
     }
+    #button{
+        margin-bottom: 1%;
+        margin-right: 2%;
+    }
+    #einstein-image{
+        width: 25%;
+        max-width: 25%;
+        margin-right: -7%;
+        margin-left: -8%;
+        margin-bottom: 0%;
+    }
 </style>
 
 
@@ -40,17 +51,23 @@
                             </div>
                         </div>
                         
-                        <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6">
-                            <a href="./../ecosystemTopic.php">
-                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet">
-                                    <i class="fas fa-arrow-left button-icon"></i>
-                                </button>
-                            </a>
-                            <a href="lesson1PopQuiz.php">
-                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mx-2">
-                                    <i class="fas fa-arrow-right button-icon"></i>
-                                </button>
-                            </a>
+                        <!-- Left and Right Buttons-->
+                        <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
+                            <div class="column is-full is-flex is-justify-content-flex-end" id="button">
+                                <a href="./../ecosystemDef.php?show=ecosystemTopic">
+                                    <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
+                                        <i class="fas fa-arrow-left button-icon"></i>
+                                    </button>
+                                </a>
+                                <a href="lesson1PopQuiz.php">
+                                    <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
+                                        <i class="fas fa-arrow-right button-icon"></i>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <!-- Eco Image -->
+                            <img src="../../../image/ecoCharacter.png" alt="Eco Figure" id="einstein-image">
                         </div>
                     </div>
                 </div>

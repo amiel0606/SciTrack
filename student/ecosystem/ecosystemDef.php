@@ -15,9 +15,31 @@
         display: block;
     }
     #button{
-        margin-bottom: -50%;
+        margin-bottom: 1%;
+        margin-right: 2%;
     }
-
+    #einstein-image{
+        width: 25%;
+        max-width: 25%;
+        margin-right: -7%;
+        margin-left: -8%;
+        margin-bottom: 0%;
+    }
+    .topic-container {
+        position: relative; 
+        z-index: 10;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    }
+    .topic-container:hover {
+        transform: scale(1.05);
+    }
+    .topic-container:hover figure img {
+        filter: brightness(1.1);
+    }
+    #ecosystemTopic figure {
+        position: relative;
+        z-index: 15;
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -120,15 +142,58 @@
                             </div>
                         </div>
 
+                        <!-- Ecosystem Topic -->
+                        <div class="ecosystem-content" id="ecosystemTopic">
+                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mt-4">CHOOSE TOPIC</h1>
+                                
+                                <div class="columns is-centered">
+                                    <!-- Lesson 1 and 2 -->
+                                    <div class="column is-two-thirds ml-6 mr-6">
+                                        <div class="columns">
+                                            <div class="column is-half has-text-centered">
+                                                <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
+                                                    <a href="./lesson1/ecosystemEstuaris.php">
+                                                        <figure class="image">
+                                                            <img src="../../image/ecoLesson1.png" alt="ecoLesson1">
+                                                        </figure>
+                                                    </a>
+                                                    <p">Lesson 1: The Ecosystem Estuaries</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="column is-narrow"></div>
+
+                                            <div class="column is-half has-text-centered">
+                                                <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
+                                                    <a href="./lesson2/ecosystemIntertidal.php">
+                                                        <figure class="image">
+                                                            <img src="../../image/ecoLesson2.png" alt="ecoLesson2">
+                                                        </figure>
+                                                    </a>
+                                                    <p">Lesson 2: The Ecosystem in the Intertidal Zone</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <!-- Left and Right Buttons-->
-                        <div class="column is-full is-flex is-justify-content-flex-end" id="button">
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
-                                <i class="fas fa-arrow-left button-icon"></i>
-                            </button>
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
-                                <i class="fas fa-arrow-right button-icon"></i>
-                            </button>
+                        <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
+                            <div class="column is-full is-flex is-justify-content-flex-end" id="button">
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
+                                    <i class="fas fa-arrow-left button-icon"></i>
+                                </button>
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
+                                    <i class="fas fa-arrow-right button-icon"></i>
+                                </button>
+                            </div>
+
+                            <!-- Eco Image -->
+                            <img src="../../image/ecoCharacter.png" alt="Eco Figure" id="einstein-image">
                         </div>
 
                     </div>
@@ -145,46 +210,51 @@
         const content = {
             1: document.getElementById('ecosystemDef'),
             2: document.getElementById('ecosystemBiotic'),
-            3: document.getElementById('ecosystemAbiotic')
+            3: document.getElementById('ecosystemAbiotic'),
+            4: document.getElementById('ecosystemTopic')
         };
 
-        let currentQuiz = 1;
+        let currentContent = 1;
 
         function updateContent() {
             for (let key in content) {
-                content[key].classList.toggle('active', key == currentQuiz);
+                content[key].classList.toggle('active', key == currentContent);
+            }
+
+            if (currentContent === 4) {
+                rightButton.style.display = 'none'; 
+            } else {
+                rightButton.style.display = '';
             }
         }
 
         updateContent();
 
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        const showM = getQueryParam('show');
-        if (showM === 'ecosystemAbiotic') {
-            currentQuiz = 3;
-            updateContent();
-        }
-
         leftButton.addEventListener('click', function () {
-            if (currentQuiz === 1) {
-                window.location.href = './../studentLesson.php'; 
+            if (currentContent === 1) {
+                window.location.href = './../studentWelcome.php?show=Lessons';
             } else {
-                currentQuiz--;
+                currentContent--;
                 updateContent();
             }
         });
 
         rightButton.addEventListener('click', function () {
-            if (currentQuiz === 3) {
-                window.location.href = 'ecosystemTopic.php'; 
-            } else {
-                currentQuiz++;
+            if (currentContent < 4) {
+                currentContent++;
                 updateContent();
             }
         });
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        const showM = getQueryParam('show');
+        if (showM === 'ecosystemTopic') {
+            currentContent = 4;
+            updateContent();
+        }
     });
+
 </script>
