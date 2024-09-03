@@ -33,7 +33,7 @@
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box addRoleModal">
-            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Role</p>
+            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Edit Role</p>
             <form action="./includes/addStaff/editRoles.php" method="post" id="newRoleForm"  enctype="multipart/form-data">
                 <div class="field">
                     <div class="control mb-5">
@@ -116,11 +116,11 @@
 </div>
 <!-- END OF ADD ROLE MODAL -->
 
-<!-- ADD ROLE MODAL -->
-<div id="addRoleModal" class="modal">
+<!-- EDIT ROLE MODAL -->
+<div id="editRoleModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <div class="box addRoleModal">
+        <div class="box">
             <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Role</p>
             <form action="./includes/addStaff/editRoles.php" method="post" id="newRoleForm"  enctype="multipart/form-data">
                 <div class="field">
@@ -202,7 +202,7 @@
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
-<!-- END OF ADD ROLE MODAL -->
+<!-- END OF EDIT ROLE MODAL -->
 
 
 <div class="container">
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var editButton = document.createElement('a');
         var deleteButton = document.createElement('a');
         editButton.classList.add('button', 'is-success', 'p-1', 'js-modal-trigger');
-        editButton.setAttribute('data-target', 'editStudentsModal');
+        editButton.setAttribute('data-target', 'editRoleModal');
         editButton.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
             <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" fill="#fff"/>
