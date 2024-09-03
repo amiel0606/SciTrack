@@ -95,7 +95,7 @@ function loginUser($conn, $uName, $pwd) {
     }
     else if ($checkPass === true) {
         session_start();
-        $_SESSION["uID"] = $UserExists["uID"]; 
+        $_SESSION["id"] = $UserExists["id"]; 
         $_SESSION["username"] = $UserExists["username"];
         $_SESSION["role"] = $UserExists["role"];
         $role = $_SESSION["role"];
