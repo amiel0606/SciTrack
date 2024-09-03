@@ -31,6 +31,8 @@ class UserLoader implements MessageComponentInterface {
             $this->loadStudents($from);
         } elseif ($data['type'] === 'loadTeachers') {
             $this->loadTeachers($from);
+        } elseif ($data['type'] === 'loadRoles') {
+            $this->loadRoles($from);
         }
     }
 
@@ -47,6 +49,14 @@ class UserLoader implements MessageComponentInterface {
         foreach ($teachers as $teacher) {
             $teacher['type'] = 'teacher';
             $conn->send(json_encode($teacher));
+        }
+    }
+
+    private function loadRoles(ConnectionInterface $conn) {
+        $roles = fetchRoles($this->db);
+        foreach ($roles as $role) {
+            // $role['type'] = 'role';
+            $conn->send(json_encode($role));
         }
     }
 
