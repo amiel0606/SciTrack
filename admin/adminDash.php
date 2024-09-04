@@ -7,37 +7,229 @@
     --bulma-footer-background-color: hsl(45, 43%, 95%);
     --bulma-footer-padding: 3rem 1.5rem 3rem;
 }
-body::-webkit-scrollbar {
-    height: 100vh;
-    overflow: hidden;
-    display: none;
+.container {
+    margin: 0;
+    width: 2000px;
+    max-width: 2000px;
+    height: 52px;
+    background-color: #D9D9D9;
 }
-body {
-    height: 100vh;
-    overflow: hidden;
+
+.navbar {
+    width: 1600;
+}
+
+.navbar-brand {
+    height: 50px;
+}
+
+.dash-table {
+    width: 700px;
+    margin-bottom: 100px;
+}
+
+.dash-tables {
+    width: 100%;
+    height: 489px;
+}
+
+.select {
+    width: 150px;
+    padding-left: 6px;
 }
 </style>
 
-        <div class="column ">
-            <p class="has-text-primary is-size-2 mt-6 ml-4 has-text-weight-semibold">Dashboard</p>
+<div class="container is-max-desktop">
+    <div class="column ">
             <div class="columns">
-                <div class="column is-half">
-                    <div class="box dash has-background-warning has-shadow" style="padding-bottom: 56.25%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="100px" height="100x">
-                        <path d="M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm-8 384l0-128 16 0 0 128c0 17.7 14.3 32 32 32s32-14.3 32-32l0-288 56 0 64 0 16 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-16 0 0-64 192 0 0 192-192 0 0-32-64 0 0 48c0 26.5 21.5 48 48 48l224 0c26.5 0 48-21.5 48-48l0-224c0-26.5-21.5-48-48-48L368 0c-26.5 0-48 21.5-48 48l0 80-76.9 0-65.9 0c-33.7 0-64.9 17.7-82.3 46.6l-58.3 97c-9.1 15.1-4.2 34.8 10.9 43.9s34.8 4.2 43.9-10.9L120 256.9 120 480c0 17.7 14.3 32 32 32s32-14.3 32-32z " fill-opacity="0.5"/>
-                    </svg>
-                    <p class="has-text-primary is-size-1 has-text-centered mt-1 has-text-weight-bold">2</p>
-                    <p class="has-text-primary is-size-1 has-text-centered mt-2">Teachers</p>
+                <div class="column is-two-thirds">
+                    <div class="box dash has-shadow" >
+                        <img class="aas"style="float: right;" src="../image/admin.png" alt="admin1">
+                        <p class="has-text-primary is-size-1 has-text-left mt-1 has-text-weight-bold">Welcome back, Admin</p>
+                        <p class="has-text-primary is-size-1 has-text-left ">It is a lot of work for today! <span class="has-text-danger" >So let's start!</span></p>
                     </div>
                 </div>
-                <div class="column is-half">
-                    <div class="box dash has-background-warning has-shadow" style="padding-bottom: 56.25%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="100px" height="100x">
-                        <path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9l0 28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5l0-24.6c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z" fill-opacity="0.5"/>
-                    </svg>
-                        <p class="has-text-primary is-size-1 has-text-centered mt-1 has-text-weight-bold">500</p>
-                        <p class="has-text-primary is-size-1 has-text-centered mt-2">Students</p>
+                <div class="column">
+                    <div id="calendar" class="box dash has-shadow px-6 pb-6">
+                        <div id="calendar-header" class="level">
+                            <span id="month-prev" class="level-left button is-small">&lt;</span>
+                            <h1 id="month" class="level-item has-text-centered"></h1>
+                            <span id="month-next" class="level-right button is-small">&gt;</span>
+                        </div>
+                        <div id="calendar-body" class="columns is-multiline is-mobile" style="background-color: #fff">
+                        </div>
                     </div>
                 </div>
+            </div>
+    </div>
+    <div class="column">
+    <div class="columns">
+        <div class="column is-half">
+            <div class="box dash-tables dash has-shadow" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; width: 100%;">
+                    <p class="has-text-primary is-size-3 has-text-weight-bold">Students: <span class="has-text-primary is-size-4 has-text-weight-normal">15</span></p>
+                    <a href="./adminStudents.php" class="has-text-primary">View All</a>
                 </div>
+                <div class="select is-primary" style="float: left;">
+                    <select name="section">
+                        <option>Papaya</option>
+                        <option>Mango</option>
+                        <option>Star Section</option>
+                    </select>
+                </div>
+                <div class="table-container">
+                <table id="students" class="table dash-table is-hoverable ">
+                    <thead class="has-text-centered has-background-primary">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody class="has-text-centered">
+
+                    </tbody>
+                </table>
+                </div>
+                
+            </div>
         </div>
+
+        <div class="column is-half">
+        <div class="box dash-tables dash has-shadow" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; justify-content: space-between; width: 100%;">
+                    <p class="has-text-primary is-size-3 has-text-weight-bold">Teachers: <span class="has-text-primary is-size-4 has-text-weight-normal">5</span></p>
+                    <a href="./adminTeachers.php" class="has-text-primary">View All</a>
+                </div>
+                <table id="teachers" class="table dash-table is-hoverable ">
+                    <thead class="has-text-centered has-background-primary">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody class="has-text-centered">
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const calendarBody = document.getElementById('calendar-body');
+    const monthElement = document.getElementById('month');
+    const prevButton = document.getElementById('month-prev');
+    const nextButton = document.getElementById('month-next');
+    let today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
+
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    function generateCalendar(month, year) {
+        calendarBody.innerHTML = '';
+        monthElement.textContent = `${months[month]} ${year}`;
+
+        // Add days of the week
+        daysOfWeek.forEach(day => {
+            const dayCell = document.createElement('div');
+            dayCell.classList.add('date');
+            dayCell.textContent = day;
+            calendarBody.appendChild(dayCell);
+        });
+
+        const firstDay = new Date(year, month).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        for (let i = 0; i < firstDay; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.classList.add('date');
+            calendarBody.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateCell = document.createElement('div');
+            dateCell.classList.add('date');
+            dateCell.textContent = day;
+
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                dateCell.classList.add('current');
+            }
+
+            calendarBody.appendChild(dateCell);
+        }
+    }
+
+    function changeMonth(direction) {
+        currentMonth += direction;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        } else if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentMonth, currentYear);
+    }
+
+    prevButton.addEventListener('click', () => changeMonth(-1));
+    nextButton.addEventListener('click', () => changeMonth(1));
+
+    generateCalendar(currentMonth, currentYear);
+
+
+    // WebSocket connection
+var conn = new WebSocket('ws://localhost:8080');
+conn.onopen = function() {
+    conn.send(JSON.stringify({ type: 'loadStudents' }));
+    conn.send(JSON.stringify({ type: 'loadTeachers' }));
+};
+conn.onmessage = function(e) {
+    var data = JSON.parse(e.data);
+    console.log(data);
+    if (data.type === "student") {
+        var table = document.getElementById('students').getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow();
+        newRow.insertCell(0).innerText = data.id;
+        newRow.insertCell(1).innerText = data.name;
+        newRow.insertCell(2).innerText = data.username;
+    } else if (data.type === "teacher") {
+        var table = document.getElementById('teachers').getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow();
+        newRow.insertCell(0).innerText = data.id;
+        newRow.insertCell(1).innerText = data.name;
+        newRow.insertCell(2).innerText = data.username;
+    }
+
+
+};
+
+// Error handling for WebSocket
+conn.onerror = function(error) {
+    console.error('WebSocket Error: ', error);
+};
+
+conn.onclose = function() {
+    console.log('WebSocket connection closed');
+};
+
+});
+
+
+</script>

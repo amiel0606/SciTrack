@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bulma-calendar": "^6.1.19",
+    "bulma-spacing": "^2.1.5"
+  }
+}

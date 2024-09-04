@@ -2,6 +2,7 @@
     include_once('./includes/header.php');
 ?>
 <style>
+
     :root {
         --bulma-primary-h: 310deg;
         --bulma-primary-s: 41%;
@@ -30,6 +31,7 @@
         box-shadow: 0 0 0 0;
     }
 </style>
+
 
 <div class="content">
     <p class="title is-invisible"> Welcome</p>
@@ -81,4 +83,3 @@
         <img src="./image/telescope.png" alt="telescope" class="drifting-img">
         <img src="./image/atom.png" alt="atom" class="drifting-img">
     </div>
-</div>
