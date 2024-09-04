@@ -35,6 +35,27 @@
         margin-left: -8%;
         margin-bottom: -2%;
     }
+    .navbar{
+        background-color: #4A90E2 !important;
+    }
+    .navbar-item:hover{
+        background-color: #266bbb;
+        color: white;
+    }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -49,11 +70,12 @@
                     <!-- Matter Definition -->
                     <div class="matter-content" id="matterDef">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6">WHAT IS MATTER?</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6 secondary-font">WHAT IS MATTER?</h1>
                             
                             <!-- Text -->
                             <div class="column is-four-fifths mt-6">
-                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-centered has-text-weight-semibold has-text-white">
+                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                has-text-centered has-text-weight-semibold has-text-white main-font">
                                 Matter is anything that has mass and occupies space is called matter. 
                                 A matter is made up of tiny particles called atoms. There are three states of matter. 
                                 Solid, liquid, and gas.
@@ -65,12 +87,12 @@
                     <!-- Matter Topic -->
                     <div class="matter-content" id="matterTopic">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mt-6 mb-2">CHOOSE TOPIC</h1>
+                            <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mt-6 mb-2 secondary-font">CHOOSE TOPIC</h1>
                             
                             <div class="columns is-centered">
                                 <!-- One-third -->
                                 <div class="column is-one-third has-text-centered">
-                                    <div class="title is-size-3 has-text-white topic-container">
+                                    <div class="title is-size-3 has-text-white topic-container main-font">
                                         <a href="./solid/matterSolid.php">
                                             <figure class="image">
                                                 <img src="../image/solid.png" alt="Solid">
@@ -85,7 +107,7 @@
                                     <div class="columns">
                                         <!-- Two-third, left -->
                                         <div class="column is-half has-text-centered">
-                                            <div class="title is-size-3 has-text-white topic-container">
+                                            <div class="title is-size-3 has-text-white topic-container main-font">
                                                 <a href="./liquid/matterLiquid.php">
                                                     <figure class="image">
                                                         <img src="../image/liquid.png" alt="Liquid">
@@ -97,7 +119,7 @@
 
                                         <!-- Two-third, right -->
                                         <div class="column is-half has-text-centered">
-                                            <div class="title is-size-3 has-text-white topic-container">
+                                            <div class="title is-size-3 has-text-white topic-container main-font">
                                                 <a href="./gas/matterGas.php">
                                                     <figure class="image">
                                                         <img src="../image/gas.png" alt="Gas">
@@ -174,3 +196,4 @@
         }
     });
 </script>
+

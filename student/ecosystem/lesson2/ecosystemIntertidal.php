@@ -25,6 +25,20 @@
         margin-left: -8%;
         margin-bottom: 0%;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -40,13 +54,14 @@
                         <!-- Ecosystem Inter -->
                         <div class="ecosystem-content" id="ecosystemInter">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem in the Intertidal Zone</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem in the Intertidal Zone</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         Many organisms became visible when you go to the seashore during low tide. 
                                         You will see more rocks and sea creature. 
                                         Intertidal zones of rocky shorelines host sea star fish, seaweed, algae and crabs.
@@ -66,16 +81,18 @@
                         <!-- Ecosystem Tide -->
                         <div class="ecosystem-content" id="ecosystemTide">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem in the Intertidal Zone</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem in the Intertidal Zone</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Tide
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         Tide refers to the movement of water as a result of the gravitational pull of the sun and the moon.
                                         </p>
                                     </div>
@@ -93,16 +110,18 @@
                         <!-- Ecosystem Intertidal Zone -->
                         <div class="ecosystem-content" id="ecosystemIntertidalZone">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem in the Intertidal Zone</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem in the Intertidal Zone</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Intertidal Zone
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                             Interdal Zone refers to the area of the sea that is exposed to the air during low tide and is submerge in the water during high tide. 
                                         </p>
                                     </div>

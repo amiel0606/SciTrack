@@ -18,6 +18,20 @@
         margin-left: -8%;
         margin-bottom: 0%;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 
@@ -32,13 +46,14 @@
                     </figure>
 
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                        <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
+                        <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem Estuaries</h1>
 
                         <!-- Content Layout -->
                         <div class="columns is-centered">
                             <!-- Text Column -->
                             <div class="column is-half pl-6 mt-6">
-                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                has-text-left has-text-weight-semibold has-text-white main-font">
                                     An estuary is a viral ecosystem because it provides people with food and job. It is unique plants and animals.
                                 </p>
                             </div>

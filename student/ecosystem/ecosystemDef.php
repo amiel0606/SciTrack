@@ -40,6 +40,20 @@
         position: relative;
         z-index: 15;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -56,11 +70,12 @@
                         <!-- Ecosystem Definition -->
                         <div class="ecosystem-content" id="ecosystemDef">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6">WHAT IS ECOSYSTEM?</h1>
+                                <h1 class="subtitle is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6 secondary-font">WHAT IS ECOSYSTEM?</h1>
                                 
                                 <!-- Text -->
                                 <div class="column is-four-fifths mt-6">
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-centered has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-centered has-text-weight-semibold has-text-white main-font">
                                     An ecosystem is all the biotic and abiotic components that interact within an area at once.
 
                                     </p>
@@ -71,7 +86,7 @@
                         <!-- Ecosystem Biotic -->
                         <div class="ecosystem-content" id="ecosystemBiotic">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-2">BIOTIC</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-2 secondary-font">BIOTIC</h1>
                                 
                                 <!-- Examples Image of Biotic -->
                                 <div class="columns is-vcentered is-centered mb-4">
@@ -98,7 +113,8 @@
                                 
                                 <!-- Text -->
                                 <div class="column is-four-fifths mt-2">
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-centered has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen
+                                    has-text-centered has-text-weight-semibold has-text-white main-font">
                                         Biotic factors are living things within an ecosystem; such as plants, animals, and bacteria
                                     </p>
                                 </div>
@@ -108,7 +124,7 @@
                         <!-- Ecosystem Abiotic -->
                         <div class="ecosystem-content" id="ecosystemAbiotic">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-2">ABIOTIC</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-2 secondary-font">ABIOTIC</h1>
                                 
                                 <!-- Examples Image of Abiotic -->
                                 <div class="columns is-vcentered is-centered mb-4">
@@ -135,7 +151,8 @@
                                 
                                 <!-- Text -->
                                 <div class="column is-four-fifths mt-2">
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-centered has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-centered has-text-weight-semibold has-text-white main-font">
                                         Abiotic factors are non-living things such as air, water, light, soil, nutrient and many more
                                     </p>
                                 </div>
@@ -145,33 +162,35 @@
                         <!-- Ecosystem Topic -->
                         <div class="ecosystem-content" id="ecosystemTopic">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mt-4">CHOOSE TOPIC</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mt-4 secondary-font">CHOOSE TOPIC</h1>
                                 
                                 <div class="columns is-centered">
                                     <!-- Lesson 1 and 2 -->
                                     <div class="column is-two-thirds ml-6 mr-6">
                                         <div class="columns">
                                             <div class="column is-half has-text-centered">
-                                                <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
+                                                <div class="title is-size-3-dekstop is-size-4-tablet has-text-white 
+                                                has-text-weight-semibold topic-container main-font">
                                                     <a href="./lesson1/ecosystemEstuaris.php">
                                                         <figure class="image">
                                                             <img src="../../image/ecoLesson1.png" alt="ecoLesson1">
                                                         </figure>
                                                     </a>
-                                                    <p">Lesson 1: The Ecosystem Estuaries</p>
+                                                    <p>Lesson 1: The Ecosystem Estuaries</p>
                                                 </div>
                                             </div>
 
                                             <div class="column is-narrow"></div>
 
                                             <div class="column is-half has-text-centered">
-                                                <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
+                                                <div class="title is-size-3-dekstop is-size-4-tablet has-text-white 
+                                                has-text-weight-semibold topic-container main-font">
                                                     <a href="./lesson2/ecosystemIntertidal.php">
                                                         <figure class="image">
                                                             <img src="../../image/ecoLesson2.png" alt="ecoLesson2">
                                                         </figure>
                                                     </a>
-                                                    <p">Lesson 2: The Ecosystem in the Intertidal Zone</p>
+                                                    <p>Lesson 2: The Ecosystem in the Intertidal Zone</p>
                                                 </div>
                                             </div>
                                         </div>

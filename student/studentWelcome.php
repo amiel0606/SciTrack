@@ -53,7 +53,30 @@
         margin-left: -8%;
         margin-bottom: -2%;
     }
+    .navbar{
+        background-color: #4A90E2 !important;
+    }
+    .navbar-item:hover{
+        background-color: #266bbb;
+        color: white;
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../font/Haniley.otf');
+    }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../font/Avenue.otf') format('opentype');
+    }
+    .secondary-font {
+        font-family: 'Haniley';
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+
 </style>
+
 
 <section class="hero is-fullheight">
     <div class="hero-body">
@@ -69,7 +92,8 @@
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                             <div class="columns is-centered mb-6 mt-6">
                                 <div class="column is-four-fifths">
-                                    <p class="title is-size-1-widescreen is-size-2-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-centered">
+                                    <p class="title is-size-1-widescreen is-size-2-desktop is-size-3-tablet is-size-4-mobile 
+                                    has-text-white has-text-centered main-font">
                                         Welcome <span id="">[student name],</span> Dive into the fascinating world of Matter with Sci-Track and spark your scientific curiosity!
                                     </p>
                                 </div>
@@ -87,7 +111,7 @@
                                             <figure class="image">
                                                 <img src="../image/lesson.png" alt="Lesson Image" class="lesson-image">
                                             </figure>
-                                            <p class="has-text-white dtext">LESSON</p>
+                                            <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">LESSON</p>
                                         </a>
                                     </div>
                                     <div class="column is-half has-text-centered title is-size-3 studentdb">
@@ -95,7 +119,7 @@
                                             <figure class="image">
                                                 <img src="../image/assessment.png" alt="Assessment Image" class="lesson-image">
                                             </figure>
-                                            <p class="has-text-white dtext">ASSESSMENT</p>
+                                            <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">ASSESSMENT</p>
                                         </a>
                                     </div>
                                 </div>
@@ -104,41 +128,41 @@
                     </div>
 
                     <!-- Lessons -->
-                    <div class="student-content" id="lessons">
+                    <div class="student-content " id="lessons">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 mt-6 p-6">
                             <div class="columns is-multiline is-centered mt-6 ">
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image">
+                                <div class="column is-2-mobile is-one-quarter-tablet example-image mr-6">
                                     <a href="matterDef.php">
                                         <figure class="image figure-image">
-                                            <img src="../image/matter.png" alt="Matter">
-                                            <p class="title is-size-5 has-text-white has-text-centered">MATTER</p>
+                                            <img src="../image/matterTopic.gif" alt="Matter">
+                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
                                         </figure>
                                     </a>
                                 </div>
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image">
+                                <div class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
                                     <a href="./ecosystem/ecosystemDef.php">
                                         <figure class="image figure-image">
-                                            <img src="../image/ecosystem.png" alt="Ecosystem">
-                                            <p class="title is-size-5 has-text-white has-text-centered">ECOSYSTEM</p>
+                                            <img src="../image/ecosystemTopic.gif" alt="Ecosystem">
+                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
                                         </figure>
                                     </a>
                                 </div>
                             </div>
 
                             <div class="columns is-multiline is-centered mb-1">
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image">
+                                <div class="column is-2-mobile is-one-quarter-tablet example-image mr-6">
                                     <a href="./motion/motionDef.php">
                                         <figure class="image figure-image">
-                                            <img src="../image/motion.png" alt="Motion">
-                                            <p class="title is-size-5 has-text-white has-text-centered">MOTION</p>
+                                            <img src="../image/motionTopic.gif" alt="Motion">
+                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
                                         </figure>
                                     </a>
                                 </div>
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image">
+                                <div class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
                                     <a href="./surface/surfaceDef.php">
                                         <figure class="image figure-image">
-                                            <img src="../image/surface.png" alt="Earth's Surface">
-                                            <p class="title is-size-5 has-text-white has-text-centered">EARTH'S SURFACE</p>
+                                            <img src="../image/surfaceTopic.gif" alt="Earth's Surface">
+                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">EARTH'S SURFACE</p>
                                         </figure>
                                     </a>
                                 </div>

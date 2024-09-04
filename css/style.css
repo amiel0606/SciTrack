@@ -11,15 +11,14 @@
     --body:#F6F4EB;
 }
 body{
-    background-color: #4C1443;
-    background-image: url("../image/bg.png");
+    background-color: #ffffff;
     min-height: 100vh;
     background-size: cover;
     color: #ffffff;
 }
 
 .login-form {
-    background-color: #D5B3F6;
+    background-color: #050506;
     border-radius: 15px;
     width: px;
     height: 600px;
@@ -29,3 +28,34 @@ body{
     font-family: 'Modak', cursive;
 }
 
+#calendar {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+#calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.day, .date {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.current {
+    background-color: lavender;
+}
