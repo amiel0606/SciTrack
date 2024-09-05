@@ -15,7 +15,15 @@
         display: block;
     }
     #button{
-        margin-bottom: -50%;
+        margin-bottom: -0.5%;
+        margin-right: 2%;
+    }
+    #einstein-image{
+        width: 25%;
+        max-width: 25%;
+        margin-right: -7%;
+        margin-left: -8%;
+        margin-bottom: -2%;
     }
 </style>
 
@@ -142,13 +150,18 @@
                         </div>
 
                         <!-- Left and Right Buttons-->
-                        <div class="column is-full is-flex is-justify-content-flex-end" id="button">
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
-                                <i class="fas fa-arrow-left button-icon"></i>
-                            </button>
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
-                                <i class="fas fa-arrow-right button-icon"></i>
-                            </button>
+                        <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
+                            <div class="column is-full is-flex is-justify-content-flex-end" id="button">
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
+                                    <i class="fas fa-arrow-left button-icon"></i>
+                                </button>
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
+                                    <i class="fas fa-arrow-right button-icon"></i>
+                                </button>
+                            </div>
+
+                            <!-- Motion Image -->
+                            <img src="../../../image/measuring8.png" alt="Motion Figure" id="einstein-image">
                         </div>
                         
                     </div>

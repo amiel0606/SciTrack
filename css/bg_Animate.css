@@ -1,0 +1,41 @@
+:root {
+    --bulma-primary-h: 310deg;
+    --bulma-primary-s: 41%;
+    --bulma-primary-l: 39%;
+    --bulma-info-h: 270deg;
+    --bulma-info-s: 79%;
+    --bulma-info-l: 83%;
+    --bulma-link-h: 0deg;
+}
+
+.input {
+    height: 45px;
+    --bulma-input-focus-h: 310deg;
+    --bulma-input-focus-s: 63%;
+    --bulma-input-focus-l: 39%;
+}
+
+.floating-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; 
+    z-index: 0;
+    overflow: hidden; 
+}
+
+.floating-container img {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.7;
+    transition: transform 0.5s ease-in-out; 
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(60px, -40px); }
+    50% { transform: translate(120px, 60px); }
+    75% { transform: translate(-60px, 40px); }
+    100% { transform: translate(0, 0); }
+}

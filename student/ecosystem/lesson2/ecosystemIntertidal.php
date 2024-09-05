@@ -15,7 +15,29 @@
         display: block;
     }
     #button{
-        margin-bottom: -50%;
+        margin-bottom: 1%;
+        margin-right: 2%;
+    }
+    #einstein-image{
+        width: 25%;
+        max-width: 25%;
+        margin-right: -7%;
+        margin-left: -8%;
+        margin-bottom: 0%;
+    }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
     }
 </style>
 
@@ -32,13 +54,14 @@
                         <!-- Ecosystem Inter -->
                         <div class="ecosystem-content" id="ecosystemInter">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem in the Intertidal Zone</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem in the Intertidal Zone</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         Many organisms became visible when you go to the seashore during low tide. 
                                         You will see more rocks and sea creature. 
                                         Intertidal zones of rocky shorelines host sea star fish, seaweed, algae and crabs.
@@ -58,16 +81,18 @@
                         <!-- Ecosystem Tide -->
                         <div class="ecosystem-content" id="ecosystemTide">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem in the Intertidal Zone</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem in the Intertidal Zone</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Tide
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         Tide refers to the movement of water as a result of the gravitational pull of the sun and the moon.
                                         </p>
                                     </div>
@@ -85,16 +110,18 @@
                         <!-- Ecosystem Intertidal Zone -->
                         <div class="ecosystem-content" id="ecosystemIntertidalZone">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem in the Intertidal Zone</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem in the Intertidal Zone</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Intertidal Zone
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                             Interdal Zone refers to the area of the sea that is exposed to the air during low tide and is submerge in the water during high tide. 
                                         </p>
                                     </div>
@@ -111,13 +138,18 @@
                         
 
                         <!-- Left and Right Buttons-->
-                        <div class="column is-full is-flex is-justify-content-flex-end" id="button">
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
-                                <i class="fas fa-arrow-left button-icon"></i>
-                            </button>
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
-                                <i class="fas fa-arrow-right button-icon"></i>
-                            </button>
+                        <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
+                            <div class="column is-full is-flex is-justify-content-flex-end" id="button">
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
+                                    <i class="fas fa-arrow-left button-icon"></i>
+                                </button>
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
+                                    <i class="fas fa-arrow-right button-icon"></i>
+                                </button>
+                            </div>
+
+                            <!-- Eco Image -->
+                            <img src="../../../image/ecoCharacter2.png" alt="Eco Figure" id="einstein-image">
                         </div>
                         
                     </div>
@@ -160,7 +192,7 @@
 
         leftButton.addEventListener('click', function () {
             if (currentContent === 1) {
-                window.location.href = './../ecosystemTopic.php'; 
+                window.location.href = './../ecosystemDef.php?show=ecosystemTopic'; 
             } else {
                 currentContent--;
                 updateContent();

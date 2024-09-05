@@ -31,7 +31,7 @@
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                         <div class="column is-full is-flex is-justify-content-flex-end mb-6">
                             <div class="columns is-half ml-6 p-2">
-                                <a href="./.././ecosystemTopic.php">
+                                <a href="./.././ecosystemDef.php?show=ecosystemTopic">
                                     <button class="button back-button is-success is-size-6-desktop is-size-6-tablet">
                                     <p class="has-text-white">Back To Main Menu</p>
                                     </button>

@@ -11,9 +11,16 @@
     --body:#F6F4EB;
 }
 
+body{
+    background-color: #ffffff;
+    min-height: 100vh;
+    background-size: cover;
+    color: #ffffff;
+}
+
 
 .login-form {
-    background-color: #D5B3F6;
+    background-color: #050506;
     border-radius: 15px;
     width: px;
     height: 600px;
