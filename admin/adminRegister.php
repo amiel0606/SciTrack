@@ -20,10 +20,10 @@ body::-webkit-scrollbar {
 
 .input {
     background-color: #D4D4D4;
-    --bulma-input-focus-h: 0deg;
-    --bulma-input-focus-s: 43%;
-    --bulma-input-focus-l: 28%;
-    color: #9B9898;
+    --bulma-input-focus-h: 240; 
+    --bulma-input-focus-s: 16%;
+    --bulma-input-focus-l: 31%;
+    color: ##333333;
     border: 1px solid #D4D4D4;
     --bulma-input-placeholder-color: hsl(0, 0%, 20%);
 }
@@ -45,14 +45,19 @@ body::-webkit-scrollbar {
 
 
 :root {
-    --bulma-primary-h: 0deg;
-    --bulma-primary-s: 49%;
-    --bulma-primary-l: 28%;
-    --bulma-link-h: 0deg;
+    --bulma-primary-h: 240deg;
+    --bulma-primary-s: 16%;
+    --bulma-primary-l: 31%;
     --bulma-link-s: 0%;
     --bulma-link-l: 83%;
 }
+
+.column {
+    width: 500px;
+}
 </style>
+
+<div class="container">
 <div class="columns">
     <div class="column is-half is-offset-one-quarter">
         <div class="has-background-primary-light py-1 px-2">
@@ -93,7 +98,11 @@ body::-webkit-scrollbar {
                     <input class="input" type="password" name="ConfPassword" placeholder="Confirm password">
                 </div>
             </div>
-            <input class="button is-primary " type="submit" name="register" value="Register">
+            <input class="button is-primary has-text-white" type="submit" name="register" value="Register">
         </form>
     </div>
 </div>
+</div>
+
+
+

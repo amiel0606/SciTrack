@@ -47,7 +47,7 @@
                                     Go Back
                                 </button>
                             </a>
-                            <a href="solidQuiz1.php">
+                            <a href="solidQuiz.php">
                                 <button class="button is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
                                     Proceed to quiz
                                 </button>

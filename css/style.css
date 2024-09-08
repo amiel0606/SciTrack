@@ -10,6 +10,7 @@
     --tertiary-color: #fffffe;
     --body:#F6F4EB;
 }
+
 body{
     background-color: #ffffff;
     min-height: 100vh;
@@ -17,8 +18,9 @@ body{
     color: #ffffff;
 }
 
+
 .login-form {
-    background-color: #615c66;
+    background-color: #050506;
     border-radius: 15px;
     width: px;
     height: 600px;
@@ -28,3 +30,42 @@ body{
     font-family: 'Modak', cursive;
 }
 
+#calendar {
+    width: 334px;
+    height: 267px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #fff;
+    color: #fff;
+}
+
+#calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr); /* Ensure 6 rows to fit all dates */
+    gap: 2px; /* Adjust gap to fit within the container */
+    padding: 5px;
+    height: calc(100% - 40px); /* Adjust height to fit within the container */
+}
+
+.date {
+    text-align: center;
+    padding: 2px;
+    font-size: 0.7em; /* Adjust font size to fit more content */
+}
+
+.current {
+    background-color: lavender;
+}
+
+#month {
+    font-size: 1.2em;
+    color: #42425C;
+}

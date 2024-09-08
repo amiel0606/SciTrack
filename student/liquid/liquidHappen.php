@@ -28,8 +28,8 @@
                             <!-- Text Column -->
                             <div class="column is-half pl-6">
                                 <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
-                                As the liquid is heated the the kinetic energy of the molecules increase and they liquid starts to expand.
-                                When the temperature reaches the boiling point of the liquid it starts boiling the phase changes from liquid to gas.
+                                As the liquid is heated, the kinetic energy of the molecules increases, and the liquid starts to expand.
+                                When the temperature reaches the boiling point of the liquid, it starts boiling, and the phase changes from liquid to gas.
                                 </p>
                             </div>
                             

@@ -31,7 +31,6 @@
                                 In a liquid state of matter, particles are less tightly packed as compared to solids.
                                 Liquids take the shape of the container in which they are kept.
                                 Liquids are difficult to compress as particles have less space between them to move.
-                                Liquids have fixed volume but no fixed shape.
                                 </p>
                             </div>
                             

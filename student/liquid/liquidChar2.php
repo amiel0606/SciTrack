@@ -37,7 +37,7 @@
                             <!-- Text Column -->
                             <div class="column is-half mt-4">
                                 <ul class="title is-size-4-desktop is-size-5-tablet has-text-white has-text-weight-semibold bullets">
-                                    <li class="mb-5">The intermolecular forces of attraction are weaker than solids.</li>
+                                    <li class="mb-5">The intermolecular forces of attraction in liquids are weaker than solids.</li>
                                     <li class="mb-5">They have considerable space between the particles.</li>
                                 </ul>
                             </div>

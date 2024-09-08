@@ -1,18 +1,59 @@
-:root{
-    --fontMain: 'InriaSans-Regular';
-    --fontSec: 'InriaSans-Bold';
-    --color-text: #ffffff;
-    --color-text2: #4682A9;
-    --color-text3: #808080;
-    --color-text4: #C5EBAA;
-    --main-color: #F6F4EB;
-    --secondary-color: #f9f8fc;
-    --tertiary-color: #fffffe;
-    --body:#F6F4EB;
+:root {
+  --fontMain: "InriaSans-Regular";
+  --fontSec: "InriaSans-Bold";
+  --color-text: #ffffff;
+  --color-text2: #4682A9;
+  --color-text3: #808080;
+  --color-text4: #C5EBAA;
+  --main-color: #F6F4EB;
+  --secondary-color: #f9f8fc;
+  --tertiary-color: #fffffe;
+  --body:#F6F4EB;
 }
-body{
-    background-color: var(--body);
-    min-height: 100vh;
-    background-size: cover;
-    color: #ffffff;
+
+body {
+  background-color: var(--body);
+  min-height: 100vh;
+  background-size: cover;
+  color: #ffffff;
+}
+
+#calendar {
+  width: 334px;
+  height: 267px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #fff;
+  color: #fff;
+}
+
+#calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr); /* Ensure 6 rows to fit all dates */
+  gap: 2px; /* Adjust gap to fit within the container */
+  padding: 5px;
+  height: calc(100% - 40px); /* Adjust height to fit within the container */
+}
+
+.date {
+  text-align: center;
+  padding: 2px;
+  font-size: 0.7em; /* Adjust font size to fit more content */
+}
+
+.current {
+  background-color: lavender;
+}
+
+#month {
+  font-size: 1.2em;
+  color: #42425C;
 }
