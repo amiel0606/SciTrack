@@ -15,7 +15,36 @@
         display: block;
     }
     #button{
-        margin-bottom: -50%;
+        margin-bottom: 1%;
+        margin-right: 2%;
+    }
+    #einstein-image{
+        width: 25%;
+        max-width: 25%;
+        margin-right: -7%;
+        margin-left: -8%;
+        margin-bottom: 0%;
+    }
+    .m-character img{
+        width: 100%;
+        height: auto;
+    }
+    #letsTryButton {
+        z-index: 10;
+    }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
     }
 </style>
 
@@ -30,18 +59,20 @@
 
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
                         <!-- Ecosystem Brackish -->
-                        <div class="ecosystem-content" id="ecosystemBrackish">
+                        <div class="x-content" id="ecosystemBrackish">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem Estuaries</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Brackish
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                             An estuary is found in an area where the river meets the sea. 
                                             The water in an estuary is characterized to be between saltwater and fresh water.
                                         </p>
@@ -60,16 +91,18 @@
                         <!-- Ecosystem Sediment -->
                         <div class="ecosystem-content" id="ecosystemSediment">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem Estuaries</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Sediment
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         Nutrient are transported and trapped in the sediment as water flows. 
                                         Sediment are the particles such as sand and soil which settle on the side and bottom  of water bodies
                                         </p>
@@ -88,16 +121,18 @@
                         <!-- Ecosystem Murky -->
                         <div class="ecosystem-content" id="ecosystemMurky">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem Estuaries</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Murky Water
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         The murky water in an estuary is due to the presence of sediments. 
                                         This provides a good camouflage for the small organism living in the area it protects them from potential predators 
                                         </p>
@@ -116,16 +151,18 @@
                         <!-- Ecosystem Estuary -->
                         <div class="ecosystem-content" id="ecosystemEstuary">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">The Ecosystem Estuaries</h1>
+                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">The Ecosystem Estuaries</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Estuary
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         An estuary, characterized by having brackish water, is home to many organisms. 
                                         Its components interact with one another to support life in this ecosystem
                                         </p>
@@ -141,14 +178,52 @@
                             </div>
                         </div>
 
+                        <!-- Ecosystem LetsTry -->
+                        <div class="ecosystem-content" id="ecosystemLetsTry">
+                            <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                                <!-- Content Layout -->
+                                <div class="columns is-centered">
+                                    <!-- Image Column -->
+                                    <div class="column is-half pl-6">
+                                        <figure class="image example-image m-character">
+                                            <img src="../../../image/ecoCharacter.png" alt="ecoCharacter">
+                                        </figure>
+                                    </div>
+
+                                    <!-- Image Column -->
+                                    <div class="column is-half pr-6 mr-6">
+                                        <figure class="image letstry">
+                                            <img src="../../../image/letstry.png" alt="letstry">
+                                        </figure>
+                                    </div>
+                                </div>
+                                
+                            
+                                <!-- Go Back and Proceed Button -->
+                                <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" id="letsTryButton">
+                                    <button class="button is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
+                                        Go Back
+                                    </button>
+                                    <button class="button is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
+                                        Proceed to quiz
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Left and Right Buttons-->
-                        <div class="column is-full is-flex is-justify-content-flex-end" id="button">
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
-                                <i class="fas fa-arrow-left button-icon"></i>
-                            </button>
-                            <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
-                                <i class="fas fa-arrow-right button-icon"></i>
-                            </button>
+                        <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
+                            <div class="column is-full is-flex is-justify-content-flex-end" id="button">
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mr-4" id="leftButton">
+                                    <i class="fas fa-arrow-left button-icon"></i>
+                                </button>
+                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="rightButton">
+                                    <i class="fas fa-arrow-right button-icon"></i>
+                                </button>
+                            </div>
+
+                            <!-- Eco Image -->
+                            <img src="../../../image/ecoCharacter.png" alt="Eco Figure" id="einstein-image">
                         </div>
                         
                     </div>
@@ -162,50 +237,79 @@
     document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
-        const content = {
-            1: document.getElementById('ecosystemBrackish'),
-            2: document.getElementById('ecosystemSediment'),
-            3: document.getElementById('ecosystemMurky'),
-            4: document.getElementById('ecosystemEstuary')
-        };
+        const einsteinImage = document.getElementById('einstein-image');
+        const examplesButton = document.getElementById('examplesButton');
+        const ecosystemBrackish = document.getElementById('ecosystemBrackish');
+        const ecosystemSediment = document.getElementById('ecosystemSediment');
+        const ecosystemMurky = document.getElementById('ecosystemMurky');
+        const ecosystemEstuary = document.getElementById('ecosystemEstuary');
+        const ecosystemLetsTry = document.getElementById('ecosystemLetsTry');
+        const letsTryButton = document.getElementById('letsTryButton');
+        const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
+        const goBackButton = letsTryButton.querySelector('.button.is-danger');
 
-        let currentContent = 1;
+        let currentSection = 0;
+        const sections = [ecosystemBrackish, ecosystemSediment, ecosystemMurky, ecosystemEstuary ,ecosystemLetsTry];
 
-        function updateContent() {
-            for (let key in content) {
-                content[key].classList.toggle('active', key == currentContent);
-            }
+        function hideAllSections() {
+            sections.forEach(section => {
+                section.classList.remove('ecosystem-content-active');
+                section.classList.add('ecosystem-content');
+            });
         }
 
-        updateContent();
-        
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+        function showSection(index) {
+            hideAllSections();
+            sections[index].classList.remove('ecosystem-content');
+            sections[index].classList.add('ecosystem-content-active');
         }
-
-        const showM = getQueryParam('show');
-        if (showM === 'ecosystemEstuary') {
-            currentContent = 4;
-            updateContent();
-        }
-
-        leftButton.addEventListener('click', function () {
-            if (currentContent === 1) {
-                window.location.href = 'ecosystemEstuaris.php'; 
-            } else {
-                currentContent--;
-                updateContent();
-            }
-        });
 
         rightButton.addEventListener('click', function () {
-            if (currentContent === 4) {
-                window.location.href = 'estuarisLetsTry.php'; 
-            } else {
-                currentContent++;
-                updateContent();
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                showSection(currentSection);
+
+                if (sections[currentSection] === ecosystemLetsTry) {
+                    leftButton.style.display = 'none';
+                    rightButton.style.display = 'none';
+                    einsteinImage.style.display = 'none';
+                    goBackbutton.style.display = 'flex';
+                    proceedToQuizButton.style.display = 'flex';
+                } else {
+                    examplesButton.style.display = 'flex';
+                    einsteinImage.style.display = 'block';
+                }
             }
         });
+
+        leftButton.addEventListener('click', function () {
+            if (currentSection === 0) {
+                window.location.href = 'ecosystemEstuaris.php';
+            } else if (currentSection > 0) {
+                currentSection--;
+                showSection(currentSection);
+
+                if (sections[currentSection] === ecosystemExamples) {
+                    examplesButton.style.display = 'flex';
+                    einsteinImage.style.display = 'block';
+                }
+            }
+        });
+
+        goBackButton.addEventListener('click', function () {
+            hideAllSections();
+            ecosystemEstuary.classList.remove('ecosystem-content');
+            ecosystemEstuary.classList.add('ecosystem-content-active');
+            leftButton.style.display = 'flex';
+            rightButton.style.display = 'flex';
+            einsteinImage.style.display = 'flex';
+            goBackbutton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            window.location.href = 'estuarisQuiz.php';
+        });
     });
+
 </script>

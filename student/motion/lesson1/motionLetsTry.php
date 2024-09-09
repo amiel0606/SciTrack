@@ -47,7 +47,7 @@
                     
                         <!-- Go Back and Proceed Button -->
                         <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" >
-                            <a href="motionExamples.php?show=example3">
+                            <a href="motionSpeed.php?show=motionExample3">
                                 <button class="button is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
                                     Go Back
                                 </button>

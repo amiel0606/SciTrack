@@ -41,19 +41,6 @@
                                 </figure>
                             </div>
                         </div>
-                        
-                        <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6">
-                            <a href="solidDef.php">
-                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet">
-                                    <i class="fas fa-arrow-left button-icon"></i>
-                                </button>
-                            </a>
-                            <a href="solidChar1.php">
-                                <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mx-2">
-                                    <i class="fas fa-arrow-right button-icon"></i>
-                                </button>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
