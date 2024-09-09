@@ -120,12 +120,13 @@
                                 A solid is characterized by structural rigidity and resistance to a force applied to the surface.
                                 </p>
                             </div>
+
                             <div class="audio-icon">
-    <button id="playAudio">
-        <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
-    </button>
-    <audio id="matterAudio" src="../../solid1.mp3"></audio>
-</div>
+                                <button id="playAudio">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="matterAudio" src="../../sounds/solid1.mp3"></audio>
+                            </div>
 
                             <div class="columns is-multiline is-centered">
                                 <!-- Example Image 1 -->
@@ -164,12 +165,13 @@
                                     has-text-left has-text-weight-semibold has-text-white main-font">
                                     Solids are generally held together by ionic or strong covalent bonding, and the attractive forces between the atoms, ions, or molecules in solids are very strong. In fact, these forces are so strong that particles in a solid are held in fixed positions and have very little freedom of movement.
                                     </p>
+
                                     <div class="audio-icon2">
-    <button id="playAudio2">
-        <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
-    </button>
-    <audio id="matterAudio2" src="../../solid2.mp3"></audio>
-</div>
+                                        <button id="playAudio2">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio2" src="../../sounds/solid2.mp3"></audio>
+                                    </div>
 
                                 </div>
                                
@@ -207,11 +209,11 @@
                                     </ul>
 
                                     <div class="audio-icon3">
-    <button id="playAudio3">
-        <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
-    </button>
-    <audio id="matterAudio3" src="../../solid3.mp3"></audio>
-</div>
+                                        <button id="playAudio3">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio3" src="../../sounds/solid3.mp3"></audio>
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -238,12 +240,13 @@
                                         <li class="mb-5 main-font">Intermolecular forces in solids are stronger.</li>
                                         <li class="mb-5 main-font">The particles in a solid object are packed very closely together.</li>
                                     </ul>
+                                    
                                     <div class="audio-icon4">
-    <button id="playAudio4">
-        <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
-    </button>
-    <audio id="matterAudio4" src="../../solid4.mp3"></audio>
-</div>
+                                        <button id="playAudio4">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio4" src="../../sounds/solid4.mp3"></audio>
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -267,11 +270,11 @@
                                     </p>
 
                                     <div class="audio-icon5">
-    <button id="playAudio5">
-        <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
-    </button>
-    <audio id="matterAudio5" src="../../solid5.mp3"></audio>
-</div>
+                                        <button id="playAudio5">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio5" src="../../sounds/solid5.mp3"></audio>
+                                    </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -382,24 +385,24 @@
         }
 
         function stopAudio2() {
-        audio2.pause();
-        audio2.currentTime = 0; // Optionally reset audio to the beginning
-    }
+            audio2.pause();
+            audio2.currentTime = 0; // Optionally reset audio to the beginning
+        }
 
-    function stopAudio3() {
-        audio3.pause();
-        audio3.currentTime = 0; // Optionally reset audio to the beginning
-    }
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0; // Optionally reset audio to the beginning
+        }
 
-    function stopAudio4() {
-        audio4.pause();
-        audio4.currentTime = 0; // Optionally reset audio to the beginning
-    }
+        function stopAudio4() {
+            audio4.pause();
+            audio4.currentTime = 0; // Optionally reset audio to the beginning
+        }
 
-    function stopAudio5() {
-        audio5.pause();
-        audio5.currentTime = 0; // Optionally reset audio to the beginning
-    }
+        function stopAudio5() {
+            audio5.pause();
+            audio5.currentTime = 0; // Optionally reset audio to the beginning
+        }
 
         function playAudio() {
             if (sections[currentSection] === solidDef) {
@@ -408,27 +411,27 @@
         }
 
         function playAudio2() {
-        if (sections[currentSection] === solidLearn) {
-            audio2.play(); 
+            if (sections[currentSection] === solidLearn) {
+                audio2.play(); 
+            }
         }
-    }
-    function playAudio3() {
-        if (sections[currentSection] === solidChar1) {
-            audio3.play(); 
+        function playAudio3() {
+            if (sections[currentSection] === solidChar1) {
+                audio3.play(); 
+            }
         }
-    }
 
-    function playAudio4() {
-        if (sections[currentSection] === solidChar2) {
-            audio4.play(); 
+        function playAudio4() {
+            if (sections[currentSection] === solidChar2) {
+                audio4.play(); 
+            }
         }
-    }
 
-    function playAudio5() {
-        if (sections[currentSection] === solidHappen) {
-            audio5.play(); 
+        function playAudio5() {
+            if (sections[currentSection] === solidHappen) {
+                audio5.play(); 
+            }
         }
-    }
         
 
         rightButton.addEventListener('click', function () {

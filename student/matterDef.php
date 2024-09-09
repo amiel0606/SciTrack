@@ -91,11 +91,11 @@
                             </div>
 
                             <div class="audio-icon">
-    <button id="playAudio">
-        <img src="../image/speaker.png" alt="Speaker Icon" width="50">
-    </button>
-    <audio id="matterAudio" src="../matterDef.mp3"></audio>
-</div>
+                                <button id="playAudio">
+                                    <img src="../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="matterAudio" src="../sounds/matterDef.mp3"></audio>
+                            </div>
                         </div>
                     </div>
 
@@ -234,7 +234,7 @@
         console.error('Error loading audio file:', e);
     });
 
-    if (urlParams.get('show') === 'matterDef') {
+    if (urlParams.get('show') === 'matterTopic') {
         showMatterTopic();
     } else {
         showMatterDef();

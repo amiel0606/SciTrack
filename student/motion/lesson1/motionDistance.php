@@ -24,6 +24,20 @@
         margin-left: -8%;
         margin-bottom: -2%;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 
@@ -40,16 +54,18 @@
                     <!-- Motion Distance -->
                     <div class="x-content" id="motionDistance">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">MOTION</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">MOTION</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
-                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                         Distance
                                     </p>
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                     It is identified as the length covered between two points or position. 
                                     The standard unit used for measuring distance is meter, with the symbol, m. Other units include kilometer (km), 
                                     centimeter (cm), mile (mi), and others
@@ -69,16 +85,18 @@
                     <!-- Motion Time -->
                     <div class="motion-content" id="motionTime">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">MOTION</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">MOTION</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
-                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                         Time
                                     </p>
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                     is a quantity that measures the duration of events. 
                                     The standard unit for time is second(s). Other unit include minute (min) and hour (hr). 
                                     Time is measured using a clock or stopwatch

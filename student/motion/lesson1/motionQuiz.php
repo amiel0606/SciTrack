@@ -268,7 +268,7 @@
 
         leftButton.addEventListener('click', function () {
             if (currentQuiz === 1) {
-                window.location.href = 'motionLetsTry.php'; 
+                window.location.href = 'motionSpeed.php?show=motionLetsTry'; 
             } else {
                 currentQuiz--;
                 updateQuiz();

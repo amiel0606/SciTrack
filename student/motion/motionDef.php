@@ -35,6 +35,20 @@
         position: relative;
         z-index: 15;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -49,11 +63,12 @@
                     <!-- Motion Definition -->
                     <div class="x-content" id="motionDef">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6">WHAT IS MOTION?</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6 secondary-font">WHAT IS MOTION?</h1>
                             
                             <!-- Text -->
                             <div class="column is-four-fifths mt-6">
-                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-centered has-text-weight-semibold has-text-white">
+                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                has-text-centered has-text-weight-semibold has-text-white main-font">
                                 Motion occurs when a body or object changes position or place. 
                                 It involve a lot of factors such as how fast the change in position occurred 
                                 and to what direction the change in position happened.
@@ -66,14 +81,15 @@
                     <!-- Motion Topic -->
                     <div class="motion-content" id="motionTopic">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-2">CHOOSE TOPIC</h1>
+                            <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-2 secondary-font">CHOOSE TOPIC</h1>
                             
                             <div class="columns is-centered">
                                 <!-- Lesson 1 and 2 -->
                                 <div class="column is-two-thirds">
                                     <div class="columns">
                                         <div class="column is-half has-text-centered">
-                                            <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
+                                            <div class="title is-size-3-dekstop is-size-4-tablet has-text-white 
+                                            has-text-weight-semibold topic-container main-font">
                                                 <a href="./lesson1/motionDistance.php">
                                                     <figure class="image">
                                                         <img src="../../image/motion1.png" alt="motion1">
@@ -84,7 +100,8 @@
                                         </div>
 
                                         <div class="column is-half has-text-centered">
-                                            <div class="title is-size-3-dekstop is-size-4-tablet has-text-white has-text-weight-semibold topic-container">
+                                            <div class="title is-size-3-dekstop is-size-4-tablet has-text-white 
+                                            has-text-weight-semibold topic-container main-font">
                                                 <a href="./lesson2/measuringDef.php">
                                                     <figure class="image">
                                                         <img src="../../image/motion2.png" alt="motion2">
