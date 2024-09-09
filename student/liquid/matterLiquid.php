@@ -175,8 +175,8 @@
                             <div class="column is-half mt-4">
                                 <ul class="title is-size-4-desktop is-size-5-tablet is-size-5-mobile has-text-white has-text-weight-semibold bullets">
                                     <li class="mb-5 main-font">Liquid has a fixed volume but no fixed shape.</li>
-                                    <li class="mb-5 main-font">Liquids can be compressed. Large pressure is required to compress them.</li>
-                                    <li class="mb-5 main-font">Liquids have lesser densities than solids.</li>
+                                    <li class="mb-5 main-font">Liquids can be compressed and a large pressure is required to compress them.</li>
+                                    <li class="mb-5 main-font">Liquids are less dense than solids.</li>
                                 </ul>
                             </div>
                             
@@ -187,7 +187,7 @@
                 <!-- Liquid Characteristics 2 -->
                 <div class="liquid-content" id="liquidChar2">
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-white mb-6 secondary-font">CHARACTERS OF SOLID</h1>
+                        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-white mb-6 secondary-font">CHARACTERS OF LIQUID</h1>
 
                         <!-- Content Layout -->
                         <div class="columns is-centered">

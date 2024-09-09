@@ -24,6 +24,23 @@
         margin-left: -8%;
         margin-bottom: -2%;
     }
+    #letsTryButton {
+        z-index: 10;
+    }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 
@@ -41,7 +58,8 @@
                     <!-- Surface Types -->
                     <div class="x-content" id="surfaceTypes">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-5-mobile is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered mb-2">
+                            <h1 class="subtitle is-size-5-mobile is-size-4-tablet is-size-3-desktop is-size-2-widescreen 
+                            has-text-white has-text-centered mb-2 secondary-font">
                                 Three types of weathering: physical weathering, chemical weathering and biological weathering
                             </h1>
                             
@@ -52,7 +70,8 @@
                                     <figure class="image example-image">
                                         <img src="../../../image/surface4.png" alt="Surface Type 1">
                                     </figure>
-                                    <p class="subtitle is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mr-6 pr-6 mt-2">
+                                    <p class="subtitle is-size-4-desktop is-size-3-widescreen has-text-white 
+                                    has-text-centered mr-6 pr-6 mt-2 main-font">
                                         Physical Weathering
                                     </p>
                                 </div>
@@ -61,7 +80,8 @@
                                     <figure class="image example-image">
                                         <img src="../../../image/surface6.png" alt="Surface Type 2">
                                     </figure>
-                                    <p class="subtitle is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mr-6 pr-6 mt-2">
+                                    <p class="subtitle is-size-4-desktop is-size-3-widescreen has-text-white 
+                                    has-text-centered mr-6 pr-6 mt-2 main-font">
                                         Chemical Weathering
                                     </p>
                                 </div>
@@ -70,7 +90,8 @@
                                     <figure class="image example-image">
                                         <img src="../../../image/surface7.png" alt="Surface Type 3">
                                     </figure>
-                                    <p class="subtitle is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mr-6 pr-6 mt-2">
+                                    <p class="subtitle is-size-4-desktop is-size-3-widescreen has-text-white 
+                                    dhas-text-centered mr-6 pr-6 mt-2 main-font">
                                         Biological Weathering
                                     </p>
                                 </div>
@@ -81,16 +102,18 @@
                     <!-- Surface Physical -->
                     <div class="surface-content" id="surfacePhysical">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Weathering and Soil Formation</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Weathering and Soil Formation</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
-                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                         Physical Weathering
                                     </p>
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                         It is also known as mechanical weathering, It may be a natural or man-made process. 
                                         There are many agents that cause physical weathering
                                     </p>
@@ -109,16 +132,18 @@
                     <!-- Surface Chemical -->
                     <div class="surface-content" id="surfaceChemical">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Weathering and Soil Formation</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Weathering and Soil Formation</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
-                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                         Chemical Weathering
                                     </p>
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                         It occurs when substances in the air or water mix with substances found in rocks and minerals, 
                                         causing them to break down and crumble easily to wear off
                                     </p>
@@ -137,11 +162,12 @@
                     <!-- Surface Biological -->
                     <div class="surface-content" id="surfaceBiological">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6">Biological Weathering</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet is-size-1-desktop has-text-white mb-6 secondary-font">Biological Weathering</h1>
 
                             <!-- Text -->
                             <div class="content is-halfmb-4">
-                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-centered has-text-weight-semibold has-text-white">
+                                <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                has-text-centered has-text-weight-semibold has-text-white main-font">
                                     It occurs when living organisms break down rocks. Plant roots and soil organisms cause biological weathering 
                                 </p>
                             </div>
@@ -164,7 +190,38 @@
                     </div>
 
 
+                    <!-- Surface LetsTry -->
+                    <div class="surface-content" id="surfaceLetsTry">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" id="letsTryButton">
+                            <!-- Content Layout -->
+                            <div class="columns is-centered">
+                                <!-- Image Column -->
+                                <div class="column is-half pl-6">
+                                    <figure class="image example-image m-character">
+                                        <img src="../../../image/surface1.png" alt="surfaceCharacter">
+                                    </figure>
+                                </div>
 
+                                <!-- Image Column -->
+                                <div class="column is-half pr-6 mr-6">
+                                    <figure class="image letstry">
+                                        <img src="../../../image/letstry.png" alt="letstry">
+                                    </figure>
+                                </div>
+                            </div>
+                            
+                        
+                            <!-- Go Back and Proceed Button -->
+                            <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" >
+                                <button class="button is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
+                                    Go Back
+                                </button>
+                                <button class="button is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
+                                    Proceed to quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Left and Right Buttons-->
                     <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
@@ -186,55 +243,81 @@
     </div>
 </section>
 
-
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const sections = ['surfaceTypes', 'surfacePhysical', 'surfaceChemical', 'surfaceBiological'];
-        let currentIndex = 0;
-
-        const contentSections = sections.map(id => document.getElementById(id));
+    document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
+        const einsteinImage = document.getElementById('einstein-image');
+        const examplesButton = document.getElementById('examplesButton');
+        const surfaceTypes = document.getElementById('surfaceTypes');
+        const surfacePhysical = document.getElementById('surfacePhysical');
+        const surfaceChemical = document.getElementById('surfaceChemical');
+        const surfaceBiological = document.getElementById('surfaceBiological');
+        const surfaceLetsTry = document.getElementById('surfaceLetsTry');
+        const proceedToQuizButton = document.querySelector('.button.is-success');
+        const goBackButton = document.querySelector('.button.is-danger');
 
-        function showSection(index) {
-            contentSections.forEach((section, i) => {
-                if (i === index) {
-                    section.classList.add('motion-content-active');
-                    section.style.display = 'block';
-                } else {
-                    section.classList.remove('motion-content-active');
-                    section.style.display = 'none';
-                }
+        let currentSection = 0;
+        const sections = [surfaceTypes, surfacePhysical, surfaceChemical, surfaceBiological ,surfaceLetsTry];
+
+        function hideAllSections() {
+            sections.forEach(section => {
+                section.classList.remove('surface-content-active');
+                section.classList.add('surface-content');
             });
         }
 
-        rightButton.addEventListener('click', () => {
-            if (currentIndex < sections.length - 1) {
-                currentIndex++;
-                showSection(currentIndex);
-            } else if (currentIndex === sections.length - 1) {
-                window.location.href = 'surfaceLetsTry.php';
-            }
-        });
-
-        leftButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                showSection(currentIndex);
-            } else {
-                window.location.href = 'surfaceWeathering.php?show=surfaceErosion';
-            }
-        });
-
-        // Check URL for 'show' parameter and set currentIndex accordingly
-        const urlParams = new URLSearchParams(window.location.search);
-        const showSectionId = urlParams.get('show');
-        if (showSectionId && sections.includes(showSectionId)) {
-            currentIndex = sections.indexOf(showSectionId);
+        function showSection(index) {
+            hideAllSections();
+            sections[index].classList.remove('surface-content');
+            sections[index].classList.add('surface-content-active');
         }
-        
-        showSection(currentIndex);
+
+        rightButton.addEventListener('click', function () {
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                showSection(currentSection);
+
+                if (sections[currentSection] === surfaceLetsTry) {
+                    leftButton.style.display = 'none';
+                    rightButton.style.display = 'none';
+                    einsteinImage.style.display = 'none';
+                    goBackButton.style.display = 'flex';
+                    proceedToQuizButton.style.display = 'flex';
+                } else {
+                    examplesButton.style.display = 'flex';
+                    einsteinImage.style.display = 'block';
+                }
+            }
+        });
+
+        leftButton.addEventListener('click', function () {
+            if (currentSection === 0) {
+                window.location.href = 'surfaceWeathering.php?show=surfaceErosion';
+            } else if (currentSection > 0) {
+                currentSection--;
+                showSection(currentSection);
+
+                examplesButton.style.display = 'flex';
+                einsteinImage.style.display = 'block';
+            }
+        });
+
+        goBackButton.addEventListener('click', function () {
+            hideAllSections();
+            surfaceBiological.classList.remove('surface-content');
+            surfaceBiological.classList.add('surface-content-active');
+            leftButton.style.display = 'flex';
+            rightButton.style.display = 'flex';
+            einsteinImage.style.display = 'flex';
+            goBackButton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            window.location.href = 'surfaceWeatherQuiz.php';
+        });
     });
+
+
 </script>
-
-

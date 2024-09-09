@@ -268,7 +268,7 @@
 
         leftButton.addEventListener('click', function () {
             if (currentQuiz === 1) {
-                window.location.href = 'surfaceLetsTry.php'; 
+                window.location.href = 'surfaceTypes.php?show=surfaceLetsTry'; 
             } else {
                 currentQuiz--;
                 updateQuiz();

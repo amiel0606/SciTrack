@@ -24,6 +24,20 @@
         margin-left: -8%;
         margin-bottom: -2%;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 
@@ -42,14 +56,15 @@
                     <!-- soil -->
                     <div class="x-content" id="soil">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Effects of Soil Erosion</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Effects of Soil Erosion</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
                                     
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                         Soil is an essential resource to everyone. Many living things rely on soil for food and shelter. 
                                         Soil is vital to agriculture and industry. Soil is an essential part of the land which homes are built
                                     </p>
@@ -68,16 +83,18 @@
                     <!-- Soil Erosion -->
                     <div class="surface-content" id="soilErosion">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Effects of Soil Erosion</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Effects of Soil Erosion</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
-                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                         Soil Erosion
                                     </p>
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                         It is naturally occurring process that affects all land forms. 
                                         It refers to the wearing away or removal of the topmost part of the soil by natural forces of water and wind
                                     </p>
@@ -96,16 +113,18 @@
                     <!-- Soil Detachment -->
                     <div class="surface-content" id="soilDetachment">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Effects of Soil Erosion</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Effects of Soil Erosion</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
-                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                         Soil Detachment
                                     </p>
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                         It occurs due to the effect of water, wind, or biological agents. 
                                         These natural agents move and transport soil to other places where they accumulate over time.
                                     </p>
@@ -124,16 +143,18 @@
                     <!-- Desertification -->
                     <div class="surface-content" id="desertification">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Effects of Soil Erosion</h1>
+                            <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Effects of Soil Erosion</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
                                 <div class="column is-half pl-6">
-                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                    <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                         Desertification
                                     </p>
-                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                    <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                    has-text-left has-text-weight-semibold has-text-white main-font">
                                         If the nutrient-rich topsoil is removed from an agricultural land, 
                                         the land will eventually be infertile and dry.
                                     </p>

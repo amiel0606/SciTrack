@@ -56,6 +56,14 @@
     .secondary-font{
         font-family: 'Haniley';
     }
+    .audio-icon img {
+        z-index: ;
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .audio-icon img:hover {
+        filter: grayscale(100%) brightness(80%);
+    } 
 </style>
 
 <section class="hero is-fullheight">
@@ -80,6 +88,13 @@
                                 A matter is made up of tiny particles called atoms. There are three states of matter. 
                                 Solid, liquid, and gas.
                                 </p>
+                            </div>
+
+                            <div class="audio-icon">
+                                <button id="playAudio">
+                                    <img src="../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="matterAudio" src="../sounds/matterDef.mp3"></audio>
                             </div>
                         </div>
                     </div>
@@ -153,47 +168,80 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const leftButton = document.getElementById('leftButton');
-        const rightButton = document.getElementById('rightButton');
-        const matterDef = document.getElementById('matterDef');
-        const matterTopic = document.getElementById('matterTopic');
-        const urlParams = new URLSearchParams(window.location.search);
+   document.addEventListener('DOMContentLoaded', function () {
+    const leftButton = document.getElementById('leftButton');
+    const rightButton = document.getElementById('rightButton');
+    const matterDef = document.getElementById('matterDef');
+    const audio = document.getElementById('matterAudio');
+    const urlParams = new URLSearchParams(window.location.search);
+    const section = matterDef;
 
-        function showMatterDef() {
-            matterDef.classList.add('matter-content-active');
-            matterDef.classList.remove('matter-content');
-            matterTopic.classList.add('matter-content');
-            matterTopic.classList.remove('matter-content-active');
-            rightButton.style.display = 'block';
-            leftButton.style.display = 'block';
-        }
+    function showMatterDef() {
+        matterDef.classList.add('matter-content-active');
+        matterDef.classList.remove('matter-content');
+        matterTopic.classList.add('matter-content');
+        matterTopic.classList.remove('matter-content-active');
+        rightButton.style.display = 'block';
+        leftButton.style.display = 'block';
+    }
 
-        function showMatterTopic() {
-            matterTopic.classList.add('matter-content-active');
-            matterTopic.classList.remove('matter-content');
-            matterDef.classList.add('matter-content');
-            matterDef.classList.remove('matter-content-active');
-            rightButton.style.display = 'none';
-            leftButton.style.display = 'block'; 
-        }
+    function showMatterTopic() {
+        matterTopic.classList.add('matter-content-active');
+        matterTopic.classList.remove('matter-content');
+        matterDef.classList.add('matter-content');
+        matterDef.classList.remove('matter-content-active');
+        rightButton.style.display = 'none';
+        leftButton.style.display = 'block'; 
+    }
 
-        rightButton.addEventListener('click', showMatterTopic);
+    rightButton.addEventListener('click', function () {
+        stopAudio(); 
+        showMatterTopic();
+    });
 
-        leftButton.addEventListener('click', function () {
-            if (matterTopic.classList.contains('matter-content-active')) {
-                showMatterDef();
-            } else {
-                window.location.href = 'studentWelcome.php?show=Lessons'; 
-            }
-        });
-
-        
-        if (urlParams.get('show') === 'matterTopic') {
-            showMatterTopic();
-        } else {
+    leftButton.addEventListener('click', function () {
+        stopAudio(); 
+        if (matterTopic.classList.contains('matter-content-active')) {
             showMatterDef();
+        } else {
+            window.location.href = 'studentWelcome.php?show=Lessons'; 
         }
     });
+
+    function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; 
+    }
+
+    function playAudio() {
+        audio.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.code === 'Space') {
+            event.preventDefault(); 
+            playAudio();
+        }
+    });
+
+    audio.addEventListener('canplaythrough', function() {
+        console.log('Audio can play through without stopping.');
+    });
+
+    audio.addEventListener('error', function(e) {
+        console.error('Error loading audio file:', e);
+    });
+
+    if (urlParams.get('show') === 'matterTopic') {
+        showMatterTopic();
+    } else {
+        showMatterDef();
+        playAudio(); 
+    }
+});
+
+    
 </script>
 

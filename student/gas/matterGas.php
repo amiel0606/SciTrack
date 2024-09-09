@@ -102,7 +102,7 @@
                                 has-text-centered has-text-weight-semibold has-text-white main-font">
                                 A gas is a substance that is in a gaseous, or vaporous, state of matter. 
                                 The term gas is also used in reference to the state itself when applied to matter that has the properties of a gaseous substance. 
-                                Gas is one of four natural states of matter, along with gas, solid and plasma. A gas has no fixed shape or volume.
+                                Gas is one of the three natural states of matter, along with solids and liquids. A gas has no fixed shape or volume.
                                 </p>
                             </div>
 
