@@ -25,6 +25,20 @@
         margin-left: -8%;
         margin-bottom: -2%;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -40,7 +54,7 @@
                         <!-- Measuring Def -->
                         <div class="measuring-content" id="measuringDef">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
+                                <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Measuring Distance and time</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
@@ -53,7 +67,8 @@
                                     
                                     <!-- Text Column -->
                                     <div class="column is-half mt-6 pt-5 mr-6">
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         Measuring tools and devices provide us with a basis of how we view our surroundings. 
                                         They have also paved the way for more credible research outputs
                                         </p>
@@ -66,16 +81,18 @@
                         <!-- Measuring Ruler -->
                         <div class="measuring-content" id="measuringRuler">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
+                                <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Measuring Distance and time</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Ruler
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         Ruler is a basic tool for measuring length and distance. 
                                         It is a flat rod made of plastic, wood, or metal with calibrated lines to measure short objects and distances. 
                                         A modification of the ruler is the meter stick which is calibrated to one meter
@@ -95,16 +112,18 @@
                         <!-- Measuring Tape -->
                         <div class="measuring-content" id="measuringTape">
                             <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                                <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6">Measuring Distance and time</h1>
+                                <h1 class="subtitle is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">Measuring Distance and time</h1>
 
                                 <!-- Content Layout -->
                                 <div class="columns is-centered">
                                     <!-- Text Column -->
                                     <div class="column is-half pl-6">
-                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-left has-text-weight-semibold has-text-white pb-2">
+                                        <p class="title is-size-4-mobile is-size-3-tablet is-size-2-desktop is-size-1-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white pb-2 main-font">
                                             Tape Measure
                                         </p>
-                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-left has-text-weight-semibold has-text-white">
+                                        <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         For longer lengths, a retractable tape measure is used. 
                                         They are usually made of thin metal sheet that can straighten up or fold as needed.
                                         </p>

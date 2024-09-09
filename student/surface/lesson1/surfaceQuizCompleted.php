@@ -20,6 +20,20 @@
     .motion1 {
         transform: scaleX(-1);
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 
 <section class="hero is-fullheight">
@@ -36,7 +50,7 @@
                             <div class="columns is-half ml-6 p-2">
                                 <a href="./.././surfaceDef.php?show=surfaceTopic">
                                     <button class="button back-button is-success is-size-6-desktop is-size-6-tablet">
-                                    <p class="has-text-white">Back To Main Menu</p>
+                                    <p class="has-text-white main-font">Back To Main Menu</p>
                                     </button>
                                 </a>
                             </div>
@@ -53,10 +67,12 @@
 
                             <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                 <div class="has-text-centered">
-                                    <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                    <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile 
+                                    has-text-white has-text-weight-semibold main-font">
                                         YOU DID GREAT!
                                     </p>
-                                    <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                    <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile 
+                                    has-text-white has-text-weight-semibold main-font">
                                         Here is a medal for completing the lesson 1
                                     </p>
                                 </div>

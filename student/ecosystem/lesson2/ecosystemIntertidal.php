@@ -62,9 +62,9 @@
                                     <div class="column is-half pl-6">
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Many organisms became visible when you go to the seashore during low tide. 
+                                        Many organisms become visible when you go to the seashore during low tide. 
                                         You will see more rocks and sea creature. 
-                                        Intertidal zones of rocky shorelines host sea star fish, seaweed, algae and crabs.
+                                        Intertidal zones of rocky shorelines host starfishes, seaweed, algae and crabs.
                                         </p>
                                     </div>
                                     
@@ -93,7 +93,7 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Tide refers to the movement of water as a result of the gravitational pull of the sun and the moon.
+                                        A tide refers to the movement of water as a result of the gravitational pull of the sun and the moon.
                                         </p>
                                     </div>
                                     
@@ -122,7 +122,7 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                            Interdal Zone refers to the area of the sea that is exposed to the air during low tide and is submerge in the water during high tide. 
+                                            Intertidal Zone refers to the area of the sea that is exposed to the air during low tide and is submerge in the water during high tide. 
                                         </p>
                                     </div>
                                     

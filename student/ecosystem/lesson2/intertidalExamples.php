@@ -73,7 +73,7 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Also known as the spray zone or upper littoral zone is a region in the intertidal zone that is submerged in the water. 
+                                        The spray zone, also known as the upper littoral zone is a region in the intertidal zone that is submerged in the water. 
                                         It is only under water during high tide, but this rarely happens.
                                         </p>
                                     </div>
@@ -103,8 +103,8 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        The high tide zone, also known as the upper mid-littoral zone is region that submerged in the water only during high tide. 
-                                        Seaweeds, barnacles and crabs are some of the organism found here.
+                                        The high tide zone, also known as the upper mid-littoral zone, is a region that is submerged in the water only during high tide. 
+                                        Seaweeds, barnacles and crabs are some of the organisms found here.
                                         </p>
                                     </div>
                                     
@@ -133,8 +133,8 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Also known as lower mid-littoral zone is a region that is generally submerged in the water, except during the turning of the tides. 
-                                        There are barnacles, sea anemones, crabs sea star, sponges and other organisms.
+                                        The lower mid-littoral zone is a region that is generally submerged in the water, except during the turning of the tides. 
+                                        There are barnacles, sea anemones, crabs, starfishes, sponges and other organisms.
                                         </p>
                                     </div>
                                     
@@ -163,8 +163,8 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Also known as lower littoral zone is always submerged under water. It is only exposed during extremely low tide. 
-                                        This region is brimming with sea creatures such as sea stars, sea anemones, sponges, sea urchin, small fish and sea cucumber
+                                        Also known as the lower littoral zone, the low tide zone is always submerged under water. It is exposed only during extremely low tide. 
+                                        This region is brimming with sea creatures such as starfishes, sea anemones, sponges, sea urchin, small fish and sea cucumber
                                         </p>
                                     </div>
                                     

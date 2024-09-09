@@ -134,7 +134,7 @@
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
                                         The murky water in an estuary is due to the presence of sediments. 
-                                        This provides a good camouflage for the small organism living in the area it protects them from potential predators 
+                                        This provides a good camouflage for the small organism living in the area. It protects them from potential predators 
                                         </p>
                                     </div>
                                     
