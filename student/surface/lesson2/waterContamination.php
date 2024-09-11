@@ -72,6 +72,12 @@
                                         Soil erosion can lead to water contamination, 
                                         especially clogged water ways and pollution of aquatic habitats.
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio" src="../../../sounds/waterContam.mp3" autoplay></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -102,6 +108,12 @@
                                         The particulate matter from other areas may settle in the water. 
                                         The sediments could cause not only inconvenience, but could also carry microorganisms that bring disease.
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio2" src="../../../sounds/siltation.mp3" ></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -131,6 +143,12 @@
                                     has-text-left has-text-weight-semibold has-text-white main-font">
                                         Contaminants present in the soil can be held loose and lifted by the wind, resulting to air pollution.
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio3">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio3" src="../../../sounds/airPollu.mp3" ></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -171,6 +189,12 @@
                                     </figure>
                                 </div>
                             </div>
+                            <div class="audio-icon">
+                                            <button id="playAudio4">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio4" src="../../../sounds/erosionPrev.mp3" ></audio>
+                                        </div>
                         </div>
                     </div>
                     
@@ -226,7 +250,6 @@
         </div>
     </div>
 </section>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
@@ -240,9 +263,13 @@
         const letsTry = document.getElementById('letsTry');
         const proceedToQuizButton = document.querySelector('.button.is-success');
         const goBackButton = document.querySelector('.button.is-danger');
+        const audio = document.getElementById('surfaceAudio');
+        const audio2 = document.getElementById('surfaceAudio2');
+        const audio3 = document.getElementById('surfaceAudio3');
+        const audio4 = document.getElementById('surfaceAudio4');
 
         let currentSection = 0;
-        const sections = [waterContamination, siltation, airPollution, prevent ,letsTry];
+        const sections = [waterContamination, siltation, airPollution, prevent, letsTry];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -255,6 +282,63 @@
             hideAllSections();
             sections[index].classList.remove('surface-content');
             sections[index].classList.add('surface-content-active');
+            playCorrespondingAudio(index);
+        }
+
+        function playCorrespondingAudio(index) {
+            stopAllAudios();
+            if (index === 0) {
+                playAudio();
+            } else if (index === 1) {
+                playAudio2();
+            } else if (index === 2) {
+                playAudio3();
+            } else if (index === 3) {
+                playAudio4();
+            }
+        }
+
+        function stopAllAudios() {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+        }
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function playAudio2() {
+            audio2.play();
+        }
+
+        function playAudio3() {
+            audio3.play();
+        }
+
+        function playAudio4() {
+            audio4.play();
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0;
+        }
+
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0;
+        }
+
+        function stopAudio4() {
+            audio4.pause();
+            audio4.currentTime = 0;
         }
 
         rightButton.addEventListener('click', function () {
@@ -281,7 +365,6 @@
             } else if (currentSection > 0) {
                 currentSection--;
                 showSection(currentSection);
-
                 examplesButton.style.display = 'flex';
                 einsteinImage.style.display = 'block';
             }
@@ -302,6 +385,4 @@
             window.location.href = 'soilQuiz.php';
         });
     });
-
-
 </script>

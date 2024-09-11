@@ -69,9 +69,15 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Vehicles have a build-in odometer, an electric device that measures distance. 
+                                        Vehicles have a built-in odometer, an electric device that measures distance. 
                                         It works hand in hand with a speedometer which measures how fast a vehicle travels.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="measureAudio" src="../../../sounds/odometer.mp3" autoplay></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -102,6 +108,12 @@
                                         It is an instrument that is used to measure short distances on the road or on land. 
                                         One turn of the wheel is calibrated to a certain distance.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="measureAudio2" src="../../../sounds/surveyor.mp3" ></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -128,10 +140,16 @@
                                             Caliper
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen
-                                         has-text-left has-text-weight-semibold has-text-white main-font">
+                                        has-text-left has-text-weight-semibold has-text-white main-font">
                                         The caliper is a device with two tips that are placed on both ends of the object being measured. 
                                         Once object is secured in between the tips, the object can be removed and the length can be determined.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio3">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="measureAudio3" src="../../../sounds/caliper.mp3" ></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -162,6 +180,12 @@
                                         A micrometer works in the same way. It looks like a c-clamp. 
                                         It is used to take very fine measurements such as the thickness of paper or a leaf.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio4">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="measureAudio4" src="../../../sounds/micrometer.mp3" ></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -243,9 +267,13 @@
         const measuringLetsTry = document.getElementById('measuringLetsTry');
         const proceedToQuizButton = document.querySelector('.button.is-success');
         const goBackButton = document.querySelector('.button.is-danger');
+        const audio = document.getElementById('measureAudio'); 
+        const audio2 = document.getElementById('measureAudio2');
+        const audio3 = document.getElementById('measureAudio3');
+        const audio4 = document.getElementById('measureAudio4');
 
         let currentSection = 0;
-        const sections = [measuringOdometer, measuringWheel, measuringCaliper, measuringMicrometer ,measuringLetsTry];
+        const sections = [measuringOdometer, measuringWheel, measuringCaliper, measuringMicrometer, measuringLetsTry];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -254,10 +282,36 @@
             });
         }
 
+        function playAudio() {
+            stopAllAudio();
+            switch (currentSection) {
+                case 0:
+                    audio.play(); 
+                    break;
+                case 1:
+                    audio2.play(); 
+                    break;
+                case 2:
+                    audio3.play(); 
+                    break;
+                case 3:
+                    audio4.play(); 
+                    break;
+            }
+        }
+
+        function stopAllAudio() {
+            [audio, audio2, audio3, audio4].forEach(aud => {
+                aud.pause();
+                aud.currentTime = 0; // Reset audio to the beginning
+            });
+        }
+
         function showSection(index) {
             hideAllSections();
             sections[index].classList.remove('measuring-content');
             sections[index].classList.add('measuring-content-active');
+            playAudio();
         }
 
         rightButton.addEventListener('click', function () {
@@ -304,7 +358,8 @@
         proceedToQuizButton.addEventListener('click', function () {
             window.location.href = 'measuringQuiz.php';
         });
+
+        // Initialize the first section and play its audio
+        showSection(currentSection);
     });
-
-
 </script>

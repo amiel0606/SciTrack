@@ -70,11 +70,17 @@
                                 <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                 has-text-centered has-text-weight-semibold has-text-white main-font">
                                 Motion occurs when a body or object changes position or place. 
-                                It involve a lot of factors such as how fast the change in position occurred 
+                                It involves a lot of factors such as how fast the change in position occurred 
                                 and to what direction the change in position happened.
 
                                 </p>
                             </div>
+                            <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="motionAudio" src="../../sounds/motionDef.mp3"></audio>
+                                        </div>
                         </div>
                     </div>
 
@@ -141,23 +147,40 @@
         const rightButton = document.getElementById('rightButton');
         const motionDef = document.getElementById('motionDef');
         const motionTopic = document.getElementById('motionTopic');
+        const audio = document.getElementById('motionAudio');
 
         let currentContent = 'motionDef';
 
+        // Update content and manage audio playback
         function updateContent() {
             if (currentContent === 'motionDef') {
                 motionDef.style.display = 'block';
                 motionTopic.style.display = 'none';
                 rightButton.style.display = 'block'; 
+                playAudio(); // Play audio when motionDef is active
             } else {
                 motionDef.style.display = 'none';
                 motionTopic.style.display = 'block';
-                rightButton.style.display = 'none'; 
+                rightButton.style.display = 'none';
+                pauseAudio(); // Pause audio when switching away from motionDef
             }
+        }
+
+        // Function to play audio
+        function playAudio() {
+            audio.currentTime = 0; // Start audio from the beginning
+            audio.play();
+        }
+
+        // Function to pause audio
+        function pauseAudio() {
+            audio.pause();
+            audio.currentTime = 0;
         }
 
         updateContent();
 
+        // Left button functionality
         leftButton.addEventListener('click', function () {
             if (currentContent === 'motionTopic') {
                 currentContent = 'motionDef';
@@ -167,6 +190,7 @@
             }
         });
 
+        // Right button functionality
         rightButton.addEventListener('click', function () {
             if (currentContent === 'motionDef') {
                 currentContent = 'motionTopic';
@@ -174,14 +198,20 @@
             }
         });
 
+        // Function to get URL parameters
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
+
         const showM = getQueryParam('show');
         if (showM === 'motionTopic') {
             currentContent = 'motionTopic';
             updateContent();
         }
+
+        // Pause audio when navigating
+        leftButton.addEventListener('click', pauseAudio);
+        rightButton.addEventListener('click', pauseAudio);
     });
 </script>

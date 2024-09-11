@@ -69,6 +69,12 @@
                                     It is a process by which rocks are worn away and broken down into smaller pieces. 
                                     It occurs due to natural and man-made processes.
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio" src="../../../sounds/weathering.mp3" autoplay></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -98,6 +104,12 @@
                                     has-text-left has-text-weight-semibold has-text-white main-font">
                                     When these small particles are removed and transferred from one location to another, erosion occurs.
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio2" src="../../../sounds/erosion.mp3" ></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -136,20 +148,47 @@
         const rightButton = document.getElementById('rightButton');
         const surfaceWeathering = document.getElementById('surfaceWeathering');
         const surfaceErosion = document.getElementById('surfaceErosion');
+        const audio = document.getElementById('surfaceAudio'); // Audio for Weathering
+        const audio2 = document.getElementById('surfaceAudio2'); 
 
         let currentContent = 'surfaceWeathering';
+
 
         function updateContent() {
             if (currentContent === 'surfaceWeathering') {
                 surfaceWeathering.style.display = 'block';
                 surfaceErosion.style.display = 'none';
+                playAudio();   // Play Weathering audio
+                stopAudio2();  // Stop Erosion audio
             } else {
                 surfaceWeathering.style.display = 'none';
                 surfaceErosion.style.display = 'block';
+                playAudio2();  // Play Erosion audio
+                stopAudio();   // Stop Weathering audio
             }
         }
 
+
         updateContent();
+
+        // Audio control functions
+        function playAudio(){
+            audio.play();
+        }
+
+        function playAudio2(){
+            audio2.play();
+        }
+
+        function stopAudio(){
+            audio.pause();            
+            audio.currentTime = 0;          
+        }
+
+        function stopAudio2(){
+            audio2.pause();
+            audio2.currentTime = 0;
+        }
 
         leftButton.addEventListener('click', function () {
             if (currentContent === 'surfaceErosion') {
@@ -169,10 +208,13 @@
             }
         });
 
+        // Helper function to get query parameters
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
         }
+
+        // Automatically switch to the correct content based on the URL query parameter
         const showM = getQueryParam('show');
         if (showM === 'surfaceErosion') {
             currentContent = 'surfaceErosion';

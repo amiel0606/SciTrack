@@ -70,6 +70,12 @@
                                     The standard unit used for measuring distance is meter, with the symbol, m. Other units include kilometer (km), 
                                     centimeter (cm), mile (mi), and others
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="motionAudio" src="../../../sounds/distance.mp3"></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -101,6 +107,12 @@
                                     The standard unit for time is second(s). Other unit include minute (min) and hour (hr). 
                                     Time is measured using a clock or stopwatch
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="motionAudio2" src="../../../sounds/time.mp3"></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -139,6 +151,8 @@
         const rightButton = document.getElementById('rightButton');
         const motionDistance = document.getElementById('motionDistance');
         const motionTime = document.getElementById('motionTime');
+        const audio = document.getElementById('motionAudio');
+        const audio2 = document.getElementById('motionAudio2');
 
         let currentContent = 'motionDistance';
 
@@ -146,12 +160,37 @@
             if (currentContent === 'motionDistance') {
                 motionDistance.style.display = 'block';
                 motionTime.style.display = 'none';
-            } else {
+                playAudio();
+                pauseAudio2();
+            }         
+            else {
                 motionDistance.style.display = 'none';
                 motionTime.style.display = 'block';
+                playAudio2();
+                pauseAudio();
             }
         }
 
+        function playAudio() {
+            audio.currentTime = 0; // Start audio from the beginning
+            audio.play();
+        }
+        function playAudio2() {
+            audio2.currentTime = 0; // Start audio from the beginning
+            audio2.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();           
+            audio.currentTime = 0;
+            audio.currentTime = 0;
+        }
+
+        function pauseAudio2() {
+            audio2.pause();           
+            audio2.currentTime = 0;
+            audio2.currentTime = 0;
+        }
         updateContent();
 
         leftButton.addEventListener('click', function () {
@@ -165,7 +204,7 @@
 
         rightButton.addEventListener('click', function () {
             if (currentContent === 'motionDistance') {
-                currentContent = 'motionTime';
+                currentContent = 'motionTime';               
                 updateContent();
             } else if (currentContent === 'motionTime') {
                 window.location.href = 'motionPopQuiz.php';

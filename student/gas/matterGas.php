@@ -38,6 +38,13 @@
     #letsTryButton {
         z-index: 10;
     }
+
+    .gas-happen-text {
+        padding: 1rem; 
+        max-width: 90%; 
+        margin: 0 auto; 
+        text-align: left; 
+    }
     @font-face {
         font-family: 'Avenue';
         src: url('../../font/Avenue.otf') format('opentype');
@@ -105,7 +112,12 @@
                                 Gas is one of the three natural states of matter, along with solids and liquids. A gas has no fixed shape or volume.
                                 </p>
                             </div>
-
+                            <div class="audio-icon">
+                                <button id="playAudio">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="gasAudio" src="../../sounds/gas1.mp3"></audio>
+                            </div>
                             <div class="columns is-multiline is-centered">
                                 <!-- Example Image 1 -->
                                 <div class="column is-one-fifth example-image">
@@ -144,6 +156,12 @@
                                     Gases are substances that exist in the gaseous state, which is one of the three fundamental states of matter.
                                     Gases are highly compressible and feature very large intermolecular distances.
                                     </p>
+                                    <div class="audio-icon">
+                                <button id="playAudio2">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="gasAudio2" src="../../sounds/gas2.mp3"></audio>
+                            </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -173,9 +191,15 @@
                                 <!-- Text Column -->
                                 <div class="column is-half mt-4">
                                     <ul class="title is-size-4-desktop is-size-5-tablet is-size-5-mobile has-text-white has-text-weight-semibold bullets">
-                                        <li class="mb-5 main-font">Gases have neither definite shapenor definite volume. They expand to the size of their container.</li>
+                                        <li class="mb-5 main-font">Gases have neither definite shape nor definite volume. They expand to the size of their container.</li>
                                         <li class="mb-5 main-font">Gases are fluid, and flow easily.</li>
                                     </ul>
+                                    <div class="audio-icon">
+                                <button id="playAudio3">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="gasAudio3" src="../../sounds/gas3.mp3"></audio>
+                            </div>
                                 </div>
                             </div>
                         </div>
@@ -200,27 +224,39 @@
                                     <ul class="title is-size-4-desktop is-size-5-tablet has-text-white has-text-weight-semibold bullets">
                                         <li class="mb-5 main-font">Gases have low density, unless compressed. Being made of tiny particles in a large, open space, gases are very compressible.</li>
                                     </ul>
+                                    <div class="audio-icon">
+                                <button id="playAudio4">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="gasAudio4" src="../../sounds/gas4.mp3"></audio>
+                            </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Gas Happen -->
+                                        <!-- Gas Happen -->
                     <div class="gas-content" id="gasHappen">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-mobile is-size-2-tablet has-text-white mb-6 secondary-font">What Happens To Gas <br> Particles When Heated?</h1>
+                            <h1 class="title is-size-2-mobile is-size-2-tablet has-text-white secondary-font">What Happens To Gas <br> Particles When Heated?</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-centered">
                                 <!-- Text Column -->
-                                <div class="column is-half pl-6">
+                                <div class="column is-half pl-6 gas-happen-text">
                                     <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                     has-text-left has-text-weight-semibold has-text-white main-font">
                                     Heating a gas increases the kinetic energy of the particles, causing the gas to expand. 
                                     In order to keep the pressure constant, the volume of the container must be increased when a gas is heated.
                                     </p>
+                                    <div class="audio-icon">
+                                        <button id="playAudio5">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="gasAudio5" src="../../sounds/gas5.mp3"></audio>
+                                    </div>                                 
                                 </div>
-                                
+
                                 <!-- Image Column -->
                                 <div class="column is-half pl-6">
                                     <figure class="image happen-image">
@@ -229,6 +265,8 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
                     </div>
 
                     <!-- Gas LetsTry -->
@@ -296,6 +334,11 @@
         const letsTryButton = document.getElementById('letsTryButton');
         const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
         const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('gasAudio');
+        const audio2 = document.getElementById('gasAudio2');
+        const audio3 = document.getElementById('gasAudio3');
+        const audio4 = document.getElementById('gasAudio4');
+        const audio5 = document.getElementById('gasAudio5');
 
         let currentSection = 0;
         const sections = [gasExamples, gasDef, gasLearn, gasChar1, gasChar2, gasHappen, gasLetsTry];
@@ -311,9 +354,73 @@
             hideAllSections();
             sections[index].classList.remove('gas-content');
             sections[index].classList.add('gas-content-active');
+            playAudio(); 
+            playAudio2();
+            playAudio3();
+            playAudio4();
+            playAudio5();
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio4() {
+            audio4.pause();
+            audio4.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio5() {
+            audio5.pause();
+            audio5.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function playAudio() {
+            if (sections[currentSection] === gasDef) {
+                audio.play(); 
+            }
+        }
+
+        function playAudio2() {
+            if (sections[currentSection] === gasLearn) {
+                audio2.play(); 
+            }
+        }
+        function playAudio3() {
+            if (sections[currentSection] === gasChar1) {
+                audio3.play(); 
+            }
+        }
+
+        function playAudio4() {
+            if (sections[currentSection] === gasChar2) {
+                audio4.play(); 
+            }
+        }
+
+        function playAudio5() {
+            if (sections[currentSection] === gasHappen) {
+                audio5.play(); 
+            }
         }
 
         rightButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             if (currentSection < sections.length - 1) {
                 currentSection++;
                 showSection(currentSection);
@@ -332,6 +439,11 @@
         });
 
         leftButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             if (currentSection === 0) {
                 window.location.href = '../matterDef.php?show=matterTopic';
             } else if (currentSection > 0) {
@@ -346,6 +458,11 @@
         });
 
         goBackButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             hideAllSections();
             gasHappen.classList.remove('gas-content');
             gasHappen.classList.add('gas-content-active');
