@@ -56,6 +56,12 @@
                                 has-text-left has-text-weight-semibold has-text-white main-font">
                                     An estuary is a viral ecosystem because it provides people with food and job. It is unique plants and animals.
                                 </p>
+                                <div class="audio-icon">
+                                <button id="playAudio">
+                                    <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="estAudio" src="../../../sounds/estuary1.mp3"></audio>
+                            </div>
                             </div>
                             
                             <!-- Image Column -->
@@ -90,3 +96,28 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const audio = document.getElementById('estAudio');
+        const leftButton = document.getElementById('leftButton');
+        const rightButton = document.getElementById('rightButton');
+
+        
+        audio.play();
+
+        
+        function pauseAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        
+        leftButton.addEventListener('click', function () {
+            pauseAudio();
+        });
+
+        rightButton.addEventListener('click', function () {
+            pauseAudio();
+        });
+    });
+</script>

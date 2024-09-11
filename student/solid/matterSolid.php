@@ -477,6 +477,11 @@
         });
 
         goBackButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             hideAllSections();
             solidHappen.classList.remove('solid-content');
             solidHappen.classList.add('solid-content-active');

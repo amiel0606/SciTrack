@@ -168,7 +168,7 @@
 </section>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     const leftButton = document.getElementById('leftButton');
     const rightButton = document.getElementById('rightButton');
     const matterDef = document.getElementById('matterDef');

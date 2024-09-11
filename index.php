@@ -1,6 +1,8 @@
 <?php
     include_once('./includes/header.php');
 ?>
+<link rel="stylesheet" href="./css/bg_Animate.css">
+<script src="./js/script_Animate.js" defer></script>
 <style>
 
     :root {

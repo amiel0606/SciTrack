@@ -80,6 +80,12 @@
 
                                     </p>
                                 </div>
+                                <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio" src="../../sounds/surfaceDef.mp3" autoplay></audio>
+                                        </div>
                             </div>
                         </div>
                         
@@ -154,6 +160,7 @@
         const rightButton = document.getElementById('rightButton');
         const surfaceDef = document.getElementById('surfaceDef');
         const surfaceTopic = document.getElementById('surfaceTopic');
+        const audio = document.getElementById('surfaceAudio');
 
         let currentContent = 'surfaceDef';
 
@@ -162,6 +169,7 @@
                 surfaceDef.style.display = 'block';
                 surfaceTopic.style.display = 'none';
                 rightButton.style.display = 'block'; 
+                playAudio();
             } else {
                 surfaceDef.style.display = 'none';
                 surfaceTopic.style.display = 'block';
@@ -169,9 +177,19 @@
             }
         }
 
+        function playAudio(){
+            audio.play();
+        }
+
+        function stopAudio(){
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
         updateContent();
 
         leftButton.addEventListener('click', function () {
+            stopAudio()
             if (currentContent === 'surfaceTopic') {
                 currentContent = 'surfaceDef';
                 updateContent();
@@ -181,6 +199,7 @@
         });
 
         rightButton.addEventListener('click', function () {
+            stopAudio()
             if (currentContent === 'surfaceDef') {
                 currentContent = 'surfaceTopic';
                 updateContent();

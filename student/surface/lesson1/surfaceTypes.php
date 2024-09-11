@@ -63,6 +63,7 @@
                                 Three types of weathering: physical weathering, chemical weathering and biological weathering
                             </h1>
                             
+                            
                             <!-- Three Types centered -->
                             <div class="columns is-flex is-vcentered is-centered is-gapless is-justify-content-center ml-6 p-6">
                                 <!-- First Image and Description -->
@@ -95,7 +96,14 @@
                                         Biological Weathering
                                     </p>
                                 </div>
+                                
                             </div>
+                            <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio" src="../../../sounds/weatherType.mp3" autoplay></audio>
+                                        </div>
                         </div>
                     </div>
 
@@ -117,6 +125,12 @@
                                         It is also known as mechanical weathering, It may be a natural or man-made process. 
                                         There are many agents that cause physical weathering
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio2" src="../../../sounds/phyWeather.mp3" ></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -145,8 +159,14 @@
                                     <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                     has-text-left has-text-weight-semibold has-text-white main-font">
                                         It occurs when substances in the air or water mix with substances found in rocks and minerals, 
-                                        causing them to break down and crumble easily to wear off
+                                        causing them to break down and crumble easily and wear off
                                     </p>
+                                    <div class="audio-icon">
+                                            <button id="playAudio3">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio3" src="../../../sounds/chemWeather.mp3" ></audio>
+                                        </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -186,6 +206,12 @@
                                     </figure>
                                 </div>
                             </div>
+                            <div class="audio-icon">
+                                            <button id="playAudio4">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="surfaceAudio4" src="../../../sounds/bioWeather.mp3" ></audio>
+                                        </div>
                         </div>
                     </div>
 
@@ -256,9 +282,13 @@
         const surfaceLetsTry = document.getElementById('surfaceLetsTry');
         const proceedToQuizButton = document.querySelector('.button.is-success');
         const goBackButton = document.querySelector('.button.is-danger');
+        const audio = document.getElementById('surfaceAudio');
+        const audio2 = document.getElementById('surfaceAudio2');
+        const audio3 = document.getElementById('surfaceAudio3');
+        const audio4 = document.getElementById('surfaceAudio4');
 
         let currentSection = 0;
-        const sections = [surfaceTypes, surfacePhysical, surfaceChemical, surfaceBiological ,surfaceLetsTry];
+        const sections = [surfaceTypes, surfacePhysical, surfaceChemical, surfaceBiological, surfaceLetsTry];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -271,6 +301,63 @@
             hideAllSections();
             sections[index].classList.remove('surface-content');
             sections[index].classList.add('surface-content-active');
+            playCorrespondingAudio(index);
+        }
+
+        function playCorrespondingAudio(index) {
+            stopAllAudios();
+            if (index === 0) {
+                playAudio();
+            } else if (index === 1) {
+                playAudio2();
+            } else if (index === 2) {
+                playAudio3();
+            } else if (index === 3) {
+                playAudio4();
+            }
+        }
+
+        function stopAllAudios() {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+        }
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function playAudio2() {
+            audio2.play();
+        }
+
+        function playAudio3() {
+            audio3.play();
+        }
+
+        function playAudio4() {
+            audio4.play();
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0;
+        }
+
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0;
+        }
+
+        function stopAudio4() {
+            audio4.pause();
+            audio4.currentTime = 0;
         }
 
         rightButton.addEventListener('click', function () {
@@ -318,6 +405,4 @@
             window.location.href = 'surfaceWeatherQuiz.php';
         });
     });
-
-
 </script>

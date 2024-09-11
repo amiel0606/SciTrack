@@ -72,6 +72,12 @@
                                         Measuring tools and devices provide us with a basis of how we view our surroundings. 
                                         They have also paved the way for more credible research outputs
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="measureAudio" src="../../../sounds/measureDef.mp3" autoplay></audio>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -97,6 +103,12 @@
                                         It is a flat rod made of plastic, wood, or metal with calibrated lines to measure short objects and distances. 
                                         A modification of the ruler is the meter stick which is calibrated to one meter
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="measureAudio2" src="../../../sounds/ruler.mp3" ></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -127,6 +139,12 @@
                                         For longer lengths, a retractable tape measure is used. 
                                         They are usually made of thin metal sheet that can straighten up or fold as needed.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio3">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="measureAudio3" src="../../../sounds/tapeMeasure.mp3" ></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -166,6 +184,9 @@
     document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
+        const audio = document.getElementById('measureAudio'); 
+        const audio2 = document.getElementById('measureAudio2');
+        const audio3 = document.getElementById('measureAudio3');
         const content = {
             1: document.getElementById('measuringDef'),
             2: document.getElementById('measuringRuler'),
@@ -178,9 +199,30 @@
             for (let key in content) {
                 content[key].classList.toggle('active', key == currentQuiz);
             }
+            playAudio();
         }
 
-        updateContent();
+        function playAudio() {
+            stopAllAudio();
+            switch (currentQuiz) {
+                case 1:
+                    audio.play(); 
+                    break;
+                case 2:
+                    audio2.play(); 
+                    break;
+                case 3:
+                    audio3.play(); 
+                    break;
+            }
+        }
+
+        function stopAllAudio() {
+            [audio, audio2, audio3].forEach(aud => {
+                aud.pause();
+                aud.currentTime = 0; // Reset audio to the beginning
+            });
+        }
 
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -190,6 +232,8 @@
         const showM = getQueryParam('show');
         if (showM === 'measuringTape') {
             currentQuiz = 3;
+            updateContent();
+        } else {
             updateContent();
         }
 
