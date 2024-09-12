@@ -94,7 +94,7 @@
                                 <div class="column is-four-fifths">
                                     <p class="title is-size-1-widescreen is-size-2-desktop is-size-3-tablet is-size-4-mobile 
                                     has-text-white has-text-centered main-font">
-                                        Welcome <span id="">[student name],</span> Dive into the fascinating world of Matter with Sci-Track and spark your scientific curiosity!
+                                        Welcome <span id="">[student name],</span> Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
                                     </p>
                                 </div>
                             </div>

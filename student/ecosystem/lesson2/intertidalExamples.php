@@ -73,9 +73,15 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Also known as the spray zone or upper littoral zone is a region in the intertidal zone that is submerged in the water. 
+                                        The spray zone, also known as the upper littoral zone is a region in the intertidal zone that is submerged in the water. 
                                         It is only under water during high tide, but this rarely happens.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="ecoestAudio" src="../../../sounds/sprayzone.mp3"></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -103,9 +109,15 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        The high tide zone, also known as the upper mid-littoral zone is region that submerged in the water only during high tide. 
-                                        Seaweeds, barnacles and crabs are some of the organism found here.
+                                        The high tide zone, also known as the upper mid-littoral zone, is a region that is submerged in the water only during high tide. 
+                                        Seaweeds, barnacles and crabs are some of the organisms found here.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="ecoestAudio2" src="../../../sounds/hightide.mp3"></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -133,9 +145,15 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Also known as lower mid-littoral zone is a region that is generally submerged in the water, except during the turning of the tides. 
-                                        There are barnacles, sea anemones, crabs sea star, sponges and other organisms.
+                                        The lower mid-littoral zone is a region that is generally submerged in the water, except during the turning of the tides. 
+                                        There are barnacles, sea anemones, crabs, starfishes, sponges and other organisms.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio3">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="ecoestAudio3" src="../../../sounds/midtide.mp3"></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -163,9 +181,15 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Also known as lower littoral zone is always submerged under water. It is only exposed during extremely low tide. 
-                                        This region is brimming with sea creatures such as sea stars, sea anemones, sponges, sea urchin, small fish and sea cucumber
+                                        Also known as the lower littoral zone, the low tide zone is always submerged under water. It is exposed only during extremely low tide. 
+                                        This region is brimming with sea creatures such as starfishes, sea anemones, sponges, sea urchin, small fish and sea cucumber
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio4">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="ecoestAudio4" src="../../../sounds/lowtide.mp3"></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -246,9 +270,15 @@
         const ecosystemLetsTry = document.getElementById('ecosystemLetsTry');
         const proceedToQuizButton = document.querySelector('.button.is-success');
         const goBackButton = document.querySelector('.button.is-danger');
+        const audioFiles = [
+            document.getElementById('ecoestAudio'),
+            document.getElementById('ecoestAudio2'),
+            document.getElementById('ecoestAudio3'),
+            document.getElementById('ecoestAudio4')
+        ];
 
         let currentSection = 0;
-        const sections = [ecosystemSplash, ecosystemHigh, ecosystemMiddle, ecosystemLow ,ecosystemLetsTry];
+        const sections = [ecosystemSplash, ecosystemHigh, ecosystemMiddle, ecosystemLow, ecosystemLetsTry];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -257,13 +287,29 @@
             });
         }
 
+        function stopAllAudio() {
+            audioFiles.forEach(audio => {
+                audio.pause();
+                audio.currentTime = 0;
+            });
+        }
+
+        function playAudioForCurrentSection() {
+            stopAllAudio();  // Stop any playing audio
+            if (currentSection < audioFiles.length) {
+                audioFiles[currentSection].play();  // Play the corresponding audio
+            }
+        }
+
         function showSection(index) {
             hideAllSections();
             sections[index].classList.remove('ecosystem-content');
             sections[index].classList.add('ecosystem-content-active');
+            playAudioForCurrentSection();  // Play audio when showing the section
         }
 
         rightButton.addEventListener('click', function () {
+            stopAllAudio();  // Stop audio before navigating
             if (currentSection < sections.length - 1) {
                 currentSection++;
                 showSection(currentSection);
@@ -282,6 +328,7 @@
         });
 
         leftButton.addEventListener('click', function () {
+            stopAllAudio();  // Stop audio before navigating
             if (currentSection === 0) {
                 window.location.href = 'ecosystemIntertidal.php?show=ecosystemIntertidalZone';
             } else if (currentSection > 0) {
@@ -295,8 +342,7 @@
 
         goBackButton.addEventListener('click', function () {
             hideAllSections();
-            ecosystemSplash.classList.remove('ecosystem-content');
-            ecosystemSplash.classList.add('ecosystem-content-active');
+            showSection(0);  // Show the first section (ecosystemSplash)
             leftButton.style.display = 'flex';
             rightButton.style.display = 'flex';
             einsteinImage.style.display = 'flex';
@@ -307,7 +353,8 @@
         proceedToQuizButton.addEventListener('click', function () {
             window.location.href = 'intertidalQuiz.php';
         });
+
+        // Initially show the first section and play its audio
+        showSection(currentSection);
     });
-
-
 </script>

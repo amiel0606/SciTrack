@@ -76,6 +76,12 @@
                                             An estuary is found in an area where the river meets the sea. 
                                             The water in an estuary is characterized to be between saltwater and fresh water.
                                         </p>
+                                        <div class="audio-icon">
+                                <button id="playAudio">
+                                    <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="estAudio" src="../../../sounds/estuary2.mp3"></audio>
+                            </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -106,6 +112,12 @@
                                         Nutrient are transported and trapped in the sediment as water flows. 
                                         Sediment are the particles such as sand and soil which settle on the side and bottom  of water bodies
                                         </p>
+                                        <div class="audio-icon">
+                                <button id="playAudio2">
+                                    <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="estAudio2" src="../../../sounds/sediment.mp3"></audio>
+                            </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -134,8 +146,14 @@
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
                                         The murky water in an estuary is due to the presence of sediments. 
-                                        This provides a good camouflage for the small organism living in the area it protects them from potential predators 
+                                        This provides a good camouflage for the small organism living in the area. It protects them from potential predators 
                                         </p>
+                                        <div class="audio-icon">
+                                <button id="playAudio3">
+                                    <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="estAudio3" src="../../../sounds/Murky.mp3"></audio>
+                            </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -166,6 +184,12 @@
                                         An estuary, characterized by having brackish water, is home to many organisms. 
                                         Its components interact with one another to support life in this ecosystem
                                         </p>
+                                        <div class="audio-icon">
+                                <button id="playAudio4">
+                                    <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="estAudio4" src="../../../sounds/Brackish.mp3"></audio>
+                            </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -247,9 +271,13 @@
         const letsTryButton = document.getElementById('letsTryButton');
         const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
         const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('estAudio');
+        const audio2 = document.getElementById('estAudio2');
+        const audio3 = document.getElementById('estAudio3');
+        const audio4 = document.getElementById('estAudio4');
 
         let currentSection = 0;
-        const sections = [ecosystemBrackish, ecosystemSediment, ecosystemMurky, ecosystemEstuary ,ecosystemLetsTry];
+        const sections = [ecosystemBrackish, ecosystemSediment, ecosystemMurky, ecosystemEstuary, ecosystemLetsTry];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -262,6 +290,36 @@
             hideAllSections();
             sections[index].classList.remove('ecosystem-content');
             sections[index].classList.add('ecosystem-content-active');
+            playAudioForSection(index);
+        }
+
+        function playAudioForSection(index) {
+            stopAllAudio();
+            switch(index) {
+                case 0:
+                    audio.play();
+                    break;
+                case 1:
+                    audio2.play();
+                    break;
+                case 2:
+                    audio3.play();
+                    break;
+                case 3:
+                    audio4.play();
+                    break;
+            }
+        }
+
+        function stopAllAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+            audio2.pause();
+            audio2.currentTime = 0;
+            audio3.pause();
+            audio3.currentTime = 0;
+            audio4.pause();
+            audio4.currentTime = 0;
         }
 
         rightButton.addEventListener('click', function () {
@@ -273,7 +331,7 @@
                     leftButton.style.display = 'none';
                     rightButton.style.display = 'none';
                     einsteinImage.style.display = 'none';
-                    goBackbutton.style.display = 'flex';
+                    goBackButton.style.display = 'flex';
                     proceedToQuizButton.style.display = 'flex';
                 } else {
                     examplesButton.style.display = 'flex';
@@ -289,7 +347,7 @@
                 currentSection--;
                 showSection(currentSection);
 
-                if (sections[currentSection] === ecosystemExamples) {
+                if (sections[currentSection] === ecosystemLetsTry) {
                     examplesButton.style.display = 'flex';
                     einsteinImage.style.display = 'block';
                 }
@@ -303,13 +361,15 @@
             leftButton.style.display = 'flex';
             rightButton.style.display = 'flex';
             einsteinImage.style.display = 'flex';
-            goBackbutton.style.display = 'none';
+            goBackButton.style.display = 'none';
             proceedToQuizButton.style.display = 'none';
         });
 
         proceedToQuizButton.addEventListener('click', function () {
             window.location.href = 'estuarisQuiz.php';
         });
-    });
 
+        // Initialize with the first section
+        showSection(currentSection);
+    });
 </script>

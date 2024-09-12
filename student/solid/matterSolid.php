@@ -117,9 +117,15 @@
                                 has-text-centered has-text-weight-semibold has-text-white main-font">
                                 Solid is one of the three fundamental states of matter along with liquid, gas. 
                                 The molecules in a solid are closely packed together and contain the least amount of kinetic energy. 
-                                A solid is characterized by structural rigidity and resistance to a force applied to the surface
-
+                                A solid is characterized by structural rigidity and resistance to a force applied to the surface.
                                 </p>
+                            </div>
+
+                            <div class="audio-icon">
+                                <button id="playAudio">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="matterAudio" src="../../sounds/solid1.mp3"></audio>
                             </div>
 
                             <div class="columns is-multiline is-centered">
@@ -141,6 +147,7 @@
                                         <img src="../../image/solid.png" alt="Solid1">
                                     </figure>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -156,11 +163,18 @@
                                 <div class="column is-half pl-6">
                                     <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                     has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Solid is one of the three fundamental states of matter along with liquid, gas. 
-                                        The molecules in a solid are closely packed together and contain the least amount of kinetic energy. 
-                                        A solid is characterized by structural rigidity and resistance to a force applied to the surface.
+                                    Solids are generally held together by ionic or strong covalent bonding, and the attractive forces between the atoms, ions, or molecules in solids are very strong. In fact, these forces are so strong that particles in a solid are held in fixed positions and have very little freedom of movement.
                                     </p>
+
+                                    <div class="audio-icon2">
+                                        <button id="playAudio2">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio2" src="../../sounds/solid2.mp3"></audio>
+                                    </div>
+
                                 </div>
+                               
                                 
                                 <!-- Image Column -->
                                 <div class="column is-half pl-6">
@@ -193,6 +207,13 @@
                                         <li class="mb-5 main-font">Solids are known to have a fixed volume.</li>
                                         <li class="mb-5 main-font">Solids are known to have high density.</li>
                                     </ul>
+
+                                    <div class="audio-icon3">
+                                        <button id="playAudio3">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio3" src="../../sounds/solid3.mp3"></audio>
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -217,8 +238,15 @@
                                 <div class="column is-half mt-4">
                                     <ul class="title is-size-4-desktop is-size-5-tablet has-text-white has-text-weight-semibold bullets">
                                         <li class="mb-5 main-font">Intermolecular forces in solids are stronger.</li>
-                                        <li class="mb-5 main-font">There is negligible space between the particles of solids.</li>
+                                        <li class="mb-5 main-font">The particles in a solid object are packed very closely together.</li>
                                     </ul>
+                                    
+                                    <div class="audio-icon4">
+                                        <button id="playAudio4">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio4" src="../../sounds/solid4.mp3"></audio>
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -240,6 +268,13 @@
                                     A stage comes when they overcome the intermolecular force of attraction and 
                                     start moving from each other. This results in the melting of solid.
                                     </p>
+
+                                    <div class="audio-icon5">
+                                        <button id="playAudio5">
+                                            <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                        </button>
+                                        <audio id="matterAudio5" src="../../sounds/solid5.mp3"></audio>
+                                    </div>
                                 </div>
                                 
                                 <!-- Image Column -->
@@ -317,6 +352,11 @@
         const letsTryButton = document.getElementById('letsTryButton');
         const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
         const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('matterAudio');
+        const audio2 = document.getElementById('matterAudio2');
+        const audio3 = document.getElementById('matterAudio3');
+        const audio4 = document.getElementById('matterAudio4');
+        const audio5 = document.getElementById('matterAudio5');
 
         let currentSection = 0;
         const sections = [solidExamples, solidDef, solidLearn, solidChar1, solidChar2, solidHappen, solidLetsTry];
@@ -332,9 +372,74 @@
             hideAllSections();
             sections[index].classList.remove('solid-content');
             sections[index].classList.add('solid-content-active');
+            playAudio(); 
+            playAudio2();
+            playAudio3();
+            playAudio4();
+            playAudio5();
         }
 
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio4() {
+            audio4.pause();
+            audio4.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio5() {
+            audio5.pause();
+            audio5.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function playAudio() {
+            if (sections[currentSection] === solidDef) {
+                audio.play(); 
+            }
+        }
+
+        function playAudio2() {
+            if (sections[currentSection] === solidLearn) {
+                audio2.play(); 
+            }
+        }
+        function playAudio3() {
+            if (sections[currentSection] === solidChar1) {
+                audio3.play(); 
+            }
+        }
+
+        function playAudio4() {
+            if (sections[currentSection] === solidChar2) {
+                audio4.play(); 
+            }
+        }
+
+        function playAudio5() {
+            if (sections[currentSection] === solidHappen) {
+                audio5.play(); 
+            }
+        }
+        
+
         rightButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             if (currentSection < sections.length - 1) {
                 currentSection++;
                 showSection(currentSection);
@@ -343,7 +448,7 @@
                     leftButton.style.display = 'none';
                     rightButton.style.display = 'none';
                     einsteinImage.style.display = 'none';
-                    goBackbutton.style.display = 'flex';
+                    goBackButton.style.display = 'flex';
                     proceedToQuizButton.style.display = 'flex';
                 } else {
                     examplesButton.style.display = 'flex';
@@ -353,6 +458,11 @@
         });
 
         leftButton.addEventListener('click', function () {
+            stopAudio(); 
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             if (currentSection === 0) {
                 window.location.href = '../matterDef.php?show=matterTopic';
             } else if (currentSection > 0) {
@@ -367,13 +477,18 @@
         });
 
         goBackButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             hideAllSections();
             solidHappen.classList.remove('solid-content');
             solidHappen.classList.add('solid-content-active');
             leftButton.style.display = 'flex';
             rightButton.style.display = 'flex';
             einsteinImage.style.display = 'flex';
-            goBackbutton.style.display = 'none';
+            goBackButton.style.display = 'none';
             proceedToQuizButton.style.display = 'none';
         });
 
@@ -381,5 +496,4 @@
             window.location.href = 'solidQuiz.php';
         });
     });
-
 </script>

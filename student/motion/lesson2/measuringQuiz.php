@@ -268,7 +268,7 @@
 
         leftButton.addEventListener('click', function () {
             if (currentQuiz === 1) {
-                window.location.href = 'measuringLetsTry.php'; 
+                window.location.href = 'measuringOdometer.php?show=measuringLetsTry'; 
             } else {
                 currentQuiz--;
                 updateQuiz();

@@ -79,7 +79,14 @@
                                     An ecosystem is all the biotic and abiotic components that interact within an area at once.
 
                                     </p>
+                                    
                                 </div>
+                                <div class="audio-icon">
+                                <button id="playAudio">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="ecoAudio" src="../../sounds/ecoSystem1.mp3"></audio>
+                            </div>
                             </div>
                         </div>
                         
@@ -117,7 +124,14 @@
                                     has-text-centered has-text-weight-semibold has-text-white main-font">
                                         Biotic factors are living things within an ecosystem; such as plants, animals, and bacteria
                                     </p>
+                                    
                                 </div>
+                                <div class="audio-icon">
+                                <button id="playAudio2">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="ecoAudio2" src="../../sounds/biotic.mp3"></audio>
+                            </div>
                             </div>
                         </div>
 
@@ -155,7 +169,14 @@
                                     has-text-centered has-text-weight-semibold has-text-white main-font">
                                         Abiotic factors are non-living things such as air, water, light, soil, nutrient and many more
                                     </p>
+                                    
                                 </div>
+                                <div class="audio-icon">
+                                <button id="playAudio3">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="ecoAudio3" src="../../sounds/abiotic.mp3"></audio>
+                            </div>
                             </div>
                         </div>
 
@@ -232,6 +253,9 @@
             3: document.getElementById('ecosystemAbiotic'),
             4: document.getElementById('ecosystemTopic')
         };
+        const audio = document.getElementById('ecoAudio');
+        const audio2 = document.getElementById('ecoAudio2');
+        const audio3 = document.getElementById('ecoAudio3');
 
         let currentContent = 1;
 
@@ -240,7 +264,21 @@
                 content[key].classList.toggle('active', key == currentContent);
             }
 
+            if (currentContent === 1) {
+                audio.play();
+            } else if (currentContent === 2) {
+                audio2.play();
+            } else if (currentContent === 3) {
+                audio3.play();
+            }
+
             if (currentContent === 4) {
+                audio.pause();
+                audio.currentTime = 0;
+                audio2.pause();
+                audio2.currentTime = 0;
+                audio3.pause();
+                audio3.currentTime = 0;
                 rightButton.style.display = 'none'; 
             } else {
                 rightButton.style.display = '';
@@ -250,6 +288,12 @@
         updateContent();
 
         leftButton.addEventListener('click', function () {
+            audio.pause();
+            audio.currentTime = 0;
+            audio2.pause();
+            audio2.currentTime = 0;
+            audio3.pause();
+            audio3.currentTime = 0;
             if (currentContent === 1) {
                 window.location.href = './../studentWelcome.php?show=Lessons';
             } else {
@@ -259,6 +303,12 @@
         });
 
         rightButton.addEventListener('click', function () {
+            audio.pause();
+            audio.currentTime = 0;
+            audio2.pause();
+            audio2.currentTime = 0;
+            audio3.pause();
+            audio3.currentTime = 0;
             if (currentContent < 4) {
                 currentContent++;
                 updateContent();
@@ -275,5 +325,4 @@
             updateContent();
         }
     });
-
 </script>

@@ -62,10 +62,16 @@
                                     <div class="column is-half pl-6">
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Many organisms became visible when you go to the seashore during low tide. 
+                                        Many organisms become visible when you go to the seashore during low tide. 
                                         You will see more rocks and sea creature. 
-                                        Intertidal zones of rocky shorelines host sea star fish, seaweed, algae and crabs.
+                                        Intertidal zones of rocky shorelines host starfishes, seaweed, algae and crabs.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="tideAudio" src="../../../sounds/intertidal1.mp3"></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -93,8 +99,14 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                        Tide refers to the movement of water as a result of the gravitational pull of the sun and the moon.
+                                        A tide refers to the movement of water as a result of the gravitational pull of the sun and the moon.
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio2">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="tideAudio2" src="../../../sounds/Tide.mp3"></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -122,8 +134,14 @@
                                         </p>
                                         <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                         has-text-left has-text-weight-semibold has-text-white main-font">
-                                            Interdal Zone refers to the area of the sea that is exposed to the air during low tide and is submerge in the water during high tide. 
+                                            Intertidal Zone refers to the area of the sea that is exposed to the air during low tide and is submerged in the water during high tide. 
                                         </p>
+                                        <div class="audio-icon">
+                                            <button id="playAudio3">
+                                                <img src="../../../image/speaker.png" alt="Speaker Icon" width="50">
+                                            </button>
+                                            <audio id="tideAudio3" src="../../../sounds/intertidalzone.mp3"></audio>
+                                        </div>
                                     </div>
                                     
                                     <!-- Image Column -->
@@ -135,7 +153,6 @@
                                 </div>
                             </div>
                         </div>
-                        
 
                         <!-- Left and Right Buttons-->
                         <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
@@ -163,22 +180,75 @@
     document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
-        const content = {
-            1: document.getElementById('ecosystemInter'),
-            2: document.getElementById('ecosystemTide'),
-            3: document.getElementById('ecosystemIntertidalZone'),
-        };
+        const ecosystemInter = document.getElementById('ecosystemInter');
+        const ecosystemTide = document.getElementById('ecosystemTide');
+        const ecosystemIntertidalZone = document.getElementById('ecosystemIntertidalZone');
+        const einsteinImage = document.getElementById('einstein-image');
 
-        let currentContent = 1;
+        const tideAudio = document.getElementById('tideAudio');
+        const tideAudio2 = document.getElementById('tideAudio2');
+        const tideAudio3 = document.getElementById('tideAudio3');
 
-        function updateContent() {
-            for (let key in content) {
-                content[key].classList.toggle('active', key == currentContent);
+        let currentSection = 0;
+        const sections = [ecosystemInter, ecosystemTide, ecosystemIntertidalZone];
+
+        function hideAllSections() {
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+
+        function showSection(index) {
+            hideAllSections();
+            sections[index].classList.add('active');
+            playAudio(); 
+            playAudio2();
+            playAudio3();
+        }
+
+        function stopAudio() {
+            tideAudio.pause();
+            tideAudio.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio2() {
+            tideAudio2.pause();
+            tideAudio2.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio3() {
+            tideAudio3.pause();
+            tideAudio3.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function playAudio() {
+            if (currentSection === 0) {
+                tideAudio.play();
+            } else {
+                stopAudio();
             }
         }
 
-        updateContent();
-        
+        function playAudio2() {
+            if (currentSection === 1) {
+                tideAudio2.play();
+            } else {
+                stopAudio2();
+            }
+        }
+
+        function playAudio3() {
+            if (currentSection === 2) {
+                tideAudio3.play();
+            } else {
+                stopAudio3();
+            }
+        }
+
+        function updateContent() {
+            showSection(currentSection);
+        }
+
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);
@@ -186,26 +256,38 @@
 
         const showM = getQueryParam('show');
         if (showM === 'ecosystemIntertidalZone') {
-            currentContent = 3;
+            currentSection = 2;
+            updateContent();
+        } else {
             updateContent();
         }
 
         leftButton.addEventListener('click', function () {
-            if (currentContent === 1) {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            if (currentSection === 0) {
                 window.location.href = './../ecosystemDef.php?show=ecosystemTopic'; 
             } else {
-                currentContent--;
+                currentSection--;
                 updateContent();
             }
         });
 
         rightButton.addEventListener('click', function () {
-            if (currentContent === 3) {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            if (currentSection === sections.length - 1) {
                 window.location.href = 'intertidalPopQuiz.php'; 
             } else {
-                currentContent++;
+                currentSection++;
                 updateContent();
             }
         });
+
+        document.getElementById('playAudio').addEventListener('click', () => tideAudio.play());
+        document.getElementById('playAudio2').addEventListener('click', () => tideAudio2.play());
+        document.getElementById('playAudio3').addEventListener('click', () => tideAudio3.play());
     });
 </script>

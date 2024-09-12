@@ -103,8 +103,14 @@
                             A liquid is a nearly incompressible fluid that conforms to the shape of its container but retains a nearly constant volume independent of pressure.
                             It is one of the four fundamental states of matter, and is the only state with a definite volume but no fixed shape.
 
-                            </p>
+                            </p>                           
                         </div>
+                        <div class="audio-icon">
+                                <button id="playAudio">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="liquidAudio" src="../../sounds/liquid1.mp3"></audio>
+                            </div>
 
                         <div class="columns is-multiline is-centered">
                             <!-- Example Image 1 -->
@@ -143,10 +149,14 @@
                                 In a liquid state of matter, particles are less tightly packed as compared to liquids.
                                 Liquids take the shape of the container in which they are kept.
                                 Liquids are difficult to compress as particles have less space between them to move.
-                                Liquids have fixed volume but no fixed shape.
                                 </p>
+                                <div class="audio-icon2">
+                                <button id="playAudio2">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="liquidAudio2" src="../../sounds/liquid2.mp3"></audio>
                             </div>
-                            
+                            </div>                      
                             <!-- Image Column -->
                             <div class="column is-half pl-6">
                                 <figure class="image learn-image">
@@ -175,11 +185,16 @@
                             <div class="column is-half mt-4">
                                 <ul class="title is-size-4-desktop is-size-5-tablet is-size-5-mobile has-text-white has-text-weight-semibold bullets">
                                     <li class="mb-5 main-font">Liquid has a fixed volume but no fixed shape.</li>
-                                    <li class="mb-5 main-font">Liquids can be compressed. Large pressure is required to compress them.</li>
-                                    <li class="mb-5 main-font">Liquids have lesser densities than solids.</li>
+                                    <li class="mb-5 main-font">Liquids can be compressed and a large pressure is required to compress them.</li>
+                                    <li class="mb-5 main-font">Liquids are less dense than solids.</li>
                                 </ul>
+                                <div class="audio-icon3">
+                                <button id="playAudio3">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="liquidAudio3" src="../../sounds/liquid3.mp3"></audio>
                             </div>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,7 +202,7 @@
                 <!-- Liquid Characteristics 2 -->
                 <div class="liquid-content" id="liquidChar2">
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-white mb-6 secondary-font">CHARACTERS OF SOLID</h1>
+                        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-white mb-6 secondary-font">CHARACTERS OF LIQUID</h1>
 
                         <!-- Content Layout -->
                         <div class="columns is-centered">
@@ -204,7 +219,14 @@
                                     <li class="mb-5 main-font">The intermolecular forces of attraction are weaker than solids.</li>
                                     <li class="mb-5 main-font">They have considerable space between the particles.</li>
                                 </ul>
+                                <div class="audio-icon4">
+                                <button id="playAudio4">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="liquidAudio4" src="../../sounds/liquid4.mp3"></audio>
                             </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -220,11 +242,16 @@
                             <div class="column is-half pl-6">
                                 <p class="title is-size-6-mobile is-size-5-tablet is-size-4-desktop is-size-3-widescreen 
                                 has-text-left has-text-weight-semibold has-text-white main-font">
-                                As the liquid is heated the the kinetic energy of the molecules increase and they liquid starts to expand.
+                                As the liquid is heated the the kinetic energy of the molecules increase and they liquid starts to expand.
                                 When the temperature reaches the boiling point of the liquid it starts boiling the phase changes from liquid to gas.
-                                </p>
-                            </div>
-                            
+                                <div class="audio-icon5">
+                                <button id="playAudio5">
+                                    <img src="../../image/speaker.png" alt="Speaker Icon" width="50">
+                                </button>
+                                <audio id="liquidAudio5" src="../../sounds/liquid5.mp3"></audio>
+                                </div>
+                                </p>                               
+                            </div>                      
                             <!-- Image Column -->
                             <div class="column is-half pl-6">
                                 <figure class="image happen-image">
@@ -232,7 +259,7 @@
                                 </figure>
                             </div>
                         </div>
-                    </div>
+                    </div>       
                 </div>
 
                 <!-- Liquid LetsTry -->
@@ -300,6 +327,12 @@
         const letsTryButton = document.getElementById('letsTryButton');
         const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
         const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('liquidAudio');
+        const audio2 = document.getElementById('liquidAudio2');
+        const audio3 = document.getElementById('liquidAudio3');
+        const audio4 = document.getElementById('liquidAudio4');
+        const audio5 = document.getElementById('liquidAudio5');
+
 
         let currentSection = 0;
         const sections = [liquidExamples, liquidDef, liquidLearn, liquidChar1, liquidChar2, liquidHappen, liquidLetsTry];
@@ -315,9 +348,72 @@
             hideAllSections();
             sections[index].classList.remove('liquid-content');
             sections[index].classList.add('liquid-content-active');
+            playAudio(); 
+            playAudio2();
+            playAudio3();
+            playAudio4();
+            playAudio5();
+        }
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio4() {
+            audio4.pause();
+            audio4.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function stopAudio5() {
+            audio5.pause();
+            audio5.currentTime = 0; // Optionally reset audio to the beginning
+        }
+
+        function playAudio() {
+            if (sections[currentSection] === liquidDef) {
+                audio.play(); 
+            }
+        }
+
+        function playAudio2() {
+            if (sections[currentSection] === liquidLearn) {
+                audio2.play(); 
+            }
+        }
+        function playAudio3() {
+            if (sections[currentSection] === liquidChar1) {
+                audio3.play(); 
+            }
+        }
+
+        function playAudio4() {
+            if (sections[currentSection] === liquidChar2) {
+                audio4.play(); 
+            }
+        }
+
+        function playAudio5() {
+            if (sections[currentSection] === liquidHappen) {
+                audio5.play(); 
+            }
         }
 
         rightButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             if (currentSection < sections.length - 1) {
                 currentSection++;
                 showSection(currentSection);
@@ -336,6 +432,11 @@
         });
 
         leftButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             if (currentSection === 0) {
                 window.location.href = '../matterDef.php?show=matterTopic';
             } else if (currentSection > 0) {
@@ -350,6 +451,11 @@
         });
 
         goBackButton.addEventListener('click', function () {
+            stopAudio();
+            stopAudio2();
+            stopAudio3();
+            stopAudio4();
+            stopAudio5();
             hideAllSections();
             liquidHappen.classList.remove('liquid-content');
             liquidHappen.classList.add('liquid-content-active');

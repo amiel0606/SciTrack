@@ -111,6 +111,5 @@ function loginUser($conn, $uName, $pwd) {
             header("location: ../student/studentWelcome.php");
             exit();
         }
-
     }
 }
