@@ -1,5 +1,9 @@
 <?php
+    session_start();
     include_once('./includes/board.php');
+    include_once('../admin/includes/dbCon.php');
+    $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
+    $id = $_SESSION["id"];
 ?>
 
 <style>
@@ -74,6 +78,9 @@
     .main-font {
         font-family: 'Avenue';
     }
+    .no-way {
+        display: none;
+    }
 
 </style>
 
@@ -86,7 +93,7 @@
                     <figure class="image is-16by9">
                         <img src="../image/board.png" alt="Board Image">
                     </figure>
-                    
+                    <input type="hidden" id="myID" name="id" value="<?php echo $id; ?>">
                     <!-- Welcome -->
                     <div class="student-content student-content-active" id="welcome">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
@@ -94,7 +101,7 @@
                                 <div class="column is-four-fifths">
                                     <p class="title is-size-1-widescreen is-size-2-desktop is-size-3-tablet is-size-4-mobile 
                                     has-text-white has-text-centered main-font">
-                                        Welcome <span id="">[student name],</span> Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
+                                        Welcome <span id="studentName">,</span> Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
                                     </p>
                                 </div>
                             </div>
@@ -131,7 +138,7 @@
                     <div class="student-content " id="lessons">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 mt-6 p-6">
                             <div class="columns is-multiline is-centered mt-6 ">
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image mr-6">
+                                <div id="matters" class=" column is-2-mobile is-one-quarter-tablet example-image mr-6">
                                     <a href="matterDef.php">
                                         <figure class="image figure-image">
                                             <img src="../image/matterTopic.gif" alt="Matter">
@@ -139,7 +146,7 @@
                                         </figure>
                                     </a>
                                 </div>
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
+                                <div id="eco"  class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
                                     <a href="./ecosystem/ecosystemDef.php">
                                         <figure class="image figure-image">
                                             <img src="../image/ecosystemTopic.gif" alt="Ecosystem">
@@ -150,7 +157,7 @@
                             </div>
 
                             <div class="columns is-multiline is-centered mb-1">
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image mr-6">
+                                <div id="motion" class="column is-2-mobile is-one-quarter-tablet example-image mr-6">
                                     <a href="./motion/motionDef.php">
                                         <figure class="image figure-image">
                                             <img src="../image/motionTopic.gif" alt="Motion">
@@ -158,7 +165,7 @@
                                         </figure>
                                     </a>
                                 </div>
-                                <div class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
+                                <div id="earth" class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
                                     <a href="./surface/surfaceDef.php">
                                         <figure class="image figure-image">
                                             <img src="../image/surfaceTopic.gif" alt="Earth's Surface">
@@ -191,6 +198,50 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        var id =document.getElementById('myID').value;
+        var conn = new WebSocket('ws://localhost:8080');
+        const idsToProperties = {
+        'matter': 'matter',
+        'eco': 'ecosystem',
+        'motion': 'motion',
+        'earth': 'earth'
+        };
+        conn.onopen = function() {
+            conn.send(JSON.stringify({ type: 'loadStudentData', id: id }));
+            conn.send(JSON.stringify({ type: 'loadLessons', section: 'Papaya' }));
+        };
+        conn.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            console.log(data);
+            var matter =document.getElementById('matters');
+            var eco =document.getElementById('eco');
+            var motion =document.getElementById('motion');
+            var earth =document.getElementById('earth');
+            if (data.type === 'student') {
+                document.getElementById('studentName').innerText = data.name;
+            }
+            if (data.type === 'lesson') {
+                if (data.matter === 'Inactive') {
+                    matter.classList.add('is-invisible');
+                    console.log('Matter is set to Inactive');
+                    console.log(matter);
+                }
+                if (data.ecosystem === 'Inactive') {
+                    eco.classList.add('is-invisible');
+                    console.log('Ecosystem is set to Inactive');
+                }
+                if (data.motion === 'Inactive') {
+                    motion.classList.add('is-invisible');
+                    console.log('Motion is set to Inactive');
+                }
+                if (data.earth === 'Inactive') {
+                    earth.classList.add('is-invisible');
+                    console.log('Earth is set to Inactive');
+                }
+            }
+
+            
+        };
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
         const welcome = document.getElementById('welcome');
@@ -262,6 +313,8 @@
         } else {
             showWelcome();
         }
+    
+
     });
 
 </script>

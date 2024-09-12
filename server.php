@@ -3,6 +3,7 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/admin/includes/dbCon.php';
 require __DIR__ . '/admin/includes/userFunctions.php';
 require __DIR__ . '/teacher/includes/userFunctions.php'; 
+require __DIR__ . '/student/includes/userFunctions.php'; 
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -45,14 +46,32 @@ class UserLoader implements MessageComponentInterface {
                 'success' => $success
             ];
             $from->send(json_encode($response));
+        } elseif ($data['type'] === 'loadStudentData') {
+            $this->loadStudent($from, $data['id']);
+        } elseif ($data['type'] === 'getLessons') {
+            $this->getLesson($from);
         }
-        
+    }
+
+    private function getLesson(ConnectionInterface $conn) {
+        $lessons = getLessons($this->db);
+        foreach ($lessons as $lesson) {
+            $lesson['type'] = 'lesson';
+            $conn->send(json_encode($lesson));
+        }
+    }
+    private function loadStudent(ConnectionInterface $conn, $id) {
+        $students = getStudentSection($this->db, $id);
+        foreach ($students as $student) {
+            $student['type'] = 'student';
+            $conn->send(json_encode($student));
+        }
     }
 
     private function loadLessons(ConnectionInterface $conn, $section) {
         $lessons = fetchLessons($this->db, $section);
         foreach ($lessons as $lesson) {
-            $lesson['type'] = 'lesson';
+            $lesson['type'] = 'lessons';
             $conn->send(json_encode($lesson));
         }
     }

@@ -47,7 +47,7 @@
 <div class="container">
     <p class="has-text-primary is-size-1 title ml-4">Lessons</p>
     <div class="locked">
-    <a href="#" data-lesson="ecosystem" class="lesson-btn">
+    <a href="#" data-lesson="matter" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
                 <div class="column is-one-fifth has-background-danger-light">
@@ -58,7 +58,7 @@
                 <div class="column">
                     <p class="has-text-primary is-size-4">
                         First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                        <span class="is-size-1 has-text-weight-semibold">ECOSYSTEM</span> <br/> <br/> <br/>
+                        <span class="is-size-1 has-text-weight-semibold">MATTER</span> <br/> <br/> <br/>
                         <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
                     </p>
                 </div>
@@ -190,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var lesson = button.getAttribute('data-lesson');
             if (conn.readyState === WebSocket.OPEN) {
                 conn.send(JSON.stringify({ type: 'giveLesson', section: section, lesson: lesson }));
+                conn.send(JSON.stringify({ type: 'loadLessons', section: section }));
             } else {
                 console.error('WebSocket connection is not open.');
             }

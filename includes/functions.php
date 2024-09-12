@@ -98,6 +98,8 @@ function loginUser($conn, $uName, $pwd) {
         $_SESSION["id"] = $UserExists["id"]; 
         $_SESSION["username"] = $UserExists["username"];
         $_SESSION["role"] = $UserExists["role"];
+        $_SESSION["firstName"] = $UserExists["firstName"];
+        $_SESSION["lastName"] = $UserExists["lastname"];
         $role = $_SESSION["role"];
         if ($role=='admin') {
             header("location: ../admin/adminDash.php");
