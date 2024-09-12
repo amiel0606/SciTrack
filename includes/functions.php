@@ -107,6 +107,10 @@ function loginUser($conn, $uName, $pwd) {
             header("location: ../teacher/teacherDash.php");
             exit();
         }
+        else if ($role=='Student') {
+            header("location: ../student/studentWelcome.php");
+            exit();
+        }
 
     }
 }

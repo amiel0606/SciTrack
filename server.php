@@ -1,7 +1,8 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/admin/includes/dbCon.php'; // Include your dbCon.php file
-require __DIR__ . '/admin/includes/userFunctions.php'; // Include the user functions file
+require __DIR__ . '/admin/includes/dbCon.php';
+require __DIR__ . '/admin/includes/userFunctions.php';
+require __DIR__ . '/teacher/includes/userFunctions.php'; 
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -33,9 +34,38 @@ class UserLoader implements MessageComponentInterface {
             $this->loadTeachers($from);
         } elseif ($data['type'] === 'loadRoles') {
             $this->loadRoles($from);
+        } elseif ($data['type'] === 'loadLessons') {
+            $this->loadLessons($from, $data['section']);
+        } elseif ($data['type'] === 'giveLesson') {
+            $section = $data['section'];
+            $lesson = $data['lesson'];
+            $success = $this->giveLessons($from, $section, $lesson);
+            $response = [
+                'type' => 'updateLessonResponse',
+                'success' => $success
+            ];
+            $from->send(json_encode($response));
+        }
+        
+    }
+
+    private function loadLessons(ConnectionInterface $conn, $section) {
+        $lessons = fetchLessons($this->db, $section);
+        foreach ($lessons as $lesson) {
+            $lesson['type'] = 'lesson';
+            $conn->send(json_encode($lesson));
         }
     }
 
+    private function giveLessons(ConnectionInterface $conn, $section, $lesson) {
+        try {
+            $success = giveLesson($this->db, $section, $lesson);
+            return $success;
+        } catch (Exception $e) {
+            error_log("Error updating lesson: " . $e->getMessage());
+            return false;
+        }
+    }
     private function loadStudents(ConnectionInterface $conn) {
         $students = fetchStudents($this->db);
         foreach ($students as $student) {

@@ -38,38 +38,42 @@
     fill: #fff;
 }
 
+.no-way {
+    display: none;
+}
+
 
 </style>
 <div class="container">
     <p class="has-text-primary is-size-1 title ml-4">Lessons</p>
     <div class="locked">
-    <a href="#">
+    <a href="#" data-lesson="ecosystem" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
-                        <div class="column is-one-fifth has-background-danger-light">
-                            <figure class="image is-square">
-                                <img src="../image/matterL.png" alt="Math Image">
-                            </figure>
-                        </div>
-                        <div class="column">
-                            <p class="has-text-primary is-size-4">
-                                First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                                <span class="is-size-1 has-text-weight-semibold">MATTER</span> <br/> <br/> <br/>
-                                <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
-                            </p>
-                        </div>
+                <div class="column is-one-fifth has-background-danger-light">
+                    <figure class="image is-square">
+                        <img src="../image/matterL.png" alt="Math Image">
+                    </figure>
                 </div>
-                <div class="lock-overlay">
+                <div class="column">
+                    <p class="has-text-primary is-size-4">
+                        First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
+                        <span class="is-size-1 has-text-weight-semibold">ECOSYSTEM</span> <br/> <br/> <br/>
+                        <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
+                    </p>
+                </div>
+            </div>
+            <div id="matters" class="lock-overlay">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
                         <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
                     </svg>
-                </div>
             </div>
+        </div>
         </div>
     </a>
 
     <div class="locked">
-    <a href="#">
+    <a href="#" data-lesson="ecosystem" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
                 <div class="column is-one-fifth has-background-grey">
@@ -85,33 +89,42 @@
                     </p>
                 </div>
             </div>
-            <div class="lock-overlay">
+            <div id="eco" class="lock-overlay">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
                         <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
                     </svg>
-                </div>
+            </div>
         </div>
         </div>
     </a>
-    <a href="./lessonProgress.php">
+
+    <div class="locked">
+    <a href="#" data-lesson="motion" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
                 <div class="column is-one-fifth has-background-success">
                     <figure class="image is-square">
-                        <img src="../image/motions.png" alt="Math Image">
+                        <img src="../image/motion.png" alt="Math Image">
                     </figure>
                 </div>
                 <div class="column">
                     <p class="has-text-primary is-size-4">
                         First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                        <span class="is-size-1 has-text-weight-semibold">MOTION: <span class="has-text-danger">NOT YET GIVEN</span></span> <br/> <br/> <br/>
+                        <span class="is-size-1 has-text-weight-semibold">MOTION</span> <br/> <br/> <br/>
                         <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
                     </p>
                 </div>
             </div>
+            <div id="motion" class="lock-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
+                        <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
+                    </svg>
+            </div>
+        </div>
         </div>
     </a>
-    <a href="#">
+    <div class="locked">
+    <a href="#" data-lesson="earth" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
                 <div class="column is-one-fifth has-background-warning">
@@ -122,11 +135,66 @@
                 <div class="column">
                     <p class="has-text-primary is-size-4">
                         First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                        <span class="is-size-1 has-text-weight-semibold">EARTH'S SURFACE: <span class="has-text-danger">NOT YET GIVEN</span></span> <br/> <br/> <br/>
+                        <span class="is-size-1 has-text-weight-semibold">EARTH'S SURFACE</span> <br/> <br/> <br/>
                         <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
                     </p>
                 </div>
             </div>
+            <div id="earth" class="lock-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
+                        <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
+                    </svg>
+            </div>
+        </div>
         </div>
     </a>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // WebSocket setup
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const section = params.get('section');
+    const idsToProperties = {
+        'matters': 'matter',
+        'eco': 'ecosystem',
+        'motion': 'motion',
+        'earth': 'earth'
+    };
+
+    var conn = new WebSocket('ws://localhost:8080');
+    conn.onopen = function() {
+        conn.send(JSON.stringify({ type: 'loadLessons', section: section }));
+    };
+
+    conn.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        console.log(data);
+        Object.keys(idsToProperties).forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                const property = idsToProperties[id];
+                if (data[property] !== 'Inactive') {
+                    element.classList.add('no-way');
+                } else {
+                    element.classList.remove('no-way');
+                }
+            } else {
+                console.error(`Element with id "${id}" not found.`);
+            }
+        });
+    };
+    document.addEventListener('click', function(event) {
+        if (event.target.closest('.lesson-btn')) {
+            var button = event.target.closest('.lesson-btn');
+            var lesson = button.getAttribute('data-lesson');
+            if (conn.readyState === WebSocket.OPEN) {
+                conn.send(JSON.stringify({ type: 'giveLesson', section: section, lesson: lesson }));
+            } else {
+                console.error('WebSocket connection is not open.');
+            }
+        }
+    });
+});
+
+</script>
