@@ -173,8 +173,7 @@
                                         <audio id="matterAudio2" src="../../sounds/solid2.mp3"></audio>
                                     </div>
 
-                                </div>
-                               
+                                </div>                              
                                 
                                 <!-- Image Column -->
                                 <div class="column is-half pl-6">

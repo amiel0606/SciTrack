@@ -57,6 +57,9 @@
         margin-left: -8%;
         margin-bottom: -2%;
     }
+    .button-text {
+        font-size: 0.75em;
+    }
     .navbar{
         background-color: #4A90E2 !important;
     }
@@ -139,7 +142,8 @@
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 mt-6 p-6">
                             <div class="columns is-multiline is-centered mt-6 ">
                                 <div id="matters" class=" column is-2-mobile is-one-quarter-tablet example-image mr-6">
-                                    <a href="matterDef.php">
+                                    <a href="./matter/matterLesson.php">
+
                                         <figure class="image figure-image">
                                             <img src="../image/matterTopic.gif" alt="Matter">
                                             <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
@@ -147,7 +151,8 @@
                                     </a>
                                 </div>
                                 <div id="eco"  class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
-                                    <a href="./ecosystem/ecosystemDef.php">
+                                    <a href="./esystem/ecosystemLesson.php">
+
                                         <figure class="image figure-image">
                                             <img src="../image/ecosystemTopic.gif" alt="Ecosystem">
                                             <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
@@ -180,11 +185,11 @@
                     
                     <!-- Left and Right Buttons -->
                     <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-5" id="examplesButton">
-                        <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet" id="leftButton" style="z-index: 2;">
-                            <i class="fas fa-arrow-left button-icon"></i>
+                        <button class="button is-success is-rounded is-size-5-widescreen is-size-6-desktop mb-2" id="leftButton" style="z-index: 2;">
+                            <i class="fas fa-arrow-left button-icon"></i><span class="button-text">Prev</span>
                         </button>
-                        <button class="button is-success is-rounded is-size-4-desktop is-size-5-tablet mx-2" id="rightButton" style="z-index: 2;">
-                            <i class="fas fa-arrow-right button-icon"></i>
+                        <button class="button is-success is-rounded is-size-5-widescreen is-size-6-desktop mx-2 mb-2" id="rightButton" style="z-index: 2;">
+                            <span class="button-text">Next</span> <i class="fas fa-arrow-right button-icon"></i>
                         </button>
 
                         <!-- Einstein Image -->
