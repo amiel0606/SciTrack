@@ -216,37 +216,52 @@
             conn.send(JSON.stringify({ type: 'loadLessons', section: 'Papaya' }));
         };
         conn.onmessage = function(e) {
-            var data = JSON.parse(e.data);
-            console.log(data);
-            var matter =document.getElementById('matters');
-            var eco =document.getElementById('eco');
-            var motion =document.getElementById('motion');
-            var earth =document.getElementById('earth');
-            if (data.type === 'student') {
-                document.getElementById('studentName').innerText = data.name;
-            }
-            if (data.type === 'lesson') {
-                if (data.matter === 'Inactive') {
-                    matter.classList.add('is-invisible');
-                    console.log('Matter is set to Inactive');
-                    console.log(matter);
-                }
-                if (data.ecosystem === 'Inactive') {
-                    eco.classList.add('is-invisible');
-                    console.log('Ecosystem is set to Inactive');
-                }
-                if (data.motion === 'Inactive') {
-                    motion.classList.add('is-invisible');
-                    console.log('Motion is set to Inactive');
-                }
-                if (data.earth === 'Inactive') {
-                    earth.classList.add('is-invisible');
-                    console.log('Earth is set to Inactive');
-                }
-            }
+    var data = JSON.parse(e.data);
+    console.log(data);
+    var matter = document.getElementById('matters');
+    var eco = document.getElementById('eco');
+    var motion = document.getElementById('motion');
+    var earth = document.getElementById('earth');
+    const today = new Date();
+    const offset = today.getTimezoneOffset();
+    const philippinesOffset = 360; // Philippines is UTC+8, which is 360 minutes ahead of UTC
+    const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
+    const formattedToday = philippinesTime.toISOString().slice(0, 10); // Get today's date in yyyy-MM-dd format, using Philippines timezone
 
-            
-        };
+    if (data.type === 'student') {
+        document.getElementById('studentName').innerText = data.name;
+    }
+    if (data.type === 'lessons') {
+        if (data.matter === formattedToday) {
+            matter.classList.remove('is-invisible');
+            console.log('Matter is set to today');
+        } else {
+            matter.classList.add('is-invisible');
+            console.log('Matter is not set to today');
+        }
+        if (data.ecosystem === formattedToday) {
+            eco.classList.remove('is-invisible');
+            console.log('Ecosystem is set to today');
+        } else {
+            eco.classList.add('is-invisible');
+            console.log('Ecosystem is not set to today');
+        }
+        if (data.motion === formattedToday) {
+            motion.classList.remove('is-invisible');
+            console.log('Motion is set to today');
+        } else {
+            motion.classList.add('is-invisible');
+            console.log('Motion is not set to today');
+        }
+        if (data.earth === formattedToday) {
+            earth.classList.remove('is-invisible');
+            console.log('Earth is set to today');
+        } else {
+            earth.classList.add('is-invisible');
+            console.log('Earth is not set to today');
+        }
+    }
+};
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
         const welcome = document.getElementById('welcome');

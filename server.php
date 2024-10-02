@@ -40,7 +40,8 @@ class UserLoader implements MessageComponentInterface {
         } elseif ($data['type'] === 'giveLesson') {
             $section = $data['section'];
             $lesson = $data['lesson'];
-            $success = $this->giveLessons($from, $section, $lesson);
+            $date = $data['date'];
+            $success = $this->giveLessons($from, $section, $lesson, $date);
             $response = [
                 'type' => 'updateLessonResponse',
                 'success' => $success
@@ -76,9 +77,9 @@ class UserLoader implements MessageComponentInterface {
         }
     }
 
-    private function giveLessons(ConnectionInterface $conn, $section, $lesson) {
+    private function giveLessons(ConnectionInterface $conn, $section, $lesson, $date) {
         try {
-            $success = giveLesson($this->db, $section, $lesson);
+            $success = giveLesson($this->db, $section, $lesson, $date);
             return $success;
         } catch (Exception $e) {
             error_log("Error updating lesson: " . $e->getMessage());

@@ -42,13 +42,46 @@
     display: none;
 }
 
+.hehe {
+    width: 400px;
+    margin-left: 950px;
+    align-items: center;
+    margin-top: 300px;
+}
+
+::-webkit-datetime-edit { padding: 1em; }
+::-webkit-datetime-edit-fields-wrapper { background: white; }
+::-webkit-datetime-edit-text { color: gray; padding: 0 0.3em; }
+::-webkit-datetime-edit-month-field { color: gray; }
+::-webkit-datetime-edit-day-field { color: gray; }
+::-webkit-datetime-edit-year-field { color: gray; }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator {
+  background: url('../image/calendar-regular.svg') no-repeat center;
+  background-size: 16px 16px; 
+  cursor: pointer;
+}
+
+
 
 </style>
+
+
+<div id="dateModal" class="modal">
+    <div class="box hehe">
+        <div class="modal-content">
+            <p class="title ">Select a date:</p>
+                <input class="button" type="date" id="datepicker">
+                <input id="lesson-name" type="hidden" name="lesson" >
+            <br><br>
+            <button id="confirmBtn">Confirm</button>
+        </div>
+    </div>
+</div>
 <div class="container">
     <p class="has-text-primary is-size-1 title ml-4">Lessons</p>
     <div class="locked">
-    <a href="#" data-lesson="matter" class="lesson-btn">
-        <div class="box my-3">
+        <div class="box my-3" >
             <div class="columns">
                 <div class="column is-one-fifth has-background-danger-light">
                     <figure class="image is-square">
@@ -58,8 +91,7 @@
                 <div class="column">
                     <p class="has-text-primary is-size-4">
                         First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                        <span class="is-size-1 has-text-weight-semibold">MATTER</span> <br/> <br/> <br/>
-                        <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
+                        <span class="is-size-1 has-text-weight-semibold">MATTER</span> <br/> <br/> <br/></span>
                     </p>
                 </div>
             </div>
@@ -70,10 +102,9 @@
             </div>
         </div>
         </div>
-    </a>
+    <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="matter">Set Date</button>
 
     <div class="locked">
-    <a href="#" data-lesson="ecosystem" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
                 <div class="column is-one-fifth has-background-grey">
@@ -84,8 +115,7 @@
                 <div class="column">
                     <p class="has-text-primary is-size-4">
                         First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                        <span class="is-size-1 has-text-weight-semibold">ECOSYSTEM</span> <br/> <br/> <br/>
-                        <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
+                        <span class="is-size-1 has-text-weight-semibold">ECOSYSTEM</span> <br/> <br/> <br/></span>
                     </p>
                 </div>
             </div>
@@ -96,10 +126,10 @@
             </div>
         </div>
         </div>
-    </a>
+        <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="ecosystem">Set Date</button>
+
 
     <div class="locked">
-    <a href="#" data-lesson="motion" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
                 <div class="column is-one-fifth has-background-success">
@@ -110,8 +140,7 @@
                 <div class="column">
                     <p class="has-text-primary is-size-4">
                         First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                        <span class="is-size-1 has-text-weight-semibold">MOTION</span> <br/> <br/> <br/>
-                        <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
+                        <span class="is-size-1 has-text-weight-semibold">MOTION</span> <br/> <br/> <br/></span>
                     </p>
                 </div>
             </div>
@@ -122,9 +151,9 @@
             </div>
         </div>
         </div>
-    </a>
+        <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="motion">Set Date</button>
+
     <div class="locked">
-    <a href="#" data-lesson="earth" class="lesson-btn">
         <div class="box my-3">
             <div class="columns">
                 <div class="column is-one-fifth has-background-warning">
@@ -135,8 +164,7 @@
                 <div class="column">
                     <p class="has-text-primary is-size-4">
                         First Quarter Lesson 1, Lesson 2, and Lesson 3. <br/>
-                        <span class="is-size-1 has-text-weight-semibold">EARTH'S SURFACE</span> <br/> <br/> <br/>
-                        <i class="fa-solid fa-list-ul icon fa-2xs"></i> <span class="has-text-primary is-size-5">Quiz: 10 <span class="ml-4">Section given: <span class="has-text-weight-semibold">PAPAYA</span></span></span>
+                        <span class="is-size-1 has-text-weight-semibold">EARTH'S SURFACE</span> <br/> <br/> <br/></span>
                     </p>
                 </div>
             </div>
@@ -147,11 +175,41 @@
             </div>
         </div>
         </div>
-    </a>
+        <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="earth">Set Date</button>
+
+
+
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // WebSocket setup
+    $(function() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+
+        const datepicker = document.getElementById('datepicker');
+
+        datepicker.min = `${year}-${month}-${day}`;
+        $(".selectDateBtn").click(function() {
+            $("#dateModal").css("display", "block");
+        });
+
+        $("#confirmBtn").click(function() {
+            let selectedDate = $("#datepicker").val();
+            alert("You selected: " + selectedDate);
+            $("#dateModal").css("display", "none");
+        });
+
+        $(window).click(function(event) {
+            if ($(event.target).is("#dateModal")) {
+                $("#dateModal").css("display", "none");
+            }
+        });
+    });
+    // WebSocket connection
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
     const section = params.get('section');
@@ -166,30 +224,41 @@ document.addEventListener('DOMContentLoaded', function() {
     conn.onopen = function() {
         conn.send(JSON.stringify({ type: 'loadLessons', section: section }));
     };
-
     conn.onmessage = function(e) {
-        var data = JSON.parse(e.data);
-        console.log(data);
-        Object.keys(idsToProperties).forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-                const property = idsToProperties[id];
-                if (data[property] !== 'Inactive') {
-                    element.classList.add('no-way');
-                } else {
-                    element.classList.remove('no-way');
-                }
+    var data = JSON.parse(e.data);
+    console.log(data);
+    const today = new Date();
+    const offset = today.getTimezoneOffset();
+    const philippinesOffset = 360; 
+    const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
+    const formattedToday = philippinesTime.toISOString().slice(0, 10); 
+    console.log(formattedToday); 
+    Object.keys(idsToProperties).forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            const property = idsToProperties[id];
+            if (data[property] !== formattedToday) {
+                element.classList.remove('no-way');
             } else {
-                console.error(`Element with id "${id}" not found.`);
+                element.classList.add('no-way');
             }
-        });
-    };
+        } else {
+            console.error(`Element with id "${id}" not found.`);
+        }
+    });
+};
     document.addEventListener('click', function(event) {
         if (event.target.closest('.lesson-btn')) {
             var button = event.target.closest('.lesson-btn');
-            var lesson = button.getAttribute('data-lesson');
+            var lesson_value = button.getAttribute('data-lesson');
+            $("#lesson-name").val(lesson_value);
+
+        } else if (event.target.closest('#confirmBtn')) {
+            var lesson = $("#lesson-name").val();
+            var date = $("#datepicker").val();
+            console.log(date);
             if (conn.readyState === WebSocket.OPEN) {
-                conn.send(JSON.stringify({ type: 'giveLesson', section: section, lesson: lesson }));
+                conn.send(JSON.stringify({ type: 'giveLesson', section: section, lesson: lesson, date: date }));
                 conn.send(JSON.stringify({ type: 'loadLessons', section: section }));
             } else {
                 console.error('WebSocket connection is not open.');

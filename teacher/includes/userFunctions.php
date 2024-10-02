@@ -12,12 +12,12 @@ function fetchLessons($db, $section) {
     $stmt->close();
     return $lessons;
 }
-function giveLesson($db, $section, $lesson) {
+function giveLesson($db, $section, $lesson, $date) {
     $stmt = $db->prepare('UPDATE tbl_lessons SET ' . $lesson . ' = ? WHERE section = ?');
     if ($stmt === false) {
         die('Prepare failed: ' . htmlspecialchars($db->error));
     }
-    $status = 'Active';
+    $status = $date;
     $stmt->bind_param('ss', $status, $section);
     $success = $stmt->execute();
         if ($success === false) {
