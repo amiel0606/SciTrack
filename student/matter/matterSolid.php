@@ -375,12 +375,7 @@
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <div class="iframe-container">
-                                <iframe src="https://scitrack.h5p.com/content/1292375351285473868/embed" aria-label="Liquid Quiz" width="900" height="900" frameborder="0" 
-                                    allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
-                                </iframe>
-                                <script src="https://scitrack.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
-                            </div>
+                        
                         </div>
                     </div>
 
