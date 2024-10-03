@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 29, 2024 at 07:38 AM
+-- Generation Time: Sep 12, 2024 at 04:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,100 @@ SET time_zone = "+00:00";
 --
 -- Database: `scitrack`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles_permissions`
+--
+
+CREATE TABLE `roles_permissions` (
+  `id_role` int(255) NOT NULL,
+  `id_permission` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `roles_permissions`
+--
+
+INSERT INTO `roles_permissions` (`id_role`, `id_permission`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_lessons`
+--
+
+CREATE TABLE `tbl_lessons` (
+  `id` int(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
+  `matter` varchar(255) NOT NULL DEFAULT 'Inactive',
+  `ecosystem` varchar(255) NOT NULL DEFAULT 'Inactive',
+  `motion` varchar(255) NOT NULL DEFAULT 'Inactive',
+  `earth` varchar(255) NOT NULL DEFAULT 'Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_lessons`
+--
+
+INSERT INTO `tbl_lessons` (`id`, `section`, `matter`, `ecosystem`, `motion`, `earth`) VALUES
+(1, 'Papaya', 'Inactive', 'Inactive', 'Inactive', 'Inactive'),
+(2, 'Mango', 'Inactive', 'Inactive', 'Inactive', 'Inactive'),
+(3, 'Sampaloc', 'Inactive', 'Inactive', 'Inactive', 'Inactive'),
+(4, 'Sampaguita', 'Inactive', 'Inactive', 'Inactive', 'Inactive');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_permissions`
+--
+
+CREATE TABLE `tbl_permissions` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_permissions`
+--
+
+INSERT INTO `tbl_permissions` (`id`, `name`) VALUES
+(1, 'addStudent'),
+(2, 'removeTeacher'),
+(3, 'addTeacher'),
+(4, 'addAdmin'),
+(5, 'viewLesson'),
+(6, 'removeStudents'),
+(7, 'viewStudents'),
+(8, 'editRoles'),
+(9, 'removeAdmin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_roles`
+--
+
+CREATE TABLE `tbl_roles` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_roles`
+--
+
+INSERT INTO `tbl_roles` (`id`, `name`) VALUES
+(1, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -93,6 +187,24 @@ INSERT INTO `tbl_users` (`id`, `username`, `password`, `role`, `section`, `first
 --
 
 --
+-- Indexes for table `tbl_lessons`
+--
+ALTER TABLE `tbl_lessons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_permissions`
+--
+ALTER TABLE `tbl_permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_roles`
+--
+ALTER TABLE `tbl_roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_students`
 --
 ALTER TABLE `tbl_students`
@@ -113,6 +225,24 @@ ALTER TABLE `tbl_users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_lessons`
+--
+ALTER TABLE `tbl_lessons`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_permissions`
+--
+ALTER TABLE `tbl_permissions`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_roles`
+--
+ALTER TABLE `tbl_roles`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

@@ -143,6 +143,7 @@
                             <div class="columns is-multiline is-centered mt-6 ">
                                 <div id="matters" class=" column is-2-mobile is-one-quarter-tablet example-image mr-6">
                                     <a href="./matter/matterLesson.php">
+
                                         <figure class="image figure-image">
                                             <img src="../image/matterTopic.gif" alt="Matter">
                                             <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
@@ -151,6 +152,7 @@
                                 </div>
                                 <div id="eco"  class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
                                     <a href="./esystem/ecosystemLesson.php">
+
                                         <figure class="image figure-image">
                                             <img src="../image/ecosystemTopic.gif" alt="Ecosystem">
                                             <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
