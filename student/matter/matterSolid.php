@@ -180,7 +180,7 @@
                                 <!-- Solid Image -->
                                 <div class="image-item mb-6">
                                     <figure class="image">
-                                        <img src="../../image/msolid.png" alt="Solid" class="rotate-image">
+                                        <img src="../../image/msolidgif.gif" alt="Solid" class="rotate-image">
                                     </figure>
                                 </div>
 
@@ -208,7 +208,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image solid-image">
-                                        <img src="../../image/msolid.png" alt="Solid">
+                                        <img src="../../image/msolidgif.gif" alt="Solid">
                                     </figure>
                                 </div>
 
@@ -232,7 +232,7 @@
                                 <!-- Solid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/ssChar1.png" alt="Solid">
+                                        <img src="../../image/ssChar1.gif" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed shape</p>
                                 </div>
@@ -240,7 +240,7 @@
                                 <!-- Solid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/ssChar2.png" alt="Solid">
+                                        <img src="../../image/ssChar2.gif" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed volume</p>
                                 </div>
@@ -248,7 +248,7 @@
                                 <!-- Solid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/ssChar3.png" alt="Solid">
+                                        <img src="../../image/ssChar3.gif" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">High density</p>
                                 </div>
@@ -263,10 +263,13 @@
 
                             <!-- Video for Solid.mp4 -->
                             <div class="box">
-                                <video id="solidVideo" width="800" height="520" controls>
+                                <video id="solidVideo" width="750" height="420" controls>
                                     <source src="../../videos/Solid.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
+                                    <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
+                                        Credits to: It's AumSum Time Youtube
+                                    </p>
                             </div>
                         </div>
                     </div>

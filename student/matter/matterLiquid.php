@@ -174,14 +174,14 @@
                                 <div class="image-item">
                                     <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">SOLID</p>
                                     <figure class="image">
-                                        <img src="../../image/msolid7.png" alt="Solid">
+                                        <img src="../../image/msolidgif2.gif" alt="Solid">
                                     </figure>
                                 </div>
 
                                 <!-- Liquid Image -->
                                 <div class="image-item mb-6">
                                     <figure class="image">
-                                        <img src="../../image/mliquid2.png" alt="Liquid" class="rotate-image">
+                                        <img src="../../image/mliquidgif.gif" alt="Liquid" class="rotate-image">
                                     </figure>
                                 </div>
 
@@ -189,7 +189,7 @@
                                 <div class="image-item">
                                     <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">GAS</p>
                                     <figure class="image">
-                                        <img src="../../image/mgas2.png" alt="Gas">
+                                        <img src="../../image/mgasgif.gif" alt="Gas">
                                     </figure>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image solid-image">
-                                        <img src="../../image/mliquid.png" alt="Liquid">
+                                        <img src="../../image/mliquidgif3.gif" alt="Liquid">
                                     </figure>
                                 </div>
 
@@ -226,14 +226,14 @@
                     <!-- Matter Characteristics -->
                     <div class="matter-content" id="matterChar">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">CHARACTERISTICS OF SOLID</h1>
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">CHARACTERISTICS OF LIQUID</h1>
                             <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-3">Liquid are known to have:</p>
 
                             <div class="image-container" id="sChar">
                                 <!-- Liquid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/lChar1.png" alt="Liquid">
+                                        <img src="../../image/lChar1.gif" alt="Liquid">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed volume but no fixed shape.</p>
                                 </div>
@@ -241,7 +241,7 @@
                                 <!-- Solid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/lChar2.png" alt="Liquid">
+                                        <img src="../../image/lChar2.gif" alt="Liquid">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Lesser dense than solids.</p>
                                 </div>
@@ -249,7 +249,7 @@
                                 <!-- Gas Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/lChar3.png" alt="Liquid">
+                                        <img src="../../image/lChar3.gif" alt="Liquid">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Liquids can be compressed. </p>
                                 </div>
@@ -260,14 +260,17 @@
                     <!-- Matter Video -->
                     <div class="matter-content" id="matterVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">SOLID</h1>
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">LIQUID</h1>
 
                             <!-- Video for Solid.mp4 -->
                             <div class="box">
-                                <video id="liquidVideo" width="800" height="520" controls>
+                                <video id="liquidVideo" width="750" height="420" controls>
                                     <source src="../../videos/Liquid.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
+                                <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
+                                    Credits to: It's AumSum Time Youtube
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -289,7 +292,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image solid-image2">
-                                        <img src="../../image/mliquid3.png" alt="Liquid">
+                                        <img src="../../image/mliquidgif2.gif" alt="Liquid">
                                     </figure>
                                 </div>
                             </div>

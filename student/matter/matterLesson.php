@@ -41,6 +41,7 @@
     .button-transparent {
         background-color: transparent; 
         border: none;
+        color: white;
         font-size: 2em;
         padding: 0; 
     }
@@ -161,7 +162,7 @@
                                         <p>SOLID</p>
                                         <a href="matterSolid.php">
                                             <figure class="image">
-                                                <img src="../../image/mtopic1.png" alt="Solid">
+                                                <img src="../../image/solidGif.gif" alt="Solid">
                                             </figure>
                                         </a>
                                     </div>
@@ -176,7 +177,7 @@
                                                 <p>LIQUID</p>
                                                 <a href="matterLiquid.php">
                                                     <figure class="image">
-                                                        <img src="../../image/mtopic2.png" alt="Liquid">
+                                                        <img src="../../image/liquidGif.gif" alt="Liquid">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -188,7 +189,7 @@
                                                 <p>GAS</p>
                                                 <a href="matterGas.php">
                                                     <figure class="image">
-                                                        <img src="../../image/mtopic3.png" alt="Gas">
+                                                        <img src="../../image/gasGif.gif" alt="Gas">
                                                     </figure>
                                                 </a>
                                             </div>
@@ -233,7 +234,7 @@
             matterLesson.style.display = 'block';
             examplesButton.style.display = 'none';
             einsteinImage.style.display = 'flex';
-            leftButton.style.display = 'none';
+            leftButton.style.display = 'block';
             rightButton.style.display = 'none';
             objectives.style.display = 'none';
             matterTopic.style.display = 'none';
@@ -278,6 +279,8 @@
                 showMatterLesson();
             } else if (matterTopic.style.display === 'block') {
                 showMatterObjective();
+            } else if (matterLesson.style.display === 'block') {
+                window.location.href = '../studentWelcome.php?show=Lessons';
             }
         });
 
