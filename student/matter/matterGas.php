@@ -181,14 +181,14 @@
                                 <div class="image-item">
                                     <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">SOLID</p>
                                     <figure class="image">
-                                        <img src="../../image/msolid8.png" alt="Solid">
+                                        <img src="../../image/msolidgif3.gif" alt="Solid">
                                     </figure>
                                 </div>
 
                                 <!-- Gas Image -->
                                 <div class="image-item mb-6">
                                     <figure class="image">
-                                        <img src="../../image/mgas3.png" alt="Gas" class="rotate-image">
+                                        <img src="../../image/mgasgif3.gif" alt="Gas" class="rotate-image">
                                     </figure>
                                 </div>
 
@@ -196,7 +196,7 @@
                                 <div class="image-item">
                                     <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">GAS</p>
                                     <figure class="image">
-                                        <img src="../../image/mliquid8.png" alt="Liquid">
+                                        <img src="../../image/mliquidgif4.gif" alt="Liquid">
                                     </figure>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image solid-image">
-                                        <img src="../../image/mgas.png" alt="Gas">
+                                        <img src="../../image/mgasgif2.gif" alt="Gas">
                                     </figure>
                                 </div>
 
@@ -240,7 +240,7 @@
                                 <!-- Gas Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/mgChar1.png" alt="Gas">
+                                        <img src="../../image/mgChar1.gif" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Gases are fluid, and flow easily.</p>
                                 </div>
@@ -248,7 +248,7 @@
                                 <!-- Gas Image -->
                                 <div class="image-item">
                                     <figure class="image" id="mg2">
-                                        <img src="../../image/mgChar2.png" alt="Gas">
+                                        <img src="../../image/mgChar2.gif" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Gases have neither definite shape nor definite volume.</p>
                                 </div>
@@ -256,7 +256,7 @@
                                 <!-- Gas Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/mgChar3.png" alt="Gas">
+                                        <img src="../../image/mgChar3.gif" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Gases have low density, unless compressed.</p>
                                 </div>
@@ -267,14 +267,17 @@
                     <!-- Matter Video -->
                     <div class="matter-content" id="matterVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">SOLID</h1>
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">GAS</h1>
 
                             <!-- Video for Solid.mp4 -->
                             <div class="box">
-                                <video id="gasVideo" width="800" height="520" controls>
+                                <video id="gasVideo" width="750" height="420" controls>
                                     <source src="../../videos/Gas.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
+                                <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
+                                    Credits to: It's AumSum Time Youtube
+                                </p>
                             </div>
                         </div>
                     </div>
