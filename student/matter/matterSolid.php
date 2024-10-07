@@ -138,6 +138,76 @@
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
     }
+
+    /* for quiz layout */
+    .choice-btn {
+        background-color: #d3d3d3;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* Left-to-right fill effect */
+    .choice-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: transparent;
+        z-index: -1;
+        transition: width 0.6s ease, background-color 0.6s ease;
+    }
+
+    /* Correct answer - green fill */
+    .choice-btn.correct::before {
+        background-color: #48c774;
+        width: 100%;
+    }
+
+    /* Wrong answer - red fill */
+    .choice-btn.wrong::before {
+        background-color: #f14668; 
+        width: 100%;
+    }
+
+    .choice-btn {
+        z-index: 1;
+    }
+
+    .extra-info-box {
+        width: 90%; 
+        max-width: 520px; 
+        padding: 20px;
+        margin: 1rem auto; 
+        z-index: 9999; 
+        background-color: white;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+    }
+    #quizImage{
+        max-width: 100%; 
+        height: auto;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .placeholderImage {
+        background-color: #d3d3d3; 
+        width: 90%; 
+        height: auto;
+        max-height: 350px;
+        border-radius: 5px;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+
     @font-face {
         font-family: 'Avenue';
         src: url('../../font/Avenue.otf') format('opentype');
@@ -267,9 +337,9 @@
                                     <source src="../../videos/Solid.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                                    <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
-                                        Credits to: It's AumSum Time Youtube
-                                    </p>
+                                <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
+                                    Credits to: It's AumSum Time Youtube
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -377,15 +447,76 @@
 
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <div class="iframe-container">
-                                <iframe src="https://scitrack.h5p.com/content/1292375351285473868/embed" aria-label="Liquid Quiz" width="900" height="900" frameborder="0" 
-                                    allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
-                                </iframe>
-                                <script src="https://scitrack.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                QUIZ
+                            </h1>
+                            <!-- Quiz Container -->
+                            <div class="box has-text-centered" id="quizContainer" style="width: 100%; max-width: 90%; max-height: 80%; padding: 30px; z-index: 2;">
+                                <div class="columns">
+                                    <!-- Left Column for Image -->
+                                    <div class="column is-one-third has-text-centered placeholderImage">
+                                        <img src="../../image/book.png" alt="Quiz Image" id="quizImage">
+                                    </div>
+
+                                    <!-- Right Column for Question and Choices -->
+                                    <div class="column is-two-thirds">
+                                        <!-- Question Number -->
+                                        <h2 class="title secondary-font is-2" id="questionNumber">Question 1</h2>
+
+                                        <!-- Question -->
+                                        <p class="subtitle main-font is-4" id="questionText">What is the capital of France?</p>
+
+                                        <!-- Choices as Buttons with Responsive Sizes -->
+                                        <div class="buttons is-flex is-flex-direction-column">
+                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="A">A) Paris</button>
+                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="B">B) Madrid</button>
+                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="C">C) Berlin</button>
+                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="D">D) Rome</button>
+                                        </div>
+
+                                        <div class="box extra-info-box" id="extraInfoBox" style="display:none;">
+                                            <h3 class="title is-4" id="extraInfoTitle">Additional Information</h3>
+                                            <p id="extraInfoText"></p>
+                                        </div>
+
+                                        <!-- Next Button -->
+                                        <button class="button is-success main-font is-size-6-widescreen is-size-7-tablet" id="nextButton" disabled>Next Question</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Quiz Result -->
+                            <div class="box has-text-centered p-6" id="quizResult" style="display:none; width: 100%; max-width: 90%; padding: 30px; z-index: 2; margin-top: 30px;">
+                                <h2 class="title secondary-font is-2">Quiz Results</h2>
+                                <table class="table is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Total Questions:</strong></td>
+                                            <td id="totalQuestions">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Correct:</strong></td>
+                                            <td id="correctAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Wrong:</strong></td>
+                                            <td id="wrongAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Percentage:</strong></td>
+                                            <td id="percentage">0%</</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Your Total Score:</strong></td>
+                                            <td id="totalScore">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Matter Solid Completed -->
                     <div class="matter-content" id="matterCompleted">
@@ -628,8 +759,155 @@
         });
 
         hideAllSections();
-        showSection(0); 
+        showSection(7); 
 
     });
+
+    //for quiz
+    // Quiz Data
+    const quizData = [
+        {
+            question: "What is the state of matter that has a definite shape and volume?",
+            choices: ["Liquid", "Gas", "Solid", "Plasma"],
+            quizImage: "../quizImage/solidQuizImage1.png",
+            correctAnswer: "Solid",
+            additionalInfo: "Solids maintain a fixed shape and volume because their particles are closely packed together and cannot move freely."
+        },
+        {
+            question: "Which of the following solids can be easily molded into different shapes?",
+            choices: ["Glass", "Clay", "Steel", "Ice"],
+            quizImage: "../quizImage/solidQuizImage2.png",
+            correctAnswer: "Clay",
+            additionalInfo: "Clay is a malleable material that can be easily shaped when wet. Once it dries or is fired in a kiln, it becomes hard and retains the molded shape, making it ideal for pottery and sculpture."
+        },
+        {
+            question: "What happens to the particles in a solid?",
+            choices: ["They move freely.", "They are tightly packed together.", "They are far apart.", "They vibrate rapidly."],
+            quizImage: "../quizImage/solidQuizImage3.png",
+            correctAnswer: "They are tightly packed together.",
+            additionalInfo: "In solids, particles are closely packed and can only vibrate in place, giving solids their rigid structure."
+        },
+        {
+            question: "Which solid is typically used for construction due to its strength?",
+            choices: ["Sugar", "Sand", "Concrete", "Paper"],
+            quizImage: "../quizImage/solidQuizImage4.png",
+            correctAnswer: "Concrete",
+            additionalInfo: "Concrete is a strong, durable material used widely in construction because of its ability to withstand heavy loads."
+        },
+        {
+            question: "Which solid is known for being very hard?",
+            choices: ["Rubber", "Wood", "Diamond", "Cotton"],
+            quizImage: "../quizImage/solidQuizImage5.png",
+            correctAnswer: "Diamond",
+            additionalInfo: "Diamond is the hardest known natural material, making it valuable for cutting and drilling applications."
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let correctAnswersCount = 0;
+    let totalQuestions = quizData.length;
+    let selectedAnswer = null;
+
+    const choices = document.querySelectorAll('.choice-btn');
+    const nextButton = document.getElementById('nextButton');
+    const extraInfoBox = document.getElementById('extraInfoBox');
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const quizImage = document.getElementById('quizImage');
+    const extraInfoText = document.getElementById('extraInfoText');
+    const quizResult = document.getElementById('quizResult');
+    const totalQuestionsDisplay = document.getElementById('totalQuestions');
+    const correctAnswersDisplay = document.getElementById('correctAnswers');
+    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+    const percentageDisplay = document.getElementById('percentage');
+    const totalScoreDisplay = document.getElementById('totalScore');
+
+    // Function to load a question
+    function loadQuestion() {
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+        questionText.textContent = currentQuestion.question;
+        quizImage.src = currentQuestion.quizImage;
+
+        choices.forEach((button, index) => {
+            button.textContent = currentQuestion.choices[index];
+            button.classList.remove('correct', 'wrong');
+            button.style.display = 'inline-block';
+        });
+
+        extraInfoBox.style.display = 'none';
+        nextButton.disabled = true;
+        selectedAnswer = null;
+    }
+
+    // Adding click event listeners to choices
+    choices.forEach(button => {
+        button.addEventListener('click', function() {
+            if (selectedAnswer) return; // Prevent selecting again
+
+            selectedAnswer = button.textContent; // Set the selected answer
+            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+
+            // Check each choice
+            choices.forEach(btn => {
+                // Hide incorrect answers if they are not selected
+                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                    btn.style.display = 'none'; // Hides the button
+                } else {
+                    // Add correct or wrong class based on the selected answer
+                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                }
+            });
+
+            // Display additional information about the question
+            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
+            extraInfoBox.style.display = 'block';
+            nextButton.disabled = false; // Enable the next button
+
+            // Check if the answer is correct
+            if (selectedAnswer === correctAnswer) {
+                correctAnswersCount++; // Increment the correct answers count
+            }
+        });
+    });
+
+    // Function to handle next question
+    nextButton.addEventListener('click', function () {
+        if (!selectedAnswer) {
+            alert('Please select an answer!');
+            return;
+        }
+
+        // Increment the current question index
+        currentQuestionIndex++;
+
+        // Check if the current question index is the last one
+        if (currentQuestionIndex >= quizData.length) {
+            // Call the showResults function to display the results
+            showResults();
+        } else {
+            // Load the next question
+            loadQuestion();
+        }
+    });
+
+    // Function to display results
+    function showResults() {
+        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+        quizContainer.style.display = 'none'; // Hide the quiz container
+
+        // Show the quiz result container
+        quizResult.style.display = 'block';
+        totalQuestionsDisplay.textContent = totalQuestions;
+        correctAnswersDisplay.textContent = correctAnswersCount;
+        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    }
+
+    // Load the first question
+    loadQuestion();
+
 </script>
 
