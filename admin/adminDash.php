@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         calendarBody.innerHTML = '';
         monthElement.textContent = `${months[month]} ${year}`;
 
-        // Add days of the week
         daysOfWeek.forEach(day => {
             const dayCell = document.createElement('div');
             dayCell.classList.add('date');
@@ -202,7 +201,7 @@ conn.onopen = function() {
 };
 conn.onmessage = function(e) {
     var data = JSON.parse(e.data);
-    console.log(data);
+    // console.log(data);
     if (data.type === "student") {
         var table = document.getElementById('students').getElementsByTagName('tbody')[0];
         var newRow = table.insertRow();

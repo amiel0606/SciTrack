@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 var teacher = JSON.parse(e.data);
                 var table = document.getElementById('teacher').getElementsByTagName('tbody')[0];
                 var newRow = table.insertRow();
-                console.log(teacher);
+                // console.log(teacher);
                 newRow.insertCell(0).innerText = teacher.name;
                 newRow.insertCell(1).innerText = teacher.username;
                 newRow.insertCell(2).innerText = teacher.section;
