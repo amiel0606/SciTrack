@@ -9,18 +9,6 @@
     .matter-content-active {
         display: block;
     }
-    @keyframes rotate {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(30px, -10px); }
-        50% { transform: translate(60px, 10px); }
-        75% { transform: translate(-30px, 10px); }
-        100% { transform: translate(0, 0); }
-    }
-
-    .rotate-image {
-        animation: rotate 4s linear infinite;
-        transform-style: preserve-3d;
-    }
     #einstein-image {
         width: 100%;
         max-width: 25%;
@@ -62,22 +50,44 @@
         width: 100%;
         max-width: 350px;
     }
-    #sChar{
+    .sChar{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 2rem;
         margin-top: -1rem;
         z-index: 10;
     }
-    #sChar img {
+    .sChar .image-item{
+        text-align: center;
+        margin: 0 1rem;
+    }
+    .sChar img {
         width: 100%;
         max-width: 250px;
         margin-left: 3rem;
     }
-    #mg2{
-        margin-left: 3rem;
+    #mg1{
+        margin-left: -3rem;
     }
-    #sExample img {
-        width: 100%;
-        max-width: 1000px;
+    #mg2{
+        margin-left: -1rem;
+    }
+    .sExample{
+        display: flex;
+        justify-content: center; 
+        align-items: center;
         margin-top: 2rem;
+    }
+    .sExample .image-item{
+        text-align: center;
+        margin: 0;
+    }
+    .sExample .image-item:first-child{
+        margin-right: 5rem;
+    }
+    .sExample .image-item:last-child{
+        margin-left: 5rem;
     }
     .solid-image {
         width: 100%;
@@ -92,8 +102,13 @@
     #solid-text {
         margin-left: 9rem;
     }
+    .stateImage{
+        width: 100%;
+        max-width: 400px;
+        margin-top: -6%;
+    }
     #states {
-        margin-bottom: -4%;
+        margin-top: -4%;
     }
     .placeholder {
         width: 100%;
@@ -123,9 +138,9 @@
         position: relative;
     }
     #matterVideo video {
-    z-index: 10; 
-    position: relative; 
-}
+        z-index: 10; 
+        position: relative; 
+    }
 
     .image-container img {
         width: 100%;
@@ -146,16 +161,92 @@
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
     }
+
+    /* for quiz layout */
+    .choice-btn {
+        background-color: #d3d3d3;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* Left-to-right fill effect */
+    .choice-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: transparent;
+        z-index: -1;
+        transition: width 0.6s ease, background-color 0.6s ease;
+    }
+
+    /* Correct answer - green fill */
+    .choice-btn.correct::before {
+        background-color: #48c774;
+        width: 100%;
+    }
+
+    /* Wrong answer - red fill */
+    .choice-btn.wrong::before {
+        background-color: #f14668; 
+        width: 100%;
+    }
+
+    .choice-btn {
+        z-index: 1;
+    }
+
+    .extra-info-box {
+        width: 90%; 
+        max-width: 520px; 
+        padding: 10px;
+        margin: 1rem auto; 
+        z-index: 9999; 
+        background-color: white;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+    }
+    #quizImage{
+        max-width: 100%; 
+        height: auto;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .placeholderImage {
+        background-color: #d3d3d3; 
+        width: 90%; 
+        height: auto;
+        max-height: 350px;
+        border-radius: 5px;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #quizResult{
+        display: none; 
+        width: 100%; 
+        max-width: 90%; 
+        padding: 30px; 
+        z-index: 2; 
+        margin-top: 30px;
+    }
+
     @font-face {
-        font-family: 'Avenue';
-        src: url('../../font/Avenue.otf') format('opentype');
+        font-family: 'verdana';
+        src: url('../../font/verdana.ttf') format('opentype');
     }
     @font-face {
         font-family: 'Haniley';
         src: url('../../font/Haniley.otf') format('opentype');
     }
     .main-font {
-        font-family: 'Avenue';
+        font-family: 'verdana';
     }
     .secondary-font{
         font-family: 'Haniley';
@@ -174,35 +265,18 @@
                     <!-- Matter States -->
                     <div class="x-content" id="matterStates">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">GAS</h1>
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">GAS</h1>
 
-                            <div class="image-container">
-                                <!-- Solid Image -->
-                                <div class="image-item">
-                                    <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">SOLID</p>
-                                    <figure class="image">
-                                        <img src="../../image/msolidgif3.gif" alt="Solid">
-                                    </figure>
-                                </div>
-
-                                <!-- Gas Image -->
-                                <div class="image-item mb-6">
-                                    <figure class="image">
-                                        <img src="../../image/mgasgif3.gif" alt="Gas" class="rotate-image">
-                                    </figure>
-                                </div>
-
-                                <!-- Liquid Image -->
-                                <div class="image-item">
-                                    <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">GAS</p>
-                                    <figure class="image">
-                                        <img src="../../image/mliquidgif4.gif" alt="Liquid">
-                                    </figure>
-                                </div>
+                            <!-- Solid Image -->
+                            <div class="stateImage">
+                                <figure class="image mt-4">
+                                    <img src="../../image/mgasgif3.gif" alt="Gas">
+                                </figure>
                             </div>
 
-                            <p class="main-font column is-three-fifths title is-size-5-tablet is-size-4-desktop is-size-3-widescreen
-                            has-text-centered has-text-white mb-6" id="states">A gas is a substance that is in a gaseous, or vaporous, state of matter.</p>
+                            <p class="main-font column is-four-fifths title is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
+                                A <span style="color: yellow;">Gas</span> is a substance that is in a gaseous, or vaporous, state of matter.
+                            </p>
                         </div>
                     </div>
 
@@ -236,13 +310,15 @@
                             <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">CHARACTERISTICS OF GAS</h1>
                             <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-3">Gas are known to have:</p>
 
-                            <div class="image-container" id="sChar">
+                            <div class="sChar column is-four-fifths">
                                 <!-- Gas Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image" id="mg1">
                                         <img src="../../image/mgChar1.gif" alt="Gas">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Gases are fluid, and flow easily.</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
+                                        Gases are fluid, and flow easily.
+                                    </p>
                                 </div>
 
                                 <!-- Gas Image -->
@@ -250,7 +326,9 @@
                                     <figure class="image" id="mg2">
                                         <img src="../../image/mgChar2.gif" alt="Gas">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Gases have neither definite shape nor definite volume.</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
+                                    Gases have no fixed shape or volume.
+                                    </p>
                                 </div>
 
                                 <!-- Gas Image -->
@@ -258,7 +336,9 @@
                                     <figure class="image">
                                         <img src="../../image/mgChar3.gif" alt="Gas">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Gases have low density, unless compressed.</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
+                                        Gases have low density, unless compressed.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -291,9 +371,8 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
                                         • Heating a gas increases the kinetic energy of the particles, causing the gas to expand. 
-                                        In order to keep the pressure constant, the volume of the container must be increased when a gas is heated.
                                     </p>
                                 </div>
 
@@ -314,13 +393,13 @@
                                 EXAMPLES OF GAS
                             </h1>
 
-                            <div class="image-container" id="sExample">
+                            <div class="sExample">
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image">
                                         <img src="../../image/mgas5.png" alt="Gas">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Helium in Balloon</p>
+                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Helium <br>in Balloon</p>
                                 </div>
 
                                 <!-- Second Image -->
@@ -330,7 +409,18 @@
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Steam</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Matter Examples 2 -->
+                    <div class="matter-content" id="matterExamples2">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                EXAMPLES OF GAS
+                            </h1>
+
+                            <div class="sExample">
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image">
@@ -383,12 +473,72 @@
 
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <div class="iframe-container">
-                                <iframe src="https://scitrack.h5p.com/content/1292375351285473868/embed" aria-label="Liquid Quiz" width="900" height="900" frameborder="0" 
-                                    allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
-                                </iframe>
-                                <script src="https://scitrack.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                QUIZ
+                            </h1>
+                            <!-- Quiz Container -->
+                            <div class="box has-text-centered" id="quizContainer" style="width: 100%; max-width: 90%; max-height: 80%; padding: 30px; z-index: 2;">
+                                <div class="columns">
+                                    <!-- Left Column for Image -->
+                                    <div class="column is-one-third has-text-centered placeholderImage">
+                                        <img src="../../image/book.png" alt="Quiz Image" id="quizImage">
+                                    </div>
+
+                                    <!-- Right Column for Question and Choices -->
+                                    <div class="column is-two-thirds">
+                                        <!-- Question Number -->
+                                        <h2 class="title secondary-font is-2" id="questionNumber">Question 1</h2>
+
+                                        <!-- Question -->
+                                        <p class="subtitle main-font is-4" id="questionText"></p>
+
+                                        <!-- Choices as Buttons with Responsive Sizes -->
+                                        <div class="buttons is-flex is-flex-direction-column ml-3">
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                        </div>
+
+                                        <div class="box extra-info-box" id="extraInfoBox" style="display:none;">
+                                            <h3 class="subtitle secondary-font is-3" id="extraInfoTitle">Additional Information</h3>
+                                            <p id="extraInfoText" class="main-font"></p>
+                                        </div>
+
+                                        <!-- Next Button -->
+                                        <button class="button is-success main-font is-size-6-widescreen is-size-7-tablet" id="nextButton" disabled>Next Question</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quiz Result -->
+                            <div class="box has-text-centered p-6" id="quizResult">
+                                <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
+                                <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Total Questions</strong></td>
+                                            <td id="totalQuestions">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Correct</strong></td>
+                                            <td id="correctAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Wrong</strong></td>
+                                            <td id="wrongAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Percentage</strong></td>
+                                            <td id="percentage">0%</</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Your Total Score</strong></td>
+                                            <td id="totalScore">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -467,6 +617,7 @@
         const matterVideo = document.getElementById('matterVideo');
         const matterGas2 = document.getElementById('matterGas2');
         const matterExamples = document.getElementById('matterExamples');
+        const matterExamples2 = document.getElementById('matterExamples2');
         const matterLetsTry = document.getElementById('matterLetsTry');
         const matterQuiz = document.getElementById('matterQuiz');
         const matterCompleted = document.getElementById('matterCompleted');
@@ -479,7 +630,7 @@
         const audio4 = document.getElementById('matterAudio4');
         const gasVideo = document.getElementById('gasVideo');
         let currentSection = 0;
-        const sections = [matterStates, matterGas, matterChar, matterVideo, matterGas2, matterExamples, matterLetsTry, matterQuiz, matterCompleted];
+        const sections = [matterStates, matterGas, matterChar, matterVideo, matterGas2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -568,7 +719,7 @@
 
 
 
-            if (index >= 0 && index <= 5) { 
+            if (index >= 0 && index <= 6) { 
                 examplesButton.style.display = 'flex';
                 einsteinImage.style.display = 'block';
                 letsTryButton.style.display = 'none';
@@ -604,8 +755,8 @@
         }
 
         rightButton.addEventListener('click', function () {
-            if (currentSection === 5) {
-                currentSection = 6;
+            if (currentSection === 6) {
+                currentSection = 7;
                 showSection(currentSection);
             } else if (currentSection < sections.length - 1) {
                 currentSection++; 
@@ -614,12 +765,12 @@
         });
 
         goBackButton.addEventListener('click', function () {
-            currentSection = 5; 
+            currentSection = 6; 
             showSection(currentSection);
         });
 
         proceedToQuizButton.addEventListener('click', function () {
-            currentSection = 7; 
+            currentSection = 8; 
             showSection(currentSection);
         });
 
@@ -636,5 +787,153 @@
         showSection(0); 
 
     });
+
+    //for quiz
+    // Quiz Data
+    const quizData = [
+        {
+            question: "What state of matter is characterized by particles that are far apart and move quickly?",
+            choices: ["Solid", "Liquid", "Gas", "Plasma"],
+            quizImage: "../quizImage/gasQuizImage1.png",
+            correctAnswer: "Gas",
+            additionalInfo: "Gases consist of particles that are much further apart than those in solids or liquids, allowing them to move freely and fill the available space."
+        },
+        {
+            question: "Which of the following statements is true about gases?",
+            choices: ["They have a definite shape and volume.", "They flow easily and take the shape of their container.", "They are tightly packed together.", "They cannot be compressed."],
+            quizImage: "../quizImage/gasQuizImage2.png",
+            correctAnswer: "They flow easily and take the shape of their container.",
+            additionalInfo: "Gases have no fixed shape or volume; they will expand to fill the shape and volume of their container."
+        },
+        {
+            question: "What happens to gas particles when they are heated?",
+            choices: ["They move slower.", "They stay in one place.", "They lose energy.", "They move faster and expand."],
+            quizImage: "../quizImage/gasQuizImage3.png",
+            correctAnswer: "They move faster and expand.",
+            additionalInfo: "Heating a gas increases the kinetic energy of its particles, causing them to move more rapidly and occupy more space."
+        },
+        {
+            question: "Which gas is commonly used in balloons?",
+            choices: ["Oxygen", "Carbon Dioxide", "Helium", "Nitrogen"],
+            quizImage: "../quizImage/gasQuizImage4.png",
+            correctAnswer: "Helium",
+            additionalInfo: "Helium is lighter than air and is used in balloons to make them float."
+        },
+        {
+            question: "What is the density characteristic of gases?",
+            choices: ["High density", "Variable density", "Low density", "No density"],
+            quizImage: "../quizImage/gasQuizImage5.png",
+            correctAnswer: "Low density",
+            additionalInfo: "Gases have low density compared to solids and liquids, making them less heavy unless compressed."
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let correctAnswersCount = 0;
+    let totalQuestions = quizData.length;
+    let selectedAnswer = null;
+
+    const choices = document.querySelectorAll('.choice-btn');
+    const nextButton = document.getElementById('nextButton');
+    const extraInfoBox = document.getElementById('extraInfoBox');
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const quizImage = document.getElementById('quizImage');
+    const extraInfoText = document.getElementById('extraInfoText');
+    const quizResult = document.getElementById('quizResult');
+    const totalQuestionsDisplay = document.getElementById('totalQuestions');
+    const correctAnswersDisplay = document.getElementById('correctAnswers');
+    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+    const percentageDisplay = document.getElementById('percentage');
+    const totalScoreDisplay = document.getElementById('totalScore');
+
+    // Function to load a question
+    function loadQuestion() {
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+        questionText.textContent = currentQuestion.question;
+        quizImage.src = currentQuestion.quizImage;
+
+        choices.forEach((button, index) => {
+            button.textContent = currentQuestion.choices[index];
+            button.classList.remove('correct', 'wrong');
+            button.style.display = 'inline-block';
+            button.style.color = 'black'; 
+        });
+
+        extraInfoBox.style.display = 'none';
+        nextButton.disabled = true;
+        selectedAnswer = null;
+    }
+
+    // Adding click event listeners to choices
+    choices.forEach(button => {
+        button.addEventListener('click', function() {
+            if (selectedAnswer) return; // Prevent selecting again
+
+            selectedAnswer = button.textContent; // Set the selected answer
+            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+
+            // Check each choice
+            choices.forEach(btn => {
+                // Hide incorrect answers if they are not selected
+                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                    btn.style.display = 'none'; // Hides the button
+                } else {
+                    // Add correct or wrong class based on the selected answer
+                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                    btn.style.color = 'white';
+                }
+            });
+
+            // Display additional information about the question
+            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
+            extraInfoBox.style.display = 'block';
+            nextButton.disabled = false; // Enable the next button
+
+            // Check if the answer is correct
+            if (selectedAnswer === correctAnswer) {
+                correctAnswersCount++; // Increment the correct answers count
+            }
+        });
+    });
+
+    // Function to handle next question
+    nextButton.addEventListener('click', function () {
+        if (!selectedAnswer) {
+            alert('Please select an answer!');
+            return;
+        }
+
+        // Increment the current question index
+        currentQuestionIndex++;
+
+        // Check if the current question index is the last one
+        if (currentQuestionIndex >= quizData.length) {
+            // Call the showResults function to display the results
+            showResults();
+        } else {
+            // Load the next question
+            loadQuestion();
+        }
+    });
+
+    // Function to display results
+    function showResults() {
+        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+        quizContainer.style.display = 'none'; // Hide the quiz container
+
+        // Show the quiz result container
+        quizResult.style.display = 'block';
+        totalQuestionsDisplay.textContent = totalQuestions;
+        correctAnswersDisplay.textContent = correctAnswersCount;
+        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    }
+
+    // Load the first question
+    loadQuestion();
 </script>
 

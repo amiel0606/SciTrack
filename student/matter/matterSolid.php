@@ -9,18 +9,6 @@
     .matter-content-active {
         display: block;
     }
-    @keyframes rotate {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(30px, -10px); }
-        50% { transform: translate(60px, 10px); }
-        75% { transform: translate(-30px, 10px); }
-        100% { transform: translate(0, 0); }
-    }
-
-    .rotate-image {
-        animation: rotate 4s linear infinite;
-        transform-style: preserve-3d;
-    }
     #einstein-image {
         width: 100%;
         max-width: 25%;
@@ -49,9 +37,9 @@
         text-align: center;
     }
     #matterVideo video {
-    z-index: 10; 
-    position: relative; 
-}
+        z-index: 10; 
+        position: relative; 
+    }
     .image-container {
         display: flex;
         justify-content: space-around;
@@ -66,13 +54,39 @@
         width: 100%;
         max-width: 350px;
     }
+    .stateImage{
+        width: 100%;
+        max-width: 400px;
+        margin-top: -6%;
+    }
+    #states {
+        margin-top: -4%;
+    }
     #sChar img {
         width: 100%;
         max-width: 300px;
     }
-    #sExample img {
+    .sExample{
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        margin-top: 2rem;
+    }
+    .sExample .image-item{
+        text-align: center;
+        margin: 0;
+    }
+    .sExample .image-item:first-child{
+        margin-right: 5rem;
+    }
+    .sExample .image-item:last-child{
+        margin-left: 5rem;
+    }
+    .sExample img {
+        min-width: 300px;
+        min-height: 350px;
         width: 100%;
-        max-width: 1000px;
+        max-width: 500px;
         margin-top: 2rem;
     }
     .solid-image {
@@ -88,9 +102,6 @@
     #solid-text {
         margin-left: 9rem;
     }
-    #states {
-        margin-bottom: -4%;
-    }
     .placeholder {
         width: 100%;
         max-width: 90%;
@@ -100,19 +111,6 @@
     } 
     #letsTryButton {
         z-index: 10;
-    }
-    .iframe-container {
-        position: relative;
-        z-index: 2; 
-        width: 80%; 
-        margin: 0 auto;
-    }
-
-    .iframe-container iframe {
-        width: 100%;
-        margin-top: 250px; 
-        border: none;
-        z-index: 2;
     }
 
     .image-container {
@@ -179,7 +177,7 @@
     .extra-info-box {
         width: 90%; 
         max-width: 520px; 
-        padding: 20px;
+        padding: 10px;
         margin: 1rem auto; 
         z-index: 9999; 
         background-color: white;
@@ -205,19 +203,25 @@
         justify-content: center;
         align-items: center;
     }
-
-    
+    #quizResult{
+        display: none; 
+        width: 100%; 
+        max-width: 90%; 
+        padding: 30px; 
+        z-index: 2; 
+        margin-top: 30px;
+    }
 
     @font-face {
-        font-family: 'Avenue';
-        src: url('../../font/Avenue.otf') format('opentype');
+        font-family: 'verdana';
+        src: url('../../font/verdana.ttf') format('opentype');
     }
     @font-face {
         font-family: 'Haniley';
         src: url('../../font/Haniley.otf') format('opentype');
     }
     .main-font {
-        font-family: 'Avenue';
+        font-family: 'verdana';
     }
     .secondary-font{
         font-family: 'Haniley';
@@ -236,35 +240,18 @@
                     <!-- Matter States -->
                     <div class="x-content" id="matterStates">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">SOLID</h1>
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
 
-                            <div class="image-container">
-                                <!-- Liquid Image -->
-                                <div class="image-item">
-                                    <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">LIQUID</p>
-                                    <figure class="image">
-                                        <img src="../../image/mliquid.png" alt="Liquid">
-                                    </figure>
-                                </div>
-
-                                <!-- Solid Image -->
-                                <div class="image-item mb-6">
-                                    <figure class="image">
-                                        <img src="../../image/msolidgif.gif" alt="Solid" class="rotate-image">
-                                    </figure>
-                                </div>
-
-                                <!-- Gas Image -->
-                                <div class="image-item">
-                                    <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">GAS</p>
-                                    <figure class="image">
-                                        <img src="../../image/mgas.png" alt="Gas">
-                                    </figure>
-                                </div>
+                            <!-- Solid Image -->
+                            <div class="stateImage">
+                                <figure class="image">
+                                    <img src="../../image/msolidgif.gif" alt="Solid">
+                                </figure>
                             </div>
 
-                            <p class="main-font column is-three-fifths title is-size-5-tablet is-size-4-desktop is-size-3-widescreen
-                            has-text-centered has-text-white mb-6" id="states">Solid is one of the three fundamental states of matter along with liquid, gas.</p>
+                            <p class="main-font column is-four-fifths subtitle is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
+                                <span style="color: yellow;">Solid</span> is one of the three fundamental states of matter along with liquid, gas.
+                            </p>
                         </div>                       
                     </div>
 
@@ -284,7 +271,7 @@
 
                                 <!-- Text Column -->
                                 <div class="column is-5">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
                                         • Has particles that are packed closely together and usually arranged in regular pattern
                                     </p>
                                 </div>
@@ -353,11 +340,11 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
                                         • Has Definite shape and volume
                                     </p>
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
-                                        • When a solid is heated, its molecules gain energy and vibrate fast.
+                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
+                                        • When a solid is heated, its molecules gain energy and vibrate fast.
                                     </p>
                                 </div>
 
@@ -378,10 +365,10 @@
                                 EXAMPLES OF SOLID
                             </h1>
 
-                            <div class="image-container" id="sExample">
+                            <div class="sExample">
                                 <!-- First Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid3.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Books</p>
@@ -389,15 +376,26 @@
 
                                 <!-- Second Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid4.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Eraser</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Matter Examples 2 -->
+                    <div class="matter-content" id="matterExamples2">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                EXAMPLES OF SOLID
+                            </h1>
+
+                            <div class="sExample">
                                 <!-- Third Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid5.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shirt</p>
@@ -405,7 +403,7 @@
 
                                 <!-- Fourth Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid6.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Bag</p>
@@ -465,19 +463,19 @@
                                         <h2 class="title secondary-font is-2" id="questionNumber">Question 1</h2>
 
                                         <!-- Question -->
-                                        <p class="subtitle main-font is-4" id="questionText">What is the capital of France?</p>
+                                        <p class="subtitle main-font is-4" id="questionText"></p>
 
                                         <!-- Choices as Buttons with Responsive Sizes -->
-                                        <div class="buttons is-flex is-flex-direction-column">
-                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="A">A) Paris</button>
-                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="B">B) Madrid</button>
-                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="C">C) Berlin</button>
-                                            <button class="button is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet" data-answer="D">D) Rome</button>
+                                        <div class="buttons is-flex is-flex-direction-column ml-3">
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
                                         </div>
 
                                         <div class="box extra-info-box" id="extraInfoBox" style="display:none;">
-                                            <h3 class="title is-4" id="extraInfoTitle">Additional Information</h3>
-                                            <p id="extraInfoText"></p>
+                                            <h3 class="subtitle secondary-font is-3" id="extraInfoTitle">Additional Information</h3>
+                                            <p id="extraInfoText" class="main-font"></p>
                                         </div>
 
                                         <!-- Next Button -->
@@ -487,28 +485,28 @@
                             </div>
 
                              <!-- Quiz Result -->
-                            <div class="box has-text-centered p-6" id="quizResult" style="display:none; width: 100%; max-width: 90%; padding: 30px; z-index: 2; margin-top: 30px;">
-                                <h2 class="title secondary-font is-2">Quiz Results</h2>
-                                <table class="table is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
+                            <div class="box has-text-centered p-6" id="quizResult">
+                                <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
+                                <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
                                     <tbody>
                                         <tr>
-                                            <td><strong>Total Questions:</strong></td>
+                                            <td><strong>Total Questions</strong></td>
                                             <td id="totalQuestions">0</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Correct:</strong></td>
+                                            <td><strong>Correct</strong></td>
                                             <td id="correctAnswers">0</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Wrong:</strong></td>
+                                            <td><strong>Wrong</strong></td>
                                             <td id="wrongAnswers">0</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Percentage:</strong></td>
+                                            <td><strong>Percentage</strong></td>
                                             <td id="percentage">0%</</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Your Total Score:</strong></td>
+                                            <td><strong>Your Total Score</strong></td>
                                             <td id="totalScore">0</td>
                                         </tr>
                                     </tbody>
@@ -542,10 +540,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -593,6 +591,7 @@
         const matterVideo = document.getElementById('matterVideo');
         const matterSolid2 = document.getElementById('matterSolid2');
         const matterExamples = document.getElementById('matterExamples');
+        const matterExamples2 = document.getElementById('matterExamples2');
         const matterLetsTry = document.getElementById('matterLetsTry');
         const matterQuiz = document.getElementById('matterQuiz');
         const matterCompleted = document.getElementById('matterCompleted');
@@ -605,7 +604,7 @@
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
         let currentSection = 0;
-        const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterLetsTry, matterQuiz, matterCompleted];
+        const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -693,7 +692,7 @@
         }
 
 
-    if (index >= 0 && index <= 5) { 
+    if (index >= 0 && index <= 6) { 
         examplesButton.style.display = 'flex';
         einsteinImage.style.display = 'block';
         letsTryButton.style.display = 'none';
@@ -730,8 +729,8 @@
 
 
         rightButton.addEventListener('click', function () {
-            if (currentSection === 5) {
-                currentSection = 6;
+            if (currentSection === 6) {
+                currentSection = 7;
                 showSection(currentSection);
             } else if (currentSection < sections.length - 1) {
                 currentSection++; 
@@ -740,12 +739,12 @@
         });
 
         goBackButton.addEventListener('click', function () {
-            currentSection = 5; 
+            currentSection = 6; 
             showSection(currentSection);
         });
 
         proceedToQuizButton.addEventListener('click', function () {
-            currentSection = 7; 
+            currentSection = 8; 
             showSection(currentSection);
         });
 
@@ -759,7 +758,7 @@
         });
 
         hideAllSections();
-        showSection(7); 
+        showSection(0); 
 
     });
 
@@ -834,6 +833,7 @@
             button.textContent = currentQuestion.choices[index];
             button.classList.remove('correct', 'wrong');
             button.style.display = 'inline-block';
+            button.style.color = 'black'; 
         });
 
         extraInfoBox.style.display = 'none';
@@ -857,6 +857,7 @@
                 } else {
                     // Add correct or wrong class based on the selected answer
                     btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                    btn.style.color = 'white';
                 }
             });
 
