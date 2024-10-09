@@ -5,7 +5,6 @@
     $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
     $id = $_SESSION["id"];
 ?>
-
 <style>
     .student-content {
         display: none;

@@ -203,7 +203,6 @@
     #quizImage{
         max-width: 70%; 
         height: auto;
-        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -774,6 +773,7 @@
     //for quiz
     // Quiz Data
         const quizData = [
+
         {
             question: "Which state of matter has a fixed volume but no fixed shape?",
             choices: ["Liquid", "Solid", "Gas", "Plasma"],
@@ -794,6 +794,7 @@
             quizImage: "../quizImage/liquidQuizImage3.png",
             correctAnswer: "Water",
             additionalInfo: "Water is a common example of a liquid."
+
         },
         {
             question: "What happens to the particles in a liquid when it is heated?",

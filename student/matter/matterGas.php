@@ -212,6 +212,7 @@
     #quizImage{
         max-width: 70%; 
         height: auto;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -859,6 +860,7 @@
             quizImage: "../quizImage/gasQuizImage10.png",
             correctAnswer: "They fill the space of their container.",
             additionalInfo: "Gases do not have a fixed shape and will expand to fill any container."
+
         }
     ];
 

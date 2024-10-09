@@ -95,14 +95,15 @@
                     </p>
                 </div>
             </div>
-            <div id="matters" class="lock-overlay">
+            <div class="matters lock-overlay">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
                         <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
                     </svg>
             </div>
         </div>
         </div>
-    <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="matter">Set Date</button>
+
+    <button class="btn-matters selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="matter">Set Date</button>
 
     <div class="locked">
         <div class="box my-3">
@@ -119,14 +120,15 @@
                     </p>
                 </div>
             </div>
-            <div id="eco" class="lock-overlay">
+            <div class="eco lock-overlay">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
                         <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
                     </svg>
             </div>
         </div>
         </div>
-        <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="ecosystem">Set Date</button>
+
+        <button class="btn-eco selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="ecosystem">Set Date</button>
 
 
     <div class="locked">
@@ -144,14 +146,15 @@
                     </p>
                 </div>
             </div>
-            <div id="motion" class="lock-overlay">
+            <div class="motion lock-overlay">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
                         <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
                     </svg>
             </div>
         </div>
         </div>
-        <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="motion">Set Date</button>
+
+        <button class="btn-motion selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="motion">Set Date</button>
 
     <div class="locked">
         <div class="box my-3">
@@ -168,14 +171,15 @@
                     </p>
                 </div>
             </div>
-            <div id="earth" class="lock-overlay">
+            <div class="earth lock-overlay">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
                         <path d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"/>
                     </svg>
             </div>
         </div>
         </div>
-        <button class="selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="earth">Set Date</button>
+
+        <button class="btn-earth selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="earth">Set Date</button>
 
 
 
@@ -226,27 +230,34 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     conn.onmessage = function(e) {
     var data = JSON.parse(e.data);
-    console.log(data);
+    // console.log(data);
     const today = new Date();
-    const offset = today.getTimezoneOffset();
-    const philippinesOffset = 360; 
-    const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
-    const formattedToday = philippinesTime.toISOString().slice(0, 10); 
-    console.log(formattedToday); 
+    const formattedToday = today.toISOString().slice(0, 10);
+    console.log(formattedToday);
     Object.keys(idsToProperties).forEach(id => {
-        const element = document.getElementById(id);
+        const element = document.querySelector(`.${id}`);
+        const buttonElement = document.querySelector(`.btn-${id}`);
         if (element) {
             const property = idsToProperties[id];
-            if (data[property] !== formattedToday) {
-                element.classList.remove('no-way');
-            } else {
+            const databaseDate = new Date(data[property]);
+            if (databaseDate <= today) {
                 element.classList.add('no-way');
+            } else {
+                element.classList.remove('no-way');
             }
+            buttonElement.textContent = data[property];
+            if (data[property] !== "Set Date") {
+                buttonElement.classList.remove('is-success');
+                buttonElement.classList.add('has-background-dark');
+                buttonElement.classList.add('has-text-white');
+            }
+            // console.log(data[property]);
         } else {
-            console.error(`Element with id "${id}" not found.`);
+            console.error(`Element with class "${id}" not found.`);
         }
     });
 };
+
     document.addEventListener('click', function(event) {
         if (event.target.closest('.lesson-btn')) {
             var button = event.target.closest('.lesson-btn');
@@ -266,5 +277,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
+    // var data = JSON.parse(e.data);
+    // console.log(data);
+    // const today = new Date();
+    // const offset = today.getTimezoneOffset();
+    // const philippinesOffset = 360; 
+    // const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
+    // const formattedToday = philippinesTime.toISOString().slice(0, 10); 
+    // console.log(formattedToday); 
+    // Object.keys(idsToProperties).forEach(id => {
+    //     const element = document.getElementById(id);
+    //     if (element) {
+    //         const property = idsToProperties[id];
+    //         if (data[property] !== formattedToday) {
+    //             element.classList.remove('no-way');
+    //         } else {
+    //             element.classList.add('no-way');
+    //         }
+    //     } else {
+    //         console.error(`Element with id "${id}" not found.`);
+    //     }
+    // });
 </script>

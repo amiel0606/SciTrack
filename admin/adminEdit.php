@@ -121,7 +121,7 @@
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box">
-            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Role</p>
+            <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Edit Role</p>
             <form action="./includes/addStaff/editRoles.php" method="post" id="newRoleForm"  enctype="multipart/form-data">
                 <div class="field">
                     <div class="control mb-5">
@@ -212,7 +212,7 @@
         <div class="column is-2"></div>
         <div class="column mt-6">
             <div class="columns">
-                <div class="column is-9"></div>
+                <div class="column is-9"><button class="button is-primary has-text-white">Assign Role</button></div>
                 <div class="column">
                     <button class="button is-success js-modal-trigger" data-target="addRoleModal">
                         <span class="icon is-small">
@@ -226,23 +226,12 @@
                 <thead class="has-text-centered has-background-primary">
                     <tr>
                         <th>Role</th>
-                        <th class="actions" >Actions</th>
+                        <th>Members</th>
+                        <th>Actions</th>
                     </tr>
-                    </thead>
-                    <tbody id="roleTableBody" class="has-text-centered">
-                        <!-- <td>Admin</td>
-                        <td>
-                            <a class="button is-success p-1 js-modal-trigger" data-target="editStudentsModal">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
-                                    <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" fill="#fff"/>
-                                </svg>
-                            </a>
-                            <a class="button is-danger p-1 js-modal-trigger" data-target="archiveModal">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#fff">
-                                    <path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/>
-                                </svg>
-                            </a>
-                        </td> -->
+                </thead>
+                <tbody class="has-text-centered">
+
                 </tbody>
             </table>
         </div>
@@ -307,16 +296,24 @@ document.addEventListener('DOMContentLoaded', () => {
     //WebSocket Connection
     var conn = new WebSocket('ws://localhost:8080');
     conn.onopen = function (e) {
-        console.log("Connection established!");
         conn.send(JSON.stringify({ type: 'loadRoles'}));
+        conn.send(JSON.stringify({ type: 'getCountRoles' }));
     };
     conn.onmessage = function (e) {
-        var role = JSON.parse(e.data);
+    var data = JSON.parse(e.data);
+    console.log(data);
+
+    if (data.type === 'role') {
+        console.log("role");
         var table = document.getElementById('roles').getElementsByTagName('tbody')[0];
         var row = table.insertRow();
-        console.log(role);
-        row.insertCell(0).innerText = role.name;
-        var actionCell = row.insertCell(1);
+        row.insertCell(0).innerText = data.name;
+        var membersCell = row.insertCell(1);
+        membersCell.innerText = data.members;
+        membersCell.classList.add('role-members');
+        membersCell.setAttribute('data-role', data.name);
+
+        var actionCell = row.insertCell(2);
         var editButton = document.createElement('a');
         var deleteButton = document.createElement('a');
         editButton.classList.add('button', 'is-success', 'p-1', 'js-modal-trigger');
@@ -328,8 +325,8 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteButton.classList.add('button', 'is-danger', 'p-1', 'js-modal-trigger');
         deleteButton.setAttribute('data-target', 'archiveModal');
         deleteButton.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#fff">
-            <path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 30 30">
+            <path d="M 13 3 A 1.0001 1.0001 0 0 0 11.986328 4 L 6 4 A 1.0001 1.0001 0 1 0 6 6 L 24 6 A 1.0001 1.0001 0 1 0 24 4 L 18.013672 4 A 1.0001 1.0001 0 0 0 17 3 L 13 3 z M 6 8 L 6 24 C 6 25.105 6.895 26 8 26 L 22 26 C 23.105 26 24 25.105 24 24 L 24 8 L 6 8 z" fill="#fff"></path>
         </svg>`;
         actionCell.appendChild(editButton);
         actionCell.appendChild(deleteButton);
@@ -340,11 +337,25 @@ document.addEventListener('DOMContentLoaded', () => {
             openModal($target);
         });
         deleteButton.addEventListener('click', () => {
-            const modal = editButton.getAttribute('data-target');
+            const modal = deleteButton.getAttribute('data-target');
             const $target = document.getElementById(modal);
             openModal($target);
         });
-    };
+    }
+
+    if (data.type === 'roleCount') {
+        var counts = data.counts;
+        Object.keys(counts).forEach(role => {
+            var element = document.querySelector(`.role-members[data-role="${role}"]`);
+            if (element) {
+                element.textContent = counts[role];
+            } else {
+                console.error(`Element for role "${role}" not found.`);
+            }
+        });
+    }
+};
+
 });
 
 </script>

@@ -25,3 +25,13 @@ function fetchRoles($db){
     }
     return $roles;
 }
+
+function getCountRoles($db) {
+    $result = $db->query('SELECT role, COUNT(*) as count FROM tbl_users GROUP BY role');
+    $rolesCount = [];
+    while($row = $result->fetch_assoc()) {
+        $rolesCount[$row['role']] = $row['count'];
+    }
+    return $rolesCount;
+}
+

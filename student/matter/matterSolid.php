@@ -187,6 +187,7 @@
     #quizImage{
         max-width: 70%; 
         height: auto;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -196,6 +197,7 @@
         width: 90%; 
         height: auto;
         max-height: 300px;
+
         border-radius: 5px;
         margin-top: 4rem;
         display: flex;
@@ -484,6 +486,7 @@
                             </div>
 
                             <!-- Quiz Result -->
+
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
                                 <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
@@ -838,6 +841,7 @@
         additionalInfo: "Solids maintain their shape, unlike liquids and gases which take the shape of their container."
     }
 ];
+
 
 
     let currentQuestionIndex = 0;
