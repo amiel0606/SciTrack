@@ -13,6 +13,11 @@
         width: 40%;
         max-width: 80%; 
     }
+    .c-image img, .einstein{
+        width: 100%;
+        height: auto;
+        transform: scaleX(-1);
+    }
     .image-container {
         display: flex;
         justify-content: space-around;
@@ -86,16 +91,93 @@
         background-color: #266bbb;
         color: white;
     }
+
+    
+    /* for quiz layout */
+    .choice-btn {
+        background-color: #d3d3d3;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* Left-to-right fill effect */
+    .choice-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: transparent;
+        z-index: -1;
+        transition: width 0.6s ease, background-color 0.6s ease;
+    }
+
+    /* Correct answer - green fill */
+    .choice-btn.correct::before {
+        background-color: #48c774;
+        width: 100%;
+    }
+
+    /* Wrong answer - red fill */
+    .choice-btn.wrong::before {
+        background-color: #f14668; 
+        width: 100%;
+    }
+
+    .choice-btn {
+        z-index: 1;
+    }
+
+    .extra-info-box {
+        width: 90%; 
+        max-width: 520px; 
+        padding: 10px;
+        margin: 1rem auto; 
+        z-index: 9999; 
+        background-color: white;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+    }
+    #quizImage{
+        max-width: 100%; 
+        height: auto;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .placeholderImage {
+        background-color: #d3d3d3; 
+        width: 90%; 
+        height: auto;
+        max-height: 350px;
+        border-radius: 5px;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #quizResult{
+        display: none; 
+        width: 100%; 
+        max-width: 90%; 
+        padding: 30px; 
+        z-index: 2; 
+        margin-top: 30px;
+    }
+
     @font-face {
-        font-family: 'Avenue';
-        src: url('../../font/Avenue.otf') format('opentype');
+        font-family: 'verdana';
+        src: url('../../font/verdana.ttf') format('opentype');
     }
     @font-face {
         font-family: 'Haniley';
         src: url('../../font/Haniley.otf') format('opentype');
     }
     .main-font {
-        font-family: 'Avenue';
+        font-family: 'verdana';
     }
     .secondary-font{
         font-family: 'Haniley';
@@ -139,11 +221,11 @@
                             <!-- Content Layout -->
                             <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered">
                                 <figure class="image es-image ">
-                                    <img src="../../image/esystem3.png" alt="Matter 1">
+                                    <img src="../../image/eco3.png" alt="Ecosystem">
                                 </figure>
 
                                 <p class="subtitle main-font column is-four-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white mb-6">
-                                    An ecosystem is all the biotic and abiotic components that interact within an area at once.
+                                    An <span style="color: yellow;">Ecosystem</span> is all the biotic and abiotic components that interact within an area at once.
                                 </p>
                             </div>
                         </div>
@@ -180,7 +262,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esbio1.png" alt="Biotic">
+                                        <img src="../../image/ecobio1.gif" alt="Biotic">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Animals</p>
                                 </div>
@@ -188,7 +270,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esbio2.png" alt="Biotic">
+                                        <img src="../../image/ecobio2.gif" alt="Biotic">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Trees and Plants</p>
                                 </div>
@@ -196,14 +278,14 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esbio3.png" alt="Biotic">
+                                        <img src="../../image/ecobio3.gif" alt="Biotic">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Bacteria</p>
                                 </div>
                             </div>
 
                             <p class="main-font subtitle column is-four-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-4">
-                                Biotic factors are living things within an ecosystem; such as plants, animals, and bacteria.
+                                <span style="color: yellow;">Biotic factors</span> are living things within an ecosystem; such as plants, animals, and bacteria.
                             </p>
                         </div>
                     </div>
@@ -217,7 +299,7 @@
                                 <!-- Solid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esabio1.png" alt="Abiotic">
+                                        <img src="../../image/ecoabio1.gif" alt="Abiotic">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Water and Rocks</p>
                                 </div>
@@ -225,7 +307,7 @@
                                 <!-- Solid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esabio2.png" alt="Abiotic">
+                                        <img src="../../image/ecoabio2.gif" alt="Abiotic">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Soil</p>
                                 </div>
@@ -233,14 +315,14 @@
                                 <!-- Solid Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esabio3.png" alt="Abiotic">
+                                        <img src="../../image/ecoabio3.gif" alt="Abiotic">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Light</p>
                                 </div>
                             </div>
 
                             <p class="main-font subtitle column is-four-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-4">
-                                Abiotic factors are non-living things such as air, water, light, soil, nutrient and many more
+                                <span style="color: yellow;">Abiotic factors</span> are non-living things such as air, water, light, soil, nutrient and many more
                             </p>
                         </div>
                     </div>
@@ -262,7 +344,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image">
-                                        <img src="../../image/esystem4.png" alt="Eco">
+                                        <img src="../../image/eco4.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -274,9 +356,15 @@
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
                             <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">The Ecosystem Estuaries</h1>
 
-                            <!-- Placeholder for Video -->
-                            <div class="box placeholder mt-5">
-                                <p class="has-text-centered has-text-white is-size-2 secondary-font ">ANIMATED VIDEO</p>
+                            <!-- Video for -->
+                            <div class="box">
+                                <video id="solidVideo" width="750" height="420" controls>
+                                    <source src="../../videos/.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
+                                    Credits to: ..... Youtube
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -293,14 +381,14 @@
                                         Brackish
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • Brackish is found in an area where the river meets the sea.
+                                        • <span style="color: yellow;">Brackish</span> is found in an area where the river meets the sea.
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem5.png" alt="Eco">
+                                        <img src="../../image/eco5.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -319,14 +407,14 @@
                                         Sediment
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • Sediment are the particles such as sand and soil which settle on the side and bottom of water bodies
+                                        • <span style="color: yellow;">Sediment</span> are the particles such as sand and soil which settle on the side and bottom of water bodies
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem6.png" alt="Eco">
+                                        <img src="../../image/eco6.png" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -342,7 +430,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esExamples1.png" alt="Sediments">
+                                        <img src="../../image/ecoExamples1.png" alt="Sediments">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Pebbles</p>
                                 </div>
@@ -350,7 +438,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esExamples2.png" alt="Sediments">
+                                        <img src="../../image/ecoExamples2.png" alt="Sediments">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sand</p>
                                 </div>
@@ -358,7 +446,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esExamples3.png" alt="Sediments">
+                                        <img src="../../image/ecoExamples3.png" alt="Sediments">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Clay</p>
                                 </div>
@@ -378,14 +466,14 @@
                                         Murky Water
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • The murky water in an estuary is due to the presence of sediments and provides good camouflage for small organisms
+                                        • The <span style="color: yellow;">Murky Water</span> in an estuary is due to the presence of sediments and provides good camouflage for small organisms
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem7.png" alt="Eco">
+                                        <img src="../../image/eco7.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -404,14 +492,14 @@
                                         Estuary
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • An estuary, characterized by having brackish water, is home to many organisms
+                                        • An <span style="color: yellow;">Estuary</span>, characterized by having brackish water, is home to many organisms
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem8.png" alt="Eco">
+                                        <img src="../../image/eco8.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -420,12 +508,72 @@
 
                     <!-- Eco Quiz -->
                     <div class="eco-content" id="ecoQuiz">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <div class="iframe-container">
-                                <iframe src="https://scitrack.h5p.com/content/1292375351285473868/embed" aria-label="Liquid Quiz" width="900" height="900" frameborder="0" 
-                                    allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
-                                </iframe>
-                                <script src="https://scitrack.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                QUIZ
+                            </h1>
+                            <!-- Quiz Container -->
+                            <div class="box has-text-centered" id="quizContainer" style="width: 100%; max-width: 90%; max-height: 80%; padding: 30px; z-index: 2;">
+                                <div class="columns">
+                                    <!-- Left Column for Image -->
+                                    <div class="column is-one-third has-text-centered placeholderImage">
+                                        <img src="../../image/book.png" alt="Quiz Image" id="quizImage">
+                                    </div>
+
+                                    <!-- Right Column for Question and Choices -->
+                                    <div class="column is-two-thirds">
+                                        <!-- Question Number -->
+                                        <h2 class="title secondary-font is-2" id="questionNumber">Question 1</h2>
+
+                                        <!-- Question -->
+                                        <p class="subtitle main-font is-4" id="questionText"></p>
+
+                                        <!-- Choices as Buttons with Responsive Sizes -->
+                                        <div class="buttons is-flex is-flex-direction-column ml-3">
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                        </div>
+
+                                        <div class="box extra-info-box" id="extraInfoBox" style="display:none;">
+                                            <h3 class="subtitle secondary-font is-3" id="extraInfoTitle">Additional Information</h3>
+                                            <p id="extraInfoText" class="main-font"></p>
+                                        </div>
+
+                                        <!-- Next Button -->
+                                        <button class="button is-success main-font is-size-6-widescreen is-size-7-tablet" id="nextButton" disabled>Next Question</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Quiz Result -->
+                            <div class="box has-text-centered p-6" id="quizResult">
+                                <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
+                                <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Total Questions</strong></td>
+                                            <td id="totalQuestions">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Correct</strong></td>
+                                            <td id="correctAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Wrong</strong></td>
+                                            <td id="wrongAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Percentage</strong></td>
+                                            <td id="percentage">0%</</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Your Total Score</strong></td>
+                                            <td id="totalScore">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -454,10 +602,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -558,4 +706,152 @@
         hideAllSections();
         showSection(0); 
     });
+
+    //for quiz
+    // Quiz Data
+    const quizData = [
+        {
+            question: "What is an estuary?",
+            choices: ["A forest", "Where a river meets the sea", "A desert", "A mountain range"],
+            quizImage: "../quizImage/esQuizImage1.png",
+            correctAnswer: "Where a river meets the sea",
+            additionalInfo: "An estuary is a unique place where fresh water from rivers mixes with salty sea water, creating a brackish environment perfect for many organisms."
+        },
+        {
+            question: "What type of water is found in estuaries?",
+            choices: ["Freshwater", "Saltwater", "Brackish", "Pure"],
+            quizImage: "../quizImage/esQuizImage2.png",
+            correctAnswer: "Brackish",
+            additionalInfo: "Estuaries have brackish water, which is a mix of fresh and saltwater. It's like the 'Goldilocks' water—just right for certain wildlife!"
+        },
+        {
+            question: "Which of these animals often relies on estuaries for nesting and breeding?",
+            choices: ["Elephants", "Sharks", "Birds", "Monkeys"],
+            quizImage: "../quizImage/esQuizImage3.png",
+            correctAnswer: "Birds",
+            additionalInfo: "Birds love estuaries for nesting and breeding because they provide lots of food and safe places to raise their young. It's like nature's daycare!"
+        },
+        {
+            question: "What causes the murky water in estuaries?",
+            choices: ["Trash", "Rain", "Sediment", "Fish parties"],
+            quizImage: "../quizImage/esQuizImage4.png",
+            correctAnswer: "Sediment",
+            additionalInfo: "Sediments like sand and clay make the water look murky, but don’t worry! It’s perfect for small critters who love hiding in the 'underwater fog.'"
+        },
+        {
+            question: "Which of these is an example of sediment in an estuary?",
+            choices: ["Pebbles", "Diamonds", "Gold", "Ice"],
+            quizImage: "../quizImage/esQuizImage5.png",
+            correctAnswer: "Pebbles",
+            additionalInfo: "Pebbles, along with sand and clay, are common sediments found in estuaries. They’re like nature’s tiny building blocks!"
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let correctAnswersCount = 0;
+    let totalQuestions = quizData.length;
+    let selectedAnswer = null;
+
+    const choices = document.querySelectorAll('.choice-btn');
+    const nextButton = document.getElementById('nextButton');
+    const extraInfoBox = document.getElementById('extraInfoBox');
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const quizImage = document.getElementById('quizImage');
+    const extraInfoText = document.getElementById('extraInfoText');
+    const quizResult = document.getElementById('quizResult');
+    const totalQuestionsDisplay = document.getElementById('totalQuestions');
+    const correctAnswersDisplay = document.getElementById('correctAnswers');
+    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+    const percentageDisplay = document.getElementById('percentage');
+    const totalScoreDisplay = document.getElementById('totalScore');
+
+    // Function to load a question
+    function loadQuestion() {
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+        questionText.textContent = currentQuestion.question;
+        quizImage.src = currentQuestion.quizImage;
+
+        choices.forEach((button, index) => {
+            button.textContent = currentQuestion.choices[index];
+            button.classList.remove('correct', 'wrong');
+            button.style.display = 'inline-block';
+            button.style.color = 'black'; 
+        });
+
+        extraInfoBox.style.display = 'none';
+        nextButton.disabled = true;
+        selectedAnswer = null;
+    }
+
+    // Adding click event listeners to choices
+    choices.forEach(button => {
+        button.addEventListener('click', function() {
+            if (selectedAnswer) return; // Prevent selecting again
+
+            selectedAnswer = button.textContent; // Set the selected answer
+            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+
+            // Check each choice
+            choices.forEach(btn => {
+                // Hide incorrect answers if they are not selected
+                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                    btn.style.display = 'none'; // Hides the button
+                } else {
+                    // Add correct or wrong class based on the selected answer
+                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                    btn.style.color = 'white';
+                }
+            });
+
+            // Display additional information about the question
+            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
+            extraInfoBox.style.display = 'block';
+            nextButton.disabled = false; // Enable the next button
+
+            // Check if the answer is correct
+            if (selectedAnswer === correctAnswer) {
+                correctAnswersCount++; // Increment the correct answers count
+            }
+        });
+    });
+
+    // Function to handle next question
+    nextButton.addEventListener('click', function () {
+        if (!selectedAnswer) {
+            alert('Please select an answer!');
+            return;
+        }
+
+        // Increment the current question index
+        currentQuestionIndex++;
+
+        // Check if the current question index is the last one
+        if (currentQuestionIndex >= quizData.length) {
+            // Call the showResults function to display the results
+            showResults();
+        } else {
+            // Load the next question
+            loadQuestion();
+        }
+    });
+
+    // Function to display results
+    function showResults() {
+        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+        quizContainer.style.display = 'none'; // Hide the quiz container
+
+        // Show the quiz result container
+        quizResult.style.display = 'block';
+        totalQuestionsDisplay.textContent = totalQuestions;
+        correctAnswersDisplay.textContent = correctAnswersCount;
+        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    }
+
+    // Load the first question
+    loadQuestion();
 </script>
