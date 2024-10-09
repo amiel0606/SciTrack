@@ -60,6 +60,34 @@
     .button-text {
         font-size: 0.75em;
     }
+    .lesson-image{
+        width: 100%;
+        max-width: 100%; 
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        z-index: 5;
+    }
+    .lesson-image:hover {
+        transform: scale(1.05);
+    }
+    .button-transparent {
+        background-color: transparent; 
+        border: none;
+        color: white;
+        font-size: 2em;
+        padding: 0;
+    }
+    .lessons-button-container {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 25%;
+        z-index: 2;
+    }
+
     .navbar{
         background-color: #4A90E2 !important;
     }
@@ -138,49 +166,55 @@
                     </div>
 
                     <!-- Lessons -->
-                    <div class="student-content " id="lessons">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 mt-6 p-6">
-                            <div class="columns is-multiline is-centered mt-6 ">
-                                <div id="matters" class=" column is-2-mobile is-one-quarter-tablet example-image mr-6">
+                    <div class="student-content" id="lessons">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6 mt-4">
+                            <div class="columns is-centered mt-6">
+                                <div id="matters" class="column has-text-centered">
                                     <a href="./matter/matterLesson.php">
-
-                                        <figure class="image figure-image">
-                                            <img src="../image/matterTopic.gif" alt="Matter">
+                                        <figure class="image lesson-image">
+                                            <img src="../image/matterTopic1.gif" alt="Matter">
                                             <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
                                         </figure>
                                     </a>
                                 </div>
-                                <div id="eco"  class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
+                                <div id="eco" class="column has-text-centered is-hidden">
                                     <a href="./esystem/ecosystemLesson.php">
-
-                                        <figure class="image figure-image">
-                                            <img src="../image/ecosystemTopic.gif" alt="Ecosystem">
+                                        <figure class="image lesson-image">
+                                            <img src="../image/ecosystemTopic1.gif" alt="Ecosystem">
                                             <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
                                         </figure>
                                     </a>
                                 </div>
-                            </div>
-
-                            <div class="columns is-multiline is-centered mb-1">
-                                <div id="motion" class="column is-2-mobile is-one-quarter-tablet example-image mr-6">
+                                <div id="motion" class="column has-text-centered is-hidden">
                                     <a href="./motion/motionDef.php">
-                                        <figure class="image figure-image">
-                                            <img src="../image/motionTopic.gif" alt="Motion">
+                                        <figure class="image lesson-image">
+                                            <img src="../image/motionTopic1.gif" alt="Motion">
                                             <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
                                         </figure>
                                     </a>
                                 </div>
-                                <div id="earth" class="column is-2-mobile is-one-quarter-tablet example-image ml-6">
-                                    <a href="./surface/surfaceDef.php">
-                                        <figure class="image figure-image">
-                                            <img src="../image/surfaceTopic.gif" alt="Earth's Surface">
-                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">EARTH'S SURFACE</p>
+                                <div id="earth" class="column has-text-centered is-hidden">
+                                    <a href="./motion/motionDef.php">
+                                        <figure class="image lesson-image">
+                                            <img src="../image/surfaceTopic1.gif" alt="Surface">
+                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">SURFACE</p>
                                         </figure>
                                     </a>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Left and Right Buttons -->
+                        <div class="lessons-button-container">
+                            <button class="button-transparent" id="leftLessonButton">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="button-transparent" id="rightLessonButton">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
                     </div>
+
 
                     
                     <!-- Left and Right Buttons -->
@@ -216,37 +250,52 @@
             conn.send(JSON.stringify({ type: 'loadLessons', section: 'Papaya' }));
         };
         conn.onmessage = function(e) {
-            var data = JSON.parse(e.data);
-            console.log(data);
-            var matter =document.getElementById('matters');
-            var eco =document.getElementById('eco');
-            var motion =document.getElementById('motion');
-            var earth =document.getElementById('earth');
-            if (data.type === 'student') {
-                document.getElementById('studentName').innerText = data.name;
-            }
-            if (data.type === 'lesson') {
-                if (data.matter === 'Inactive') {
-                    matter.classList.add('is-invisible');
-                    console.log('Matter is set to Inactive');
-                    console.log(matter);
-                }
-                if (data.ecosystem === 'Inactive') {
-                    eco.classList.add('is-invisible');
-                    console.log('Ecosystem is set to Inactive');
-                }
-                if (data.motion === 'Inactive') {
-                    motion.classList.add('is-invisible');
-                    console.log('Motion is set to Inactive');
-                }
-                if (data.earth === 'Inactive') {
-                    earth.classList.add('is-invisible');
-                    console.log('Earth is set to Inactive');
-                }
-            }
+    var data = JSON.parse(e.data);
+    console.log(data);
+    var matter = document.getElementById('matters');
+    var eco = document.getElementById('eco');
+    var motion = document.getElementById('motion');
+    var earth = document.getElementById('earth');
+    const today = new Date();
+    const offset = today.getTimezoneOffset();
+    const philippinesOffset = 360; // Philippines is UTC+8, which is 360 minutes ahead of UTC
+    const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
+    const formattedToday = philippinesTime.toISOString().slice(0, 10); // Get today's date in yyyy-MM-dd format, using Philippines timezone
 
-            
-        };
+    if (data.type === 'student') {
+        document.getElementById('studentName').innerText = data.name;
+    }
+    if (data.type === 'lessons') {
+        if (data.matter === formattedToday) {
+            matter.classList.remove('is-invisible');
+            console.log('Matter is set to today');
+        } else {
+            matter.classList.add('is-invisible');
+            console.log('Matter is not set to today');
+        }
+        if (data.ecosystem === formattedToday) {
+            eco.classList.remove('is-invisible');
+            console.log('Ecosystem is set to today');
+        } else {
+            eco.classList.add('is-invisible');
+            console.log('Ecosystem is not set to today');
+        }
+        if (data.motion === formattedToday) {
+            motion.classList.remove('is-invisible');
+            console.log('Motion is set to today');
+        } else {
+            motion.classList.add('is-invisible');
+            console.log('Motion is not set to today');
+        }
+        if (data.earth === formattedToday) {
+            earth.classList.remove('is-invisible');
+            console.log('Earth is set to today');
+        } else {
+            earth.classList.add('is-invisible');
+            console.log('Earth is not set to today');
+        }
+    }
+};
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
         const welcome = document.getElementById('welcome');
@@ -320,6 +369,37 @@
         }
     
 
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const lessons = ['matters', 'eco', 'motion', 'earth'];
+        let currentLesson = 0;
+
+        const leftLessonButton = document.getElementById('leftLessonButton');
+        const rightLessonButton = document.getElementById('rightLessonButton');
+        
+        function showLesson(index) {
+            lessons.forEach((lesson, i) => {
+                const lessonDiv = document.getElementById(lesson);
+                if (i === index) {
+                    lessonDiv.classList.remove('is-hidden');
+                } else {
+                    lessonDiv.classList.add('is-hidden');
+                }
+            });
+        }
+
+        leftLessonButton.addEventListener('click', () => {
+            currentLesson = (currentLesson - 1 + lessons.length) % lessons.length;
+            showLesson(currentLesson);
+        });
+
+        rightLessonButton.addEventListener('click', () => {
+            currentLesson = (currentLesson + 1) % lessons.length;
+            showLesson(currentLesson);
+        });
+
+        showLesson(currentLesson);
     });
 
 </script>
