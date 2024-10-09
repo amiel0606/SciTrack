@@ -75,16 +75,17 @@
         background-color: #266bbb;
         color: white;
     }
+
     @font-face {
-        font-family: 'Avenue';
-        src: url('../../font/Avenue.otf') format('opentype');
+        font-family: 'verdana';
+        src: url('../../font/verdana.ttf') format('opentype');
     }
     @font-face {
         font-family: 'Haniley';
         src: url('../../font/Haniley.otf') format('opentype');
     }
     .main-font {
-        font-family: 'Avenue';
+        font-family: 'verdana';
     }
     .secondary-font{
         font-family: 'Haniley';
@@ -159,7 +160,7 @@
                                 <!-- One-third -->
                                 <div class="column is-one-third has-text-centered">
                                     <div class="title is-size-3 has-text-white topic-container main-font">
-                                        <p>SOLID</p>
+                                        <p style="letter-spacing: 0.15em;">SOLID</p>
                                         <a href="matterSolid.php">
                                             <figure class="image">
                                                 <img src="../../image/solidGif.gif" alt="Solid">
@@ -174,7 +175,7 @@
                                         <!-- Two-third, left -->
                                         <div class="column is-half has-text-centered">
                                             <div class="title is-size-3 has-text-white topic-container main-font">
-                                                <p>LIQUID</p>
+                                                <p style="letter-spacing: 0.15em;">LIQUID</p>
                                                 <a href="matterLiquid.php">
                                                     <figure class="image">
                                                         <img src="../../image/liquidGif.gif" alt="Liquid">
@@ -186,7 +187,7 @@
                                         <!-- Two-third, right -->
                                         <div class="column is-half has-text-centered">
                                             <div class="title is-size-3 has-text-white topic-container main-font">
-                                                <p>GAS</p>
+                                                <p style="letter-spacing: 0.15em;">GAS</p>
                                                 <a href="matterGas.php">
                                                     <figure class="image">
                                                         <img src="../../image/gasGif.gif" alt="Gas">

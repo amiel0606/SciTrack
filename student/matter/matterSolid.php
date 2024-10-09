@@ -9,18 +9,6 @@
     .matter-content-active {
         display: block;
     }
-    @keyframes rotate {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(30px, -10px); }
-        50% { transform: translate(60px, 10px); }
-        75% { transform: translate(-30px, 10px); }
-        100% { transform: translate(0, 0); }
-    }
-
-    .rotate-image {
-        animation: rotate 4s linear infinite;
-        transform-style: preserve-3d;
-    }
     #einstein-image {
         width: 100%;
         max-width: 25%;
@@ -49,9 +37,9 @@
         text-align: center;
     }
     #matterVideo video {
-    z-index: 10; 
-    position: relative; 
-}
+        z-index: 10; 
+        position: relative; 
+    }
     .image-container {
         display: flex;
         justify-content: space-around;
@@ -66,13 +54,39 @@
         width: 100%;
         max-width: 350px;
     }
+    .stateImage{
+        width: 100%;
+        max-width: 400px;
+        margin-top: -6%;
+    }
+    #states {
+        margin-top: -4%;
+    }
     #sChar img {
         width: 100%;
         max-width: 300px;
     }
-    #sExample img {
+    .sExample{
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        margin-top: 2rem;
+    }
+    .sExample .image-item{
+        text-align: center;
+        margin: 0;
+    }
+    .sExample .image-item:first-child{
+        margin-right: 5rem;
+    }
+    .sExample .image-item:last-child{
+        margin-left: 5rem;
+    }
+    .sExample img {
+        min-width: 300px;
+        min-height: 350px;
         width: 100%;
-        max-width: 1000px;
+        max-width: 500px;
         margin-top: 2rem;
     }
     .solid-image {
@@ -88,9 +102,6 @@
     #solid-text {
         margin-left: 9rem;
     }
-    #states {
-        margin-bottom: -4%;
-    }
     .placeholder {
         width: 100%;
         max-width: 90%;
@@ -100,19 +111,6 @@
     } 
     #letsTryButton {
         z-index: 10;
-    }
-    .iframe-container {
-        position: relative;
-        z-index: 2; 
-        width: 80%; 
-        margin: 0 auto;
-    }
-
-    .iframe-container iframe {
-        width: 100%;
-        margin-top: 250px; 
-        border: none;
-        z-index: 2;
     }
 
     .image-container {
@@ -138,16 +136,92 @@
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
     }
+
+    /* for quiz layout */
+    .choice-btn {
+        background-color: #d3d3d3;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* Left-to-right fill effect */
+    .choice-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: transparent;
+        z-index: -1;
+        transition: width 0.6s ease, background-color 0.6s ease;
+    }
+
+    /* Correct answer - green fill */
+    .choice-btn.correct::before {
+        background-color: #48c774;
+        width: 100%;
+    }
+
+    /* Wrong answer - red fill */
+    .choice-btn.wrong::before {
+        background-color: #f14668; 
+        width: 100%;
+    }
+
+    .choice-btn {
+        z-index: 1;
+    }
+
+    .extra-info-box {
+        width: 90%; 
+        max-width: 520px; 
+        padding: 10px;
+        margin: 1rem auto; 
+        z-index: 9999; 
+        background-color: white;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+    }
+    #quizImage{
+        max-width: 100%; 
+        height: auto;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .placeholderImage {
+        background-color: #d3d3d3; 
+        width: 90%; 
+        height: auto;
+        max-height: 350px;
+        border-radius: 5px;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #quizResult{
+        display: none; 
+        width: 100%; 
+        max-width: 90%; 
+        padding: 30px; 
+        z-index: 2; 
+        margin-top: 30px;
+    }
+
     @font-face {
-        font-family: 'Avenue';
-        src: url('../../font/Avenue.otf') format('opentype');
+        font-family: 'verdana';
+        src: url('../../font/verdana.ttf') format('opentype');
     }
     @font-face {
         font-family: 'Haniley';
         src: url('../../font/Haniley.otf') format('opentype');
     }
     .main-font {
-        font-family: 'Avenue';
+        font-family: 'verdana';
     }
     .secondary-font{
         font-family: 'Haniley';
@@ -166,35 +240,18 @@
                     <!-- Matter States -->
                     <div class="x-content" id="matterStates">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">SOLID</h1>
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
 
-                            <div class="image-container">
-                                <!-- Liquid Image -->
-                                <div class="image-item">
-                                    <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">LIQUID</p>
-                                    <figure class="image">
-                                        <img src="../../image/mliquid.png" alt="Liquid">
-                                    </figure>
-                                </div>
-
-                                <!-- Solid Image -->
-                                <div class="image-item mb-6">
-                                    <figure class="image">
-                                        <img src="../../image/msolidgif.gif" alt="Solid" class="rotate-image">
-                                    </figure>
-                                </div>
-
-                                <!-- Gas Image -->
-                                <div class="image-item">
-                                    <p class="main-font title is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">GAS</p>
-                                    <figure class="image">
-                                        <img src="../../image/mgas.png" alt="Gas">
-                                    </figure>
-                                </div>
+                            <!-- Solid Image -->
+                            <div class="stateImage">
+                                <figure class="image">
+                                    <img src="../../image/msolidgif.gif" alt="Solid">
+                                </figure>
                             </div>
 
-                            <p class="main-font column is-three-fifths title is-size-5-tablet is-size-4-desktop is-size-3-widescreen
-                            has-text-centered has-text-white mb-6" id="states">Solid is one of the three fundamental states of matter along with liquid, gas.</p>
+                            <p class="main-font column is-four-fifths subtitle is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
+                                <span style="color: yellow;">Solid</span> is one of the three fundamental states of matter along with liquid, gas.
+                            </p>
                         </div>                       
                     </div>
 
@@ -214,7 +271,7 @@
 
                                 <!-- Text Column -->
                                 <div class="column is-5">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
                                         • Has particles that are packed closely together and usually arranged in regular pattern
                                     </p>
                                 </div>
@@ -267,9 +324,9 @@
                                     <source src="../../videos/Solid.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                                    <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
-                                        Credits to: It's AumSum Time Youtube
-                                    </p>
+                                <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
+                                    Credits to: It's AumSum Time Youtube
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -283,11 +340,11 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
                                         • Has Definite shape and volume
                                     </p>
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
-                                        • When a solid is heated, its molecules gain energy and vibrate fast.
+                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
+                                        • When a solid is heated, its molecules gain energy and vibrate fast.
                                     </p>
                                 </div>
 
@@ -308,10 +365,10 @@
                                 EXAMPLES OF SOLID
                             </h1>
 
-                            <div class="image-container" id="sExample">
+                            <div class="sExample">
                                 <!-- First Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid3.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Books</p>
@@ -319,15 +376,26 @@
 
                                 <!-- Second Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid4.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Eraser</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Matter Examples 2 -->
+                    <div class="matter-content" id="matterExamples2">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                EXAMPLES OF SOLID
+                            </h1>
+
+                            <div class="sExample">
                                 <!-- Third Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid5.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shirt</p>
@@ -335,7 +403,7 @@
 
                                 <!-- Fourth Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/msolid6.png" alt="Solid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Bag</p>
@@ -377,15 +445,76 @@
 
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <div class="iframe-container">
-                                <iframe src="https://scitrack.h5p.com/content/1292375351285473868/embed" aria-label="Liquid Quiz" width="900" height="900" frameborder="0" 
-                                    allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
-                                </iframe>
-                                <script src="https://scitrack.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                QUIZ
+                            </h1>
+                            <!-- Quiz Container -->
+                            <div class="box has-text-centered" id="quizContainer" style="width: 100%; max-width: 90%; max-height: 80%; padding: 30px; z-index: 2;">
+                                <div class="columns">
+                                    <!-- Left Column for Image -->
+                                    <div class="column is-one-third has-text-centered placeholderImage">
+                                        <img src="../../image/book.png" alt="Quiz Image" id="quizImage">
+                                    </div>
+
+                                    <!-- Right Column for Question and Choices -->
+                                    <div class="column is-two-thirds">
+                                        <!-- Question Number -->
+                                        <h2 class="title secondary-font is-2" id="questionNumber">Question 1</h2>
+
+                                        <!-- Question -->
+                                        <p class="subtitle main-font is-4" id="questionText"></p>
+
+                                        <!-- Choices as Buttons with Responsive Sizes -->
+                                        <div class="buttons is-flex is-flex-direction-column ml-3">
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                        </div>
+
+                                        <div class="box extra-info-box" id="extraInfoBox" style="display:none;">
+                                            <h3 class="subtitle secondary-font is-3" id="extraInfoTitle">Additional Information</h3>
+                                            <p id="extraInfoText" class="main-font"></p>
+                                        </div>
+
+                                        <!-- Next Button -->
+                                        <button class="button is-success main-font is-size-6-widescreen is-size-7-tablet" id="nextButton" disabled>Next Question</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Quiz Result -->
+                            <div class="box has-text-centered p-6" id="quizResult">
+                                <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
+                                <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Total Questions</strong></td>
+                                            <td id="totalQuestions">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Correct</strong></td>
+                                            <td id="correctAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Wrong</strong></td>
+                                            <td id="wrongAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Percentage</strong></td>
+                                            <td id="percentage">0%</</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Your Total Score</strong></td>
+                                            <td id="totalScore">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Matter Solid Completed -->
                     <div class="matter-content" id="matterCompleted">
@@ -411,10 +540,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -462,6 +591,7 @@
         const matterVideo = document.getElementById('matterVideo');
         const matterSolid2 = document.getElementById('matterSolid2');
         const matterExamples = document.getElementById('matterExamples');
+        const matterExamples2 = document.getElementById('matterExamples2');
         const matterLetsTry = document.getElementById('matterLetsTry');
         const matterQuiz = document.getElementById('matterQuiz');
         const matterCompleted = document.getElementById('matterCompleted');
@@ -474,7 +604,7 @@
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
         let currentSection = 0;
-        const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterLetsTry, matterQuiz, matterCompleted];
+        const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -562,7 +692,7 @@
         }
 
 
-    if (index >= 0 && index <= 5) { 
+    if (index >= 0 && index <= 6) { 
         examplesButton.style.display = 'flex';
         einsteinImage.style.display = 'block';
         letsTryButton.style.display = 'none';
@@ -599,8 +729,8 @@
 
 
         rightButton.addEventListener('click', function () {
-            if (currentSection === 5) {
-                currentSection = 6;
+            if (currentSection === 6) {
+                currentSection = 7;
                 showSection(currentSection);
             } else if (currentSection < sections.length - 1) {
                 currentSection++; 
@@ -609,12 +739,12 @@
         });
 
         goBackButton.addEventListener('click', function () {
-            currentSection = 5; 
+            currentSection = 6; 
             showSection(currentSection);
         });
 
         proceedToQuizButton.addEventListener('click', function () {
-            currentSection = 7; 
+            currentSection = 8; 
             showSection(currentSection);
         });
 
@@ -631,5 +761,154 @@
         showSection(0); 
 
     });
+
+    //for quiz
+    // Quiz Data
+    const quizData = [
+        {
+            question: "What is the state of matter that has a definite shape and volume?",
+            choices: ["Liquid", "Gas", "Solid", "Plasma"],
+            quizImage: "../quizImage/solidQuizImage1.png",
+            correctAnswer: "Solid",
+            additionalInfo: "Solids maintain a fixed shape and volume because their particles are closely packed together and cannot move freely."
+        },
+        {
+            question: "Which of the following solids can be easily molded into different shapes?",
+            choices: ["Glass", "Clay", "Steel", "Ice"],
+            quizImage: "../quizImage/solidQuizImage2.png",
+            correctAnswer: "Clay",
+            additionalInfo: "Clay is a malleable material that can be easily shaped when wet. Once it dries or is fired in a kiln, it becomes hard and retains the molded shape, making it ideal for pottery and sculpture."
+        },
+        {
+            question: "What happens to the particles in a solid?",
+            choices: ["They move freely.", "They are tightly packed together.", "They are far apart.", "They vibrate rapidly."],
+            quizImage: "../quizImage/solidQuizImage3.png",
+            correctAnswer: "They are tightly packed together.",
+            additionalInfo: "In solids, particles are closely packed and can only vibrate in place, giving solids their rigid structure."
+        },
+        {
+            question: "Which solid is typically used for construction due to its strength?",
+            choices: ["Sugar", "Sand", "Concrete", "Paper"],
+            quizImage: "../quizImage/solidQuizImage4.png",
+            correctAnswer: "Concrete",
+            additionalInfo: "Concrete is a strong, durable material used widely in construction because of its ability to withstand heavy loads."
+        },
+        {
+            question: "Which solid is known for being very hard?",
+            choices: ["Rubber", "Wood", "Diamond", "Cotton"],
+            quizImage: "../quizImage/solidQuizImage5.png",
+            correctAnswer: "Diamond",
+            additionalInfo: "Diamond is the hardest known natural material, making it valuable for cutting and drilling applications."
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let correctAnswersCount = 0;
+    let totalQuestions = quizData.length;
+    let selectedAnswer = null;
+
+    const choices = document.querySelectorAll('.choice-btn');
+    const nextButton = document.getElementById('nextButton');
+    const extraInfoBox = document.getElementById('extraInfoBox');
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const quizImage = document.getElementById('quizImage');
+    const extraInfoText = document.getElementById('extraInfoText');
+    const quizResult = document.getElementById('quizResult');
+    const totalQuestionsDisplay = document.getElementById('totalQuestions');
+    const correctAnswersDisplay = document.getElementById('correctAnswers');
+    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+    const percentageDisplay = document.getElementById('percentage');
+    const totalScoreDisplay = document.getElementById('totalScore');
+
+    // Function to load a question
+    function loadQuestion() {
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+        questionText.textContent = currentQuestion.question;
+        quizImage.src = currentQuestion.quizImage;
+
+        choices.forEach((button, index) => {
+            button.textContent = currentQuestion.choices[index];
+            button.classList.remove('correct', 'wrong');
+            button.style.display = 'inline-block';
+            button.style.color = 'black'; 
+        });
+
+        extraInfoBox.style.display = 'none';
+        nextButton.disabled = true;
+        selectedAnswer = null;
+    }
+
+    // Adding click event listeners to choices
+    choices.forEach(button => {
+        button.addEventListener('click', function() {
+            if (selectedAnswer) return; // Prevent selecting again
+
+            selectedAnswer = button.textContent; // Set the selected answer
+            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+
+            // Check each choice
+            choices.forEach(btn => {
+                // Hide incorrect answers if they are not selected
+                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                    btn.style.display = 'none'; // Hides the button
+                } else {
+                    // Add correct or wrong class based on the selected answer
+                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                    btn.style.color = 'white';
+                }
+            });
+
+            // Display additional information about the question
+            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
+            extraInfoBox.style.display = 'block';
+            nextButton.disabled = false; // Enable the next button
+
+            // Check if the answer is correct
+            if (selectedAnswer === correctAnswer) {
+                correctAnswersCount++; // Increment the correct answers count
+            }
+        });
+    });
+
+    // Function to handle next question
+    nextButton.addEventListener('click', function () {
+        if (!selectedAnswer) {
+            alert('Please select an answer!');
+            return;
+        }
+
+        // Increment the current question index
+        currentQuestionIndex++;
+
+        // Check if the current question index is the last one
+        if (currentQuestionIndex >= quizData.length) {
+            // Call the showResults function to display the results
+            showResults();
+        } else {
+            // Load the next question
+            loadQuestion();
+        }
+    });
+
+    // Function to display results
+    function showResults() {
+        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+        quizContainer.style.display = 'none'; // Hide the quiz container
+
+        // Show the quiz result container
+        quizResult.style.display = 'block';
+        totalQuestionsDisplay.textContent = totalQuestions;
+        correctAnswersDisplay.textContent = correctAnswersCount;
+        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    }
+
+    // Load the first question
+    loadQuestion();
+
 </script>
 
