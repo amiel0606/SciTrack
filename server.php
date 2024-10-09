@@ -51,8 +51,19 @@ class UserLoader implements MessageComponentInterface {
             $this->loadStudent($from, $data['id']);
         } elseif ($data['type'] === 'getLessons') {
             $this->getLesson($from);
+        } else if ($data['type'] === 'getCountRoles') {
+            $this->getCountRoles($from);
         }
     }
+    
+    private function getCountRoles(ConnectionInterface $conn) {
+        $count = getCountRoles($this->db);
+        if ($conn->send(json_encode([
+            'type' => 'roleCount',
+            'counts' => $count
+        ])));
+    }
+    
 
     private function getLesson(ConnectionInterface $conn) {
         $lessons = getLessons($this->db);
@@ -105,7 +116,7 @@ class UserLoader implements MessageComponentInterface {
     private function loadRoles(ConnectionInterface $conn) {
         $roles = fetchRoles($this->db);
         foreach ($roles as $role) {
-            // $role['type'] = 'role';
+            $role['type'] = 'role';
             $conn->send(json_encode($role));
         }
     }

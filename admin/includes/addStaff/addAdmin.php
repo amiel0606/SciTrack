@@ -5,10 +5,10 @@ if (isset($_POST["register"])) {
     $UserName = $_POST["username"];
     $password = $_POST["password"];
     $ConfPassword = $_POST["ConfPassword"];
-    $role = 'admin';
+    $role = 'Admin';
 
     require_once '../../../includes/functions.php';
-    require_once '../';
+    require_once '../dbCon.php';
 
     if (emptyInputSignup($Fname,$Lname,$role,$UserName,$password,$ConfPassword) !== false) {
         header("location: ../../adminRegister.php?error=EmptyInput");
