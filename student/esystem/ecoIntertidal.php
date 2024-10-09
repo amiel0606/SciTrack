@@ -55,6 +55,34 @@
         max-width: 40%;
         height: auto;
     }
+    .einstein{
+        width: 100%;
+        height: auto;
+        transform: scaleX(-1);
+    }
+    .sExample{
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        margin-top: 2rem;
+    }
+    .sExample .image-item{
+        text-align: center;
+        margin: 0;
+    }
+    .sExample .image-item:first-child{
+        margin-right: 5rem;
+    }
+    .sExample .image-item:last-child{
+        margin-left: 5rem;
+    }
+    .sExample img {
+        min-width: 250px;
+        min-height: 300px;
+        width: 100%;
+        max-width: 500px;
+        margin-top: -2rem;
+    }
     .back-button {
         background-color: rgba(255, 255, 255, 0.1);
         color: #fff;
@@ -82,16 +110,92 @@
         background-color: #266bbb;
         color: white;
     }
+
+    /* for quiz layout */
+    .choice-btn {
+        background-color: #d3d3d3;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* Left-to-right fill effect */
+    .choice-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: transparent;
+        z-index: -1;
+        transition: width 0.6s ease, background-color 0.6s ease;
+    }
+
+    /* Correct answer - green fill */
+    .choice-btn.correct::before {
+        background-color: #48c774;
+        width: 100%;
+    }
+
+    /* Wrong answer - red fill */
+    .choice-btn.wrong::before {
+        background-color: #f14668; 
+        width: 100%;
+    }
+
+    .choice-btn {
+        z-index: 1;
+    }
+
+    .extra-info-box {
+        width: 90%; 
+        max-width: 520px; 
+        padding: 10px;
+        margin: 1rem auto; 
+        z-index: 9999; 
+        background-color: white;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+    }
+    #quizImage{
+        max-width: 100%; 
+        height: auto;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .placeholderImage {
+        background-color: #d3d3d3; 
+        width: 90%; 
+        height: auto;
+        max-height: 350px;
+        border-radius: 5px;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #quizResult{
+        display: none; 
+        width: 100%; 
+        max-width: 90%; 
+        padding: 30px; 
+        z-index: 2; 
+        margin-top: 30px;
+    }
+
     @font-face {
-        font-family: 'Avenue';
-        src: url('../../font/Avenue.otf') format('opentype');
+        font-family: 'verdana';
+        src: url('../../font/verdana.ttf') format('opentype');
     }
     @font-face {
         font-family: 'Haniley';
         src: url('../../font/Haniley.otf') format('opentype');
     }
     .main-font {
-        font-family: 'Avenue';
+        font-family: 'verdana';
     }
     .secondary-font{
         font-family: 'Haniley';
@@ -143,7 +247,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image">
-                                        <img src="../../image/esystem9.png" alt="Eco">
+                                        <img src="../../image/eco9.png" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -162,14 +266,14 @@
                                         Tide
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • Tide refers to the movement of water as a result of the gravitational pull of the sun and the moon.
+                                        • <span style="color: yellow;">Tide</span> refers to the movement of water as a result of the gravitational pull of the sun and the moon.
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem10.png" alt="Eco">
+                                        <img src="../../image/eco10.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -186,7 +290,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-full has-text-centered">
                                     <figure class="image eco-image mb-6">
-                                        <img src="../../image/esystem11.png" alt="Eco">
+                                        <img src="../../image/eco11.png" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -198,9 +302,15 @@
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
                             <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">The Ecosystem Estuaries</h1>
 
-                            <!-- Placeholder for Video -->
-                            <div class="box placeholder mt-5">
-                                <p class="has-text-centered has-text-white is-size-2 secondary-font ">ANIMATED VIDEO</p>
+                            <!-- Video for -->
+                            <div class="box">
+                                <video id="solidVideo" width="750" height="420" controls>
+                                    <source src="../../videos/.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
+                                    Credits to: ..... Youtube
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -217,14 +327,15 @@
                                         Splash Zone
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • Also known as the spray zone or upper littoral zone is a region in the intertidal zone that is submerged in the water.
+                                        • Also known as the <span style="color: yellow;">spray zone</span> or <span style="color: yellow;">upper littoral zone</span> 
+                                        is a region in the intertidal zone that is submerged in the water.
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem12.png" alt="Eco">
+                                        <img src="../../image/eco12.png" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -242,7 +353,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esSplash1.png" alt="Organisms">
+                                        <img src="../../image/eco13.gif" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Periwinkle Snails</p>
                                 </div>
@@ -250,7 +361,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esSplash2.png" alt="Organisms">
+                                        <img src="../../image/eco14.gif" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Lichens</p>
                                 </div>
@@ -270,14 +381,14 @@
                                         High Tide Zone
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • Also known as the upper mid-littoral zone is region that submerged in the water only during high tide.
+                                        • Also known as the <span style="color: yellow;">upper mid-littoral zone</span> is region that submerged in the water only during high tide.
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem13.png" alt="Eco">
+                                        <img src="../../image/eco15.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -295,7 +406,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esHigh1.png" alt="Organisms">
+                                        <img src="../../image/ecoHigh1.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sea weeds</p>
                                 </div>
@@ -303,7 +414,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esHigh2.png" alt="Organisms">
+                                        <img src="../../image/ecoHigh2.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Hermit crab</p>
                                 </div>
@@ -311,7 +422,7 @@
                                 <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esHigh3.png" alt="Organisms">
+                                        <img src="../../image/ecoHigh3.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Barnacles</p>
                                 </div>
@@ -331,14 +442,14 @@
                                         Middle Tide Zone
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • Also known as lower mid-littoral zone is a region that is generally submerged in the water
+                                        • Also known as <span style="color: yellow;">lower mid-littoral zone</span> is a region that is generally submerged in the water
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem14.png" alt="Eco">
+                                        <img src="../../image/eco16.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -352,11 +463,11 @@
                                 Organisms that can be found in Middle Tide Zone
                             </h1>
 
-                            <div class="image-container" id="sExample"  style="z-index: 10;">
+                            <div class="sExample"  style="z-index: 10;">
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esMiddle1.png" alt="Organisms">
+                                        <img src="../../image/ecoMiddle1.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Urchins</p>
                                 </div>
@@ -364,15 +475,26 @@
                                 <!-- Second Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esMiddle2.png" alt="Organisms">
+                                        <img src="../../image/ecoMiddle2.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Cucumbers</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Eco Middle 2 -->
+                    <div class="eco-content" id="ecoMiddle2">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-4 p-6">
+                            <h1 class="title column is-four-fifths has-text-centered is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-6">
+                                Organisms that can be found in Middle Tide Zone
+                            </h1>
+
+                            <div class="sExample"  style="z-index: 10;">
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esMiddle3.png" alt="Organisms">
+                                        <img src="../../image/ecoMiddle3.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Fish</p>
                                 </div>
@@ -380,7 +502,7 @@
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esMiddle4.png" alt="Organisms">
+                                        <img src="../../image/ecoMiddle4.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shrimp</p>
                                 </div>
@@ -400,7 +522,7 @@
                                         Low Tide Zone
                                     </p>
                                     <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
-                                        • Also known as lower littoral zone is always submerged under water
+                                        • Also known as <span style="color: yellow;">lower littoral zone</span> is always submerged under water
                                         <br>
                                         <br>
                                         • It is only exposed during extremely low tide.
@@ -410,7 +532,7 @@
                                 <!-- Image Column -->
                                 <div class="column is-5">
                                     <figure class="image eco-image mt-6">
-                                        <img src="../../image/esystem15.png" alt="Eco">
+                                        <img src="../../image/eco17.gif" alt="Eco">
                                     </figure>
                                 </div>
                             </div>
@@ -424,11 +546,11 @@
                                 Organisms that can be found in Low Tide Zone
                             </h1>
 
-                            <div class="image-container" id="sExample"  style="z-index: 10;">
+                            <div class="sExample"  style="z-index: 10;">
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esLow1.png" alt="Organisms">
+                                        <img src="../../image/ecoLow1.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Star</p>
                                 </div>
@@ -436,15 +558,26 @@
                                 <!-- Second Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esLow2.png" alt="Organisms">
+                                        <img src="../../image/ecoLow2.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Sponge</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Eco Low 2 -->
+                    <div class="eco-content" id="ecoLow2">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-4 p-6">
+                            <h1 class="title column is-four-fifths has-text-centered is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-6">
+                                Organisms that can be found in Low Tide Zone
+                            </h1>
+
+                            <div class="sExample"  style="z-index: 10;">
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esLow3.png" alt="Organisms">
+                                        <img src="../../image/ecoLow3.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Nudibranch</p>
                                 </div>
@@ -452,7 +585,7 @@
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image">
-                                        <img src="../../image/esLow4.png" alt="Organisms">
+                                        <img src="../../image/ecoLow4.png" alt="Organisms">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Algae</p>
                                 </div>
@@ -462,12 +595,72 @@
 
                     <!-- Eco Quiz -->
                     <div class="eco-content" id="ecoQuiz">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <div class="iframe-container">
-                                <iframe src="https://scitrack.h5p.com/content/1292375351285473868/embed" aria-label="Liquid Quiz" width="900" height="900" frameborder="0" 
-                                    allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
-                                </iframe>
-                                <script src="https://scitrack.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
+                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                                QUIZ
+                            </h1>
+                            <!-- Quiz Container -->
+                            <div class="box has-text-centered" id="quizContainer" style="width: 100%; max-width: 90%; max-height: 80%; padding: 30px; z-index: 2;">
+                                <div class="columns">
+                                    <!-- Left Column for Image -->
+                                    <div class="column is-one-third has-text-centered placeholderImage">
+                                        <img src="../../image/book.png" alt="Quiz Image" id="quizImage">
+                                    </div>
+
+                                    <!-- Right Column for Question and Choices -->
+                                    <div class="column is-two-thirds">
+                                        <!-- Question Number -->
+                                        <h2 class="title secondary-font is-2" id="questionNumber">Question 1</h2>
+
+                                        <!-- Question -->
+                                        <p class="subtitle main-font is-4" id="questionText"></p>
+
+                                        <!-- Choices as Buttons with Responsive Sizes -->
+                                        <div class="buttons is-flex is-flex-direction-column ml-3">
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                            <button class="button main-font is-fullwidth choice-btn is-size-6-widescreen is-size-7-tablet"></button>
+                                        </div>
+
+                                        <div class="box extra-info-box" id="extraInfoBox" style="display:none;">
+                                            <h3 class="subtitle secondary-font is-3" id="extraInfoTitle">Additional Information</h3>
+                                            <p id="extraInfoText" class="main-font"></p>
+                                        </div>
+
+                                        <!-- Next Button -->
+                                        <button class="button is-success main-font is-size-6-widescreen is-size-7-tablet" id="nextButton" disabled>Next Question</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Quiz Result -->
+                            <div class="box has-text-centered p-6" id="quizResult">
+                                <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
+                                <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Total Questions</strong></td>
+                                            <td id="totalQuestions">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Correct</strong></td>
+                                            <td id="correctAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Wrong</strong></td>
+                                            <td id="wrongAnswers">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Percentage</strong></td>
+                                            <td id="percentage">0%</</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Your Total Score</strong></td>
+                                            <td id="totalScore">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -496,10 +689,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -545,12 +738,14 @@
         const ecoHigh = document.getElementById('ecoHigh');
         const eco6 = document.getElementById('eco6');
         const ecoMiddle = document.getElementById('ecoMiddle');
+        const ecoMiddle2 = document.getElementById('ecoMiddle2');
         const eco7 = document.getElementById('eco7');
         const ecoLow = document.getElementById('ecoLow');
+        const ecoLow2 = document.getElementById('ecoLow2');
         const ecoQuiz = document.getElementById('ecoQuiz');
         const ecoCompleted = document.getElementById('ecoCompleted');
         let currentSection = 0;
-        const sections = [objectives, eco1, eco2, eco3, ecoVideo, eco4, ecoSplash, eco5, ecoHigh, eco6, ecoMiddle, eco7, ecoLow, ecoQuiz, ecoCompleted];
+        const sections = [objectives, eco1, eco2, eco3, ecoVideo, eco4, ecoSplash, eco5, ecoHigh, eco6, ecoMiddle, ecoMiddle2, eco7, ecoLow, ecoLow2, ecoQuiz, ecoCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -560,13 +755,13 @@
         }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 13 || currentSection === 14) {
+            if (currentSection === 15 || currentSection === 16) {
                 einsteinImage.style.display = 'none';  
             } else {
                 einsteinImage.style.display = 'block';
             }
 
-            if (currentSection === 14) {
+            if (currentSection === 16) {
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none'; 
             } else {
@@ -601,4 +796,152 @@
         hideAllSections();
         showSection(0); 
     });
+
+    //for quiz
+    // Quiz Data
+    const quizData = [
+        {
+            question: "What is the Splash Zone in the intertidal zone also known as?",
+            choices: ["Spray Zone", "Low Tide Zone", "Middle Tide Zone", "High Tide Zone"],
+            quizImage: "../quizImage/interQuizImage1.png",
+            correctAnswer: "Spray Zone",
+            additionalInfo: "The Splash Zone, also known as the spray zone or upper littoral zone, is the region that is submerged only during extremely high tides or storms."
+        },
+        {
+            question: "Which organism is commonly found in the High Tide Zone?",
+            choices: ["Sea Urchins", "Hermit Crabs", "Sea Stars", "Periwinkle Snails"],
+            quizImage: "../quizImage/interQuizImage2.png",
+            correctAnswer: "Hermit Crabs",
+            additionalInfo: "Hermit crabs are commonly found in the High Tide Zone, which is submerged only during high tide."
+        },
+        {
+            question: "What organisms are typically found in the Low Tide Zone?",
+            choices: ["Barnacles", "Lichens", "Sea Stars", "Periwinkle Snails"],
+            quizImage: "../quizImage/interQuizImage3.png",
+            correctAnswer: "Sea Stars",
+            additionalInfo: "Sea stars are commonly found in the Low Tide Zone, which is submerged most of the time and exposed only during extremely low tides."
+        },
+        {
+            question: "Which of the following organisms live in the Middle Tide Zone?",
+            choices: ["Fish", "Barnacles", "Periwinkle Snails", "Lichens"],
+            quizImage: "../quizImage/interQuizImage4.png",
+            correctAnswer: "Fish",
+            additionalInfo: "Fish are often found in the Middle Tide Zone, which is generally submerged and exposed only during low tide."
+        },
+        {
+            question: "Which zone in the intertidal area is always submerged except during extremely low tides?",
+            choices: ["Splash Zone", "High Tide Zone", "Low Tide Zone", "Middle Tide Zone"],
+            quizImage: "../quizImage/interQuizImage5.png",
+            correctAnswer: "Low Tide Zone",
+            additionalInfo: "The Low Tide Zone is always submerged except during extremely low tides, and it is home to organisms like sea stars and sea sponges."
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let correctAnswersCount = 0;
+    let totalQuestions = quizData.length;
+    let selectedAnswer = null;
+
+    const choices = document.querySelectorAll('.choice-btn');
+    const nextButton = document.getElementById('nextButton');
+    const extraInfoBox = document.getElementById('extraInfoBox');
+    const questionNumber = document.getElementById('questionNumber');
+    const questionText = document.getElementById('questionText');
+    const quizImage = document.getElementById('quizImage');
+    const extraInfoText = document.getElementById('extraInfoText');
+    const quizResult = document.getElementById('quizResult');
+    const totalQuestionsDisplay = document.getElementById('totalQuestions');
+    const correctAnswersDisplay = document.getElementById('correctAnswers');
+    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+    const percentageDisplay = document.getElementById('percentage');
+    const totalScoreDisplay = document.getElementById('totalScore');
+
+    // Function to load a question
+    function loadQuestion() {
+        const currentQuestion = quizData[currentQuestionIndex];
+
+        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+        questionText.textContent = currentQuestion.question;
+        quizImage.src = currentQuestion.quizImage;
+
+        choices.forEach((button, index) => {
+            button.textContent = currentQuestion.choices[index];
+            button.classList.remove('correct', 'wrong');
+            button.style.display = 'inline-block';
+            button.style.color = 'black'; 
+        });
+
+        extraInfoBox.style.display = 'none';
+        nextButton.disabled = true;
+        selectedAnswer = null;
+    }
+
+    // Adding click event listeners to choices
+    choices.forEach(button => {
+        button.addEventListener('click', function() {
+            if (selectedAnswer) return; // Prevent selecting again
+
+            selectedAnswer = button.textContent; // Set the selected answer
+            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+
+            // Check each choice
+            choices.forEach(btn => {
+                // Hide incorrect answers if they are not selected
+                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                    btn.style.display = 'none'; // Hides the button
+                } else {
+                    // Add correct or wrong class based on the selected answer
+                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                    btn.style.color = 'white';
+                }
+            });
+
+            // Display additional information about the question
+            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
+            extraInfoBox.style.display = 'block';
+            nextButton.disabled = false; // Enable the next button
+
+            // Check if the answer is correct
+            if (selectedAnswer === correctAnswer) {
+                correctAnswersCount++; // Increment the correct answers count
+            }
+        });
+    });
+
+    // Function to handle next question
+    nextButton.addEventListener('click', function () {
+        if (!selectedAnswer) {
+            alert('Please select an answer!');
+            return;
+        }
+
+        // Increment the current question index
+        currentQuestionIndex++;
+
+        // Check if the current question index is the last one
+        if (currentQuestionIndex >= quizData.length) {
+            // Call the showResults function to display the results
+            showResults();
+        } else {
+            // Load the next question
+            loadQuestion();
+        }
+    });
+
+    // Function to display results
+    function showResults() {
+        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+        quizContainer.style.display = 'none'; // Hide the quiz container
+
+        // Show the quiz result container
+        quizResult.style.display = 'block';
+        totalQuestionsDisplay.textContent = totalQuestions;
+        correctAnswersDisplay.textContent = correctAnswersCount;
+        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    }
+
+    // Load the first question
+    loadQuestion();
 </script>

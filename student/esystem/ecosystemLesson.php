@@ -40,6 +40,7 @@
     .button-transparent {
         background-color: transparent; 
         border: none;
+        color: white;
         font-size: 2em;
         padding: 0; 
     }
@@ -61,22 +62,23 @@
         background-color: #266bbb;
         color: white;
     }
+    .is-hidden {
+        display: none;
+    }
+
     @font-face {
-        font-family: 'Avenue';
-        src: url('../font/Avenue.otf') format('opentype');
+        font-family: 'verdana';
+        src: url('../../font/verdana.ttf') format('opentype');
     }
     @font-face {
         font-family: 'Haniley';
-        src: url('../font/Haniley.otf') format('opentype');
+        src: url('../../font/Haniley.otf') format('opentype');
     }
     .main-font {
-        font-family: 'Avenue';
+        font-family: 'verdana';
     }
     .secondary-font{
         font-family: 'Haniley';
-    }
-    .is-hidden {
-        display: none;
     }
 </style>
 
@@ -100,7 +102,7 @@
                                     
                                     <a href="ecoEstuaries.php" id="imageLink1">
                                         <figure class="image lesson-image" id="lessonImage1">
-                                            <img src="../../image/esystem1.png" alt="Ecosytem">
+                                            <img src="../../image/eco1.gif" alt="Ecosytem">
                                         </figure>
                                     </a>
                                     <p class="title is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6" id="description1">
@@ -108,8 +110,8 @@
                                     </p>
 
                                     <a href="ecoIntertidal.php" id="imageLink2" class="is-hidden">
-                                        <figure class="image lesson-image" id="lessonImage2">
-                                            <img src="../../image/esystem2.png" alt="Ecosytem">
+                                        <figure class="image lesson-image mb-4" id="lessonImage2">
+                                            <img src="../../image/eco2.gif" alt="Ecosytem">
                                         </figure>
                                     </a>
                                     <p class="title is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6 is-hidden" id="description2">
