@@ -201,9 +201,8 @@
         display: none;
     }
     #quizImage{
-        max-width: 100%; 
+        max-width: 70%; 
         height: auto;
-        margin-top: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -773,7 +772,8 @@
     
     //for quiz
     // Quiz Data
-    const quizData = [
+        const quizData = [
+
         {
             question: "Which state of matter has a fixed volume but no fixed shape?",
             choices: ["Liquid", "Solid", "Gas", "Plasma"],
@@ -789,11 +789,12 @@
             additionalInfo: "Liquids maintain a fixed volume, but they take the shape of their container."
         },
         {
-            question: "Which of the following liquids can be easily compressed?",
-            choices: ["Water", "Shampoo", "Hand Sanitizer", "Orange Juice"],
+            question: "Which of the following is a liquid?",
+            choices: ["Ice", "Water", "Rock", "Air"],
             quizImage: "../quizImage/liquidQuizImage3.png",
-            correctAnswer: "Hand Sanitizer",
-            additionalInfo: "Many liquids, including hand sanitizer, can be compressed to some extent, but they are still less compressible than gases."
+            correctAnswer: "Water",
+            additionalInfo: "Water is a common example of a liquid."
+
         },
         {
             question: "What happens to the particles in a liquid when it is heated?",
@@ -803,13 +804,50 @@
             additionalInfo: "Heating a liquid increases the energy of its particles, causing them to move more rapidly."
         },
         {
-            question: "Which of the following liquids is often used as a cleaning agent?",
-            choices: ["Water", "Vinegar", "Oil", "Concrete"],
+            question: "Which of the following is NOT a liquid?",
+            choices: ["Milk", "Honey", "Salt", "Juice"],
             quizImage: "../quizImage/liquidQuizImage5.png",
-            correctAnswer: "Vinegar",
-            additionalInfo: "Vinegar is commonly used as a natural cleaning agent due to its acidic properties, making it effective in cutting through grease and removing stains."
+            correctAnswer: "Salt",
+            additionalInfo: "Salt is a solid, while the others are liquids."
+        },
+        {
+            question: "What can liquids do that solids cannot?",
+            choices: ["Change shape", "Stay in one place", "Take up space", "Have a fixed shape"],
+            quizImage: "../quizImage/liquidQuizImage6.png",
+            correctAnswer: "Change shape",
+            additionalInfo: "Liquids can change shape to fit their container."
+        },
+        {
+            question: "Which of these liquids can be poured?",
+            choices: ["Sand", "Oil", "Rock", "Metal"],
+            quizImage: "../quizImage/liquidQuizImage7.png",
+            correctAnswer: "Oil",
+            additionalInfo: "Oil is a liquid and can be poured easily."
+        },
+        {
+            question: "Which of these is NOT a liquid?",
+            choices: ["Water", "Milk", "Ice", "Juice"],
+            quizImage: "../quizImage/liquidQuizImage8.png",
+            correctAnswer: "Ice",
+            additionalInfo: "Ice is the solid form of water, while water, milk, and juice are liquids."
+        }
+        ,
+        {
+            question: "Which of these is an example of a liquid?",
+            choices: ["Sand", "Lotion", "Ice", "Air"],
+            quizImage: "../quizImage/liquidQuizImage9.png",
+            correctAnswer: "Lotion",
+            additionalInfo: "Lotion is a liquid and can take the shape of its container."
+        },
+        {
+        question: "Which of these liquids do we drink every day?",
+        choices: ["Syrup", "Water", "Mud", "Oil"],
+        quizImage: "../quizImage/liquidQuizImage10.png",
+        correctAnswer: "Water",
+        additionalInfo: "Water is very important liquid, and we drink it every day."
         }
     ];
+
     
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;

@@ -185,9 +185,9 @@
         display: none;
     }
     #quizImage{
-        max-width: 100%; 
+        max-width: 70%; 
         height: auto;
-        margin-top: 4rem;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -196,7 +196,8 @@
         background-color: #d3d3d3; 
         width: 90%; 
         height: auto;
-        max-height: 350px;
+        max-height: 300px;
+
         border-radius: 5px;
         margin-top: 4rem;
         display: flex;
@@ -484,7 +485,8 @@
                                 </div>
                             </div>
 
-                             <!-- Quiz Result -->
+                            <!-- Quiz Result -->
+
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
                                 <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
@@ -765,42 +767,82 @@
     //for quiz
     // Quiz Data
     const quizData = [
+    {
+        question: "What is a characteristic of a solid?",
+        choices: ["Has a definite shape and volume", "Takes the shape of its container", "Has no definite volume", "Flows easily"],
+        quizImage: "../quizImage/solidQuizImage1.png",
+        correctAnswer: "Has a definite shape and volume",
+        additionalInfo: "Solids have a fixed shape and volume because their particles are tightly packed together."
+    },
+    {
+        question: "Which of the following is an example of a solid?",
+        choices: ["Water", "Air", "Ice", "Steam"],
+        quizImage: "../quizImage/solidQuizImage2.png",
+        correctAnswer: "Ice",
+        additionalInfo: "Ice is the solid form of water, with a fixed shape and volume."
+    },
         {
-            question: "What is the state of matter that has a definite shape and volume?",
-            choices: ["Liquid", "Gas", "Solid", "Plasma"],
-            quizImage: "../quizImage/solidQuizImage1.png",
-            correctAnswer: "Solid",
-            additionalInfo: "Solids maintain a fixed shape and volume because their particles are closely packed together and cannot move freely."
-        },
-        {
-            question: "Which of the following solids can be easily molded into different shapes?",
-            choices: ["Glass", "Clay", "Steel", "Ice"],
-            quizImage: "../quizImage/solidQuizImage2.png",
-            correctAnswer: "Clay",
-            additionalInfo: "Clay is a malleable material that can be easily shaped when wet. Once it dries or is fired in a kiln, it becomes hard and retains the molded shape, making it ideal for pottery and sculpture."
-        },
-        {
-            question: "What happens to the particles in a solid?",
-            choices: ["They move freely.", "They are tightly packed together.", "They are far apart.", "They vibrate rapidly."],
-            quizImage: "../quizImage/solidQuizImage3.png",
-            correctAnswer: "They are tightly packed together.",
-            additionalInfo: "In solids, particles are closely packed and can only vibrate in place, giving solids their rigid structure."
-        },
-        {
-            question: "Which solid is typically used for construction due to its strength?",
-            choices: ["Sugar", "Sand", "Concrete", "Paper"],
-            quizImage: "../quizImage/solidQuizImage4.png",
-            correctAnswer: "Concrete",
-            additionalInfo: "Concrete is a strong, durable material used widely in construction because of its ability to withstand heavy loads."
-        },
-        {
-            question: "Which solid is known for being very hard?",
-            choices: ["Rubber", "Wood", "Diamond", "Cotton"],
-            quizImage: "../quizImage/solidQuizImage5.png",
-            correctAnswer: "Diamond",
-            additionalInfo: "Diamond is the hardest known natural material, making it valuable for cutting and drilling applications."
-        }
-    ];
+        question: "What happens to the particles in most solids when they are heated?",
+        choices: ["They move faster", "They move slower", "They stop moving", "They stay the same"],
+        quizImage: "../quizImage/solidQuizImage3.png",
+        correctAnswer: "They move faster",
+        additionalInfo: "When solids are heated, the particles gain energy and move faster, which can cause the solid to melt if enough heat is applied."
+    }
+    ,
+    {
+        question: "Which of these objects is NOT a solid?",
+        choices: ["Rock", "Book", "Water", "Chair"],
+        quizImage: "../quizImage/solidQuizImage4.png",
+        correctAnswer: "Water",
+        additionalInfo: "Water is a liquid, not a solid. Solids like rocks and books have a definite shape."
+    },
+    {
+        question: "Why do solids have a fixed shape?",
+        choices: ["Because their particles are tightly packed", "Because their particles move freely", "Because they have no volume", "Because they are soft"],
+        quizImage: "../quizImage/solidQuizImage5.png",
+        correctAnswer: "Because their particles are tightly packed",
+        additionalInfo: "The particles in solids are closely packed and do not move freely, which gives solids a fixed shape."
+    },
+    {
+        question: "Which of the following is a solid material used in building houses?",
+        choices: ["Wood", "Water", "Air", "Milk"],
+        quizImage: "../quizImage/solidQuizImage1.png",
+        correctAnswer: "Wood",
+        additionalInfo: "Wood is a solid material used in construction because it is strong and durable."
+    },
+    {
+        question: "What happens to a solid when you break it into smaller pieces?",
+        choices: ["It becomes a liquid", "It stays a solid", "It becomes a gas", "It disappears"],
+        quizImage: "../quizImage/solidQuizImage7.png",
+        correctAnswer: "It stays a solid",
+        additionalInfo: "When you break a solid into smaller pieces, it still remains a solid. The pieces just get smaller!"
+    }
+    ,
+    {
+    question: "What is another example of a solid?",
+    choices: ["Apple", "Juice", "Smoke", "Air"],
+    quizImage: "../quizImage/solidQuizImage8.png",
+    correctAnswer: "Apple",
+    additionalInfo: "Apple is a solid, which has a definite shape and volume."
+    }
+    ,
+    {
+        question: "What is the state of matter of a pencil?",
+        choices: ["Solid", "Liquid", "Gas", "Plasma"],
+        quizImage: "../quizImage/solidQuizImage9.png",
+        correctAnswer: "Solid",
+        additionalInfo: "A pencil is a solid because it has a fixed shape and volume."
+    },
+    {
+        question: "Which of these properties do all solids share?",
+        choices: ["They flow easily", "They have a fixed shape", "They can be poured", "They expand to fill a container"],
+        quizImage: "../quizImage/solidQuizImage10.png",
+        correctAnswer: "They have a fixed shape",
+        additionalInfo: "Solids maintain their shape, unlike liquids and gases which take the shape of their container."
+    }
+];
+
+
 
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;

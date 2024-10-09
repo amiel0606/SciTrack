@@ -210,9 +210,9 @@
         display: none;
     }
     #quizImage{
-        max-width: 100%; 
+        max-width: 70%; 
         height: auto;
-        margin-top: 4rem;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -825,6 +825,42 @@
             quizImage: "../quizImage/gasQuizImage5.png",
             correctAnswer: "Low density",
             additionalInfo: "Gases have low density compared to solids and liquids, making them less heavy unless compressed."
+        },
+        {
+        question: "Which of the following is an example of a gas?",
+        choices: ["Air", "Water", "Ice", "Sand"],
+        quizImage: "../quizImage/gasQuizImage6.png",
+        correctAnswer: "Air",
+        additionalInfo: "Air is a gas that we breathe in."
+        },
+        {
+            question: "Which of these is NOT a gas?",
+            choices: ["Helium", "Carbon Dioxide", "Water", "Nitrogen"],
+            quizImage: "../quizImage/gasQuizImage7.png",
+            correctAnswer: "Water",
+            additionalInfo: "Water is a liquid, while helium, carbon dioxide, and nitrogen are gases."
+        },
+        {
+            question: "Which gas is found in soda?",
+            choices: ["Carbon Dioxide", "Oxygen", "Water", "Ice"],
+            quizImage: "../quizImage/gasQuizImage8.png",
+            correctAnswer: "Carbon Dioxide",
+            additionalInfo: "Carbon dioxide is the gas that creates bubbles in fizzy drinks."
+        },
+        {
+            question: "What do we call the air that we breathe?",
+            choices: ["Gas", "Liquid", "Solid", "Plasma"],
+            quizImage: "../quizImage/gasQuizImage9.png",
+            correctAnswer: "Gas",
+            additionalInfo: "The air we breathe is a mixture of gases."
+        },
+        {
+            question: "Which of these is a property of gases?",
+            choices: ["They have a definite shape.", "They fill the space of their container.", "They are solid.", "They are always cold."],
+            quizImage: "../quizImage/gasQuizImage10.png",
+            correctAnswer: "They fill the space of their container.",
+            additionalInfo: "Gases do not have a fixed shape and will expand to fill any container."
+
         }
     ];
 

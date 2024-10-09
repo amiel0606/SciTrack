@@ -102,6 +102,7 @@
             </div>
         </div>
         </div>
+
     <button class="btn-matters selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="matter">Set Date</button>
 
     <div class="locked">
@@ -126,6 +127,7 @@
             </div>
         </div>
         </div>
+
         <button class="btn-eco selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="ecosystem">Set Date</button>
 
 
@@ -151,6 +153,7 @@
             </div>
         </div>
         </div>
+
         <button class="btn-motion selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="motion">Set Date</button>
 
     <div class="locked">
@@ -175,6 +178,7 @@
             </div>
         </div>
         </div>
+
         <button class="btn-earth selectDateBtn lesson-btn button is-success js-modal-trigger" data-target="setDate" style="margin-left:1250px" data-lesson="earth">Set Date</button>
 
 
