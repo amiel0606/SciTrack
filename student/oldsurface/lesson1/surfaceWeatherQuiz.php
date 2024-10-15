@@ -1,4 +1,4 @@
-d<?php
+<?php
     include_once('./includes/board.php');
 ?>
 
@@ -268,7 +268,7 @@ d<?php
 
         leftButton.addEventListener('click', function () {
             if (currentQuiz === 1) {
-                window.location.href = 'intertidalLetsTry.php'; 
+                window.location.href = 'surfaceTypes.php?show=surfaceLetsTry'; 
             } else {
                 currentQuiz--;
                 updateQuiz();
@@ -277,7 +277,7 @@ d<?php
 
         rightButton.addEventListener('click', function () {
             if (currentQuiz === 5) {
-                window.location.href = 'intertidalResult.php'; 
+                window.location.href = 'surfaceResult.php'; 
             } else {
                 currentQuiz++;
                 updateQuiz();

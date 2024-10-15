@@ -97,31 +97,31 @@
                         <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
 
-                    <!-- Eco Lesson -->
+                    <!-- Motion Lesson -->
                     <div class="x-content" id="matterLesson">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6 mt-4">
-                            <h1 class="title has-text-white secondary-font" id="headers">ECOSYSTEM</h1>
+                            <h1 class="title has-text-white secondary-font" id="headers">MOTION</h1>
                             
                             <div class="lesson-content" id="lesson1">
                                 <!-- Lesson Image -->
                                 <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered mb-6">
                                     
-                                    <a href="ecoEstuaries.php" id="imageLink1">
+                                    <a href="motion.php" id="imageLink1">
                                         <figure class="image lesson-image" id="lessonImage1">
-                                            <img src="../../image/eco1.gif" alt="Ecosytem">
+                                            <img src="../../image/motion1.gif" alt="Motion">
                                         </figure>
                                     </a>
                                     <p class="title is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6" id="description1">
-                                        LESSON 1: The Ecosystem Estuaries
+                                        LESSON 1: What is Motion?
                                     </p>
 
-                                    <a href="ecoIntertidal.php" id="imageLink2" class="is-hidden">
+                                    <a href="measuring.php" id="imageLink2" class="is-hidden">
                                         <figure class="image lesson-image mb-4" id="lessonImage2">
-                                            <img src="../../image/eco2.gif" alt="Ecosytem">
+                                            <img src="../../image/motion2.gif" alt="Motion">
                                         </figure>
                                     </a>
                                     <p class="title is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6 is-hidden" id="description2">
-                                        LESSON 2: The Ecosystem in the Intertidal Zone
+                                        LESSON 2: Measuring Distance and Time
                                     </p>
                                 </div>
 

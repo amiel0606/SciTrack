@@ -17,6 +17,9 @@
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
     }
+    .motion1 {
+        transform: scaleX(-1);
+    }
     @font-face {
         font-family: 'Avenue';
         src: url('../../../font/Avenue.otf') format('opentype');
@@ -45,7 +48,7 @@
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                         <div class="column is-full is-flex is-justify-content-flex-end mb-6">
                             <div class="columns is-half ml-6 p-2">
-                                <a href="./.././ecosystemDef.php?show=ecosystemTopic">
+                                <a href="./.././surfaceDef.php?show=surfaceTopic">
                                     <button class="button back-button is-success is-size-6-desktop is-size-6-tablet">
                                     <p class="has-text-white main-font">Back To Main Menu</p>
                                     </button>
@@ -58,7 +61,7 @@
                             <!-- Image Column -->
                             <div class="column is-half ">
                                 <figure class="image motion1">
-                                    <img src="../../../image/ecoCharacter.png" alt="ecoCharacter">
+                                    <img src="../../../image/surface1.png" alt="surface1">
                                 </figure>
                             </div>
 
@@ -74,7 +77,7 @@
                                     </p>
                                 </div>
                                 <figure class="image is-flex is-justify-content-center medal-image mt-5 mb-4">
-                                    <img src="../../../image/medal7.png" alt="medal7">
+                                    <img src="../../../image/medal6.png" alt="medal6">
                                 </figure>
                             </div>
                         </div>

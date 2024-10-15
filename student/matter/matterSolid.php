@@ -9,22 +9,36 @@
     .matter-content-active {
         display: block;
     }
-    #einstein-image {
+    #einstein-image{
         width: 100%;
-        max-width: 25%;
-        margin-right: -9%;
-        margin-left: -8%;
-        margin-bottom: -4%;
+        max-width: 31%;
+        margin-right: -25.7%;
+        margin-left: -10%;
+        margin-bottom: -6.8%;
     }
-    .c-image img, .einstein {
+    .einstein {
         width: 100%;
         height: auto;
         transform: scaleX(-1);
+    }
+    .c-image img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: -15%;
+        transform: scaleX(-1);
+    }
+    .letstry img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: 5%;
     }
     #leftButton, #rightButton {
         margin-bottom: -1%;
     }
     #letsTryButton {
+        right: -10rem;
         z-index: 10;
     }
     .button-text {
@@ -57,15 +71,11 @@
     .stateImage{
         width: 100%;
         max-width: 400px;
-        margin-top: -6%;
-    }
-    #states {
         margin-top: -4%;
     }
-    #sChar img {
-        width: 100%;
-        max-width: 300px;
-    }
+    #states {
+        margin-top: -2%;
+    }      
     .sExample{
         display: flex;
         justify-content: center; 
@@ -91,16 +101,24 @@
     }
     .solid-image {
         width: 100%;
-        max-width: 70%;
-        margin-left: 9rem;
+        max-width: 90%;
+        margin-left: 4rem;
     }
     .solid-image2 {
         width: 100%;
-        max-width: 80%;
+        max-width: 90%;
         margin-right: 9rem;
+        margin-left: 9rem;
     }
     #solid-text {
-        margin-left: 9rem;
+        margin-left: 1rem;
+        margin-top: 3%;
+    }
+    #solid-text p{
+        line-height: 1.5;
+    }
+    .tight-spacing {
+        margin-right: -0.5em; 
     }
     .placeholder {
         width: 100%;
@@ -108,9 +126,6 @@
         height: 100%;
         max-height: 70%;
         background-color: #D9D9D9;
-    } 
-    #letsTryButton {
-        z-index: 10;
     }
 
     .image-container {
@@ -135,6 +150,41 @@
     }
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    #header{
+        font-size: 4rem;
+    }
+    #header1{
+        font-size: 4rem;
+        margin-top: -2%;
+    }
+    #header2{
+        font-size: 4rem;
+    }
+    #header3{
+        font-size: 4rem;
+        margin-top: -2%;
+    }
+    #header4{
+        font-size: 4rem;
+        margin-top: -4%;
+    }
+    #header5{
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+    }
+    #solidGif{
+        margin-right: 7%;
+    }
+    #sChar{
+        margin-left: 15%;
+    }
+    #char1{
+        margin-left: -25%;
+    }
+    #compButton{
+        margin-left: 15%;
     }
 
     /* for quiz layout */
@@ -185,9 +235,9 @@
         display: none;
     }
     #quizImage{
-        max-width: 100%; 
+        max-width: 70%; 
         height: auto;
-        margin-top: 4rem;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -196,7 +246,8 @@
         background-color: #d3d3d3; 
         width: 90%; 
         height: auto;
-        max-height: 350px;
+        max-height: 300px;
+
         border-radius: 5px;
         margin-top: 4rem;
         display: flex;
@@ -209,6 +260,9 @@
         max-width: 90%; 
         padding: 30px; 
         z-index: 2; 
+        margin-top: 30px;
+    }
+    #quizContainer{
         margin-top: 30px;
     }
 
@@ -233,14 +287,14 @@
         <div class="container">
             <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="../../image/board.png" alt="Board Image">
+                    <figure class="image is-5by3">
+                        <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
 
                     <!-- Matter States -->
                     <div class="x-content" id="matterStates">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white mt-5 secondary-font" id="header">SOLID</h1>
 
                             <!-- Solid Image -->
                             <div class="stateImage">
@@ -249,7 +303,7 @@
                                 </figure>
                             </div>
 
-                            <p class="main-font column is-four-fifths subtitle is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
+                            <p class="main-font column is-four-fifths title is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
                                 <span style="color: yellow;">Solid</span> is one of the three fundamental states of matter along with liquid, gas.
                             </p>
                         </div>                       
@@ -258,12 +312,12 @@
                     <!-- Matter Solid -->
                     <div class="matter-content" id="matterSolid">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header1">SOLID</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Image Column -->
-                                <div class="column is-5">
+                                <div class="column is-5" id="solidGif">
                                     <figure class="image solid-image">
                                         <img src="../../image/msolidgif.gif" alt="Solid">
                                     </figure>
@@ -271,8 +325,8 @@
 
                                 <!-- Text Column -->
                                 <div class="column is-5">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
-                                        • Has particles that are packed closely together and usually arranged in regular pattern
+                                    <p class="subtitle main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified">
+                                        • Has particles that are packed closely together and usually arranged in regular pattern.
                                     </p>
                                 </div>
                             </div>
@@ -282,12 +336,12 @@
                     <!-- Matter Characteristics -->
                     <div class="matter-content" id="matterChar">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">CHARACTERISTICS OF SOLID</h1>
+                            <h1 class="title shas-text-white secondary-font" id="header2">CHARACTERISTICS OF SOLID</h1>
                             <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-3">Solid are known to have:</p>
 
                             <div class="image-container" id="sChar">
                                 <!-- Solid Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="char1">
                                     <figure class="image">
                                         <img src="../../image/ssChar1.gif" alt="Solid">
                                     </figure>
@@ -295,7 +349,7 @@
                                 </div>
 
                                 <!-- Solid Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="char2">
                                     <figure class="image">
                                         <img src="../../image/ssChar2.gif" alt="Solid">
                                     </figure>
@@ -303,7 +357,7 @@
                                 </div>
 
                                 <!-- Solid Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="char3">
                                     <figure class="image">
                                         <img src="../../image/ssChar3.gif" alt="Solid">
                                     </figure>
@@ -316,11 +370,11 @@
                     <!-- Matter Video -->
                     <div class="matter-content" id="matterVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">SOLID</h1>
 
                             <!-- Video for Solid.mp4 -->
                             <div class="box">
-                                <video id="solidVideo" width="750" height="420" controls>
+                                <video id="solidVideo" width="750" height="520" controls>
                                     <source src="../../videos/Solid.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -334,16 +388,16 @@
                     <!-- Matter Solid2 -->
                     <div class="matter-content" id="matterSolid2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header3">SOLID</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
                                         • Has Definite shape and volume
                                     </p>
-                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
                                         • When a solid is heated, its molecules gain energy and vibrate fast.
                                     </p>
                                 </div>
@@ -361,7 +415,7 @@
                     <!-- Matter Examples -->
                     <div class="matter-content" id="matterExamples">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF SOLID
                             </h1>
 
@@ -388,7 +442,7 @@
                     <!-- Matter Examples 2 -->
                     <div class="matter-content" id="matterExamples2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF SOLID
                             </h1>
 
@@ -446,7 +500,7 @@
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header4">
                                 QUIZ
                             </h1>
                             <!-- Quiz Container -->
@@ -484,7 +538,8 @@
                                 </div>
                             </div>
 
-                             <!-- Quiz Result -->
+                            <!-- Quiz Result -->
+
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
                                 <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
@@ -515,15 +570,21 @@
                         </div>
                     </div>
 
-
                     <!-- Matter Solid Completed -->
                     <div class="matter-content" id="matterCompleted">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
-                            <div class="column is-full is-flex is-justify-content-flex-end mb-6">
-                                <div class="columns is-half ml-6 p-2">
-                                    <a href="matterLesson.php?show=matterTopic">
+                            <div class="column is-full is-flex is-justify-content-flex-end mb-6" id="compButton">
+                                <div class="columns is-half ml-6 p-2" id="mainbtn">
+                                    <a href="../studentWelcome.php?show=Lessons">
                                         <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
                                         <p class="has-text-white">Back To Main Menu</p>
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="columns is-half ml-6 p-2" id="nxtbtn">
+                                    <a href="matterLiquid.php">
+                                        <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
+                                        <p class="has-text-white">Next Topic</p>
                                         </button>
                                     </a>
                                 </div>
@@ -540,10 +601,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -660,72 +721,74 @@
     }
 
     function showSection(index) {
-    hideAllSections();
-    sections[index].classList.remove('matter-content');
-    sections[index].classList.add('matter-content-active');
+        hideAllSections();
+        sections[index].classList.remove('matter-content');
+        sections[index].classList.add('matter-content-active');
 
-    if (sections[index] === matterStates) {
-        playAudio(); 
-    } else {
-        stopAudio();
-    }
-    if (sections[index] === matterSolid) {
-        playAudio2(); 
-    } else {
-        stopAudio2();
-    }
-    if (sections[index] === matterChar) {
-        playAudio3(); 
-    } else {
-        stopAudio3();
-    }
-
-    if (sections[index] === matterSolid2) {
-        playAudio4(); 
-    } else {
-        stopAudio4();
-    }
-    if (sections[index] === matterVideo) {
-            solidVideo.play();
+        if (sections[index] === matterStates) {
+            playAudio(); 
         } else {
-            stopVideo(); 
+            stopAudio();
+        }
+        if (sections[index] === matterSolid) {
+            playAudio2(); 
+        } else {
+            stopAudio2();
+        }
+        if (sections[index] === matterChar) {
+            playAudio3(); 
+        } else {
+            stopAudio3();
         }
 
+        if (sections[index] === matterSolid2) {
+            playAudio4(); 
+        } else {
+            stopAudio4();
+        }
+        if (sections[index] === matterVideo) {
+                solidVideo.play();
+            } else {
+                stopVideo(); 
+            }
 
-    if (index >= 0 && index <= 6) { 
-        examplesButton.style.display = 'flex';
-        einsteinImage.style.display = 'block';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'flex';
-        rightButton.style.display = 'flex';
-    } else if (sections[index] === matterLetsTry) {
-        examplesButton.style.display = 'none';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'flex';
-        goBackButton.style.display = 'flex';
-        proceedToQuizButton.style.display = 'flex';
-        leftButton.style.display = 'none';
-        rightButton.style.display = 'none';
-    } else if (sections[index] === matterQuiz) {
-        examplesButton.style.display = 'flex';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'flex';
-        rightButton.style.display = 'flex';
-    } else if (sections[index] === matterCompleted) {
-        examplesButton.style.display = 'none';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'none';
-        rightButton.style.display = 'none';
+
+        if (index >= 0 && index <= 6) { 
+            examplesButton.style.display = 'flex';
+            einsteinImage.style.display = 'block';
+            letsTryButton.style.display = 'none';
+            goBackButton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+            leftButton.style.display = 'flex';
+            rightButton.style.display = 'flex';
+        } else if (sections[index] === matterLetsTry) {
+            examplesButton.style.display = 'none';
+            einsteinImage.style.display = 'none';
+            letsTryButton.style.display = 'flex';
+            goBackButton.style.display = 'flex';
+            proceedToQuizButton.style.display = 'flex';
+            leftButton.style.display = 'none';
+            rightButton.style.display = 'none';
+        } else if (sections[index] === matterQuiz) {
+            examplesButton.style.display = 'flex';
+            einsteinImage.style.display = 'none';
+            letsTryButton.style.display = 'none';
+            goBackButton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+            leftButton.style.display = 'flex';
+            rightButton.style.display = 'flex';
+
+            examplesButton.style.marginLeft = '100%';  
+        } else if (sections[index] === matterCompleted) {
+            examplesButton.style.display = 'none';
+            einsteinImage.style.display = 'none';
+            letsTryButton.style.display = 'none';
+            goBackButton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+            leftButton.style.display = 'none';
+            rightButton.style.display = 'none';
+        }
     }
-}
 
 
         rightButton.addEventListener('click', function () {
@@ -765,42 +828,82 @@
     //for quiz
     // Quiz Data
     const quizData = [
+    {
+        question: "What is a characteristic of a solid?",
+        choices: ["Has a definite shape and volume", "Takes the shape of its container", "Has no definite volume", "Flows easily"],
+        quizImage: "../quizImage/solidQuizImage1.png",
+        correctAnswer: "Has a definite shape and volume",
+        additionalInfo: "Solids have a fixed shape and volume because their particles are tightly packed together."
+    },
+    {
+        question: "Which of the following is an example of a solid?",
+        choices: ["Water", "Air", "Ice", "Steam"],
+        quizImage: "../quizImage/solidQuizImage2.png",
+        correctAnswer: "Ice",
+        additionalInfo: "Ice is the solid form of water, with a fixed shape and volume."
+    },
         {
-            question: "What is the state of matter that has a definite shape and volume?",
-            choices: ["Liquid", "Gas", "Solid", "Plasma"],
-            quizImage: "../quizImage/solidQuizImage1.png",
-            correctAnswer: "Solid",
-            additionalInfo: "Solids maintain a fixed shape and volume because their particles are closely packed together and cannot move freely."
-        },
-        {
-            question: "Which of the following solids can be easily molded into different shapes?",
-            choices: ["Glass", "Clay", "Steel", "Ice"],
-            quizImage: "../quizImage/solidQuizImage2.png",
-            correctAnswer: "Clay",
-            additionalInfo: "Clay is a malleable material that can be easily shaped when wet. Once it dries or is fired in a kiln, it becomes hard and retains the molded shape, making it ideal for pottery and sculpture."
-        },
-        {
-            question: "What happens to the particles in a solid?",
-            choices: ["They move freely.", "They are tightly packed together.", "They are far apart.", "They vibrate rapidly."],
-            quizImage: "../quizImage/solidQuizImage3.png",
-            correctAnswer: "They are tightly packed together.",
-            additionalInfo: "In solids, particles are closely packed and can only vibrate in place, giving solids their rigid structure."
-        },
-        {
-            question: "Which solid is typically used for construction due to its strength?",
-            choices: ["Sugar", "Sand", "Concrete", "Paper"],
-            quizImage: "../quizImage/solidQuizImage4.png",
-            correctAnswer: "Concrete",
-            additionalInfo: "Concrete is a strong, durable material used widely in construction because of its ability to withstand heavy loads."
-        },
-        {
-            question: "Which solid is known for being very hard?",
-            choices: ["Rubber", "Wood", "Diamond", "Cotton"],
-            quizImage: "../quizImage/solidQuizImage5.png",
-            correctAnswer: "Diamond",
-            additionalInfo: "Diamond is the hardest known natural material, making it valuable for cutting and drilling applications."
-        }
-    ];
+        question: "What happens to the particles in most solids when they are heated?",
+        choices: ["They move faster", "They move slower", "They stop moving", "They stay the same"],
+        quizImage: "../quizImage/solidQuizImage3.png",
+        correctAnswer: "They move faster",
+        additionalInfo: "When solids are heated, the particles gain energy and move faster, which can cause the solid to melt if enough heat is applied."
+    }
+    ,
+    {
+        question: "Which of these objects is NOT a solid?",
+        choices: ["Rock", "Book", "Water", "Chair"],
+        quizImage: "../quizImage/solidQuizImage4.png",
+        correctAnswer: "Water",
+        additionalInfo: "Water is a liquid, not a solid. Solids like rocks and books have a definite shape."
+    },
+    {
+        question: "Why do solids have a fixed shape?",
+        choices: ["Because their particles are tightly packed", "Because their particles move freely", "Because they have no volume", "Because they are soft"],
+        quizImage: "../quizImage/solidQuizImage5.png",
+        correctAnswer: "Because their particles are tightly packed",
+        additionalInfo: "The particles in solids are closely packed and do not move freely, which gives solids a fixed shape."
+    },
+    {
+        question: "Which of the following is a solid material used in building houses?",
+        choices: ["Wood", "Water", "Air", "Milk"],
+        quizImage: "../quizImage/solidQuizImage1.png",
+        correctAnswer: "Wood",
+        additionalInfo: "Wood is a solid material used in construction because it is strong and durable."
+    },
+    {
+        question: "What happens to a solid when you break it into smaller pieces?",
+        choices: ["It becomes a liquid", "It stays a solid", "It becomes a gas", "It disappears"],
+        quizImage: "../quizImage/solidQuizImage7.png",
+        correctAnswer: "It stays a solid",
+        additionalInfo: "When you break a solid into smaller pieces, it still remains a solid. The pieces just get smaller!"
+    }
+    ,
+    {
+    question: "What is another example of a solid?",
+    choices: ["Apple", "Juice", "Smoke", "Air"],
+    quizImage: "../quizImage/solidQuizImage8.png",
+    correctAnswer: "Apple",
+    additionalInfo: "Apple is a solid, which has a definite shape and volume."
+    }
+    ,
+    {
+        question: "What is the state of matter of a pencil?",
+        choices: ["Solid", "Liquid", "Gas", "Plasma"],
+        quizImage: "../quizImage/solidQuizImage9.png",
+        correctAnswer: "Solid",
+        additionalInfo: "A pencil is a solid because it has a fixed shape and volume."
+    },
+    {
+        question: "Which of these properties do all solids share?",
+        choices: ["They flow easily", "They have a fixed shape", "They can be poured", "They expand to fill a container"],
+        quizImage: "../quizImage/solidQuizImage10.png",
+        correctAnswer: "They have a fixed shape",
+        additionalInfo: "Solids maintain their shape, unlike liquids and gases which take the shape of their container."
+    }
+];
+
+
 
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;

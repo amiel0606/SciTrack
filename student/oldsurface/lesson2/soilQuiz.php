@@ -1,4 +1,4 @@
-d<?php
+<?php
     include_once('./includes/board.php');
 ?>
 
@@ -268,7 +268,7 @@ d<?php
 
         leftButton.addEventListener('click', function () {
             if (currentQuiz === 1) {
-                window.location.href = 'estuarisLetsTry.php'; 
+                window.location.href = 'soilLetsTry.php'; 
             } else {
                 currentQuiz--;
                 updateQuiz();
@@ -277,7 +277,7 @@ d<?php
 
         rightButton.addEventListener('click', function () {
             if (currentQuiz === 5) {
-                window.location.href = 'estuarisResult.php'; 
+                window.location.href = 'soilResult.php'; 
             } else {
                 currentQuiz++;
                 updateQuiz();

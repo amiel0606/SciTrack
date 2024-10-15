@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     modalToShow.classList.remove('is-active');
                     document.body.style.overflow = ''; 
-                    window.location.href = 'estuarisExamples.php'; 
+                    window.location.href = 'waterContamination.php'; 
                 }, 2500);
             } else {
                 document.body.style.overflow = ''; 
-                window.location.href = 'estuarisExamples.php'; 
+                window.location.href = 'waterContamination.php'; 
             }
         }, 2500); 
     }
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     incorrectModal.classList.remove('is-active');
                     document.body.style.overflow = ''; 
-                    window.location.href = 'estuarisExamples.php';
+                    window.location.href = 'waterContamination.php';
                 }, 2000);
             }
         });

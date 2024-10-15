@@ -27,6 +27,20 @@
     .modal-content {
         padding: 20px;
     }
+    @font-face {
+        font-family: 'Avenue';
+        src: url('../../../font/Avenue.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Haniley';
+        src: url('../../../font/Haniley.otf') format('opentype');
+    }
+    .main-font {
+        font-family: 'Avenue';
+    }
+    .secondary-font{
+        font-family: 'Haniley';
+    }
 </style>
 <section class="hero is-fullheight">
     <div class="hero-body">
@@ -38,35 +52,36 @@
                     </figure>
 
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-4">
-                        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-white mt-6 mb-6">POP UP QUIZ!</h1>
+                        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-white mt-6 mb-6 secondary-font">POP UP QUIZ!</h1>
 
                         <!-- Question -->
                         <div class="columns is-centered">
-                            <p class="title is-size-6-mobile is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mt-2 mb-6">
-                                What is Abiotic?
+                            <p class="title is-size-6-mobile is-size-4-tablet is-size-3-desktop is-size-2-widescreen 
+                            has-text-centered has-text-white mt-2 mb-6 main-font">
+                                These natural agents move and transport soil to other places where they accumulate over time.
                             </p>
                         </div>
 
                         <!-- Buttons Answer -->
                         <div class="columns is-centered is-multiline">
                             <div class="column is-half is-flex is-justify-content-center">
-                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet">
-                                    <p class="is-size-4-desktop is-size-5-tablet">A. Factors that are non-living things</p>
+                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet main-font">
+                                    <p class="is-size-4-desktop is-size-5-tablet">A. Soil Erosion</p>
                                 </button>
                             </div>
                             <div class="column is-half is-flex is-justify-content-center">
-                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet">
-                                    <p class="is-size-4-desktop is-size-5-tablet">B. Factors that are living things</p>
+                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet main-font">
+                                    <p class="is-size-4-desktop is-size-5-tablet">B. Weathering</p>
                                 </button>
                             </div>
                             <div class="column is-half is-flex is-justify-content-center">
-                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet">
-                                    <p class="is-size-4-desktop is-size-5-tablet">C. It is solid, liquid, and gas</p>
+                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet main-font">
+                                    <p class="is-size-4-desktop is-size-5-tablet">C. Soil Formation</p>
                                 </button>
                             </div>
                             <div class="column is-half is-flex is-justify-content-center">
-                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet">
-                                    <p class="is-size-4-desktop is-size-5-tablet">D. Germs</p>
+                                <button class="button is-text has-text-white is-size-3-dekstop is-size-5-tablet main-font">
+                                    <p class="is-size-4-desktop is-size-5-tablet">D. Typhoon</p>
                                 </button>
                             </div>
                         </div>

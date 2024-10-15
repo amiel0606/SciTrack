@@ -9,22 +9,36 @@
     .matter-content-active {
         display: block;
     }
-    #einstein-image {
+    #einstein-image{
         width: 100%;
-        max-width: 25%;
-        margin-right: -9%;
-        margin-left: -8%;
-        margin-bottom: -4%;
+        max-width: 31%;
+        margin-right: -25.7%;
+        margin-left: -10%;
+        margin-bottom: -6.8%;
     }
-    .c-image img, .einstein {
+    .einstein {
         width: 100%;
         height: auto;
         transform: scaleX(-1);
+    }
+    .c-image img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: -15%;
+        transform: scaleX(-1);
+    }
+    .letstry img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: 5%;
     }
     #leftButton, #rightButton {
         margin-bottom: -1%;
     }
     #letsTryButton {
+        right: -10rem;
         z-index: 10;
     }
     .button-text {
@@ -71,31 +85,34 @@
     .sExample .image-item:last-child{
         margin-left: 5rem;
     }
-    #sChar img {
-        width: 100%;
-        max-width: 250px;
-    }
-    #sExample img {
-        width: 100%;
+    .sExample img {
+        width: 110%;
         max-width: 1000px;
         margin-top: 2rem;
     }
-    #char1{
-        margin-left: 3rem;
+    #sChar img {
+        width: 100%;
+        min-width: 100%;
+        max-width: 400px;
     }
     .solid-image {
         width: 100%;
-        max-width: 70%;
-        margin-left: 9rem;
+        max-width: 90%;
+        margin-left: 4rem;
     }
     .solid-image2 {
         width: 100%;
-        max-width: 80%;
-        margin-left: 4rem;
-        margin-top: -4rem;
+        max-width: 90%;
+        margin-right: 9rem;
+        margin-left: 9rem;
+        margin-top: 1rem;
     }
     #solid-text {
-        margin-left: 9rem;
+        margin-left: 1rem;
+        margin-top: 3%;
+    }
+    #solid-text p{
+        line-height: 1.5;
     }
     .stateImage{
         width: 100%;
@@ -153,6 +170,61 @@
         background-color: rgba(255, 255, 255, 0.5);
     }
 
+    
+    #header{
+        font-size: 4rem;
+    }
+    #header1{
+        font-size: 4rem;
+        margin-top: -2%;
+    }
+    #header2{
+        font-size: 4rem;
+    }
+    #header3{
+        font-size: 4rem;
+        margin-top: -.4%;
+    }
+    #header4{
+        font-size: 4rem;
+        margin-top: -4%;
+    }
+    #header5{
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+    }
+    #solidGif{
+        margin-right: 7%;
+    }
+    #sChar{
+        margin-top: -1%;
+    }
+    #char1{
+        margin-left: -5%;
+        max-width: 350px;
+    }
+    #char2{
+        margin-left: 5%;
+        max-width: 350px;
+    }
+    #char3{
+        max-width: 350px;
+    }
+    #compButton{
+        margin-left: 15%;
+    }
+    .p-spacing {
+        margin-right: -1.5em; 
+    }
+    #soy{
+        margin-bottom: 25%;
+    }
+    #soy img{
+        width: 110%;
+        max-width: 1000px;
+        margin-top: 3rem;
+    }
+
     /* for quiz layout */
     .choice-btn {
         background-color: #d3d3d3;
@@ -201,9 +273,8 @@
         display: none;
     }
     #quizImage{
-        max-width: 100%; 
+        max-width: 70%; 
         height: auto;
-        margin-top: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -249,14 +320,14 @@
         <div class="container">
             <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="../../image/board.png" alt="Board Image">
+                    <figure class="image is-5by3">
+                        <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
 
                     <!-- Matter States -->
                     <div class="x-content" id="matterStates">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">LIQUID</h1>
+                            <h1 class="title has-text-white mt-5 secondary-font" id="header">LIQUID</h1>
 
                             <!-- Liquid Image -->
                             <div class="stateImage">
@@ -265,7 +336,7 @@
                                 </figure>
                             </div>
 
-                            <p class="main-font column is-three-fifths title is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-centered has-text-white mb-6" id="states">
+                            <p class="main-font column is-three-fifths title is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
                                 <span style="color: yellow;">Liquid</span> is one of the three principle states of matter.
                             </p>
                         </div>
@@ -274,12 +345,12 @@
                     <!-- Matter Liquid -->
                     <div class="matter-content" id="matterLiquid">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">LIQUID</h1>
+                            <h1 class="titlehas-text-white secondary-font" id="header1">LIQUID</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Image Column -->
-                                <div class="column is-5">
+                                <div class="column is-5" id="solidGif">
                                     <figure class="image solid-image">
                                         <img src="../../image/mliquidgif3.gif" alt="Liquid">
                                     </figure>
@@ -287,7 +358,7 @@
 
                                 <!-- Text Column -->
                                 <div class="column is-5">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified p-spacing">
                                         • Has particles that are less tightly packed as compared to solids.
                                     </p>
                                 </div>
@@ -298,32 +369,38 @@
                     <!-- Matter Characteristics -->
                     <div class="matter-content" id="matterChar">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">CHARACTERISTICS OF LIQUID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">CHARACTERISTICS OF LIQUID</h1>
                             <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-3">Liquid are known to have:</p>
 
                             <div class="image-container" id="sChar">
                                 <!-- Liquid Image -->
-                                <div class="image-item">
-                                    <figure class="image" id="char1">
+                                <div class="image-item" id="char1">
+                                    <figure class="image">
                                         <img src="../../image/lChar1.gif" alt="Liquid">
                                     </figure>
-                                    <p class="main-font subtitle column is-four-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed volume but no fixed shape.</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
+                                        Fixed volume but no fixed shape.
+                                    </p>
                                 </div>
 
-                                <!-- Solid Image -->
-                                <div class="image-item">
+                                <!-- Liquid Image -->
+                                <div class="image-item" id="char2">
                                     <figure class="image">
                                         <img src="../../image/lChar2.gif" alt="Liquid">
                                     </figure>
-                                    <p class="main-font subtitle column is-four-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Lesser dense than solids.</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
+                                        Lesser dense than solids.
+                                    </p>
                                 </div>
 
-                                <!-- Gas Image -->
-                                <div class="image-item">
+                                <!-- Liquid Image -->
+                                <div class="image-item" id="char3">
                                     <figure class="image">
                                         <img src="../../image/lChar3.gif" alt="Liquid">
                                     </figure>
-                                    <p class="main-font subtitle column is-four-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Liquids can be compressed. </p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
+                                        Liquids can be compressed.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -332,7 +409,7 @@
                     <!-- Matter Video -->
                     <div class="matter-content" id="matterVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">LIQUID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">LIQUID</h1>
 
                             <!-- Video for Solid.mp4 -->
                             <div class="box">
@@ -350,13 +427,13 @@
                     <!-- Matter Liquid2 -->
                     <div class="matter-content" id="matterLiquid2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">LIQUID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header3">LIQUID</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white">
                                         • When a liquid is heated, the particles move rapidly.
                                     </p>
                                 </div>
@@ -374,14 +451,14 @@
                     <!-- Matter Examples -->
                     <div class="matter-content" id="matterExamples">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF LIQUID
                             </h1>
 
                             <div class="sExample">
                                 <!-- First Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/mliquid4.png" alt="Liquid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shampoo</p>
@@ -389,7 +466,7 @@
 
                                 <!-- Second Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/mliquid5.png" alt="Liquid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Orange Juice</p>
@@ -401,14 +478,14 @@
                     <!-- Matter Examples 2 -->
                     <div class="matter-content" id="matterExamples2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF LIQUID
                             </h1>
 
                             <div class="sExample">
                                 <!-- Third Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/mliquid6.png" alt="Liquid">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Hand Sanitizer</p>
@@ -416,10 +493,10 @@
 
                                 <!-- Fourth Image -->
                                 <div class="image-item">
-                                    <figure class="image mt-6">
+                                    <figure class="image" id="soy">
                                         <img src="../../image/mliquid7.png" alt="Liquid">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered" style="margin-top: 10px;">Soy Sauce</p>
+                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Soy Sauce</p>
                                 </div>
                             </div>
                         </div>
@@ -459,7 +536,7 @@
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header4">
                                 QUIZ
                             </h1>
                             <!-- Quiz Container -->
@@ -531,11 +608,18 @@
                     <!-- Matter Liquid Completed -->
                     <div class="matter-content" id="matterCompleted">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
-                            <div class="column is-full is-flex is-justify-content-flex-end mb-6">
-                                <div class="columns is-half ml-6 p-2">
-                                    <a href="matterLesson.php?show=matterTopic">
+                            <div class="column is-full is-flex is-justify-content-flex-end mb-6" id="compButton">
+                                <div class="columns is-half ml-6 p-2" id="mainbtn">
+                                    <a href="../studentWelcome.php?show=Lessons">
                                         <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
                                         <p class="has-text-white">Back To Main Menu</p>
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="columns is-half ml-6 p-2" id="nxtbtn">
+                                    <a href="matterGas.php">
+                                        <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
+                                        <p class="has-text-white">Next Topic</p>
                                         </button>
                                     </a>
                                 </div>
@@ -552,10 +636,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -726,6 +810,8 @@
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'flex';
                 rightButton.style.display = 'flex';
+
+                examplesButton.style.marginLeft = '100%';  
             } else if (sections[index] === matterCompleted) {
                 examplesButton.style.display = 'none';
                 einsteinImage.style.display = 'none';
@@ -773,7 +859,8 @@
     
     //for quiz
     // Quiz Data
-    const quizData = [
+        const quizData = [
+
         {
             question: "Which state of matter has a fixed volume but no fixed shape?",
             choices: ["Liquid", "Solid", "Gas", "Plasma"],
@@ -789,11 +876,12 @@
             additionalInfo: "Liquids maintain a fixed volume, but they take the shape of their container."
         },
         {
-            question: "Which of the following liquids can be easily compressed?",
-            choices: ["Water", "Shampoo", "Hand Sanitizer", "Orange Juice"],
+            question: "Which of the following is a liquid?",
+            choices: ["Ice", "Water", "Rock", "Air"],
             quizImage: "../quizImage/liquidQuizImage3.png",
-            correctAnswer: "Hand Sanitizer",
-            additionalInfo: "Many liquids, including hand sanitizer, can be compressed to some extent, but they are still less compressible than gases."
+            correctAnswer: "Water",
+            additionalInfo: "Water is a common example of a liquid."
+
         },
         {
             question: "What happens to the particles in a liquid when it is heated?",
@@ -803,13 +891,50 @@
             additionalInfo: "Heating a liquid increases the energy of its particles, causing them to move more rapidly."
         },
         {
-            question: "Which of the following liquids is often used as a cleaning agent?",
-            choices: ["Water", "Vinegar", "Oil", "Concrete"],
+            question: "Which of the following is NOT a liquid?",
+            choices: ["Milk", "Honey", "Salt", "Juice"],
             quizImage: "../quizImage/liquidQuizImage5.png",
-            correctAnswer: "Vinegar",
-            additionalInfo: "Vinegar is commonly used as a natural cleaning agent due to its acidic properties, making it effective in cutting through grease and removing stains."
+            correctAnswer: "Salt",
+            additionalInfo: "Salt is a solid, while the others are liquids."
+        },
+        {
+            question: "What can liquids do that solids cannot?",
+            choices: ["Change shape", "Stay in one place", "Take up space", "Have a fixed shape"],
+            quizImage: "../quizImage/liquidQuizImage6.png",
+            correctAnswer: "Change shape",
+            additionalInfo: "Liquids can change shape to fit their container."
+        },
+        {
+            question: "Which of these liquids can be poured?",
+            choices: ["Sand", "Oil", "Rock", "Metal"],
+            quizImage: "../quizImage/liquidQuizImage7.png",
+            correctAnswer: "Oil",
+            additionalInfo: "Oil is a liquid and can be poured easily."
+        },
+        {
+            question: "Which of these is NOT a liquid?",
+            choices: ["Water", "Milk", "Ice", "Juice"],
+            quizImage: "../quizImage/liquidQuizImage8.png",
+            correctAnswer: "Ice",
+            additionalInfo: "Ice is the solid form of water, while water, milk, and juice are liquids."
+        }
+        ,
+        {
+            question: "Which of these is an example of a liquid?",
+            choices: ["Sand", "Lotion", "Ice", "Air"],
+            quizImage: "../quizImage/liquidQuizImage9.png",
+            correctAnswer: "Lotion",
+            additionalInfo: "Lotion is a liquid and can take the shape of its container."
+        },
+        {
+        question: "Which of these liquids do we drink every day?",
+        choices: ["Syrup", "Water", "Mud", "Oil"],
+        quizImage: "../quizImage/liquidQuizImage10.png",
+        correctAnswer: "Water",
+        additionalInfo: "Water is very important liquid, and we drink it every day."
         }
     ];
+
     
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;

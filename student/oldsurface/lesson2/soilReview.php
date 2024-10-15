@@ -32,7 +32,7 @@
                     <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
                         <div class="column is-full is-flex is-justify-content-flex-end mt-6">
                             <div class="columns is-half ml-6 p-2  mt-6">
-                                <a href="intertidalQuizCompleted.php">
+                                <a href="soilQuizCompleted.php">
                                     <button class="button close-button is-rounded is-light is-size-7-desktop is-size-7-tablet mt-6" aria-label="Close">
                                         <span class="icon">
                                             <i class="fas fa-times"></i>

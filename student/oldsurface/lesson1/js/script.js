@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     modalToShow.classList.remove('is-active');
                     document.body.style.overflow = ''; 
-                    window.location.href = 'intertidalExamples.php'; 
+                    window.location.href = 'surfaceTypes.php'; 
                 }, 2500);
             } else {
                 document.body.style.overflow = ''; 
-                window.location.href = 'intertidalExamples.php'; 
+                window.location.href = 'surfaceTypes.php'; 
             }
         }, 2500); 
     }
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             const buttonText = e.target.textContent.trim();
 
-            if (buttonText.startsWith('B.')) {
+            if (buttonText.startsWith('A.')) {
                 showModalsSequentially(); 
             } else {
                 incorrectModal.classList.add('is-active');
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     incorrectModal.classList.remove('is-active');
                     document.body.style.overflow = ''; 
-                    window.location.href = 'intertidalExamples.php';
+                    window.location.href = 'surfaceTypes.php';
                 }, 2000);
             }
         });
