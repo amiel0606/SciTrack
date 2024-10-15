@@ -9,22 +9,36 @@
     .matter-content-active {
         display: block;
     }
-    #einstein-image {
+    #einstein-image{
         width: 100%;
-        max-width: 25%;
-        margin-right: -9%;
-        margin-left: -8%;
-        margin-bottom: -4%;
+        max-width: 31%;
+        margin-right: -25.7%;
+        margin-left: -10%;
+        margin-bottom: -6.8%;
     }
-    .c-image img, .einstein {
+    .einstein {
         width: 100%;
         height: auto;
         transform: scaleX(-1);
+    }
+    .c-image img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: -15%;
+        transform: scaleX(-1);
+    }
+    .letstry img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: 5%;
     }
     #leftButton, #rightButton {
         margin-bottom: -1%;
     }
     #letsTryButton {
+        right: -10rem;
         z-index: 10;
     }
     .button-text {
@@ -57,15 +71,11 @@
     .stateImage{
         width: 100%;
         max-width: 400px;
-        margin-top: -6%;
-    }
-    #states {
         margin-top: -4%;
     }
-    #sChar img {
-        width: 100%;
-        max-width: 300px;
-    }
+    #states {
+        margin-top: -2%;
+    }      
     .sExample{
         display: flex;
         justify-content: center; 
@@ -91,16 +101,24 @@
     }
     .solid-image {
         width: 100%;
-        max-width: 70%;
-        margin-left: 9rem;
+        max-width: 90%;
+        margin-left: 4rem;
     }
     .solid-image2 {
         width: 100%;
-        max-width: 80%;
+        max-width: 90%;
         margin-right: 9rem;
+        margin-left: 9rem;
     }
     #solid-text {
-        margin-left: 9rem;
+        margin-left: 1rem;
+        margin-top: 3%;
+    }
+    #solid-text p{
+        line-height: 1.5;
+    }
+    .tight-spacing {
+        margin-right: -0.5em; 
     }
     .placeholder {
         width: 100%;
@@ -108,9 +126,6 @@
         height: 100%;
         max-height: 70%;
         background-color: #D9D9D9;
-    } 
-    #letsTryButton {
-        z-index: 10;
     }
 
     .image-container {
@@ -135,6 +150,41 @@
     }
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    #header{
+        font-size: 4rem;
+    }
+    #header1{
+        font-size: 4rem;
+        margin-top: -2%;
+    }
+    #header2{
+        font-size: 4rem;
+    }
+    #header3{
+        font-size: 4rem;
+        margin-top: -2%;
+    }
+    #header4{
+        font-size: 4rem;
+        margin-top: -4%;
+    }
+    #header5{
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+    }
+    #solidGif{
+        margin-right: 7%;
+    }
+    #sChar{
+        margin-left: 15%;
+    }
+    #char1{
+        margin-left: -25%;
+    }
+    #compButton{
+        margin-left: 15%;
     }
 
     /* for quiz layout */
@@ -212,6 +262,9 @@
         z-index: 2; 
         margin-top: 30px;
     }
+    #quizContainer{
+        margin-top: 30px;
+    }
 
     @font-face {
         font-family: 'verdana';
@@ -234,14 +287,14 @@
         <div class="container">
             <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="../../image/board.png" alt="Board Image">
+                    <figure class="image is-5by3">
+                        <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
 
                     <!-- Matter States -->
                     <div class="x-content" id="matterStates">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white mt-5 secondary-font" id="header">SOLID</h1>
 
                             <!-- Solid Image -->
                             <div class="stateImage">
@@ -250,7 +303,7 @@
                                 </figure>
                             </div>
 
-                            <p class="main-font column is-four-fifths subtitle is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
+                            <p class="main-font column is-four-fifths title is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-centered has-text-white mb-6" id="states">
                                 <span style="color: yellow;">Solid</span> is one of the three fundamental states of matter along with liquid, gas.
                             </p>
                         </div>                       
@@ -259,12 +312,12 @@
                     <!-- Matter Solid -->
                     <div class="matter-content" id="matterSolid">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header1">SOLID</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Image Column -->
-                                <div class="column is-5">
+                                <div class="column is-5" id="solidGif">
                                     <figure class="image solid-image">
                                         <img src="../../image/msolidgif.gif" alt="Solid">
                                     </figure>
@@ -272,8 +325,8 @@
 
                                 <!-- Text Column -->
                                 <div class="column is-5">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
-                                        • Has particles that are packed closely together and usually arranged in regular pattern
+                                    <p class="subtitle main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified">
+                                        • Has particles that are packed closely together and usually arranged in regular pattern.
                                     </p>
                                 </div>
                             </div>
@@ -283,12 +336,12 @@
                     <!-- Matter Characteristics -->
                     <div class="matter-content" id="matterChar">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">CHARACTERISTICS OF SOLID</h1>
+                            <h1 class="title shas-text-white secondary-font" id="header2">CHARACTERISTICS OF SOLID</h1>
                             <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-3">Solid are known to have:</p>
 
                             <div class="image-container" id="sChar">
                                 <!-- Solid Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="char1">
                                     <figure class="image">
                                         <img src="../../image/ssChar1.gif" alt="Solid">
                                     </figure>
@@ -296,7 +349,7 @@
                                 </div>
 
                                 <!-- Solid Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="char2">
                                     <figure class="image">
                                         <img src="../../image/ssChar2.gif" alt="Solid">
                                     </figure>
@@ -304,7 +357,7 @@
                                 </div>
 
                                 <!-- Solid Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="char3">
                                     <figure class="image">
                                         <img src="../../image/ssChar3.gif" alt="Solid">
                                     </figure>
@@ -317,11 +370,11 @@
                     <!-- Matter Video -->
                     <div class="matter-content" id="matterVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">SOLID</h1>
 
                             <!-- Video for Solid.mp4 -->
                             <div class="box">
-                                <video id="solidVideo" width="750" height="420" controls>
+                                <video id="solidVideo" width="750" height="520" controls>
                                     <source src="../../videos/Solid.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -335,16 +388,16 @@
                     <!-- Matter Solid2 -->
                     <div class="matter-content" id="matterSolid2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">SOLID</h1>
+                            <h1 class="title has-text-white secondary-font" id="header3">SOLID</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
                                         • Has Definite shape and volume
                                     </p>
-                                    <p class="subtitle main-font column is-one-fifths is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
                                         • When a solid is heated, its molecules gain energy and vibrate fast.
                                     </p>
                                 </div>
@@ -362,7 +415,7 @@
                     <!-- Matter Examples -->
                     <div class="matter-content" id="matterExamples">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF SOLID
                             </h1>
 
@@ -389,7 +442,7 @@
                     <!-- Matter Examples 2 -->
                     <div class="matter-content" id="matterExamples2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF SOLID
                             </h1>
 
@@ -447,7 +500,7 @@
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header4">
                                 QUIZ
                             </h1>
                             <!-- Quiz Container -->
@@ -517,15 +570,21 @@
                         </div>
                     </div>
 
-
                     <!-- Matter Solid Completed -->
                     <div class="matter-content" id="matterCompleted">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
-                            <div class="column is-full is-flex is-justify-content-flex-end mb-6">
-                                <div class="columns is-half ml-6 p-2">
-                                    <a href="matterLesson.php?show=matterTopic">
+                            <div class="column is-full is-flex is-justify-content-flex-end mb-6" id="compButton">
+                                <div class="columns is-half ml-6 p-2" id="mainbtn">
+                                    <a href="../studentWelcome.php?show=Lessons">
                                         <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
                                         <p class="has-text-white">Back To Main Menu</p>
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="columns is-half ml-6 p-2" id="nxtbtn">
+                                    <a href="matterLiquid.php">
+                                        <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
+                                        <p class="has-text-white">Next Topic</p>
                                         </button>
                                     </a>
                                 </div>
@@ -542,10 +601,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -662,72 +721,74 @@
     }
 
     function showSection(index) {
-    hideAllSections();
-    sections[index].classList.remove('matter-content');
-    sections[index].classList.add('matter-content-active');
+        hideAllSections();
+        sections[index].classList.remove('matter-content');
+        sections[index].classList.add('matter-content-active');
 
-    if (sections[index] === matterStates) {
-        playAudio(); 
-    } else {
-        stopAudio();
-    }
-    if (sections[index] === matterSolid) {
-        playAudio2(); 
-    } else {
-        stopAudio2();
-    }
-    if (sections[index] === matterChar) {
-        playAudio3(); 
-    } else {
-        stopAudio3();
-    }
-
-    if (sections[index] === matterSolid2) {
-        playAudio4(); 
-    } else {
-        stopAudio4();
-    }
-    if (sections[index] === matterVideo) {
-            solidVideo.play();
+        if (sections[index] === matterStates) {
+            playAudio(); 
         } else {
-            stopVideo(); 
+            stopAudio();
+        }
+        if (sections[index] === matterSolid) {
+            playAudio2(); 
+        } else {
+            stopAudio2();
+        }
+        if (sections[index] === matterChar) {
+            playAudio3(); 
+        } else {
+            stopAudio3();
         }
 
+        if (sections[index] === matterSolid2) {
+            playAudio4(); 
+        } else {
+            stopAudio4();
+        }
+        if (sections[index] === matterVideo) {
+                solidVideo.play();
+            } else {
+                stopVideo(); 
+            }
 
-    if (index >= 0 && index <= 6) { 
-        examplesButton.style.display = 'flex';
-        einsteinImage.style.display = 'block';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'flex';
-        rightButton.style.display = 'flex';
-    } else if (sections[index] === matterLetsTry) {
-        examplesButton.style.display = 'none';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'flex';
-        goBackButton.style.display = 'flex';
-        proceedToQuizButton.style.display = 'flex';
-        leftButton.style.display = 'none';
-        rightButton.style.display = 'none';
-    } else if (sections[index] === matterQuiz) {
-        examplesButton.style.display = 'flex';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'flex';
-        rightButton.style.display = 'flex';
-    } else if (sections[index] === matterCompleted) {
-        examplesButton.style.display = 'none';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'none';
-        rightButton.style.display = 'none';
+
+        if (index >= 0 && index <= 6) { 
+            examplesButton.style.display = 'flex';
+            einsteinImage.style.display = 'block';
+            letsTryButton.style.display = 'none';
+            goBackButton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+            leftButton.style.display = 'flex';
+            rightButton.style.display = 'flex';
+        } else if (sections[index] === matterLetsTry) {
+            examplesButton.style.display = 'none';
+            einsteinImage.style.display = 'none';
+            letsTryButton.style.display = 'flex';
+            goBackButton.style.display = 'flex';
+            proceedToQuizButton.style.display = 'flex';
+            leftButton.style.display = 'none';
+            rightButton.style.display = 'none';
+        } else if (sections[index] === matterQuiz) {
+            examplesButton.style.display = 'flex';
+            einsteinImage.style.display = 'none';
+            letsTryButton.style.display = 'none';
+            goBackButton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+            leftButton.style.display = 'flex';
+            rightButton.style.display = 'flex';
+
+            examplesButton.style.marginLeft = '100%';  
+        } else if (sections[index] === matterCompleted) {
+            examplesButton.style.display = 'none';
+            einsteinImage.style.display = 'none';
+            letsTryButton.style.display = 'none';
+            goBackButton.style.display = 'none';
+            proceedToQuizButton.style.display = 'none';
+            leftButton.style.display = 'none';
+            rightButton.style.display = 'none';
+        }
     }
-}
 
 
         rightButton.addEventListener('click', function () {

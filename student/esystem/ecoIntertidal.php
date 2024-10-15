@@ -9,6 +9,13 @@
     .eco-content-active {
         display: block;
     }
+    #einstein-image{
+        width: 100%;
+        max-width: 31%;
+        margin-right: -25.7%;
+        margin-left: -10%;
+        margin-bottom: -6.8%;
+    }
     .image-container {
         display: flex;
         justify-content: space-around;
@@ -24,12 +31,20 @@
         max-width: 350px;
     }
     .eco-image {
-        width: 100%;
-        max-width: 100%;
-        margin-right: 9rem;
+        width: 130%;
+        max-width: 130%;
+        margin-left: 6rem;
+        margin-top: 2%;
+    }
+    .eco-image2{
+        width: 150%;
+        max-width: 150%;
+        margin-left: -25%;
+        margin-top: -4%;
     }
     #eco-text {
-        margin-left: 9rem;
+        margin-left: 1rem;
+        margin-top: 4%;
     }
     .placeholder {
         width: 100%;
@@ -38,19 +53,6 @@
         max-height: 70%;
         background-color: #D9D9D9;
     } 
-    .iframe-container {
-        position: relative;
-        z-index: 2; 
-        width: 80%; 
-        margin: 0 auto;
-    }
-
-    .iframe-container iframe {
-        width: 100%;
-        margin-top: 250px; 
-        border: none;
-        z-index: 2;
-    }
     .medal-image img{
         max-width: 40%;
         height: auto;
@@ -93,13 +95,6 @@
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
     }
-    #einstein-image{
-        width: 100%;
-        max-width: 25%;
-        margin-right: -7%;
-        margin-left: -8%;
-        margin-bottom: -2%;
-    }
     .button-text {
         font-size: 0.75em;
     }
@@ -109,6 +104,87 @@
     .navbar-item:hover{
         background-color: #266bbb;
         color: white;
+    }
+
+    
+    #header{
+        font-size: 4rem;
+        margin-top: 0%;
+    }
+    #header1{
+        font-size: 4rem;
+        margin-top: -9%;
+        margin-bottom: 10%;
+    }
+    #header2{
+        font-size: 4rem;
+    }
+    #header3{
+        font-size: 4rem;
+        margin-top: -2%;
+    }
+    #header4{
+        font-size: 3.5rem;
+        margin-top: -1%;
+    }
+    #header5{
+        font-size: 4rem;
+        margin-bottom: 2.5rem;
+        margin-top: -12%;
+    }
+    #header6{
+        font-size: 4rem;
+        margin-right: -1em;
+        margin-bottom: 2.5rem;
+        margin-top: -12%;
+    }
+    #header7{
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+    }
+    .description1{
+        font-size: 2.4rem;
+    }
+    .description2{
+        font-size: 2.6rem;
+    }
+    #sChar{
+        margin-left: 5%;
+        margin-top: 5%;
+    }
+    #sChar img{
+        width: 120%;
+        min-width: 100%;
+        max-width: 450px;
+    }
+    #eco-text p{
+        line-height: 1.5;
+    }
+    .tight-spacing {
+        margin-right: -1em;
+    }
+    .p-spacing {
+        margin-right: -1.5em;
+    }
+    #organism1{
+        margin-left: -15%;
+    }
+    #org{
+        margin-left: -5%;
+    }
+    #org img{
+        width: 120%;
+        min-width: 100%;
+        max-width: 350px;
+    }
+    #org1, #org2, #org3{
+        margin-top: -45%;
+    }
+    #sChar .image-item{
+        margin-top: -5%;
+    }
+    #sChar .image-item p{
+        margin-left: 25%;
     }
 
     /* for quiz layout */
@@ -205,23 +281,23 @@
 <section class="hero is-fullheight">
     <div class="hero-body">
         <div class="container">
-            <div class="column is-centered is-vcentered">
+            <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="../../image/board.png" alt="Board Image">
+                    <figure class="image is-5by3">
+                        <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
-                    
+
                     <!-- Eco Objective -->
                     <div class="x-content" id="objectives">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mb-6 secondary-font">LEARNING OBJECTIVES</h1>
+                            <h1 class="title has-text-white secondary-font" id="header1">LEARNING OBJECTIVES</h1>
 
                             <!-- Content Layout -->
                             <div class="is-centered">
-                                <p class="subtitle is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6"> At the end of the lesson you will able to:</p>
+                                <p class="subtitle description2 has-text-white main-font mb-6"> At the end of the lesson you will able to:</p>
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
-                                    <div class="subtitle is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white">
+                                    <div class="subtitle description2 has-text-white">
                                         <p class="mb-5 main-font">• Define what are the ecosystem in Intertidal Zone</p>
                                         <p class="mb-5 main-font">• Identify different wildlife that lives in Intertidal zone</p>
                                     </div>
@@ -233,13 +309,13 @@
                     <!-- Eco 1 -->
                     <div class="eco-content" id="eco1">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">The Ecosystem Estuaries</h1>
+                            <h1 class="title has-text-white secondary-font" id="header3">The Ecosystem Estuaries</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
+                                    <p class="subtitle main-font is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
                                         • Many organisms became visible when you go to the seashore during low tide.
                                     </p>
                                 </div>
@@ -262,17 +338,17 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="title main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mb-6">
+                                    <p class="title main-font has-text-white mb-6" id="header5">
                                         Tide
                                     </p>
-                                    <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
                                         • <span style="color: yellow;">Tide</span> refers to the movement of water as a result of the gravitational pull of the sun and the moon.
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
+                                    <figure class="image eco-image">
                                         <img src="../../image/eco10.gif" alt="Eco">
                                     </figure>
                                 </div>
@@ -283,13 +359,13 @@
                     <!-- Eco 3 -->
                     <div class="eco-content" id="eco3">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-6 secondary-font">The Intertidal Zones</h1>
+                            <h1 class="title has-text-white secondary-font" id="header">The Intertidal Zones</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-centered is-mobile is-multiline mb-4">
                                 <!-- Image Column -->
-                                <div class="column is-full has-text-centered">
-                                    <figure class="image eco-image mb-6">
+                                <div class="column is-full">
+                                    <figure class="image eco-image2">
                                         <img src="../../image/eco11.png" alt="Eco">
                                     </figure>
                                 </div>
@@ -300,11 +376,11 @@
                     <!-- Eco Video -->
                     <div class="eco-content" id="ecoVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">The Ecosystem Estuaries</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">The Ecosystem Estuaries</h1>
 
                             <!-- Video for -->
                             <div class="box">
-                                <video id="solidVideo" width="750" height="420" controls>
+                                <video id="solidVideo" width="750" height="520" controls>
                                     <source src="../../videos/.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -323,10 +399,10 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="title main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mb-6">
+                                    <p class="title main-font has-text-white" id="header5">
                                         Splash Zone
                                     </p>
-                                    <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
                                         • Also known as the <span style="color: yellow;">spray zone</span> or <span style="color: yellow;">upper littoral zone</span> 
                                         is a region in the intertidal zone that is submerged in the water.
                                     </p>
@@ -334,7 +410,7 @@
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
+                                    <figure class="image eco-image">
                                         <img src="../../image/eco12.png" alt="Eco">
                                     </figure>
                                 </div>
@@ -345,13 +421,13 @@
                     <!-- Eco Splash -->
                     <div class="eco-content" id="ecoSplash">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-4">
+                            <h1 class="title has-text-white secondary-font" id="header4">
                                 Organisms that can be found in Splash Zone
                             </h1>
 
                             <div class="image-container" id="sChar">
                                 <!-- Eco Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="organism1">
                                     <figure class="image">
                                         <img src="../../image/eco13.gif" alt="Organisms">
                                     </figure>
@@ -377,17 +453,17 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="title main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mb-6">
+                                    <p class="title main-font has-text-white" id="header5">
                                         High Tide Zone
                                     </p>
-                                    <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
                                         • Also known as the <span style="color: yellow;">upper mid-littoral zone</span> is region that submerged in the water only during high tide.
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
+                                    <figure class="image eco-image">
                                         <img src="../../image/eco15.gif" alt="Eco">
                                     </figure>
                                 </div>
@@ -398,13 +474,13 @@
                     <!-- Eco High -->
                     <div class="eco-content" id="ecoHigh">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
-                            <h1 class="title column is-four-fifths has-text-centered is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title column is-one-fifths has-text-centered has-text-white secondary-font" id="header4">
                                 Organisms that can be found in High Tide Zone
                             </h1>
                             
-                            <div class="image-container" id="sChar">
+                            <div class="image-container" id="org">
                                 <!-- Eco Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="org1">
                                     <figure class="image">
                                         <img src="../../image/ecoHigh1.png" alt="Organisms">
                                     </figure>
@@ -412,7 +488,7 @@
                                 </div>
 
                                 <!-- Eco Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="org2">
                                     <figure class="image">
                                         <img src="../../image/ecoHigh2.png" alt="Organisms">
                                     </figure>
@@ -420,7 +496,7 @@
                                 </div>
 
                                 <!-- Eco Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="org3">
                                     <figure class="image">
                                         <img src="../../image/ecoHigh3.png" alt="Organisms">
                                     </figure>
@@ -438,17 +514,17 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="title main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mb-6">
+                                    <p class="title main-font has-text-white" id="header6">
                                         Middle Tide Zone
                                     </p>
-                                    <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
                                         • Also known as <span style="color: yellow;">lower mid-littoral zone</span> is a region that is generally submerged in the water
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
+                                    <figure class="image eco-image">
                                         <img src="../../image/eco16.gif" alt="Eco">
                                     </figure>
                                 </div>
@@ -458,26 +534,26 @@
 
                     <!-- Eco Middle -->
                     <div class="eco-content" id="ecoMiddle">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-4 p-6">
-                            <h1 class="title column is-four-fifths has-text-centered is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-6">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
+                            <h1 class="title is-one-fifths has-text-centered has-text-white secondary-font" id="header4">
                                 Organisms that can be found in Middle Tide Zone
                             </h1>
 
-                            <div class="sExample"  style="z-index: 10;">
-                                <!-- First Image -->
-                                <div class="image-item">
+                            <div class="image-container" id="sChar">
+                                <!-- Eco Image -->
+                                <div class="image-item" id="organism1">
                                     <figure class="image">
                                         <img src="../../image/ecoMiddle1.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Urchins</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sea Urchins</p>
                                 </div>
 
-                                <!-- Second Image -->
+                                <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
                                         <img src="../../image/ecoMiddle2.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Cucumbers</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sea Cucumbers</p>
                                 </div>
                             </div>
                         </div>
@@ -485,26 +561,26 @@
 
                     <!-- Eco Middle 2 -->
                     <div class="eco-content" id="ecoMiddle2">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-4 p-6">
-                            <h1 class="title column is-four-fifths has-text-centered is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-6">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
+                            <h1 class="title is-one-fifths has-text-centered has-text-white secondary-font" id="header4">
                                 Organisms that can be found in Middle Tide Zone
                             </h1>
 
-                            <div class="sExample"  style="z-index: 10;">
-                                <!-- Third Image -->
-                                <div class="image-item">
+                            <div class="image-container" id="sChar">
+                                <!-- Eco Image -->
+                                <div class="image-item" id="organism1">
                                     <figure class="image">
                                         <img src="../../image/ecoMiddle3.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Fish</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fish</p>
                                 </div>
 
-                                <!-- Fourth Image -->
+                                <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
                                         <img src="../../image/ecoMiddle4.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shrimp</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Shrimp</p>
                                 </div>
                             </div>
                         </div>
@@ -518,10 +594,10 @@
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="title main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mb-6">
+                                    <p class="title main-font has-text-white" id="header6">
                                         Low Tide Zone
                                     </p>
-                                    <p class="subtitle main-font is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white">
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
                                         • Also known as <span style="color: yellow;">lower littoral zone</span> is always submerged under water
                                         <br>
                                         <br>
@@ -531,7 +607,7 @@
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
+                                    <figure class="image eco-image">
                                         <img src="../../image/eco17.gif" alt="Eco">
                                     </figure>
                                 </div>
@@ -541,26 +617,26 @@
 
                     <!-- Eco Low -->
                     <div class="eco-content" id="ecoLow">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-4 p-6">
-                            <h1 class="title column is-four-fifths has-text-centered is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-6">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
+                            <h1 class="title is-one-fifths has-text-centered has-text-white secondary-font" id="header4">
                                 Organisms that can be found in Low Tide Zone
                             </h1>
 
-                            <div class="sExample"  style="z-index: 10;">
-                                <!-- First Image -->
-                                <div class="image-item">
+                            <div class="image-container" id="sChar">
+                                <!-- Eco Image -->
+                                <div class="image-item" id="organism1">
                                     <figure class="image">
                                         <img src="../../image/ecoLow1.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Star</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sea Star</p>
                                 </div>
 
-                                <!-- Second Image -->
+                                <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
                                         <img src="../../image/ecoLow2.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Sea Sponge</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sea Sponge</p>
                                 </div>
                             </div>
                         </div>
@@ -568,26 +644,26 @@
 
                     <!-- Eco Low 2 -->
                     <div class="eco-content" id="ecoLow2">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-4 p-6">
-                            <h1 class="title column is-four-fifths has-text-centered is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-6">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
+                            <h1 class="title is-one-fifths has-text-centered has-text-white secondary-font" id="header4">
                                 Organisms that can be found in Low Tide Zone
                             </h1>
 
-                            <div class="sExample"  style="z-index: 10;">
-                                <!-- Third Image -->
-                                <div class="image-item">
+                            <div class="image-container" id="sChar">
+                                <!-- Eco Image -->
+                                <div class="image-item" id="organism1">
                                     <figure class="image">
                                         <img src="../../image/ecoLow3.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Nudibranch</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Nudibranch</p>
                                 </div>
 
-                                <!-- Fourth Image -->
+                                <!-- Eco Image -->
                                 <div class="image-item">
                                     <figure class="image">
                                         <img src="../../image/ecoLow4.png" alt="Organisms">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Algae</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Algae</p>
                                 </div>
                             </div>
                         </div>
@@ -596,7 +672,7 @@
                     <!-- Eco Quiz -->
                     <div class="eco-content" id="ecoQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header4">
                                 QUIZ
                             </h1>
                             <!-- Quiz Container -->
@@ -670,7 +746,7 @@
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                             <div class="column is-full is-flex is-justify-content-flex-end mb-6">
                                 <div class="columns is-half ml-6 p-2">
-                                    <a href="ecosystemLesson.php">
+                                    <a href="../studentWelcome.php?show=Lessons">
                                         <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
                                         <p class="has-text-white">Back To Main Menu</p>
                                         </button>
@@ -689,10 +765,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header7">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title main-font is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header7">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -756,9 +832,11 @@
 
         function updateEinsteinImageAndButtons() {
             if (currentSection === 15 || currentSection === 16) {
-                einsteinImage.style.display = 'none';  
+                einsteinImage.style.display = 'none'; 
+                examplesButton.style.marginLeft = '100%';  
             } else {
                 einsteinImage.style.display = 'block';
+                examplesButton.style.marginLeft = '0%'; 
             }
 
             if (currentSection === 16) {

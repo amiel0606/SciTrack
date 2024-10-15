@@ -3,10 +3,10 @@
 ?>
 
 <style>
-    .eco-content {
+    .motion-content {
         display: none;
     }
-    .eco-content-active {
+    .motion-content-active {
         display: block;
     }
     #einstein-image{
@@ -102,7 +102,7 @@
     }
     #header1{
         font-size: 4rem;
-        margin-top: -9%;
+        margin-top: -7%;
         margin-bottom: 10%;
     }
     #header2{
@@ -125,11 +125,16 @@
         font-size: 3rem;
         margin-bottom: 2.5rem;
     }
+    #headerEx{
+        margin-top: 3%;
+        font-size: 4rem;
+    }
     .description1{
         font-size: 2.4rem;
     }
     .description2{
-        font-size: 2.8rem;
+        font-size: 2.4rem;
+        margin-left: 5%;
     }
     #sChar{
         margin-left: 5%;
@@ -178,7 +183,50 @@
     #char3 p{
         margin-left: 25%;
     }
-
+    .motion-image{
+        width: 80%;
+        max-width: 80%;
+        margin-top: -5%; 
+    }
+    .motion-image2{
+        width: 50%;
+        max-width: 80%;
+        margin-top: -5%; 
+    }
+    #form-text{
+        margin-top: 0%;
+    }
+    #formula1{
+        margin-top: 5%;
+    }
+    #formula2{
+        margin-bottom: 15%;
+        margin-left: -5%;
+    }
+    #formula3{
+        margin-bottom: 15%;
+        margin-left: 5%;
+    }
+    #formula4{
+        margin-bottom: 15%;
+    }
+    #question{
+        margin-top: -5%;
+    }
+    #ex-text {
+        margin-left: 1rem;
+        margin-top: -12%;
+    }
+    #ex-text1 {
+        margin-left: 1rem;
+        margin-top: 2%;
+    }
+    #ex-text p, #ex-text1 p{
+        line-height: 1.5;
+    }
+    #exImage{
+        margin-top: -25%;
+    }
     
     /* for quiz layout */
     .choice-btn {
@@ -283,7 +331,7 @@
                         <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
                     
-                    <!-- Eco Objective -->
+                    <!-- Motion Objective -->
                     <div class="x-content" id="objectives">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
                             <h1 class="title has-text-white secondary-font" id="header1">LEARNING OBJECTIVES</h1>
@@ -294,35 +342,17 @@
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
-                                        <p class="mb-5 main-font">• Define what are the Estuaries</p>
-                                        <p class="mb-5 main-font">• Identify different wildlife that lives in estuaries</p>
-                                        <p class="mb-5 main-font">• Identify the different estuaries</p>
+                                        <p class="mb-5 main-font">• Define what is the motion</p>
+                                        <p class="mb-5 main-font">• Learn how to solve speed, distance, time, and velocity</p>
+                                        <p class="mb-5 main-font">• Describe the motion of an object by measuring its change position over a period of time</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Eco Def -->
-                    <div class="eco-content" id="ecoDef">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-4 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header">WHAT IS ECOSYSTEM?</h1>
-
-                            <!-- Content Layout -->
-                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered">
-                                <figure class="image es-image">
-                                    <img src="../../image/eco3.png" alt="Ecosystem">
-                                </figure>
-
-                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
-                                    An <span style="color: yellow;">Ecosystem</span> is all the biotic and abiotic components that interact within an area at once.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Eco But Before -->
-                    <div class="eco-content" id="ecoBefore">
+                    <!-- Motion But First -->
+                    <div class="motion-content" id="motionFirst">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
                             <!-- Content Layout -->
                             <div class="columns is-centered">
@@ -336,115 +366,115 @@
                                 <!-- Image Column -->
                                 <div class="column is-half pr-6 mr-6">
                                     <figure class="image letstry">
-                                        <img src="../../image/esbefore.png" alt="letstry">
+                                        <img src="../../image/motionFirst.png" alt="letstry">
                                     </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Motion Def -->
+                    <div class="motion-content" id="motionDef">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-4 p-6">
+                            <h1 class="title has-text-white secondary-font" id="header">WHAT IS MOTION?</h1>
 
-                    <!-- Eco Biotic -->
-                    <div class="eco-content" id="ecoBiotic">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header2">BIOTIC</h1>
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered">
+                                <figure class="image es-image">
+                                    <img src="../../image/motion15.gif" alt="Ecosystem">
+                                </figure>
 
-                            <div class="image-container mb-2" id="sChar">
-                                <!-- Eco Image -->
-                                <div class="image-item" id="bio1">
-                                    <figure class="image">
-                                        <img src="../../image/ecobio1.gif" alt="Biotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Animals</p>
-                                </div>
-
-                                <!-- Eco Image -->
-                                <div class="image-item" id="bio2">
-                                    <figure class="image">
-                                        <img src="../../image/ecobio2.gif" alt="Biotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Trees and Plants</p>
-                                </div>
-
-                                <!-- Eco Image -->
-                                <div class="image-item" id="bio3">
-                                    <figure class="image">
-                                        <img src="../../image/ecobio3.gif" alt="Biotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Bacteria</p>
-                                </div>
+                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
+                                    <span style="color: yellow;">Motion</span> occurs when a body or object changes position or place.
+                                </p>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Distance -->
+                    <div class="motion-content" id="motionDistance">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-4 p-6">
+                            <h1 class="title has-text-white secondary-font" id="header">Distance</h1>
 
-                            <p class="main-font title column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered mt-4">
-                                <span style="color: yellow;">Biotic factors</span> are living things within an ecosystem; such as plants, animals, and bacteria.
-                            </p>
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered">
+                                <figure class="image es-image">
+                                    <img src="../../image/motion1.gif" alt="Ecosystem">
+                                </figure>
+
+                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
+                                    Identified as the length covered between two points or position
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Eco Abiotic -->
-                    <div class="eco-content" id="ecoAbiotic">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header2">ABIOTIC</h1>
-
-                            <div class="image-container mb-2" id="sChar">
-                                <!-- Solid Image -->
-                                <div class="image-item" id="bio1">
-                                    <figure class="image">
-                                        <img src="../../image/ecoabio1.gif" alt="Abiotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Water and Rocks</p>
-                                </div>
-
-                                <!-- Solid Image -->
-                                <div class="image-item" id="bio2">
-                                    <figure class="image">
-                                        <img src="../../image/ecoabio2.gif" alt="Abiotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Soil</p>
-                                </div>
-
-                                <!-- Solid Image -->
-                                <div class="image-item" id="bio3">
-                                    <figure class="image">
-                                        <img src="../../image/ecoabio3.gif" alt="Abiotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Light</p>
-                                </div>
-                            </div>
-
-                            <p class="main-font title column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered mt-4">
-                                <span style="color: yellow;">Abiotic factors</span> are non-living things such as air, water, light, soil, nutrient and many more
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Eco 1 -->
-                    <div class="eco-content" id="eco1">
+                    <!-- Motion Time -->
+                    <div class="motion-content" id="motionTime">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header3">The Ecosystem Estuaries</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="subtitle main-font is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • They are often called the “nurseries of the sea” because numerous animal species rely on estuaries for nesting and breeding.
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Time
+                                    </p>
+                                    <p class="title description1 main-font has-text-white">
+                                        Measures the duration of events. Unit for time is second(s), minute (min) and hour (hr).
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image">
-                                        <img src="../../image/eco4.gif" alt="Eco">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion2.gif" alt="Motion">
                                     </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Motion Speed -->
+                    <div class="motion-content" id="motionSpeed">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-4 p-6">
+                            <h1 class="title has-text-white secondary-font" id="header">Speed</h1>
 
-                    <!-- Eco Video -->
-                    <div class="eco-content" id="ecoVideo">
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered">
+                                <figure class="image motion-image">
+                                    <img src="../../image/motion3.gif" alt="Ecosystem">
+                                </figure>
+
+                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
+                                    Measures of how fast an object moves
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Velocity -->
+                    <div class="motion-content" id="motionVelocity">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-4 p-6">
+                            <h1 class="title has-text-white secondary-font" id="header">Velocity</h1>
+
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered">
+                                <figure class="image motion-image2">
+                                    <img src="../../image/motion4.gif" alt="Ecosystem">
+                                </figure>
+
+                                <p class="title main-font column is-four-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
+                                    The measure of rate at which an object changes its position
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motion Video -->
+                    <div class="motion-content" id="motionVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header2">The Ecosystem Estuaries</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">The Motion</h1>
 
                             <!-- Video for -->
                             <div class="box">
@@ -459,145 +489,144 @@
                         </div>
                     </div>
 
-                    <!-- Eco 2 -->
-                    <div class="eco-content" id="eco2">
+                    <!-- Motion Formula -->
+                    <div class="motion-content" id="motionFormula">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+                            
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered" id="formula1">
+                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
+                                    To Compute for distance, multiply speed and velocity. To solve for time, divide distance with speed
+                                </p>
 
+                                <div class="columns is-centered is-multiline">
+                                    <div class="column is-half has-text-centered" id="form-text">
+                                        <p class="title main-font column is-full is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white" id="formula2">
+                                            Formula: s (speed) = d (distance) / t (time)
+                                        </p>
+                                    </div>
+
+                                    
+                                    <div class="column is-half has-text-centered" id="form-text">
+                                        <p class="title main-font column is-full is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white" id="formula3">
+                                            Formula: s (speed) = d (distance) / s (speed)
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="column is-half has-text-centered">
+                                    <p class="title main-font column is-one-fourths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white" id="formula4">
+                                        Formula: = d (distance) = s(t)
+                                    </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motion Example1 -->
+                    <div class="motion-content" id="motionExample1">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+                            <h1 class="title has-text-white secondary-font" id="headerEx">Examples</h1>
+                            
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered" id="formula1">
+                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white mb-6" id="question">
+                                    A car travels a distance of 800m in 40 seconds. How fast did it move?
+                                </p>
+                            </div>
+                            
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white" id="header5">
-                                        Brackish
-                                    </p>
-                                    <p class="title description1 main-font has-text-white">
-                                        • <span style="color: yellow;">Brackish</span> is found in an area where the river meets the sea.
+                                <div class="column is-5" id="ex-text">
+                                    <p class="title main-font has-text-white">
+                                        Given: d = 800m, t = 40s <br>
+                                        Required: speed <br>
+                                        Formula: s = d / t <br>
+                                        Solution: s = 800m / 40s = 20m/s
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
-                                        <img src="../../image/eco5.gif" alt="Eco">
+                                    <figure class="image eco-image" id="exImage">
+                                        <img src="../../image/motion5.gif" alt="Motion">
                                     </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Eco 3 -->
-                    <div class="eco-content" id="eco3">
+                    <!-- Motion Example2 -->
+                    <div class="motion-content" id="motionExample2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-
+                            <h1 class="title has-text-white secondary-font" id="headerEx">Examples</h1>
+                            
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered" id="formula1">
+                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white mb-6" id="question">
+                                    How long will take Carlo to reach the end of the room 5.8 meters away if he sprints at a speed of 1.2m/s? 
+                                </p>
+                            </div>
+                            
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white mb-6" id="header5">
-                                        Sediment
-                                    </p>
-                                    <p class="title description1 main-font has-text-justified has-text-white">
-                                        • <span style="color: yellow;">Sediment</span> are the particles such as sand and soil which settle on the side and bottom of water bodies.
-                                    </p>
+                                <div class="column is-5" id="ex-text">
+                                    <p class="title main-font has-text-white">
+                                        Given: d = 5.8m, s = 1.2m/s <br>
+                                        Required: time <br>
+                                        Formula: t = d / s <br>
+                                        Solution: t = 5.8m / 1.2s = 4.83s
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
-                                        <img src="../../image/eco6.png" alt="Eco">
+                                    <figure class="image eco-image" id="exImage">
+                                        <img src="../../image/motion6.gif" alt="Motion">
                                     </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Eco Examples -->
-                    <div class="eco-content" id="ecoExamples">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header4">EXAMPLES OF SEDIMENTS</h1>
-
-                            <div class="image-container" id="eChar">
-                                <!-- Eco Image -->
-                                <div class="image-item" id="char1">
-                                    <figure class="image">
-                                        <img src="../../image/ecoExamples1.png" alt="Sediments">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Pebbles</p>
-                                </div>
-
-                                <!-- Eco Image -->
-                                <div class="image-item" id="char2">
-                                    <figure class="image">
-                                        <img src="../../image/ecoExamples2.png" alt="Sediments">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sand</p>
-                                </div>
-
-                                <!-- Eco Image -->
-                                <div class="image-item" id="char3">
-                                    <figure class="image">
-                                        <img src="../../image/ecoExamples3.png" alt="Sediments">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Clay</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco 4 -->
-                    <div class="eco-content" id="eco4">
+                    <!-- Motion Example3 -->
+                    <div class="motion-content" id="motionExample3">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-
+                            <h1 class="title has-text-white secondary-font" id="headerEx">Examples</h1>
+                            
+                            <!-- Content Layout -->
+                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered" id="formula1">
+                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white mb-6" id="question">
+                                    How far can a dog go to fetch a ball if it runs at a speed of 4.5m/s for 30 seconds?
+                                </p>
+                            </div>
+                            
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white mb-6" id="header5">
-                                        Murky Water
-                                    </p>
-                                    <p class="title description1 main-font has-text-justified has-text-white">
-                                        • The <span style="color: yellow;">Murky Water</span> in an estuary is due to the presence of sediments and provides good camouflage for small organisms
-                                    </p>
+                                <div class="column is-5" id="ex-text1">
+                                    <p class="title main-font has-text-white">
+                                    Give: d = 4.5m/s, t = 30s <br>
+                                    Required: distance <br>
+                                    Formula: d = s(t) <br>
+                                    Solution: d = 30s (4.5m/s) = 135m <br><br>
+                                    Therefore, the distance that the dog runs is 135cm
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image ecosys">
-                                        <img src="../../image/eco7.gif" alt="Eco">
+                                    <figure class="image eco-image" id="exImage">
+                                        <img src="../../image/motion7.gif" alt="Motion">
                                     </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Eco 5 -->
-                    <div class="eco-content" id="eco5">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-
-                            <!-- Content Layout -->
-                            <div class="columns is-vcentered is-mobile is-multiline">
-                                <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white mb-6" id="header5">
-                                        Estuary
-                                    </p>
-                                    <p class="title description1 main-font has-text-justified has-text-white p-spacing">
-                                        • An <span style="color: yellow;">Estuary</span>, characterized by having brackish water, is home to many organisms
-                                    </p>
-                                </div>
-
-                                <!-- Image Column -->
-                                <div class="column is-5">
-                                    <figure class="image eco-image ecosys">
-                                        <img src="../../image/eco8.gif" alt="Eco">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco Quiz -->
-                    <div class="eco-content" id="ecoQuiz">
+                    <!-- Motion Quiz -->
+                    <div class="motion-content" id="motionQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
                             <h1 class="title has-text-white secondary-font" id="header4">
                                 QUIZ
@@ -668,8 +697,8 @@
                         </div>
                     </div>
 
-                    <!-- Eco Estuaries Completed -->
-                    <div class="eco-content" id="ecoCompleted">
+                    <!-- Motion Completed -->
+                    <div class="motion-content" id="motionCompleted">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                         <div class="column is-full is-flex is-justify-content-flex-end mb-6" id="compButton">
                                 <div class="columns is-half ml-6 p-2" id="mainbtn">
@@ -680,7 +709,7 @@
                                     </a>
                                 </div>
                                 <div class="columns is-half ml-6 p-2" id="nxtbtn">
-                                    <a href="ecoIntertidal.php">
+                                    <a href="measuring.php">
                                         <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
                                         <p class="has-text-white">Next Topic</p>
                                         </button>
@@ -740,31 +769,31 @@
         const rightButton = document.getElementById('rightButton');
         const einsteinImage = document.getElementById('einstein-image');
         const objectives = document.getElementById('objectives');
-        const ecoDef = document.getElementById('ecoDef');
-        const ecoBefore = document.getElementById('ecoBefore');
-        const ecoBiotic = document.getElementById('ecoBiotic');
-        const ecoAbiotic = document.getElementById('ecoAbiotic');
-        const eco1 = document.getElementById('eco1');
-        const ecoVideo = document.getElementById('ecoVideo');
-        const eco2 = document.getElementById('eco2');
-        const eco3 = document.getElementById('eco3');
-        const ecoExamples = document.getElementById('ecoExamples');
-        const eco4 = document.getElementById('eco4');
-        const eco5 = document.getElementById('eco5');
-        const ecoQuiz = document.getElementById('ecoQuiz');
-        const ecoCompleted = document.getElementById('ecoCompleted');
+        const motionFirst = document.getElementById('motionFirst');
+        const motionDef = document.getElementById('motionDef');
+        const motionDistance = document.getElementById('motionDistance');
+        const motionTime = document.getElementById('motionTime');
+        const motionSpeed = document.getElementById('motionSpeed');
+        const motionVelocity = document.getElementById('motionVelocity');
+        const motionVideo = document.getElementById('motionVideo');
+        const motionFormula = document.getElementById('motionFormula');
+        const motionExample1 = document.getElementById('motionExample1');
+        const motionExample2 = document.getElementById('motionExample2');
+        const motionExample3 = document.getElementById('motionExample3');
+        const motionQuiz = document.getElementById('motionQuiz');
+        const motionCompleted = document.getElementById('motionCompleted');
         let currentSection = 0;
-        const sections = [objectives, ecoDef, ecoBefore, ecoBiotic, ecoAbiotic, eco1, ecoVideo, eco2, eco3, ecoExamples, eco4, eco5, ecoQuiz, ecoCompleted];
+        const sections = [objectives, motionFirst, motionDef, motionDistance, motionTime, motionSpeed, motionVelocity, motionVideo, motionFormula, motionExample1, motionExample2, motionExample3, motionQuiz, motionCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
-                section.classList.remove('eco-content-active');
-                section.classList.add('eco-content');
+                section.classList.remove('motion-content-active');
+                section.classList.add('motion-content');
             });
         }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 2 || currentSection === 12 || currentSection === 13) {
+            if (currentSection === 12 || currentSection === 13) {
                 einsteinImage.style.display = 'none';
                 examplesButton.style.marginLeft = '100%';    
             } else {
@@ -783,8 +812,8 @@
 
         function showSection(index) {
             hideAllSections();
-            sections[index].classList.remove('eco-content');
-            sections[index].classList.add('eco-content-active');
+            sections[index].classList.remove('motion-content');
+            sections[index].classList.add('motion-content-active');
             updateEinsteinImageAndButtons();
         }
 
@@ -797,7 +826,7 @@
 
         leftButton.addEventListener('click', function () {
             if (currentSection === 0) {
-                window.location.href = 'ecosystemLesson.php'; 
+                window.location.href = 'motionLesson.php'; 
             } else if (currentSection > 0) {
                 currentSection--;
                 showSection(currentSection);

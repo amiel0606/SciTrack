@@ -3,10 +3,10 @@
 ?>
 
 <style>
-    .eco-content {
+    .motion-content {
         display: none;
     }
-    .eco-content-active {
+    .motion-content-active {
         display: block;
     }
     #einstein-image{
@@ -102,7 +102,7 @@
     }
     #header1{
         font-size: 4rem;
-        margin-top: -9%;
+        margin-top: -7%;
         margin-bottom: 10%;
     }
     #header2{
@@ -125,13 +125,25 @@
         font-size: 3rem;
         margin-bottom: 2.5rem;
     }
+    #headerEx{
+        margin-top: 3%;
+        font-size: 4rem;
+    }
+    #headerSur{
+        font-size: 4rem;
+        margin-left: -10%;
+        margin-bottom: 2.5rem;
+        margin-top: -12%;
+    }
     .description1{
         font-size: 2.4rem;
     }
     .description2{
-        font-size: 2.8rem;
+        font-size: 2.4rem;
+        margin-left: 5%;
     }
     #sChar{
+        margin-top: 0%;
         margin-left: 5%;
     }
     #sChar img{
@@ -178,7 +190,56 @@
     #char3 p{
         margin-left: 25%;
     }
-
+    .motion-image{
+        width: 80%;
+        max-width: 80%;
+        margin-top: -5%; 
+    }
+    .motion-image2{
+        width: 50%;
+        max-width: 80%;
+        margin-top: -5%; 
+    }
+    #form-text{
+        margin-top: 0%;
+    }
+    #formula1{
+        margin-top: 5%;
+    }
+    #formula2{
+        margin-bottom: 15%;
+        margin-left: -5%;
+    }
+    #formula3{
+        margin-bottom: 15%;
+        margin-left: 5%;
+    }
+    #formula4{
+        margin-bottom: 15%;
+    }
+    #question{
+        margin-top: -5%;
+    }
+    #ex-text {
+        margin-left: 1rem;
+        margin-top: -12%;
+    }
+    #ex-text1 {
+        margin-left: 1rem;
+        margin-top: 2%;
+    }
+    #ex-text p, #ex-text1 p{
+        line-height: 1.5;
+    }
+    #exImage{
+        margin-top: -25%;
+    }
+    .tight-spacing {
+        margin-right: -0.2em;
+    }
+    .tight-spacing2 {
+        margin-right: -1em;
+    }
     
     /* for quiz layout */
     .choice-btn {
@@ -283,7 +344,7 @@
                         <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
                     
-                    <!-- Eco Objective -->
+                    <!-- Motion Objective -->
                     <div class="x-content" id="objectives">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
                             <h1 class="title has-text-white secondary-font" id="header1">LEARNING OBJECTIVES</h1>
@@ -294,157 +355,270 @@
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
-                                        <p class="mb-5 main-font">• Define what are the Estuaries</p>
-                                        <p class="mb-5 main-font">• Identify different wildlife that lives in estuaries</p>
-                                        <p class="mb-5 main-font">• Identify the different estuaries</p>
+                                        <p class="mb-5 main-font">• Describe and use appropriate tools for measuring distance and time</p>
+                                        <p class="mb-5 main-font">• Identity the correct standard unit for measuring distance</p>
+                                        <p class="mb-5 main-font">• Explain the importance of using measuring tools or device</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Eco Def -->
-                    <div class="eco-content" id="ecoDef">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-4 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header">WHAT IS ECOSYSTEM?</h1>
+                    <!-- Motion Measuring1 -->
+                    <div class="motion-content" id="motionMeasuring1">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
+                            <h1 class="title has-text-white secondary-font" id="header2">Measuring Distance and time</h1>
 
-                            <!-- Content Layout -->
-                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered">
-                                <figure class="image es-image">
-                                    <img src="../../image/eco3.png" alt="Ecosystem">
-                                </figure>
+                            <div class="image-container mb-2" id="sChar">
+                                <!-- Motion Image -->
+                                <div class="image-item" id="bio1">
+                                    <figure class="image">
+                                        <img src="../../image/motion16.png" alt="Motion">
+                                    </figure>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Protactor</p>
+                                </div>
 
-                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
-                                    An <span style="color: yellow;">Ecosystem</span> is all the biotic and abiotic components that interact within an area at once.
-                                </p>
+                                <!-- Motion Image -->
+                                <div class="image-item" id="bio2">
+                                    <figure class="image">
+                                        <img src="../../image/motion17.png" alt="Motion">
+                                    </figure>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Compass</p>
+                                </div>
+
+                                <!-- Motion Image -->
+                                <div class="image-item" id="bio3">
+                                    <figure class="image">
+                                        <img src="../../image/motion18.png" alt="Motion">
+                                    </figure>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Clock</p>
+                                </div>
                             </div>
+
+                            <p class="main-font title column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered mt-4">
+                                <span style="color: yellow;">Measuring tools</span> and devices provide us with a basis of how we view our surroundings. 
+                            </p>
                         </div>
                     </div>
                     
-                    <!-- Eco But Before -->
-                    <div class="eco-content" id="ecoBefore">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <!-- Content Layout -->
-                            <div class="columns is-centered">
-                                <!-- Image Column -->
-                                <div class="column is-half pl-6">
-                                    <figure class="image c-image">
-                                        <img src="../../image/einstein.png" alt="Einstein">
-                                    </figure>
-                                </div>
-
-                                <!-- Image Column -->
-                                <div class="column is-half pr-6 mr-6">
-                                    <figure class="image letstry">
-                                        <img src="../../image/esbefore.png" alt="letstry">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco Biotic -->
-                    <div class="eco-content" id="ecoBiotic">
+                    <!-- Motion Measuring2 -->
+                    <div class="motion-content" id="motionMeasuring2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header2">BIOTIC</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">Measuring Distance and time</h1>
 
                             <div class="image-container mb-2" id="sChar">
-                                <!-- Eco Image -->
+                                <!-- Motion Image -->
                                 <div class="image-item" id="bio1">
                                     <figure class="image">
-                                        <img src="../../image/ecobio1.gif" alt="Biotic">
+                                        <img src="../../image/motion19.png" alt="Motion">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Animals</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Tape Measure</p>
                                 </div>
 
-                                <!-- Eco Image -->
+                                <!-- Motion Image -->
                                 <div class="image-item" id="bio2">
                                     <figure class="image">
-                                        <img src="../../image/ecobio2.gif" alt="Biotic">
+                                        <img src="../../image/motion20.png" alt="Motion">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Trees and Plants</p>
-                                </div>
-
-                                <!-- Eco Image -->
-                                <div class="image-item" id="bio3">
-                                    <figure class="image">
-                                        <img src="../../image/ecobio3.gif" alt="Biotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Bacteria</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Angle Bar</p>
                                 </div>
                             </div>
 
                             <p class="main-font title column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered mt-4">
-                                <span style="color: yellow;">Biotic factors</span> are living things within an ecosystem; such as plants, animals, and bacteria.
+                                <span style="color: yellow;">Measuring tools</span> and devices provide us with a basis of how we view our surroundings. 
                             </p>
                         </div>
                     </div>
-
-                    <!-- Eco Abiotic -->
-                    <div class="eco-content" id="ecoAbiotic">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header2">ABIOTIC</h1>
-
-                            <div class="image-container mb-2" id="sChar">
-                                <!-- Solid Image -->
-                                <div class="image-item" id="bio1">
-                                    <figure class="image">
-                                        <img src="../../image/ecoabio1.gif" alt="Abiotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Water and Rocks</p>
-                                </div>
-
-                                <!-- Solid Image -->
-                                <div class="image-item" id="bio2">
-                                    <figure class="image">
-                                        <img src="../../image/ecoabio2.gif" alt="Abiotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Soil</p>
-                                </div>
-
-                                <!-- Solid Image -->
-                                <div class="image-item" id="bio3">
-                                    <figure class="image">
-                                        <img src="../../image/ecoabio3.gif" alt="Abiotic">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Light</p>
-                                </div>
-                            </div>
-
-                            <p class="main-font title column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered mt-4">
-                                <span style="color: yellow;">Abiotic factors</span> are non-living things such as air, water, light, soil, nutrient and many more
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Eco 1 -->
-                    <div class="eco-content" id="eco1">
+                    
+                    <!-- Motion Ruler -->
+                    <div class="motion-content" id="motionRuler">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header3">The Ecosystem Estuaries</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
-                                    <p class="subtitle main-font is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • They are often called the “nurseries of the sea” because numerous animal species rely on estuaries for nesting and breeding.
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Ruler
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
+                                        • Basic tool for measuring short length and distance. 
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
+                                        • It is  made of plastic, wood, or metal
                                     </p>
                                 </div>
 
                                 <!-- Image Column -->
                                 <div class="column is-5">
-                                    <figure class="image eco-image">
-                                        <img src="../../image/eco4.gif" alt="Eco">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion8.gif" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Tape -->
+                    <div class="motion-content" id="motionTape">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Tape Measure
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
+                                        • A retractable tape measure is used usually made of thin metal sheet that can straighten up or fold 
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion9.gif" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Odo -->
+                    <div class="motion-content" id="motionOdo">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Odometer
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
+                                        • Vehicles have a build-in odometer, an electric device that measures distance
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion10.gif" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Speedo -->
+                    <div class="motion-content" id="motionSpeedo">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Speedometer
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing2">
+                                        • A speedometer measures how fast a vehicle travels.
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion11.gif" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Surveyor’s -->
+                    <div class="motion-content" id="motionSurvey">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="headerSur">
+                                        Surveyor’s wheel
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
+                                        •  An instrument that is used to measure short distances on the road or on land.
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion12.gif" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Caliper -->
+                    <div class="motion-content" id="motionCaliper">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Caliper
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
+                                        • A device with two tips that are placed on both ends of the object being measured. 
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion13.gif" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Motion Micrometer -->
+                    <div class="motion-content" id="motionMicrometer">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Micrometer
+                                    </p>
+                                    <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
+                                        • It looks like a c-clamp. It is used to take very fine measurements such as the thickness of paper or a leaf. 
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/motion14.gif" alt="Motion">
                                     </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Eco Video -->
-                    <div class="eco-content" id="ecoVideo">
+                    <!-- Motion Video -->
+                    <div class="motion-content" id="motionVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header2">The Ecosystem Estuaries</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">Measuring Distance</h1>
 
                             <!-- Video for -->
                             <div class="box">
@@ -459,145 +633,8 @@
                         </div>
                     </div>
 
-                    <!-- Eco 2 -->
-                    <div class="eco-content" id="eco2">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-
-                            <!-- Content Layout -->
-                            <div class="columns is-vcentered is-mobile is-multiline">
-                                <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white" id="header5">
-                                        Brackish
-                                    </p>
-                                    <p class="title description1 main-font has-text-white">
-                                        • <span style="color: yellow;">Brackish</span> is found in an area where the river meets the sea.
-                                    </p>
-                                </div>
-
-                                <!-- Image Column -->
-                                <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
-                                        <img src="../../image/eco5.gif" alt="Eco">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco 3 -->
-                    <div class="eco-content" id="eco3">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-
-                            <!-- Content Layout -->
-                            <div class="columns is-vcentered is-mobile is-multiline">
-                                <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white mb-6" id="header5">
-                                        Sediment
-                                    </p>
-                                    <p class="title description1 main-font has-text-justified has-text-white">
-                                        • <span style="color: yellow;">Sediment</span> are the particles such as sand and soil which settle on the side and bottom of water bodies.
-                                    </p>
-                                </div>
-
-                                <!-- Image Column -->
-                                <div class="column is-5">
-                                    <figure class="image eco-image mt-6">
-                                        <img src="../../image/eco6.png" alt="Eco">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco Examples -->
-                    <div class="eco-content" id="ecoExamples">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-6 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header4">EXAMPLES OF SEDIMENTS</h1>
-
-                            <div class="image-container" id="eChar">
-                                <!-- Eco Image -->
-                                <div class="image-item" id="char1">
-                                    <figure class="image">
-                                        <img src="../../image/ecoExamples1.png" alt="Sediments">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Pebbles</p>
-                                </div>
-
-                                <!-- Eco Image -->
-                                <div class="image-item" id="char2">
-                                    <figure class="image">
-                                        <img src="../../image/ecoExamples2.png" alt="Sediments">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sand</p>
-                                </div>
-
-                                <!-- Eco Image -->
-                                <div class="image-item" id="char3">
-                                    <figure class="image">
-                                        <img src="../../image/ecoExamples3.png" alt="Sediments">
-                                    </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Clay</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco 4 -->
-                    <div class="eco-content" id="eco4">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-
-                            <!-- Content Layout -->
-                            <div class="columns is-vcentered is-mobile is-multiline">
-                                <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white mb-6" id="header5">
-                                        Murky Water
-                                    </p>
-                                    <p class="title description1 main-font has-text-justified has-text-white">
-                                        • The <span style="color: yellow;">Murky Water</span> in an estuary is due to the presence of sediments and provides good camouflage for small organisms
-                                    </p>
-                                </div>
-
-                                <!-- Image Column -->
-                                <div class="column is-5">
-                                    <figure class="image eco-image ecosys">
-                                        <img src="../../image/eco7.gif" alt="Eco">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco 5 -->
-                    <div class="eco-content" id="eco5">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-
-                            <!-- Content Layout -->
-                            <div class="columns is-vcentered is-mobile is-multiline">
-                                <!-- Text Column -->
-                                <div class="column is-5" id="eco-text">
-                                    <p class="title main-font has-text-white mb-6" id="header5">
-                                        Estuary
-                                    </p>
-                                    <p class="title description1 main-font has-text-justified has-text-white p-spacing">
-                                        • An <span style="color: yellow;">Estuary</span>, characterized by having brackish water, is home to many organisms
-                                    </p>
-                                </div>
-
-                                <!-- Image Column -->
-                                <div class="column is-5">
-                                    <figure class="image eco-image ecosys">
-                                        <img src="../../image/eco8.gif" alt="Eco">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Eco Quiz -->
-                    <div class="eco-content" id="ecoQuiz">
+                    <!-- Motion Quiz -->
+                    <div class="motion-content" id="motionQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
                             <h1 class="title has-text-white secondary-font" id="header4">
                                 QUIZ
@@ -668,8 +705,8 @@
                         </div>
                     </div>
 
-                    <!-- Eco Estuaries Completed -->
-                    <div class="eco-content" id="ecoCompleted">
+                    <!-- Motion Completed -->
+                    <div class="motion-content" id="motionCompleted">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                         <div class="column is-full is-flex is-justify-content-flex-end mb-6" id="compButton">
                                 <div class="columns is-half ml-6 p-2" id="mainbtn">
@@ -679,14 +716,6 @@
                                         </button>
                                     </a>
                                 </div>
-                                <div class="columns is-half ml-6 p-2" id="nxtbtn">
-                                    <a href="ecoIntertidal.php">
-                                        <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
-                                        <p class="has-text-white">Next Topic</p>
-                                        </button>
-                                    </a>
-                                </div>
-
                             </div>
 
                             <div class="columns is-centered">
@@ -740,31 +769,30 @@
         const rightButton = document.getElementById('rightButton');
         const einsteinImage = document.getElementById('einstein-image');
         const objectives = document.getElementById('objectives');
-        const ecoDef = document.getElementById('ecoDef');
-        const ecoBefore = document.getElementById('ecoBefore');
-        const ecoBiotic = document.getElementById('ecoBiotic');
-        const ecoAbiotic = document.getElementById('ecoAbiotic');
-        const eco1 = document.getElementById('eco1');
-        const ecoVideo = document.getElementById('ecoVideo');
-        const eco2 = document.getElementById('eco2');
-        const eco3 = document.getElementById('eco3');
-        const ecoExamples = document.getElementById('ecoExamples');
-        const eco4 = document.getElementById('eco4');
-        const eco5 = document.getElementById('eco5');
-        const ecoQuiz = document.getElementById('ecoQuiz');
-        const ecoCompleted = document.getElementById('ecoCompleted');
+        const motionMeasuring1 = document.getElementById('motionMeasuring1');
+        const motionMeasuring2 = document.getElementById('motionMeasuring2');
+        const motionRuler = document.getElementById('motionRuler');
+        const motionTape = document.getElementById('motionTape');
+        const motionOdo = document.getElementById('motionOdo');
+        const motionSpeedo = document.getElementById('motionSpeedo');
+        const motionSurvey = document.getElementById('motionSurvey');
+        const motionCaliper = document.getElementById('motionCaliper');
+        const motionMicrometer = document.getElementById('motionMicrometer');
+        const motionVideo = document.getElementById('motionVideo');
+        const motionQuiz = document.getElementById('motionQuiz');
+        const motionCompleted = document.getElementById('motionCompleted');
         let currentSection = 0;
-        const sections = [objectives, ecoDef, ecoBefore, ecoBiotic, ecoAbiotic, eco1, ecoVideo, eco2, eco3, ecoExamples, eco4, eco5, ecoQuiz, ecoCompleted];
+        const sections = [objectives, motionMeasuring1, motionMeasuring2, motionRuler, motionTape, motionOdo, motionSpeedo, motionSurvey, motionCaliper, motionMicrometer,  motionVideo, motionQuiz, motionCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
-                section.classList.remove('eco-content-active');
-                section.classList.add('eco-content');
+                section.classList.remove('motion-content-active');
+                section.classList.add('motion-content');
             });
         }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 2 || currentSection === 12 || currentSection === 13) {
+            if (currentSection === 11 || currentSection === 12) {
                 einsteinImage.style.display = 'none';
                 examplesButton.style.marginLeft = '100%';    
             } else {
@@ -772,7 +800,7 @@
                 examplesButton.style.marginLeft = '0%'; 
             }
 
-            if (currentSection === 13) {
+            if (currentSection === 12) {
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none'; 
             } else {
@@ -783,8 +811,8 @@
 
         function showSection(index) {
             hideAllSections();
-            sections[index].classList.remove('eco-content');
-            sections[index].classList.add('eco-content-active');
+            sections[index].classList.remove('motion-content');
+            sections[index].classList.add('motion-content-active');
             updateEinsteinImageAndButtons();
         }
 
@@ -797,7 +825,7 @@
 
         leftButton.addEventListener('click', function () {
             if (currentSection === 0) {
-                window.location.href = 'ecosystemLesson.php'; 
+                window.location.href = 'motionLesson.php'; 
             } else if (currentSection > 0) {
                 currentSection--;
                 showSection(currentSection);

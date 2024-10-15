@@ -51,40 +51,37 @@
     }
     #einstein-image{
         width: 100%;
-        max-width: 25%;
-        margin-right: -7%;
-        margin-left: -8%;
-        margin-bottom: -2%;
+        max-width: 30%;
+        margin-right: -23%;
+        margin-left: -10%;
+        margin-bottom: -5%;
     }
     .button-text {
         font-size: 0.75em;
     }
+    .welcomeText{
+        font-size: 4em;
+    }
     .lesson-image{
-        width: 100%;
-        max-width: 100%; 
+        width: 140%;
+        max-width: 130%; 
         transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
         z-index: 5;
     }
     .lesson-image:hover {
         transform: scale(1.05);
     }
-    .button-transparent {
-        background-color: transparent; 
-        border: none;
-        color: white;
-        font-size: 2em;
-        padding: 0;
+    #matters .lesson-image{
+        margin-left: -75%;
     }
-    .lessons-button-container {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 25%;
-        z-index: 2;
+    #eco .lesson-image{
+        margin-left: -45%;
+    }
+    #motion .lesson-image{
+        margin-left: -5%;
+    }
+    #earth .lesson-image{
+        margin-left: 25%;
     }
 
     .navbar{
@@ -110,8 +107,7 @@
     }
     .no-way {
         display: none;
-    }
-
+    } 
 </style>
 
 
@@ -120,8 +116,8 @@
         <div class="container">
             <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="../image/board.png" alt="Board Image">
+                    <figure class="image is-5by3">
+                        <img src="../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
                     <input type="hidden" id="myID" name="id" value="<?php echo $id; ?>">
                     <!-- Welcome -->
@@ -129,9 +125,8 @@
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                             <div class="columns is-centered mb-6 mt-6">
                                 <div class="column is-four-fifths">
-                                    <p class="title is-size-1-widescreen is-size-2-desktop is-size-3-tablet is-size-4-mobile 
-                                    has-text-white has-text-centered main-font">
-                                        Welcome <span id="studentName">,</span> Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
+                                    <p class="title has-text-white has-text-centered main-font welcomeText">
+                                        Welcome <span id="studentName" style="color: yellow;">,</span> Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
                                     </p>
                                 </div>
                             </div>
@@ -172,45 +167,35 @@
                                     <a href="./matter/matterLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/matterTopic1.gif" alt="Matter">
-                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
+                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
                                         </figure>
                                     </a>
                                 </div>
-                                <div id="eco" class="column has-text-centered is-hidden">
+                                <div id="eco" class="column has-text-centered ">
                                     <a href="./esystem/ecosystemLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/ecosystemTopic1.gif" alt="Ecosystem">
-                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
+                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
                                         </figure>
                                     </a>
                                 </div>
-                                <div id="motion" class="column has-text-centered is-hidden">
-                                    <a href="./motion/motionDef.php">
+                                <div id="motion" class="column has-text-centered ">
+                                    <a href="./motion/motionLesson.php">
                                         <figure class="image lesson-image">
-                                            <img src="../image/motionTopic1.gif" alt="Motion">
-                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
+                                            <img src="../image/motionTopicx.gif" alt="Motion">
+                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
                                         </figure>
                                     </a>
                                 </div>
-                                <div id="earth" class="column has-text-centered is-hidden">
-                                    <a href="./motion/motionDef.php">
+                                <div id="earth" class="column has-text-centered ">
+                                    <a href="./oldsurface/surfaceDef.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/surfaceTopic1.gif" alt="Surface">
-                                            <p class="subtitle is-size-5 has-text-white has-text-centered secondary-font mt-2">SURFACE</p>
+                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">SURFACE</p>
                                         </figure>
                                     </a>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Left and Right Buttons -->
-                        <div class="lessons-button-container">
-                            <button class="button-transparent" id="leftLessonButton">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="button-transparent" id="rightLessonButton">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
                         </div>
                     </div>
 

@@ -20,18 +20,18 @@
     }
     #einstein-image{
         width: 100%;
-        max-width: 25%;
-        margin-right: -7%;
-        margin-left: -8%;
-        margin-bottom: -2%;
+        max-width: 31%;
+        margin-right: -25.7%;
+        margin-left: -10%;
+        margin-bottom: -6.8%;
     }
     .button-text {
         font-size: 0.75em;
     }
     .lesson-image{
         width: 140%;
-        max-width: 350px; 
-        margin-right: 6rem;
+        max-width: 450px; 
+        margin-right: 12rem;
         transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
         z-index: 5;
     }
@@ -57,8 +57,8 @@
         z-index: 2;
     }
     .topic-container {
-        width: 100%;
-        max-width: 100%; 
+        width: 120%;
+        max-width: 140%; 
         transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
         text-align: center;
     }
@@ -90,21 +90,58 @@
     .secondary-font{
         font-family: 'Haniley';
     }
+    #headers{
+        font-size: 4rem;
+        margin-bottom: 7%;
+    }
+    #headers1{
+        font-size: 4rem;
+        margin-top: -13%;
+        margin-bottom: 10%;
+    }
+    #headers2{
+        font-size: 4rem;
+    }
+    #description1{
+        font-size: 2rem;
+    }
+    .description2{
+        font-size: 2.2rem;
+    }
+    .topic-container #sol{
+        margin-left: -55%;
+        margin-top: 10%;
+        width: 110%;
+        max-width: 130%;
+    }
+    .topic-container #liquid{
+        margin-left: -10%;
+        margin-top: 10%;
+        width: 110%;
+        max-width: 130%; 
+    }
+    .topic-container #gas{
+        margin-left: 25%;
+        margin-top: 10%;
+        width: 110%;
+        max-width: 130%; 
+    }
 </style>
 
 <section class="hero is-fullheight">
     <div class="hero-body">
         <div class="container">
-            <div class="column is-centered is-vcentered">
+            <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="../../image/board.png" alt="Board Image">
+                    <figure class="image is-5by3">
+                        <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
+                    
 
                     <!-- Matter Lesson -->
                     <div class="x-content" id="matterLesson">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6 mt-4">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font mt-6">MATTER</h1>
+                            <h1 class="title has-text-white secondary-font" id="headers">MATTER</h1>
                             
                             <div class="lesson-content" id="lesson1">
                                 <!-- Lesson Image -->
@@ -114,7 +151,7 @@
                                             <img src="../../image/matter1.png" alt="Matter 1">
                                         </figure>
                                     </a>
-                                    <p class="subtitle is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6" id="description1">
+                                    <p class="subtitle  has-text-white main-font mb-6" id="description1">
                                         LESSON 1: STATE OF MATTER
                                     </p>
                                 </div>
@@ -131,17 +168,18 @@
                         </div>
                     </div>
                     
+                    
                     <!-- Matter Objective -->
                     <div class="matter-content" id="objectives">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mb-6 secondary-font">LEARNING OBJECTIVES</h1>
+                            <h1 class="title has-text-white secondary-font" id="headers1">LEARNING OBJECTIVES</h1>
 
                             <!-- Content Layout -->
                             <div class="is-centered">
-                                <p class="subtitle is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6"> At the end of the lesson you will able to:</p>
+                                <p class="subtitle description2 has-text-white main-font mb-6"> At the end of the lesson you will able to:</p>
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
-                                    <div class="subtitle is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white">
+                                    <div class="subtitle description2 has-text-white">
                                         <p class="mb-5 main-font">• Define what is matter</p>
                                         <p class="mb-5 main-font">• Describe the four states of matter</p>
                                         <p class="mb-5 main-font">• Identify the matter in the states of solid, liquid and gas</p>
@@ -154,18 +192,20 @@
                     <!-- Matter Topic -->
                     <div class="matter-content" id="matterTopic">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-6 mb-6 secondary-font">CHOOSE TOPIC</h1>
+                            <h1 class="title has-text-white secondary-font" id="headers2">CHOOSE TOPIC</h1>
                             
                             <div class="columns is-centered mt-5">
                                 <!-- One-third -->
                                 <div class="column is-one-third has-text-centered">
                                     <div class="title is-size-3 has-text-white topic-container main-font">
-                                        <p style="letter-spacing: 0.15em;">SOLID</p>
-                                        <a href="matterSolid.php">
-                                            <figure class="image">
-                                                <img src="../../image/solidGif.gif" alt="Solid">
-                                            </figure>
-                                        </a>
+                                        <div id="sol">
+                                            <p style="letter-spacing: 0.15em;">SOLID</p>
+                                            <a href="matterSolid.php">
+                                                <figure class="image">
+                                                    <img src="../../image/solidGif.gif" alt="Solid">
+                                                </figure>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -175,24 +215,28 @@
                                         <!-- Two-third, left -->
                                         <div class="column is-half has-text-centered">
                                             <div class="title is-size-3 has-text-white topic-container main-font">
-                                                <p style="letter-spacing: 0.15em;">LIQUID</p>
-                                                <a href="matterLiquid.php">
-                                                    <figure class="image">
-                                                        <img src="../../image/liquidGif.gif" alt="Liquid">
-                                                    </figure>
-                                                </a>
+                                                <div id="liquid">
+                                                    <p style="letter-spacing: 0.15em;">LIQUID</p>
+                                                    <a href="matterLiquid.php">
+                                                        <figure class="image">
+                                                            <img src="../../image/liquidGif.gif" alt="Liquid">
+                                                        </figure>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <!-- Two-third, right -->
                                         <div class="column is-half has-text-centered">
                                             <div class="title is-size-3 has-text-white topic-container main-font">
-                                                <p style="letter-spacing: 0.15em;">GAS</p>
-                                                <a href="matterGas.php">
-                                                    <figure class="image">
-                                                        <img src="../../image/gasGif.gif" alt="Gas">
-                                                    </figure>
-                                                </a>
+                                                <div id="gas">
+                                                    <p style="letter-spacing: 0.15em;">GAS</p>
+                                                    <a href="matterGas.php">
+                                                        <figure class="image">
+                                                            <img src="../../image/gasGif.gif" alt="Gas">
+                                                        </figure>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -201,12 +245,13 @@
                         </div>
                     </div>
 
+
                     <!-- Left and Right Buttons -->
                     <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" id="examplesButton">
-                        <button class="button is-success is-rounded is-size-5-widescreen is-size-6-desktop mb-2" id="leftButton" style="z-index: 2;">
+                        <button class="button is-success is-rounded is-size-5-widescreen is-size-6-desktop" id="leftButton" style="z-index: 2;">
                             <i class="fas fa-arrow-left button-icon mr-2"></i> <span class="button-text">Prev</span>
                         </button>
-                        <button class="button is-success is-rounded is-size-5-widescreen is-size-6-desktop mx-2 mb-2" id="rightButton" style="z-index: 2;">
+                        <button class="button is-success is-rounded is-size-5-widescreen is-size-6-desktop mx-2" id="rightButton" style="z-index: 2;">
                             <span class="button-text">Next</span> <i class="fas fa-arrow-right button-icon ml-2"></i>
                         </button>
 
@@ -218,6 +263,7 @@
         </div>
     </div>
 </section>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

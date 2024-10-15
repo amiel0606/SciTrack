@@ -9,22 +9,36 @@
     .matter-content-active {
         display: block;
     }
-    #einstein-image {
+    #einstein-image{
         width: 100%;
-        max-width: 25%;
-        margin-right: -9%;
-        margin-left: -8%;
-        margin-bottom: -4%;
+        max-width: 31%;
+        margin-right: -25.7%;
+        margin-left: -10%;
+        margin-bottom: -6.8%;
     }
-    .c-image img, .einstein {
+    .einstein {
         width: 100%;
         height: auto;
         transform: scaleX(-1);
+    }
+    .c-image img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: -15%;
+        transform: scaleX(-1);
+    }
+    .letstry img{
+        width: 130%;
+        max-width: 130%;
+        height: auto;
+        margin-left: 5%;
     }
     #leftButton, #rightButton {
         margin-bottom: -1%;
     }
     #letsTryButton {
+        right: -10rem;
         z-index: 10;
     }
     .button-text {
@@ -50,7 +64,7 @@
         width: 100%;
         max-width: 350px;
     }
-    .sChar{
+    #sChar{
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -58,20 +72,14 @@
         margin-top: -1rem;
         z-index: 10;
     }
-    .sChar .image-item{
+    #sChar .image-item{
         text-align: center;
         margin: 0 1rem;
     }
-    .sChar img {
+    #sChar img {
         width: 100%;
-        max-width: 250px;
+        max-width: 320px;
         margin-left: 3rem;
-    }
-    #mg1{
-        margin-left: -3rem;
-    }
-    #mg2{
-        margin-left: -1rem;
     }
     .sExample{
         display: flex;
@@ -89,23 +97,35 @@
     .sExample .image-item:last-child{
         margin-left: 5rem;
     }
+    .sExample img {
+        min-width: 300px;
+        min-height: 350px;
+        width: 100%;
+        max-width: 500px;
+        margin-top: 0rem;
+    }
     .solid-image {
         width: 100%;
-        max-width: 70%;
-        margin-left: 9rem;
+        max-width: 90%;
+        margin-left: 4rem;
     }
     .solid-image2 {
         width: 100%;
         max-width: 80%;
         margin-right: 9rem;
+        margin-left: 9rem;
     }
     #solid-text {
-        margin-left: 9rem;
+        margin-left: 1rem;
+        margin-top: 3%;
+    }
+    #solid-text p{
+        line-height: 1.5;
     }
     .stateImage{
         width: 100%;
         max-width: 400px;
-        margin-top: -6%;
+        margin-top: -4%;
     }
     #states {
         margin-top: -4%;
@@ -119,19 +139,6 @@
     } 
     #letsTryButton {
         z-index: 10;
-    }
-    .iframe-container {
-        position: relative;
-        z-index: 2; 
-        width: 80%; 
-        margin: 0 auto;
-    }
-
-    .iframe-container iframe {
-        width: 100%;
-        margin-top: 250px; 
-        border: none;
-        z-index: 2;
     }
 
     .image-container {
@@ -160,6 +167,56 @@
     }
     .back-button:hover {
         background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    #header{
+        font-size: 4rem;
+    }
+    #header1{
+        font-size: 4rem;
+        margin-top: -2%;
+    }
+    #header2{
+        font-size: 4rem;
+    }
+    #header3{
+        font-size: 4rem;
+        margin-top: -7%;
+    }
+    #header4{
+        font-size: 4rem;
+        margin-top: -4%;
+    }
+    #header5{
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+    }
+    #solidGif{
+        margin-right: 7%;
+    }
+    #sChar{
+        margin-left: -5%;
+    }
+    #char2{
+        margin-left: 5%;
+    }
+    #char2 p{
+        margin-left: 15%;
+    }
+    #compButton{
+        margin-left: 15%;
+    }
+    .p-spacing {
+        margin-right: -1.5em; 
+    }
+    .tight-spacing {
+        margin-right: -0.5em; 
+    }
+    #steam img{
+        margin-top: 15%;
+    }
+    #steam p{
+        margin-top: 12%;
     }
 
     /* for quiz layout */
@@ -258,14 +315,14 @@
         <div class="container">
             <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
-                    <figure class="image is-16by9">
-                        <img src="../../image/board.png" alt="Board Image">
+                    <figure class="image is-5by3">
+                        <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
                     </figure>
 
                     <!-- Matter States -->
                     <div class="x-content" id="matterStates">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mb-6 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">GAS</h1>
+                            <h1 class="title has-text-white mt-5 secondary-font" id="header">GAS</h1>
 
                             <!-- Solid Image -->
                             <div class="stateImage">
@@ -283,12 +340,12 @@
                     <!-- Matter Gas -->
                     <div class="matter-content" id="matterGas">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">GAS</h1>
+                            <h1 class="title has-text-white secondary-font" id="header1">GAS</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Image Column -->
-                                <div class="column is-5">
+                                <div class="column is-5" id="solidGif">
                                     <figure class="image solid-image">
                                         <img src="../../image/mgasgif2.gif" alt="Gas">
                                     </figure>
@@ -296,7 +353,7 @@
 
                                 <!-- Text Column -->
                                 <div class="column is-5">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white">
+                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified p-spacing">
                                         • Has particles that are far apart, fast-moving and not organised in any particular way.
                                     </p>
                                 </div>
@@ -307,13 +364,14 @@
                     <!-- Matter Characteristics -->
                     <div class="matter-content" id="matterChar">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">CHARACTERISTICS OF GAS</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">CHARACTERISTICS OF GAS</h1>
                             <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered mt-3">Gas are known to have:</p>
 
-                            <div class="sChar column is-four-fifths">
+
+                            <div class="image-container" id="sChar">
                                 <!-- Gas Image -->
-                                <div class="image-item">
-                                    <figure class="image" id="mg1">
+                                <div class="image-item" id="char1">
+                                    <figure class="image">
                                         <img src="../../image/mgChar1.gif" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
@@ -322,17 +380,17 @@
                                 </div>
 
                                 <!-- Gas Image -->
-                                <div class="image-item">
-                                    <figure class="image" id="mg2">
+                                <div class="image-item" id="char2">
+                                    <figure class="image" id="char2">
                                         <img src="../../image/mgChar2.gif" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">
-                                    Gases have no fixed shape or volume.
+                                        Gases have no fixed shape or volume.
                                     </p>
                                 </div>
 
                                 <!-- Gas Image -->
-                                <div class="image-item">
+                                <div class="image-item" id="char3">
                                     <figure class="image">
                                         <img src="../../image/mgChar3.gif" alt="Gas">
                                     </figure>
@@ -347,7 +405,7 @@
                     <!-- Matter Video -->
                     <div class="matter-content" id="matterVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">GAS</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">GAS</h1>
 
                             <!-- Video for Solid.mp4 -->
                             <div class="box">
@@ -365,14 +423,14 @@
                     <!-- Matter Gas2 -->
                     <div class="matter-content" id="matterGas2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white mt-5 secondary-font">GAS</h1>
+                            <h1 class="title has-text-white secondary-font" id="header3">GAS</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
-                                        • Heating a gas increases the kinetic energy of the particles, causing the gas to expand. 
+                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
+                                        • Heating a gas increases the kinetic energy of particles, causing the gas to expand. 
                                     </p>
                                 </div>
 
@@ -389,22 +447,22 @@
                     <!-- Matter Examples -->
                     <div class="matter-content" id="matterExamples">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF GAS
                             </h1>
 
                             <div class="sExample">
                                 <!-- First Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/mgas5.png" alt="Gas">
                                     </figure>
-                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Helium <br>in Balloon</p>
+                                    <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Helium in Balloon</p>
                                 </div>
 
                                 <!-- Second Image -->
-                                <div class="image-item">
-                                    <figure class="image">
+                                <div class="image-item" id="steam">
+                                    <figure class="image mb-4">
                                         <img src="../../image/mgas6.png" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Steam</p>
@@ -416,14 +474,14 @@
                     <!-- Matter Examples 2 -->
                     <div class="matter-content" id="matterExamples2">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header2">
                                 EXAMPLES OF GAS
                             </h1>
 
                             <div class="sExample">
                                 <!-- Third Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/mgas7.png" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Oxygen Tank</p>
@@ -431,7 +489,7 @@
 
                                 <!-- Fourth Image -->
                                 <div class="image-item">
-                                    <figure class="image">
+                                    <figure class="image mb-4">
                                         <img src="../../image/mgas8.png" alt="Gas">
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Smoke</p>
@@ -474,7 +532,7 @@
                     <!-- Matter Quiz -->
                     <div class="matter-content" id="matterQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
-                            <h1 class="title is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white secondary-font">
+                            <h1 class="title has-text-white secondary-font" id="header4">
                                 QUIZ
                             </h1>
                             <!-- Quiz Container -->
@@ -548,7 +606,7 @@
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mt-6 p-6">
                             <div class="column is-full is-flex is-justify-content-flex-end mb-6">
                                 <div class="columns is-half ml-6 p-2">
-                                    <a href="matterLesson.php?show=matterTopic">
+                                    <a href="../studentWelcome.php?show=Lessons">
                                         <button class="button back-button is-success is-size-6-desktop is-size-6-tablet" style="z-index: 5;">
                                         <p class="has-text-white">Back To Main Menu</p>
                                         </button>
@@ -567,10 +625,10 @@
 
                                 <div class="column is-half is-one-fifths is-flex is-flex-direction-column align-bottom mt-5">
                                     <div class="has-text-centered">
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             YOU DID GREAT!
                                         </p>
-                                        <p class="title is-size-2-widescreen is-size-3-desktop is-size-3-tablet is-size-4-mobile has-text-white has-text-weight-semibold">
+                                        <p class="title main-font has-text-white has-text-weight-semibold" id="header5">
                                             Here is a medal for completing the lesson 1
                                         </p>
                                     </div>
@@ -743,6 +801,8 @@
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'flex';
                 rightButton.style.display = 'flex';
+
+                examplesButton.style.marginLeft = '100%';  
             } else if (sections[index] === matterCompleted) {
                 examplesButton.style.display = 'none';
                 einsteinImage.style.display = 'none';
