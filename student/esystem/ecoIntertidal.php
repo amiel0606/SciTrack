@@ -1,5 +1,17 @@
 <?php
-    include_once('./includes/board.php');
+session_start(); // Start the session
+// Include necessary files
+include_once('./includes/board.php'); // If needed
+include_once('../../admin/includes/dbCon.php'); // Include database connection
+// Check if session variables are set
+if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
+    $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
+    $id = $_SESSION["id"]; // Get the student ID from the session
+} else {
+    // Handle the case where session variables are not set
+    header("Location: index.php"); // Redirect to login or handle error
+    exit();
+}
 ?>
 
 <style>
@@ -235,9 +247,8 @@
         display: none;
     }
     #quizImage{
-        max-width: 100%; 
+        max-width: 70%; 
         height: auto;
-        margin-top: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -309,14 +320,14 @@
                     <!-- Eco 1 -->
                     <div class="eco-content" id="eco1">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header3">The Ecosystem Estuaries</h1>
+                            <h1 class="title has-text-white secondary-font" id="header3">The Ecosystem Intertidal Zone</h1>
 
                             <!-- Content Layout -->
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
                                     <p class="subtitle main-font is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • Many organisms became visible when you go to the seashore during low tide.
+                                        • Many organisms become visible when you go to the seashore during low tide.
                                     </p>
                                 </div>
 
@@ -457,7 +468,7 @@
                                         High Tide Zone
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
-                                        • Also known as the <span style="color: yellow;">upper mid-littoral zone</span> is region that submerged in the water only during high tide.
+                                        • Also known as the <span style="color: yellow;">upper mid-littoral zone</span> is a region that is submerged in the water only during high tide.
                                     </p>
                                 </div>
 
@@ -601,7 +612,7 @@
                                         • Also known as <span style="color: yellow;">lower littoral zone</span> is always submerged under water
                                         <br>
                                         <br>
-                                        • It is only exposed during extremely low tide.
+                                        • It is only exposed during extreme low tides.
                                     </p>
                                 </div>
 
@@ -797,6 +808,13 @@
         </div>
     </div>
 </section>
+<audio id="ecoEstAudio" src="../../sounds/tide1.mp3"></audio>
+<audio id="ecoEstAudio2" src="../../sounds/tide2.mp3"></audio>
+<audio id="ecoEstAudio3" src="../../sounds/tide3.mp3"></audio>
+<audio id="ecoEstAudio4" src="../../sounds/tide4.mp3"></audio>
+<audio id="ecoEstAudio5" src="../../sounds/tide5.mp3"></audio>
+<audio id="ecoEstAudio6" src="../../sounds/tide6.mp3"></audio>
+<audio id="ecoEstAudio7" src="../../sounds/tide7.mp3"></audio>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -820,6 +838,13 @@
         const ecoLow2 = document.getElementById('ecoLow2');
         const ecoQuiz = document.getElementById('ecoQuiz');
         const ecoCompleted = document.getElementById('ecoCompleted');
+        const audio = document.getElementById('ecoEstAudio');
+        const audio2 = document.getElementById('ecoEstAudio2');
+        const audio3 = document.getElementById('ecoEstAudio3');
+        const audio4 = document.getElementById('ecoEstAudio4');
+        const audio5 = document.getElementById('ecoEstAudio5');
+        const audio6 = document.getElementById('ecoEstAudio6');
+        const audio7 = document.getElementById('ecoEstAudio7');
         let currentSection = 0;
         const sections = [objectives, eco1, eco2, eco3, ecoVideo, eco4, ecoSplash, eco5, ecoHigh, eco6, ecoMiddle, ecoMiddle2, eco7, ecoLow, ecoLow2, ecoQuiz, ecoCompleted];
 
@@ -848,11 +873,118 @@
             }
         }
 
+        function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; 
+    }
+
+    function playAudio() {
+        audio.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio2() {
+        audio2.pause();
+        audio2.currentTime = 0; 
+    }
+
+    function playAudio2() {
+        audio2.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio3() {
+        audio3.pause();
+        audio3.currentTime = 0; 
+    }
+
+    function playAudio3() {
+        audio3.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio4() {
+        audio4.pause();
+        audio4.currentTime = 0; 
+    }
+
+    function playAudio4() {
+        audio4.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio5() {
+        audio5.pause();
+        audio5.currentTime = 0; 
+    }
+
+    function playAudio5() {
+        audio5.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio6() {
+        audio6.pause();
+        audio6.currentTime = 0; 
+    }
+
+    function playAudio6() {
+        audio6.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio7() {
+        audio7.pause();
+        audio7.currentTime = 0; 
+    }
+
+    function playAudio7() {
+        audio7.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+
         function showSection(index) {
             hideAllSections();
             sections[index].classList.remove('eco-content');
             sections[index].classList.add('eco-content-active');
             updateEinsteinImageAndButtons();
+
+            if (sections[index] === eco1) {
+        playAudio(); 
+    } else {
+        stopAudio();
+    }
+    if (sections[index] === eco2) {
+        playAudio2(); 
+    } else {
+        stopAudio2();
+    }
+    if (sections[index] === eco3) {
+        playAudio3(); 
+    } else {
+        stopAudio3();
+    }
+    if (sections[index] === eco4) {
+        playAudio4(); 
+    } else {
+        stopAudio4();
+    }
+    if (sections[index] === eco5) {
+        playAudio5(); 
+    } else {
+        stopAudio5();
+    }
+    if (sections[index] === eco6) {
+        playAudio6(); 
+    } else {
+        stopAudio6();
+    }
+    if (sections[index] === eco7) {
+        playAudio7(); 
+    } else {
+        stopAudio7();
+    }
         }
 
         rightButton.addEventListener('click', function () {
@@ -1006,19 +1138,50 @@
         }
     });
 
-    // Function to display results
     function showResults() {
-        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-        quizContainer.style.display = 'none'; // Hide the quiz container
+    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+    quizContainer.style.display = 'none'; // Hide the quiz container
 
-        // Show the quiz result container
-        quizResult.style.display = 'block';
-        totalQuestionsDisplay.textContent = totalQuestions;
-        correctAnswersDisplay.textContent = correctAnswersCount;
-        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    // Show the quiz result container
+    quizResult.style.display = 'block';
+    totalQuestionsDisplay.textContent = totalQuestions;
+    correctAnswersDisplay.textContent = correctAnswersCount;
+    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+
+    // Send the score to the server
+    sendScoreToServer(correctAnswersCount);
+}
+
+// Function to send score to server
+function sendScoreToServer(score) {
+    const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
+    const quizId = 5;
+    const lesson = "Ecosystem"; 
+
+    fetch('../save_quiz_score.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
+})
+.then(response => {
+    if (!response.ok) {
+        return response.text().then(text => {
+            throw new Error(`Network response was not ok: ${text}`);
+        });
     }
+    return response.json();
+})
+.then(data => {
+    console.log('Score saved successfully:', data);
+})
+.catch(error => {
+    console.error('There was a problem saving the score:', error);
+});
+}
 
     // Load the first question
     loadQuestion();
