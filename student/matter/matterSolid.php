@@ -1,6 +1,18 @@
 <?php
-    include_once('./includes/board.php');
+session_start(); 
+include_once('./includes/board.php'); 
+include_once('../../admin/includes/dbCon.php'); 
+
+if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
+    $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
+    $id = $_SESSION["id"]; 
+} else {
+    
+    header("Location: index.php"); 
+    exit();
+}
 ?>
+
 
 <style>
     .matter-content {
@@ -288,7 +300,7 @@
             <div class="columns is-centered is-vcentered">
                 <div class="column is-full">
                     <figure class="image is-5by3">
-                        <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px;; margin-left: -17%">
+                    <img src="../../image/board.png" alt="Board Image" style="width: 140%; height: 105%; max-width: 1800px; margin-left: -17%">
                     </figure>
 
                     <!-- Matter States -->
@@ -664,6 +676,8 @@
         const audio3 = document.getElementById('matterAudio3');
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
+        let timeSpent = 150; 
+        let timerInterval;
         let currentSection = 0;
         const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
 
@@ -673,6 +687,20 @@
                 section.classList.add('matter-content');
             });
         }
+
+    function startTimer() {
+    timerInterval = setInterval(function () {
+        timeSpent += 1; 
+        console.log("Time spent: " + timeSpent + " seconds"); 
+    }, 1000); 
+}
+
+
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
+    startTimer();
 
         function stopVideo() {
         solidVideo.pause(); 
@@ -788,6 +816,14 @@
             leftButton.style.display = 'none';
             rightButton.style.display = 'none';
         }
+        if (index === 8) { 
+            if (timeSpent < 180) { 
+                proceedToQuizButton.disabled = true; 
+                alert("Please spend at least 3 minutes reading the lesson before taking the quiz.");
+            } else {
+                proceedToQuizButton.disabled = false; 
+            }
+        }
     }
 
 
@@ -807,8 +843,12 @@
         });
 
         proceedToQuizButton.addEventListener('click', function () {
-            currentSection = 8; 
-            showSection(currentSection);
+        if (timeSpent < 180) {
+            alert("Please spend at least 3 minutes reading the lesson before taking the quiz.");
+            return; 
+        }
+        currentSection = 8; 
+        showSection(currentSection);
         });
 
         leftButton.addEventListener('click', function () {
@@ -825,7 +865,6 @@
 
     });
 
-    //for quiz
     // Quiz Data
     const quizData = [
     {
@@ -996,22 +1035,51 @@
         }
     });
 
-    // Function to display results
     function showResults() {
-        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-        quizContainer.style.display = 'none'; // Hide the quiz container
+    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+    quizContainer.style.display = 'none'; // Hide the quiz container
 
-        // Show the quiz result container
-        quizResult.style.display = 'block';
-        totalQuestionsDisplay.textContent = totalQuestions;
-        correctAnswersDisplay.textContent = correctAnswersCount;
-        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
-    }
+    quizResult.style.display = 'block';
+    totalQuestionsDisplay.textContent = totalQuestions;
+    correctAnswersDisplay.textContent = correctAnswersCount;
+    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
+
+    // Send the score to the server
+    sendScoreToServer(correctAnswersCount);
+}
+
+// Function to send score to server
+function sendScoreToServer(score) {
+    const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
+    const quizId = 1; 
+    const lesson = "Matter"; 
+
+    fetch('../save_quiz_score.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'error') {
+            alert(data.message); // Show alert if there's an error
+        } else {
+            console.log('Score saved successfully:', data.message);
+            // You can redirect or provide feedback to the user here
+        }
+    })
+    .catch(error => {
+        console.error('Error saving score:', error);
+        alert('There was a problem saving your score. Please try again later.');
+    });
+}
 
     // Load the first question
     loadQuestion();
-
+    
 </script>
 

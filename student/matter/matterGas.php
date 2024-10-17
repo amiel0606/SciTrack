@@ -1,5 +1,17 @@
 <?php
-    include_once('./includes/board.php');
+session_start(); // Start the session
+// Include necessary files
+include_once('./includes/board.php'); // If needed
+include_once('../../admin/includes/dbCon.php'); // Include database connection
+// Check if session variables are set
+if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
+    $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
+    $id = $_SESSION["id"]; // Get the student ID from the session
+} else {
+    // Handle the case where session variables are not set
+    header("Location: index.php"); // Redirect to login or handle error
+    exit();
+}
 ?>
 
 <style>
@@ -269,7 +281,6 @@
     #quizImage{
         max-width: 70%; 
         height: auto;
-
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1015,20 +1026,50 @@
         }
     });
 
-    // Function to display results
     function showResults() {
-        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-        quizContainer.style.display = 'none'; // Hide the quiz container
+    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+    quizContainer.style.display = 'none'; // Hide the quiz container
 
-        // Show the quiz result container
-        quizResult.style.display = 'block';
-        totalQuestionsDisplay.textContent = totalQuestions;
-        correctAnswersDisplay.textContent = correctAnswersCount;
-        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    // Show the quiz result container
+    quizResult.style.display = 'block';
+    totalQuestionsDisplay.textContent = totalQuestions;
+    correctAnswersDisplay.textContent = correctAnswersCount;
+    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+
+    // Send the score to the server
+    sendScoreToServer(correctAnswersCount);
+}
+
+// Function to send score to server
+function sendScoreToServer(score) {
+    const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
+    const quizId = 3; // Quiz ID for "Matter"
+    const lesson = "Matter"; // Set lesson name as "Matter"
+
+    fetch('../save_quiz_score.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
+})
+.then(response => {
+    if (!response.ok) {
+        return response.text().then(text => {
+            throw new Error(`Network response was not ok: ${text}`);
+        });
     }
-
+    return response.json();
+})
+.then(data => {
+    console.log('Score saved successfully:', data);
+})
+.catch(error => {
+    console.error('There was a problem saving the score:', error);
+});
+}
     // Load the first question
     loadQuestion();
 </script>

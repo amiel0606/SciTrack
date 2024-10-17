@@ -1,5 +1,17 @@
 <?php
-    include_once('./includes/board.php');
+session_start(); // Start the session
+// Include necessary files
+include_once('./includes/board.php'); // If needed
+include_once('../../admin/includes/dbCon.php'); // Include database connection
+// Check if session variables are set
+if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
+    $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
+    $id = $_SESSION["id"]; // Get the student ID from the session
+} else {
+    // Handle the case where session variables are not set
+    header("Location: index.php"); // Redirect to login or handle error
+    exit();
+}
 ?>
 
 <style>
@@ -228,9 +240,8 @@
         display: none;
     }
     #quizImage{
-        max-width: 100%; 
+        max-width: 70%; 
         height: auto;
-        margin-top: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -412,7 +423,7 @@
                             </div>
 
                             <p class="main-font title column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered mt-4">
-                                <span style="color: yellow;">Abiotic factors</span> are non-living things such as air, water, light, soil, nutrient and many more
+                                <span style="color: yellow;">Abiotic factors</span> are non-living things such as air, water, light, soil, nutrient and many more.   
                             </p>
                         </div>
                     </div>
@@ -468,10 +479,10 @@
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
                                     <p class="title main-font has-text-white" id="header5">
-                                        Brackish
+                                        Brackish water
                                     </p>
                                     <p class="title description1 main-font has-text-white">
-                                        • <span style="color: yellow;">Brackish</span> is found in an area where the river meets the sea.
+                                        • <span style="color: yellow;">Brackish water</span> is found in an area where the river meets the sea.
                                     </p>
                                 </div>
 
@@ -636,8 +647,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                             <!-- Quiz Result -->
+<!-- Quiz Result -->
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
                                 <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
@@ -733,6 +743,15 @@
         </div>
     </div>
 </section>
+<audio id="ecoEstAudio" src="../../sounds/esys1.mp3"></audio>
+<audio id="ecoEstAudio2" src="../../sounds/esys2.mp3"></audio>
+<audio id="ecoEstAudio3" src="../../sounds/esys3.mp3"></audio>
+<audio id="ecoEstAudio4" src="../../sounds/esys4.mp3"></audio>
+<audio id="ecoEstAudio5" src="../../sounds/esys5.mp3"></audio>
+<audio id="ecoEstAudio6" src="../../sounds/esys6.mp3"></audio>
+<audio id="ecoEstAudio7" src="../../sounds/esys7.mp3"></audio>
+<audio id="ecoEstAudio8" src="../../sounds/esys8.mp3"></audio>
+<audio id="ecoEstAudio9" src="../../sounds/esys9.mp3"></audio>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -754,6 +773,15 @@
         const ecoQuiz = document.getElementById('ecoQuiz');
         const ecoCompleted = document.getElementById('ecoCompleted');
         let currentSection = 0;
+        const audio = document.getElementById('ecoEstAudio');
+        const audio2 = document.getElementById('ecoEstAudio2');
+        const audio3 = document.getElementById('ecoEstAudio3');
+        const audio4 = document.getElementById('ecoEstAudio4');
+        const audio5 = document.getElementById('ecoEstAudio5');
+        const audio6 = document.getElementById('ecoEstAudio6');
+        const audio7 = document.getElementById('ecoEstAudio7');
+        const audio8 = document.getElementById('ecoEstAudio8');
+        const audio9 = document.getElementById('ecoEstAudio9');
         const sections = [objectives, ecoDef, ecoBefore, ecoBiotic, ecoAbiotic, eco1, ecoVideo, eco2, eco3, ecoExamples, eco4, eco5, ecoQuiz, ecoCompleted];
 
         function hideAllSections() {
@@ -781,11 +809,148 @@
             }
         }
 
+        function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; 
+    }
+
+    function playAudio() {
+        audio.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio2() {
+        audio2.pause();
+        audio2.currentTime = 0; 
+    }
+
+    function playAudio2() {
+        audio2.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio3() {
+        audio3.pause();
+        audio3.currentTime = 0; 
+    }
+
+    function playAudio3() {
+        audio3.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio4() {
+        audio4.pause();
+        audio4.currentTime = 0; 
+    }
+
+    function playAudio4() {
+        audio4.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio5() {
+        audio5.pause();
+        audio5.currentTime = 0; 
+    }
+
+    function playAudio5() {
+        audio5.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio6() {
+        audio6.pause();
+        audio6.currentTime = 0; 
+    }
+
+    function playAudio6() {
+        audio6.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio7() {
+        audio7.pause();
+        audio7.currentTime = 0; 
+    }
+
+    function playAudio7() {
+        audio7.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio8() {
+        audio8.pause();
+        audio8.currentTime = 0; 
+    }
+
+    function playAudio8() {
+        audio8.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio9() {
+        audio9.pause();
+        audio9.currentTime = 0; 
+    }
+
+    function playAudio9() {
+        audio9.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+
         function showSection(index) {
             hideAllSections();
             sections[index].classList.remove('eco-content');
             sections[index].classList.add('eco-content-active');
             updateEinsteinImageAndButtons();
+
+    if (sections[index] === ecoDef) {
+        playAudio(); 
+    } else {
+        stopAudio();
+    }
+    if (sections[index] === ecoBefore) {
+        playAudio2(); 
+    } else {
+        stopAudio2();
+    }
+    if (sections[index] === ecoBiotic) {
+        playAudio3(); 
+    } else {
+        stopAudio3();
+    }
+    if (sections[index] === ecoAbiotic) {
+        playAudio4(); 
+    } else {
+        stopAudio4();
+    }
+    if (sections[index] === eco1) {
+        playAudio5(); 
+    } else {
+        stopAudio5();
+    }
+    if (sections[index] === eco2) {
+        playAudio6(); 
+    } else {
+        stopAudio6();
+    }
+    if (sections[index] === eco3) {
+        playAudio7(); 
+    } else {
+        stopAudio7();
+    }
+    if (sections[index] === eco4) {
+        playAudio8(); 
+    } else {
+        stopAudio8();
+    }
+    if (sections[index] === eco5) {
+        playAudio9(); 
+    } else {
+        stopAudio9();
+    }
         }
 
         rightButton.addEventListener('click', function () {
@@ -811,42 +976,78 @@
     //for quiz
     // Quiz Data
     const quizData = [
-        {
-            question: "What is an estuary?",
-            choices: ["A forest", "Where a river meets the sea", "A desert", "A mountain range"],
-            quizImage: "../quizImage/esQuizImage1.png",
-            correctAnswer: "Where a river meets the sea",
-            additionalInfo: "An estuary is a unique place where fresh water from rivers mixes with salty sea water, creating a brackish environment perfect for many organisms."
-        },
-        {
-            question: "What type of water is found in estuaries?",
-            choices: ["Freshwater", "Saltwater", "Brackish", "Pure"],
-            quizImage: "../quizImage/esQuizImage2.png",
-            correctAnswer: "Brackish",
-            additionalInfo: "Estuaries have brackish water, which is a mix of fresh and saltwater. It's like the 'Goldilocks' water—just right for certain wildlife!"
-        },
-        {
-            question: "Which of these animals often relies on estuaries for nesting and breeding?",
-            choices: ["Elephants", "Sharks", "Birds", "Monkeys"],
-            quizImage: "../quizImage/esQuizImage3.png",
-            correctAnswer: "Birds",
-            additionalInfo: "Birds love estuaries for nesting and breeding because they provide lots of food and safe places to raise their young. It's like nature's daycare!"
-        },
-        {
-            question: "What causes the murky water in estuaries?",
-            choices: ["Trash", "Rain", "Sediment", "Fish parties"],
-            quizImage: "../quizImage/esQuizImage4.png",
-            correctAnswer: "Sediment",
-            additionalInfo: "Sediments like sand and clay make the water look murky, but don’t worry! It’s perfect for small critters who love hiding in the 'underwater fog.'"
-        },
-        {
-            question: "Which of these is an example of sediment in an estuary?",
-            choices: ["Pebbles", "Diamonds", "Gold", "Ice"],
-            quizImage: "../quizImage/esQuizImage5.png",
-            correctAnswer: "Pebbles",
-            additionalInfo: "Pebbles, along with sand and clay, are common sediments found in estuaries. They’re like nature’s tiny building blocks!"
-        }
-    ];
+    {
+        question: "What is an estuary?",
+        choices: ["A forest", "Where a river meets the sea", "A desert", "A mountain range"],
+        quizImage: "../quizImage/esQuizImage1.png",
+        correctAnswer: "Where a river meets the sea",
+        additionalInfo: "An estuary is a unique place where fresh water from rivers mixes with salty sea water, creating a brackish environment perfect for many organisms."
+    },
+    {
+        question: "What type of water is found in estuaries?",
+        choices: ["Freshwater", "Saltwater", "Brackish", "Pure"],
+        quizImage: "../quizImage/esQuizImage2.png",
+        correctAnswer: "Brackish",
+        additionalInfo: "Estuaries have brackish water, which is a mix of fresh and saltwater. It's like the 'Goldilocks' water—just right for certain wildlife!"
+    },
+    {
+        question: "Which of these animals often relies on estuaries for nesting and breeding?",
+        choices: ["Elephants", "Sharks", "Birds", "Monkeys"],
+        quizImage: "../quizImage/esQuizImage3.png",
+        correctAnswer: "Birds",
+        additionalInfo: "Birds love estuaries for nesting and breeding because they provide lots of food and safe places to raise their young. It's like nature's daycare!"
+    },
+    {
+        question: "What causes the murky water in estuaries?",
+        choices: ["Trash", "Rain", "Sediment", "Fish parties"],
+        quizImage: "../quizImage/esQuizImage4.png",
+        correctAnswer: "Sediment",
+        additionalInfo: "Sediments like sand and clay make the water look murky, but don’t worry! It’s perfect for small critters who love hiding in the 'underwater fog.'"
+    },
+    {
+        question: "Which of these is an example of sediment in an estuary?",
+        choices: ["Pebbles", "Diamonds", "Gold", "Ice"],
+        quizImage: "../quizImage/esQuizImage5.png",
+        correctAnswer: "Pebbles",
+        additionalInfo: "Pebbles, along with sand and clay, are common sediments found in estuaries. They’re like nature’s tiny building blocks!"
+    },
+    {
+        question: "Which of the following is a biotic factor in an estuary?",
+        choices: ["Water", "Trees", "Light", "Rocks"],
+        quizImage: "../quizImage/esQuizImage6.png",
+        correctAnswer: "Trees",
+        additionalInfo: "Biotic factors include living organisms like trees, plants, animals, and bacteria that thrive in estuaries."
+    },
+    {
+        question: "Which of the following is an abiotic factor in an estuary?",
+        choices: ["Animals", "Soil", "Bacteria", "Plants"],
+        quizImage: "../quizImage/esQuizImage7.png",
+        correctAnswer: "Soil",
+        additionalInfo: "Abiotic factors include non-living things like soil, water, sunlight, and rocks that influence the environment of an estuary."
+    },
+    {
+        question: "Which of these examples are sediments found in estuaries?",
+        choices: ["Pebbles, Sand, and Clay", "Gold, Silver, and Ice", "Lava, Ash, and Mud", "Clouds, Smoke, and Fog"],
+        quizImage: "../quizImage/esQuizImage8.png",
+        correctAnswer: "Pebbles, Sand, and Clay",
+        additionalInfo: "Pebbles, sand, and clay are types of sediments commonly found in estuaries. They help shape the estuary floor and provide shelter for organisms."
+    },
+    {
+        question: "Which of the following is a biotic factor in estuaries?",
+        choices: ["Bacteria", "Light", "Water", "Rocks"],
+        quizImage: "../quizImage/esQuizImage9.png",
+        correctAnswer: "Bacteria",
+        additionalInfo: "Bacteria are biotic factors because they are living organisms and play an important role in the decomposition of organic matter in estuaries."
+    },
+    {
+        question: "Which of the following is an abiotic factor in estuaries?",
+        choices: ["Plants", "Animals", "Sunlight", "Fish"],
+        quizImage: "../quizImage/esQuizImage10.png",
+        correctAnswer: "Sunlight",
+        additionalInfo: "Sunlight is an abiotic factor that influences photosynthesis and the energy flow in estuarine ecosystems."
+    }
+];
+
 
     let currentQuestionIndex = 0;
     let correctAnswersCount = 0;
@@ -886,6 +1087,8 @@
         nextButton.disabled = true;
         selectedAnswer = null;
     }
+
+    
 
     // Adding click event listeners to choices
     choices.forEach(button => {
@@ -939,19 +1142,50 @@
         }
     });
 
-    // Function to display results
     function showResults() {
-        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-        quizContainer.style.display = 'none'; // Hide the quiz container
+    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+    quizContainer.style.display = 'none'; // Hide the quiz container
 
-        // Show the quiz result container
-        quizResult.style.display = 'block';
-        totalQuestionsDisplay.textContent = totalQuestions;
-        correctAnswersDisplay.textContent = correctAnswersCount;
-        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    // Show the quiz result container
+    quizResult.style.display = 'block';
+    totalQuestionsDisplay.textContent = totalQuestions;
+    correctAnswersDisplay.textContent = correctAnswersCount;
+    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+
+    // Send the score to the server
+    sendScoreToServer(correctAnswersCount);
+}
+
+// Function to send score to server
+function sendScoreToServer(score) {
+    const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
+    const quizId = 4; 
+    const lesson = "Ecosystem"; 
+
+    fetch('../save_quiz_score.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
+})
+.then(response => {
+    if (!response.ok) {
+        return response.text().then(text => {
+            throw new Error(`Network response was not ok: ${text}`);
+        });
     }
+    return response.json();
+})
+.then(data => {
+    console.log('Score saved successfully:', data);
+})
+.catch(error => {
+    console.error('There was a problem saving the score:', error);
+});
+}
 
     // Load the first question
     loadQuestion();
