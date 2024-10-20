@@ -673,7 +673,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const audio3 = document.getElementById('matterAudio3');
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
-        let timeSpent = 150; 
+        let timeSpent = 180; 
         let timerInterval;
         let currentSection = 0;
         const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
