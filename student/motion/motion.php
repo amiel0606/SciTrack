@@ -106,6 +106,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         color: white;
     }
 
+    #letsTryButton {
+        right: -10rem;
+        z-index: 10;
+    }
     
     #header{
         font-size: 4rem;
@@ -353,9 +357,9 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
-                                        <p class="mb-5 main-font">• Define what is the motion</p>
-                                        <p class="mb-5 main-font">• Learn how to solve speed, distance, time, and velocity</p>
-                                        <p class="mb-5 main-font">• Describe the motion of an object by measuring its change position over a period of time</p>
+                                        <p class="mb-5 main-font">Define what is the motion</p>
+                                        <p class="mb-5 main-font">Learn how to solve speed, distance, time, and velocity</p>
+                                        <p class="mb-5 main-font">Describe the motion of an object by measuring its change position over a period of time</p>
                                     </div>
                                 </div>
                             </div>
@@ -503,34 +507,27 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                     <!-- Motion Formula -->
                     <div class="motion-content" id="motionFormula">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
-                            
                             <!-- Content Layout -->
-                            <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered" id="formula1">
-                                <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
-                                    To Compute for distance, multiply speed and velocity. To solve for time, divide distance with speed
-                                </p>
-
-                                <div class="columns is-centered is-multiline">
-                                    <div class="column is-half has-text-centered" id="form-text">
-                                        <p class="title main-font column is-full is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white" id="formula2">
-                                            Formula: s (speed) = d (distance) / t (time)
-                                        </p>
-                                    </div>
-
-                                    
-                                    <div class="column is-half has-text-centered" id="form-text">
-                                        <p class="title main-font column is-full is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white" id="formula3">
-                                            Formula: s (speed) = d (distance) / s (speed)
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="column is-half has-text-centered">
-                                    <p class="title main-font column is-one-fourths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white" id="formula4">
-                                        Formula: = d (distance) = s(t)
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Speed Formula
+                                    </p>
+                                    <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
+                                        Speed = Distance divided by Time → How fast you're going is how far you went, split by how long it took.
+                                    </p>
+                                    <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
+                                        Formula: s (speed) = d (distance) / t (time)
                                     </p>
                                 </div>
-                                
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/forSpeed.png" alt="Motion">
+                                    </figure>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -563,6 +560,34 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <div class="column is-5">
                                     <figure class="image eco-image" id="exImage">
                                         <img src="../../image/motion5.gif" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motion Formula2 -->
+                    <div class="motion-content" id="motionFormula2">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Time Formula
+                                    </p>
+                                    <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
+                                        Time = Distance divided by Speed → To find out how long it took, divide how far you went by how fast you were going.
+                                    </p>
+                                    <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
+                                        Formula: t (time) = d (distance) / s (speed)
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/forTime.png" alt="Motion">
                                     </figure>
                                 </div>
                             </div>
@@ -602,6 +627,34 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                         </div>
                     </div>
 
+                    <!-- Motion Formula3 -->
+                    <div class="motion-content" id="motionFormula3">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
+                            <!-- Content Layout -->
+                            <div class="columns is-vcentered is-mobile is-multiline">
+                                <!-- Text Column -->
+                                <div class="column is-5" id="eco-text">
+                                    <p class="title main-font has-text-white" id="header5">
+                                        Distance Formula
+                                    </p>
+                                    <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
+                                        Distance = Speed times Time → To find out how far you went, multiply how fast you were going by how long it took."
+                                    </p>
+                                    <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
+                                        Formula: = d (distance) = s(t)
+                                    </p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-5">
+                                    <figure class="image eco-image mt-6">
+                                        <img src="../../image/forDistance.png" alt="Motion">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Motion Example3 -->
                     <div class="motion-content" id="motionExample3">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center mb-6 p-6">
@@ -632,6 +685,37 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         <img src="../../image/motion7.gif" alt="Motion">
                                     </figure>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LetsTry -->
+                    <div class="eco-content" id="letsTry">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                            <!-- Content Layout -->
+                            <div class="columns is-centered">
+                                <!-- Image Column -->
+                                <div class="column is-half pl-6">
+                                    <figure class="image c-image">
+                                        <img src="../../image/einstein.png" alt="Einstein">
+                                    </figure>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-half pr-6 mr-6">
+                                    <figure class="image letstry">
+                                        <img src="../../image/letstry.png" alt="letstry">
+                                    </figure>
+                                </div>
+                            </div>
+                            
+                            <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" id="letsTryButton">
+                                <button class="button main-font is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
+                                    Go Back
+                                </button>
+                                <button class="button main-font is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
+                                    Proceed to quiz
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -789,12 +873,19 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const motionVideo = document.getElementById('motionVideo');
         const motionFormula = document.getElementById('motionFormula');
         const motionExample1 = document.getElementById('motionExample1');
+        const motionFormula2 = document.getElementById('motionFormula2');
         const motionExample2 = document.getElementById('motionExample2');
+        const motionFormula3 = document.getElementById('motionFormula3');
         const motionExample3 = document.getElementById('motionExample3');
+        const letsTry = document.getElementById('letsTry');
         const motionQuiz = document.getElementById('motionQuiz');
         const motionCompleted = document.getElementById('motionCompleted');
+        const letsTryButton = document.getElementById('letsTryButton');
+        const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
+        const goBackButton = letsTryButton.querySelector('.button.is-danger');
         let currentSection = 0;
-        const sections = [objectives, motionFirst, motionDef, motionDistance, motionTime, motionSpeed, motionVelocity, motionVideo, motionFormula, motionExample1, motionExample2, motionExample3, motionQuiz, motionCompleted];
+        const sections = [objectives, motionFirst, motionDef, motionDistance, motionTime, motionSpeed, motionVelocity, motionVideo, motionFormula, 
+                        motionExample1, motionFormula2, motionExample2, motionFormula3, motionExample3, letsTry, motionQuiz, motionCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -804,7 +895,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 12 || currentSection === 13) {
+            if (currentSection === 14 || currentSection === 15 || currentSection === 16) {
                 einsteinImage.style.display = 'none';
                 examplesButton.style.marginLeft = '100%';    
             } else {
@@ -812,7 +903,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 examplesButton.style.marginLeft = '0%'; 
             }
 
-            if (currentSection === 13) {
+            if (currentSection === 14 || currentSection === 16) {
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none'; 
             } else {
@@ -842,6 +933,16 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 currentSection--;
                 showSection(currentSection);
             }
+        });
+
+        goBackButton.addEventListener('click', function () {
+            currentSection = 13; 
+            showSection(currentSection);
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            currentSection = 15; 
+            showSection(currentSection);
         });
 
         hideAllSections();
