@@ -51,40 +51,40 @@ $conn->close();
     .left-align {
         text-align: left;
     }
-    .box {
-        height: 300px; 
-    }
     .first-box {
-        height: 250px; 
-        width: 100%; 
+        width: 90%; 
     }
     .second-box {
-        height: 250px; 
-        width: 100%; 
+        width: 105%; 
+        margin-left: -18%; 
     }
-    .third-box, .fourth-box {
-        height: 650px; 
-        width: 100%; 
+    .third-box{
+        width: 90%; 
+    }
+    .fourth-box{
+        width: 105%; 
+        margin-left: -18%;
     }
     .columns {
-        margin-left: -25%; 
+        margin-left: -18%; 
+    }
+    .third-box-container{
+        margin-top: -3%; 
     }
     .small-box {
     background-color: #D2CACA; 
     padding: 20px; 
-    margin-top: 10px; 
     border-radius: 5px; 
 }
 .small-box2 {
     background-color: #D2CACA; 
     padding: 10px; 
-    margin-top: 10px; 
+    margin-top: 20px;
     border-radius: 5px; 
 }
 .small-box3 {
     background-color: #D2CACA   ; 
     padding: 20px; 
-    margin-top: 10px; 
     border-radius: 5px; 
 }
 .flex-container {
@@ -129,17 +129,13 @@ $conn->close();
     overflow-y: auto; 
     overflow-x: hidden; 
 }
-.flex-container3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
 
 .flex-container3 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 10px;
+    justify-content: space-between; 
 }
 
 .lesson-item {
@@ -147,13 +143,32 @@ $conn->close();
     justify-content: space-between;
     width: 100%;
     margin-bottom: 5px;
+    
 }
 
-.progress-container {
+.progress-container1 {
     width: 400px;
     background-color: #e0e0e0;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 280px;
+}
+.progress-container2 {
+    width: 400px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-left: 250px;
+}
+.progress-container3 {
+    width: 400px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-left: 75px;
+}
+.progress-container4 {
+    width: 400px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-left: 20px;
 }
 
 .progress-bar {
@@ -180,7 +195,7 @@ $conn->close();
                         <p class="has-text-primary is-size-3 has-text-left">Progress is <span class="has-text-success">very good</span></p>
                     </div>
                 </div>                
-                <div class="column is-full-mobile is-two-fifths-tablet">
+                <div class="column is-full-mobile is-two-fifths-tablet mt-5">
                     <div class="box dash has-shadow second-box has-text-centered">
                         <p class="has-text-primary is-size-3 mt-1 has-text-weight-bold">Leaderboard</p>
                         <div class="small-box">
@@ -230,7 +245,7 @@ $conn->close();
                                     }
                                     echo "<div class='lesson-item'>
                                         <div class='has-text-dark has-text-left is-size-4'>{$quizMapping[$i]}</div>
-                                        <div class='progress-container'>
+                                        <div class='progress-container1'>
                                             <div class='progress-bar' style='width: {$progress};'>{$progress}</div>
                                         </div>
                                     </div>";
@@ -259,7 +274,7 @@ $conn->close();
                                     }
                                     echo "<div class='lesson-item'>
                                         <div class='has-text-dark has-text-left is-size-4'>{$quizMapping[$i]}</div>
-                                        <div class='progress-container'>
+                                        <div class='progress-container2'>
                                             <div class='progress-bar' style='width: {$progress};'>{$progress}</div>
                                         </div>
                                     </div>";
@@ -288,7 +303,7 @@ $conn->close();
                                     }
                                     echo "<div class='lesson-item'>
                                         <div class='has-text-dark has-text-left is-size-4'>{$quizMapping[$i]}</div>
-                                        <div class='progress-container'>
+                                        <div class='progress-container3'>
                                             <div class='progress-bar' style='width: {$progress};'>{$progress}</div>
                                         </div>
                                     </div>";
@@ -317,7 +332,7 @@ $conn->close();
                                     }
                                     echo "<div class='lesson-item'>
                                         <div class='has-text-dark has-text-left is-size-4'>{$quizMapping[$i]}</div>
-                                        <div class='progress-container'>
+                                        <div class='progress-container4'>
                                             <div class='progress-bar' style='width: {$progress};'>{$progress}</div>
                                         </div>
                                     </div>";
