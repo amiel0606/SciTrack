@@ -67,16 +67,10 @@
         <div class="column is-half">
             <div class="box dash-tables dash has-shadow" style="display: flex; flex-direction: column; justify-content: space-between;">
                 <div style="display: flex; justify-content: space-between; width: 100%;">
-                    <p class="has-text-primary is-size-3 has-text-weight-bold">Students: <span class="has-text-primary is-size-4 has-text-weight-normal">15</span></p>
+                    <p class="has-text-primary is-size-3 has-text-weight-bold">Students: <span class="studentCount has-text-primary is-size-4 has-text-weight-normal">15</span></p>
                     <a href="./adminStudents.php" class="has-text-primary">View All</a>
                 </div>
-                <div class="select is-primary" style="float: left;">
-                    <select name="section">
-                        <option>Papaya</option>
-                        <option>Mango</option>
-                        <option>Star Section</option>
-                    </select>
-                </div>
+                
                 <div class="table-container">
                 <table id="students" class="table dash-table is-hoverable ">
                     <thead class="has-text-centered has-background-primary">
@@ -98,7 +92,7 @@
         <div class="column is-half">
         <div class="box dash-tables dash has-shadow" style="display: flex; flex-direction: column; justify-content: space-between;">
                 <div style="display: flex; justify-content: space-between; width: 100%;">
-                    <p class="has-text-primary is-size-3 has-text-weight-bold">Teachers: <span class="has-text-primary is-size-4 has-text-weight-normal">5</span></p>
+                    <p class="has-text-primary is-size-3 has-text-weight-bold">Teachers: <span class="teacherCount has-text-primary is-size-4 has-text-weight-normal">5</span></p>
                     <a href="./adminTeachers.php" class="has-text-primary">View All</a>
                 </div>
                 <table id="teachers" class="table dash-table is-hoverable ">
@@ -198,10 +192,12 @@ var conn = new WebSocket('ws://localhost:8080');
 conn.onopen = function() {
     conn.send(JSON.stringify({ type: 'loadStudents' }));
     conn.send(JSON.stringify({ type: 'loadTeachers' }));
+    conn.send(JSON.stringify({ type: 'getCountStudents' }));
+    conn.send(JSON.stringify({ type: 'getTeacherCounts' }));
 };
 conn.onmessage = function(e) {
     var data = JSON.parse(e.data);
-    // console.log(data);
+    console.log(data);
     if (data.type === "student") {
         var table = document.getElementById('students').getElementsByTagName('tbody')[0];
         var newRow = table.insertRow();
@@ -214,7 +210,14 @@ conn.onmessage = function(e) {
         newRow.insertCell(0).innerText = data.id;
         newRow.insertCell(1).innerText = data.name;
         newRow.insertCell(2).innerText = data.username;
+    } else if (data.type === "studentCount") {
+        const totalCount = Object.values(data.counts).reduce((sum, count) => sum + parseInt(count, 10), 0);
+        document.querySelector('.studentCount').innerText = totalCount;
+    } else if (data.type === "teacherCount") {
+        const totalCount = Object.values(data.counts).reduce((sum, count) => sum + parseInt(count, 10), 0);
+        document.querySelector('.teacherCount').innerText = totalCount;
     }
+
 
 
 };

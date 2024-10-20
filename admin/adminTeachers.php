@@ -72,18 +72,7 @@ body::-webkit-scrollbar {
         <div class="box addStudents">
             <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Teacher</p>
             <form action="./includes/addStaff/uploadSingleTeacher.php" method="post" id="addTeachersForm"  enctype="multipart/form-data">
-            <div class="field">
-                    <label class="label is-size-6 has-text-primary" for="section">Section</label>
-                    <div class="control mb-5">
-                        <div class="select is-link">
-                            <select name="section">
-                                <option>Papaya</option>
-                                <option>Mango</option>
-                                <option>Star Section</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="field">
                     <div class="control mb-5">
                         <input class="input" type="text" name="firstName" placeholder="Enter First Name">
@@ -108,9 +97,7 @@ body::-webkit-scrollbar {
                     <div class="column has-background-white">
                         <button class="button is-primary has-text-white" type="submit" name="submit">Confirm</button>
                     </div>
-                    <div class="column has-background-white">
-                        <button class="button">Cancel</button>
-                    </div>
+
                 </div>
             </form>
         </div>
@@ -126,7 +113,8 @@ body::-webkit-scrollbar {
     <div class="modal-content">
         <div class="box addStudents editBox">
             <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Edit Teacher's Details</p>
-            <form action="" method="post" id="editStudentsForm" >
+            <form action="./includes/addStaff/editTeacher.php" method="post" id="editStudentsForm" >
+                <input type="hidden" name="teacherID" id="teacherID" value="">
                 <div class="field">
                 <label class="label is-size-6 has-text-primary" for="firstName">First Name</label>
                     <div class="control mb-1">
@@ -139,18 +127,7 @@ body::-webkit-scrollbar {
                             <input class="input " type="text" name="lastName" placeholder="Edit Last Name">
                         </div>
                 </div>
-                <div class="field">
-                    <label class="label is-size-6 has-text-primary" for="section">Section</label>
-                    <div class="control">
-                        <div class="select is-link">
-                            <select name="section">
-                                <option>Papaya</option>
-                                <option>Mango</option>
-                                <option>Star Section</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="field">
                     <label class="label is-size-6 has-text-primary" for="userName">Username</label>
                         <div class="control mb-1">
@@ -169,9 +146,7 @@ body::-webkit-scrollbar {
                     <div class="column has-background-white">
                         <button class="button is-primary has-text-white" type="submit" >Confirm</button>
                     </div>
-                    <div class="column has-background-white">
-                        <button class="button">Cancel</button>
-                    </div>
+
                 </div>
             </form>
         </div>
@@ -186,6 +161,8 @@ body::-webkit-scrollbar {
 <div id="archiveModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
+        <form action="./includes/addStaff/archiveTeacher.php" method="post">
+        <input type="hidden" name="IDteacher" id="IDteacher" value="">
         <div class="box modalArchive">
             <span class="icon has-text-danger mb-6" >
             <i class="fa-solid fa-circle-exclamation fa-3x gitna"></i>
@@ -195,9 +172,8 @@ body::-webkit-scrollbar {
             <div class="column is-10 mt-6 has-background-white">
                 <button class="button is-success has-text-centered">Yes, Archive it</button>
             </div>
-            <div class="column mt-6 has-background-white">
-                <button class="button has-text-centered">Cancel</button>
-            </div>
+            </form>
+
         </div>
         </div>
     </div>
@@ -214,16 +190,7 @@ body::-webkit-scrollbar {
             <div class="box uploadModal">
                 <form action="./includes/addStaff/uploadTeacher.php" method="post" enctype="multipart/form-data">
                     <div class="columns has-background-white">
-                        <div class="column is-two-thirds">
-                        <label for="section" class="label">Choose Section</label>
-                            <div class="select is-primary">
-                                <select name="section">
-                                    <option>Papaya</option>
-                                    <option>Mango</option>
-                                    <option>Star Section</option>
-                                </select>
-                            </div>
-                        </div>
+
                         <div class="column ">
                         <label for="file" class="label">Upload a file</label>
                             <div class="file is-primary">
@@ -279,7 +246,6 @@ body::-webkit-scrollbar {
                     <tr>
                         <th>Name</th>
                         <th>Username</th>
-                        <th>Section</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -293,9 +259,10 @@ body::-webkit-scrollbar {
     <div class="columns">
         <div class="column is-9"></div>
         <div class="column">
-        <div class="notification is-success addNotification has-text-centered">
+        <div class="<?php echo $notificationClass; ?>">
             <button class="delete"></button>
-                Added Teacher Successfully.
+                <?php echo $errorMessage; ?>
+            </div>
         </div>
         </div>
     </div>
@@ -367,12 +334,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // console.log(teacher);
                 newRow.insertCell(0).innerText = teacher.name;
                 newRow.insertCell(1).innerText = teacher.username;
-                newRow.insertCell(2).innerText = teacher.section;
-                var buttonCell = newRow.insertCell(3);
+                var buttonCell = newRow.insertCell(2);
                 var button1 = document.createElement('a');
                 var button2 = document.createElement('a');
                 button2.className = 'button is-danger p-1 js-modal-trigger';
                 button2.setAttribute('data-target', 'archiveModal');
+                button2.setAttribute('data-id', teacher.id);
+                button1.setAttribute('data-id', teacher.id);
                 button1.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
                         <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" fill="#fff"/>
@@ -391,12 +359,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 button1.addEventListener('click', () => {
                     const modal = button1.getAttribute('data-target');
                     const $target = document.getElementById(modal);
+                    const teacherID = button1.getAttribute('data-id');
+                    var teacherInput = document.getElementById('teacherID');
+                    teacherInput.value = teacherID;
                     openModal($target);
                 });
 
                 button2.addEventListener('click', () => {
                     const modal = button2.getAttribute('data-target');
                     const $target = document.getElementById(modal);
+                    const teacherID = button2.getAttribute('data-id');
+                    var teacherInput = document.getElementById('IDteacher');
+                    teacherInput.value = teacherID;
+                    console.log(teacherID + teacherInput.value);
                     openModal($target);
                 });
             };

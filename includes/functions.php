@@ -56,7 +56,7 @@ function createUser($conn,$UserName,$Lname,$Fname,$role,$password){
     $sql = "INSERT INTO tbl_users(username, password, role, firstName, lastName) VALUES(?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt,$sql)) {
-        header("location: ./admin/adminDash.php?stmtFailed");
+        header("location: ./admin/adminDash.php?error=stmtFailed");
         exit();
     }
 
@@ -65,7 +65,7 @@ function createUser($conn,$UserName,$Lname,$Fname,$role,$password){
     mysqli_stmt_bind_param($stmt, "sssss", $UserName, $hashedPass, $role, $Fname, $Lname);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../../adminRegister.php?error=none");
+    header("location: ../../adminRegister.php?error=Success");
     exit();
 }
 
@@ -101,7 +101,7 @@ function loginUser($conn, $uName, $pwd) {
         $_SESSION["firstName"] = $UserExists["firstName"];
         $_SESSION["lastName"] = $UserExists["lastname"];
         $role = $_SESSION["role"];
-        if ($role=='admin') {
+        if ($role=='Admin') {
             header("location: ../admin/adminDash.php");
             exit();
         }
@@ -111,6 +111,10 @@ function loginUser($conn, $uName, $pwd) {
         }
         else if ($role=='Student') {
             header("location: ../student/studentWelcome.php");
+            exit();
+        }
+        else {
+            echo "Please contact the administrator";
             exit();
         }
     }

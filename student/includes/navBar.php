@@ -14,7 +14,7 @@
 <nav class="navbar is-fixed-top" style="background-color: #4A90E2;">
     <div class="navbar-brand">
         <a class="navbar-item has-text-white has-text-weight-bold" href="#">
-            LOGO
+            haha
         </a>
     </div>
     <div class="navbar-menu">
@@ -31,7 +31,7 @@
                 <span class="icon is-small mr-2"><i class="fas fa-chalkboard-teacher fa-lg"></i></span> 
                 Teachers
             </a>
-            <a href="./includes/logout.php" class="navbar-item has-text-white">
+            <a href="../admin/includes/logout.php" class="navbar-item has-text-white">
                 <span class="icon is-small mr-2"><i class="fas fa-sign-out-alt fa-lg"></i></span> 
                 Logout
             </a>

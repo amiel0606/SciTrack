@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
             $lastName = $row[2];
             $password = $lastName;
             $name = $firstName. " ". $lastName;
-            $section = $_POST["section"];
+            $section = 'Papaya';
             $role = "Student";
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
@@ -31,7 +31,7 @@ if (isset($_POST["submit"])) {
         }
 
         fclose($file);
-        echo "CSV file has been successfully imported.";
+        header("Location: ../../adminStudents.php?error=addStudentSuccess");
     }
 
     $stmt->close();

@@ -76,16 +76,42 @@ body::-webkit-scrollbar {
     align-items: center;
 }
 </style>
+
+<?php
+session_start();
+$error = $_GET['error'] ?? 'none'; 
+
+$errorMessages = [
+    'WrongLogin' => 'Invalid username or password.',
+    'EmptyInput' => 'Please fill in all required fields.',
+    'none' => '',
+    'Success' => 'Added admin Successfully.',
+    'stmtFailed' => 'Something went wrong. Please try again.',
+    'addStudentSuccess' => 'Added student Successfully.',
+    'successEditStudent' => 'Edited Information Successfully.',
+    'successEditTeacher' => 'Edited Information Successfully.',
+    'addTeacherSuccess' => 'Added Teacher Successfully'
+];
+
+if (isset($errorMessages[$error])) {
+    $errorMessage = $errorMessages[$error];
+} else {
+    $errorMessage = 'An unknown error occurred.';
+}
+
+$notificationClass = ($error !== 'none') ? 'notification is-success addNotification has-text-centered' : 'notification is-success addNotification has-text-centered is-invisible';
+
+?>
     <div class="columns">
         <aside class="menu has-background-primary">
             <p class="menu-label has-text-white is-size-1 ">LOGO</p>
             <ul class="menu-list">
-                <li><p  class="menu-item has-background-primary mb-6 "><i class="fa-regular fa-circle-user fa-4x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-1">Amiel</span></p></li>
+                <li><p  class="menu-item has-background-primary mb-6 "><i class="fa-regular fa-circle-user fa-4x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-1"><?php echo $_SESSION['firstName'] ?></span></p></li>
                 <li><a href="./adminDash.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chart-line fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Dashboard</span></a></li>
                 <li><a href="./adminStudents.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-graduation-cap fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Students</span></a></li>
                 <li><a href="./adminTeachers.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Teachers</span></a></li>
                 <li><a href="./adminRegister.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-plus fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Add an Admin</span></a></li>
-                <li><a href="./adminEdit.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Edit Roles</span></a></li>
+                <!-- <li><a href="./adminEdit.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Edit Roles</span></a></li> -->
                 <li><a href="./includes/logout.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
             </ul>
         </aside>
