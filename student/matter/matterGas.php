@@ -365,7 +365,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5">
                                     <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified p-spacing">
-                                        • Has particles that are far apart, fast-moving and not organised in any particular way.
+                                        Has particles that are far apart, fast-moving and not organised in any particular way.
                                     </p>
                                 </div>
                             </div>
@@ -441,7 +441,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
                                     <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • Heating a gas increases the kinetic energy of particles, causing the gas to expand. 
+                                        Heating a gas increases the kinetic energy of particles, causing the gas to expand. 
                                     </p>
                                 </div>
 

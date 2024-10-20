@@ -180,9 +180,9 @@
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
-                                        <p class="mb-5 main-font">• Define what is matter</p>
-                                        <p class="mb-5 main-font">• Describe the four states of matter</p>
-                                        <p class="mb-5 main-font">• Identify the matter in the states of solid, liquid and gas</p>
+                                        <p class="mb-5 main-font">Define what is matter</p>
+                                        <p class="mb-5 main-font">Describe the four states of matter</p>
+                                        <p class="mb-5 main-font">Identify the matter in the states of solid, liquid and gas</p>
                                     </div>
                                 </div>
                             </div>

@@ -130,7 +130,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         line-height: 1.5;
     }
     .tight-spacing {
-        margin-right: -0.5em; 
+        margin-right: -1em; 
     }
     .placeholder {
         width: 100%;
@@ -338,7 +338,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5">
                                     <p class="subtitle main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified">
-                                        • Has particles that are packed closely together and usually arranged in regular pattern.
+                                        Has particles that are packed closely together and usually arranged in regular pattern.
                                     </p>
                                 </div>
                             </div>
@@ -354,10 +354,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                             <div class="image-container" id="sChar">
                                 <!-- Solid Image -->
                                 <div class="image-item" id="char1">
-                                    <figure class="image">
+                                    <figure class="image mb-3">
                                         <img src="../../image/ssChar1.gif" alt="Solid">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed shape</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">Fixed shape</p>
                                 </div>
 
                                 <!-- Solid Image -->
@@ -365,15 +365,15 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                     <figure class="image">
                                         <img src="../../image/ssChar2.gif" alt="Solid">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed volume</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">Fixed volume</p>
                                 </div>
 
                                 <!-- Solid Image -->
                                 <div class="image-item" id="char3">
-                                    <figure class="image">
+                                    <figure class="image mb-5">
                                         <img src="../../image/ssChar3.gif" alt="Solid">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">High density</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">High density</p>
                                 </div>
                             </div>
                         </div>
@@ -406,11 +406,8 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
-                                        • Has Definite shape and volume
-                                    </p>
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • When a solid is heated, its molecules gain energy and vibrate fast.
+                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified tight-spacing">
+                                        Has Definite shape and volume. When a solid is heated, its molecules gain energy and vibrate fast.
                                     </p>
                                 </div>
 

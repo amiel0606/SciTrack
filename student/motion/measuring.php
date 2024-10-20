@@ -106,6 +106,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         color: white;
     }
 
+
+    #letsTryButton {
+        right: -10rem;
+        z-index: 10;
+    }
     
     #header{
         font-size: 4rem;
@@ -366,9 +371,9 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
-                                        <p class="mb-5 main-font">• Describe and use appropriate tools for measuring distance and time</p>
-                                        <p class="mb-5 main-font">• Identity the correct standard unit for measuring distance</p>
-                                        <p class="mb-5 main-font">• Explain the importance of using measuring tools or device</p>
+                                        <p class="mb-5 main-font">Describe and use appropriate tools for measuring distance and time</p>
+                                        <p class="mb-5 main-font">Identity the correct standard unit for measuring distance</p>
+                                        <p class="mb-5 main-font">Explain the importance of using measuring tools or device</p>
                                     </div>
                                 </div>
                             </div>
@@ -644,6 +649,37 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                         </div>
                     </div>
 
+                    <!-- LetsTry -->
+                    <div class="eco-content" id="letsTry">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                            <!-- Content Layout -->
+                            <div class="columns is-centered">
+                                <!-- Image Column -->
+                                <div class="column is-half pl-6">
+                                    <figure class="image c-image">
+                                        <img src="../../image/einstein.png" alt="Einstein">
+                                    </figure>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-half pr-6 mr-6">
+                                    <figure class="image letstry">
+                                        <img src="../../image/letstry.png" alt="letstry">
+                                    </figure>
+                                </div>
+                            </div>
+                            
+                            <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" id="letsTryButton">
+                                <button class="button main-font is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
+                                    Go Back
+                                </button>
+                                <button class="button main-font is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
+                                    Proceed to quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Motion Quiz -->
                     <div class="motion-content" id="motionQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
@@ -789,11 +825,15 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const motionSurvey = document.getElementById('motionSurvey');
         const motionCaliper = document.getElementById('motionCaliper');
         const motionMicrometer = document.getElementById('motionMicrometer');
+        const letsTry = document.getElementById('letsTry');
         const motionVideo = document.getElementById('motionVideo');
         const motionQuiz = document.getElementById('motionQuiz');
         const motionCompleted = document.getElementById('motionCompleted');
+        const letsTryButton = document.getElementById('letsTryButton');
+        const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
+        const goBackButton = letsTryButton.querySelector('.button.is-danger');
         let currentSection = 0;
-        const sections = [objectives, motionMeasuring1, motionMeasuring2, motionRuler, motionTape, motionOdo, motionSpeedo, motionSurvey, motionCaliper, motionMicrometer,  motionVideo, motionQuiz, motionCompleted];
+        const sections = [objectives, motionMeasuring1, motionMeasuring2, motionRuler, motionTape, motionOdo, motionSpeedo, motionSurvey, motionCaliper, motionMicrometer,  motionVideo, letsTry, motionQuiz, motionCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -803,7 +843,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 11 || currentSection === 12) {
+            if (currentSection === 11 || currentSection === 12 || currentSection === 13) {
                 einsteinImage.style.display = 'none';
                 examplesButton.style.marginLeft = '100%';    
             } else {
@@ -811,7 +851,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 examplesButton.style.marginLeft = '0%'; 
             }
 
-            if (currentSection === 12) {
+            if (currentSection === 11 || currentSection === 13) {
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none'; 
             } else {
@@ -841,6 +881,16 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 currentSection--;
                 showSection(currentSection);
             }
+        });
+
+        goBackButton.addEventListener('click', function () {
+            currentSection = 10; 
+            showSection(currentSection);
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            currentSection = 12; 
+            showSection(currentSection);
         });
 
         hideAllSections();

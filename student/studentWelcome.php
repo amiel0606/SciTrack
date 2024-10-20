@@ -126,7 +126,7 @@
                             <div class="columns is-centered mb-6 mt-6">
                                 <div class="column is-four-fifths">
                                     <p class="title has-text-white has-text-centered main-font welcomeText">
-                                        Welcome <span id="studentName" style="color: yellow;">,</span> Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
+                                        Welcome <span id="studentName" style="color: yellow;"></span>, Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
                                     </p>
                                 </div>
                             </div>
@@ -140,16 +140,16 @@
                                 <div class="columns is-multiline is-centered">
                                     <div class="column is-half has-text-centered title is-size-3 studentdb">
                                         <a href="" id="lessonLink">
-                                            <figure class="image">
-                                                <img src="../image/lesson.png" alt="Lesson Image" class="lesson-image">
+                                            <figure class="image" style="width: 500px; height: 500px;">
+                                                <img src="../image/lesson.png" alt="Lesson Image">
                                             </figure>
                                             <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">LESSON</p>
                                         </a>
                                     </div>
                                     <div class="column is-half has-text-centered title is-size-3 studentdb">
                                         <a href="">
-                                            <figure class="image">
-                                                <img src="../image/assessment.png" alt="Assessment Image" class="lesson-image">
+                                            <figure class="image" style="width: 500px; height: 500px;">
+                                                <img src="../image/assessment.png" alt="Assessment Image">
                                             </figure>
                                             <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">ASSESSMENT</p>
                                         </a>
@@ -167,7 +167,7 @@
                                     <a href="./matter/matterLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/matterTopic1.gif" alt="Matter">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
                                         </figure>
                                     </a>
                                 </div>
@@ -175,7 +175,7 @@
                                     <a href="./esystem/ecosystemLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/ecosystemTopic1.gif" alt="Ecosystem">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
                                         </figure>
                                     </a>
                                 </div>
@@ -183,15 +183,15 @@
                                     <a href="./motion/motionLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/motionTopicx.gif" alt="Motion">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
                                         </figure>
                                     </a>
                                 </div>
                                 <div id="earth" class="column has-text-centered ">
-                                    <a href="./oldsurface/surfaceDef.php">
+                                    <a href="./surface/surfaceLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/surfaceTopic1.gif" alt="Surface">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">SURFACE</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">SURFACE</p>
                                         </figure>
                                     </a>
                                 </div>

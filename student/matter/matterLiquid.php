@@ -370,7 +370,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5">
                                     <p class="subtitle main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified p-spacing">
-                                        • Has particles that are less tightly packed as compared to solids.
+                                        Has particles that are less tightly packed as compared to solids.
                                     </p>
                                 </div>
                             </div>
@@ -444,8 +444,8 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white">
-                                        • When a liquid is heated, the particles move rapidly.
+                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-justified has-text-white">
+                                        When a liquid is heated, the particles move rapidly.
                                     </p>
                                 </div>
 
