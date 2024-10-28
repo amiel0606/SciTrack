@@ -102,6 +102,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     .sExample .image-item{
         text-align: center;
         margin: 0;
+        z-index: 10;
     }
     .sExample .image-item:first-child{
         margin-right: 5rem;
@@ -466,7 +467,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas5.png" alt="Gas">
+                                        <img src="../../image/mgas5.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Helium in a balloon is gas because it is lighter than air, which helps the balloon float up into the sky.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Helium in Balloon</p>
                                 </div>
@@ -474,7 +478,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Second Image -->
                                 <div class="image-item" id="steam">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas6.png" alt="Gas">
+                                        <img src="../../image/mgas6.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Steam is gas because it forms when water is heated and turns into tiny water vapor droplets that rise into the air.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Steam</p>
                                 </div>
@@ -493,7 +500,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas7.png" alt="Gas">
+                                        <img src="../../image/mgas7.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            An oxygen tank holds gas because it compresses oxygen into a smaller space, making it easy to carry and use for breathing.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Oxygen Tank</p>
                                 </div>
@@ -501,7 +511,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas8.png" alt="Gas">
+                                        <img src="../../image/mgas8.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Smoke is gas because it is made of tiny particles that are released when something burns, 
+                                            and these particles mix with air, making it rise and spread.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Smoke</p>
                                 </div>

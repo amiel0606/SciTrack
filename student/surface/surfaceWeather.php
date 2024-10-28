@@ -39,6 +39,10 @@
         height: auto;
         margin-left: 5%;
     }
+    #letsTryButton {
+        right: -10rem;
+        z-index: 10;
+    }
     .image-container {
         display: flex;
         justify-content: space-around;
@@ -531,6 +535,37 @@
                         </div>
                     </div>
 
+                    <!-- LetsTry -->
+                    <div class="surface-content" id="letsTry">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                            <!-- Content Layout -->
+                            <div class="columns is-centered">
+                                <!-- Image Column -->
+                                <div class="column is-half pl-6">
+                                    <figure class="image c-image">
+                                        <img src="../../image/einstein.png" alt="Einstein">
+                                    </figure>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-half pr-6 mr-6">
+                                    <figure class="image letstry">
+                                        <img src="../../image/letstry.png" alt="letstry">
+                                    </figure>
+                                </div>
+                            </div>
+                            
+                            <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" id="letsTryButton">
+                                <button class="button main-font is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
+                                    Go Back
+                                </button>
+                                <button class="button main-font is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
+                                    Proceed to quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Surface Quiz -->
                     <div class="surface-content" id="surfaceQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
@@ -683,10 +718,14 @@
         const surfaceChemical = document.getElementById('surfaceChemical');
         const surfaceBiological = document.getElementById('surfaceBiological');
         const surfaceRock = document.getElementById('surfaceRock');
+        const letsTry = document.getElementById('letsTry');
         const surfaceQuiz = document.getElementById('surfaceQuiz');
         const surfaceCompleted = document.getElementById('surfaceCompleted');
+        const letsTryButton = document.getElementById('letsTryButton');
+        const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
+        const goBackButton = letsTryButton.querySelector('.button.is-danger');
         let currentSection = 0;
-        const sections = [objectives, surfaceWeathering, surfaceErosion, surfaceVideo, surfaceTypes, surfacePhysical, surfaceChemical, surfaceBiological, surfaceRock, surfaceQuiz, surfaceCompleted];
+        const sections = [objectives, surfaceWeathering, surfaceErosion, surfaceVideo, surfaceTypes, surfacePhysical, surfaceChemical, surfaceBiological, surfaceRock, letsTry, surfaceQuiz, surfaceCompleted];
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -696,7 +735,7 @@
         }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 9 || currentSection === 10) {
+            if (currentSection === 9 || currentSection === 10 || currentSection === 11) {
                 einsteinImage.style.display = 'none';
                 examplesButton.style.marginLeft = '100%';    
             } else {
@@ -704,7 +743,7 @@
                 examplesButton.style.marginLeft = '0%'; 
             }
 
-            if (currentSection === 10) {
+            if (currentSection === 9 || currentSection === 11) {
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none'; 
             } else {
@@ -734,6 +773,16 @@
                 currentSection--;
                 showSection(currentSection);
             }
+        });
+
+        goBackButton.addEventListener('click', function () {
+            currentSection = 8; 
+            showSection(currentSection);
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            currentSection = 10; 
+            showSection(currentSection);
         });
 
         hideAllSections();

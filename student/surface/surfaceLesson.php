@@ -126,7 +126,7 @@
 
                                     <a href="surfaceSoil.php" id="imageLink2" class="is-hidden">
                                         <figure class="image lesson-image mb-4" id="lessonImage2">
-                                            <img src="../../image/surface2.gif" alt="Motion">
+                                            <img src="../../image/surface10.gif" alt="Motion">
                                         </figure>
                                     </a>
                                     <p class="title is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-white main-font mb-6 is-hidden" id="description2">
