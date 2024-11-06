@@ -224,13 +224,13 @@ document.addEventListener('DOMContentLoaded', function() {
         'earth': 'earth'
     };
 
-    var conn = new WebSocket('ws://localhost:8080');
+    var conn = new WebSocket('ws://localhost:8080/ws/');
     conn.onopen = function() {
         conn.send(JSON.stringify({ type: 'loadLessons', section: section }));
     };
     conn.onmessage = function(e) {
     var data = JSON.parse(e.data);
-    // console.log(data);
+     console.log(data);
     const today = new Date();
     const formattedToday = today.toISOString().slice(0, 10);
     console.log(formattedToday);

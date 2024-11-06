@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //WebSocket Connection
-    var conn = new WebSocket('ws://localhost:8080');
+	var conn = new WebSocket('ws://localhost:8080/ws/');
     conn.onopen = function (e) {
         conn.send(JSON.stringify({ type: 'loadRoles'}));
         conn.send(JSON.stringify({ type: 'getCountRoles' }));

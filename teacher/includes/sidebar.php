@@ -106,6 +106,6 @@ $notificationClass = ($error !== 'none') ? 'notification is-success addNotificat
                 <li><a href="./assessmentResult.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-regular fa-newspaper fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-5"> Assessment Results</span></a></li>
                 <li><a href="./teacherLessons.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Lessons</span></a></li>
                 <!-- <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Settings</span></a></li> -->
-                <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
+                <li><a href="../admin/includes/logout.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
             </ul>
         </aside>

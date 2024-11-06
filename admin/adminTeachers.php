@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     // WebSocket connection
-    var conn = new WebSocket('ws://localhost:8080');
+	var conn = new WebSocket('ws://localhost:8080/ws/');
             conn.onopen = function() {
                 conn.send(JSON.stringify({ type: 'loadTeachers' }));
             };

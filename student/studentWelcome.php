@@ -222,7 +222,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var id =document.getElementById('myID').value;
-        var conn = new WebSocket('ws://localhost:8080');
+        var conn = new WebSocket('ws://localhost:8080/ws/');
         const idsToProperties = {
         'matter': 'matter',
         'eco': 'ecosystem',
