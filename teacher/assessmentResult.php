@@ -65,7 +65,7 @@ th {
 </div>
 <script>
 // Websocket connection
-var conn = new WebSocket('ws://localhost:8080/ws/');
+var conn = new WebSocket('ws://localhost:8080');
 
 conn.onopen = function() { 
     conn.send(JSON.stringify({ type: 'getQuizScores' }));
@@ -82,23 +82,29 @@ conn.onmessage = function(e) {
 
 function displayQuizScore(quizScore) {
     var tableBody = document.querySelector('.table tbody');
+
     var row = document.createElement('tr');
+
     var nameCell = document.createElement('td');
     nameCell.textContent = quizScore.student_name; 
     nameCell.className = 'has-text-centered';
     row.appendChild(nameCell);
+
     var scoreCell = document.createElement('td');
-    scoreCell.textContent = `${quizScore.score}/10`;
+    scoreCell.textContent = quizScore.score;
     scoreCell.className = 'has-text-centered';
     row.appendChild(scoreCell);
+
     var lessonCell = document.createElement('td');
     lessonCell.textContent = quizScore.lesson;
     lessonCell.className = 'has-text-centered';
     row.appendChild(lessonCell);
+
     var dateTakenCell = document.createElement('td');
     dateTakenCell.textContent = quizScore.date_taken;
     dateTakenCell.className = 'has-text-centered';
     row.appendChild(dateTakenCell);
+
     tableBody.appendChild(row);
 }
 </script>

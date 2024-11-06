@@ -111,7 +111,7 @@ $notificationClass = ($error !== 'none') ? 'notification is-success addNotificat
                 <li><a href="./adminStudents.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-graduation-cap fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Students</span></a></li>
                 <li><a href="./adminTeachers.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Teachers</span></a></li>
                 <li><a href="./adminRegister.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-plus fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Add an Admin</span></a></li>
-                <li><a href="./viewArchivedAccounts.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">View Archived Accounts</span></a></li>
+                <!-- <li><a href="./adminEdit.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Edit Roles</span></a></li> -->
                 <li><a href="./includes/logout.php" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Logout</span></a></li>
             </ul>
         </aside>

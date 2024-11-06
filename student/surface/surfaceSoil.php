@@ -1,5 +1,16 @@
 <?php
-    include_once('./includes/board.php');
+session_start(); 
+include_once('./includes/board.php'); 
+include_once('../../admin/includes/dbCon.php'); 
+
+if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
+    $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
+    $id = $_SESSION["id"]; 
+} else {
+    
+    header("Location: index.php"); 
+    exit();
+}
 ?>
 
 <style>
@@ -424,7 +435,7 @@
                                         Desertification
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white ty-spacing">
-                                        If the nutrient-rich topsoil is removed from an agricultural land, the land will eventually be infertile and dry.
+                                        It occurs if the nutrient-rich topsoil is removed from an agricultural land due to environmental factors, the land will eventually be infertile and dry.
                                     </p>
                                 </div>
 
@@ -468,7 +479,7 @@
                                         Water contamination
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white ty-spacing2">
-                                        Soil erosion can lead to water contamination, especially clogged water ways and pollution of aquatic habitats.
+                                        Soil erosion can lead to water contamination. It can cause clogged water ways and pollution of aquatic habitats.
                                     </p>
                                 </div>
 
@@ -494,7 +505,7 @@
                                         Siltation
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white ty-spacing">
-                                        The particulate matter from other areas may settle in the water. 
+                                        The particulate matter that comes from soil erosion may settle in the water and accumulate. 
                                     </p>
                                 </div>
 
@@ -544,7 +555,7 @@
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
                                     <p class="title description1 main-font has-text-justified has-text-white ty-spacing">
-                                        One of the common ways to prevent soil erosion is reforestation and increase vegetation. Plant roots hold the soil in place.
+                                    One of the common ways to prevent soil erosion is reforestation, and the increase of vegetation. Plant roots hold the soil in place.
                                     </p>
                                 </div>
 
@@ -718,6 +729,14 @@
         </div>
     </div>
 </section>
+<audio id="erosionAudio" src="../../sounds/erosion1.mp3"></audio>
+<audio id="erosionAudio2" src="../../sounds/erosion2.mp3"></audio>
+<audio id="erosionAudio3" src="../../sounds/erosion3.mp3"></audio>
+<audio id="erosionAudio4" src="../../sounds/erosion4.mp3"></audio>
+<audio id="erosionAudio5" src="../../sounds/erosion5.mp3"></audio>
+<audio id="erosionAudio6" src="../../sounds/erosion6.mp3"></audio>
+<audio id="erosionAudio7" src="../../sounds/erosion7.mp3"></audio>
+<audio id="erosionAudio8" src="../../sounds/erosion8.mp3"></audio>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -740,15 +759,160 @@
         const letsTryButton = document.getElementById('letsTryButton');
         const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
         const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('erosionAudio');
+        const audio2 = document.getElementById('erosionAudio2');
+        const audio3 = document.getElementById('erosionAudio3');
+        const audio4 = document.getElementById('erosionAudio4');
+        const audio5 = document.getElementById('erosionAudio5');
+        const audio6 = document.getElementById('erosionAudio6');
+        const audio7 = document.getElementById('erosionAudio7');
+        const audio8 = document.getElementById('erosionAudio8');
         let currentSection = 0;
         const sections = [objectives, surfaceEffects, surfaceErosion, surfaceDetach, surfaceDesert, surfaceVideo, surfaceWater, surfaceSiltation, surfaceAir, surfacePrevent, letsTry, surfaceQuiz, surfaceCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
 
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Earths Surface', currentSection, 'Soil Erosion', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
+
+    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text()) 
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  
+        try {
+            const responseData = JSON.parse(responseText);  
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
+    });
+}
         function hideAllSections() {
             sections.forEach(section => {
                 section.classList.remove('surface-content-active');
                 section.classList.add('surface-content');
             });
         }
+
+        function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; 
+    }
+
+    function playAudio() {
+        audio.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio2() {
+        audio2.pause();
+        audio2.currentTime = 0; 
+    }
+
+    function playAudio2() {
+        audio2.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio3() {
+        audio3.pause();
+        audio3.currentTime = 0; 
+    }
+
+    function playAudio3() {
+        audio3.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio4() {
+        audio4.pause();
+        audio4.currentTime = 0; 
+    }
+
+    function playAudio4() {
+        audio4.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio5() {
+        audio5.pause();
+        audio5.currentTime = 0; 
+    }
+
+    function playAudio5() {
+        audio5.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio6() {
+        audio6.pause();
+        audio6.currentTime = 0; 
+    }
+
+    function playAudio6() {
+        audio6.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio7() {
+        audio7.pause();
+        audio7.currentTime = 0; 
+    }
+
+    function playAudio7() {
+        audio7.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio8() {
+        audio8.pause();
+        audio8.currentTime = 0; 
+    }
+
+    function playAudio8() {
+        audio8.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
 
         function updateEinsteinImageAndButtons() {
             if (currentSection === 10 || currentSection === 11 || currentSection === 12) {
@@ -773,10 +937,55 @@
             sections[index].classList.remove('surface-content');
             sections[index].classList.add('surface-content-active');
             updateEinsteinImageAndButtons();
+            resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
+        if (sections[index] === surfaceEffects) {
+            playAudio(); 
+        } else {
+            stopAudio();
+        }
+        if (sections[index] === surfaceErosion) {
+            playAudio2(); 
+        } else {
+            stopAudio2();
+        }
+        if (sections[index] === surfaceDetach) {
+            playAudio3(); 
+        } else {
+            stopAudio3();
+        }
+
+        if (sections[index] === surfaceDesert) {
+            playAudio4(); 
+        } else {
+            stopAudio4();
+        }
+        if (sections[index] === surfaceWater) {
+            playAudio5(); 
+        } else {
+            stopAudio5();
+        }
+        if (sections[index] === surfaceSiltation) {
+            playAudio6(); 
+        } else {
+            stopAudio6();
+        }
+        if (sections[index] === surfaceAir) {
+            playAudio7(); 
+        } else {
+            stopAudio7();
+        }
+        if (sections[index] === surfacePrevent) {
+            playAudio8(); 
+        } else {
+            stopAudio8();
+        }
         }
 
         rightButton.addEventListener('click', function () {
             if (currentSection < sections.length - 1) {
+                stopSectionTimer();
                 currentSection++;
                 showSection(currentSection);
             }
@@ -786,6 +995,7 @@
             if (currentSection === 0) {
                 window.location.href = 'surfaceLesson.php'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
             }
