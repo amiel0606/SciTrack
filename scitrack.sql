@@ -262,6 +262,17 @@ CREATE TABLE `tbl_quiz_scores` (
   FOREIGN KEY (`student_id`) REFERENCES `tbl_students`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE tbl_time_tracking (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    lesson VARCHAR(100),
+    section_index INT,
+    section_name VARCHAR(100),
+    time_spent INT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

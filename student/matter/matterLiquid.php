@@ -89,6 +89,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     .sExample .image-item{
         text-align: center;
         margin: 0;
+        z-index: 10;
     }
     .sExample .image-item:first-child{
         margin-right: 5rem;
@@ -370,7 +371,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5">
                                     <p class="subtitle main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified p-spacing">
-                                        • Has particles that are less tightly packed as compared to solids.
+                                        Has particles that are less tightly packed as compared to solids.
                                     </p>
                                 </div>
                             </div>
@@ -444,8 +445,8 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white">
-                                        • When a liquid is heated, the particles move rapidly.
+                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-justified has-text-white">
+                                        When a liquid is heated, the particles move rapidly.
                                     </p>
                                 </div>
 
@@ -470,7 +471,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mliquid4.png" alt="Liquid">
+                                        <img src="../../image/mliquid4.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Shampoo is liquid so it can easily spread through your hair and wash away dirt and oil without leaving any clumps.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shampoo</p>
                                 </div>
@@ -478,7 +482,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Second Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mliquid5.png" alt="Liquid">
+                                        <img src="../../image/mliquid5.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Orange juice is liquid because it comes from squeezing oranges, which release their watery juice, making it easy to drink.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Orange Juice</p>
                                 </div>
@@ -497,7 +504,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mliquid6.png" alt="Liquid">
+                                        <img src="../../image/mliquid6.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Hand sanitizer is liquid so it can quickly spread on your hands and kill germs effectively.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Hand Sanitizer</p>
                                 </div>
@@ -505,7 +515,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image" id="soy">
-                                        <img src="../../image/mliquid7.png" alt="Liquid">
+                                        <img src="../../image/mliquid7.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Soy sauce is liquid because it is made by fermenting soybeans and wheat, 
+                                            which creates a smooth, salty sauce that can easily pour over food.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Soy Sauce</p>
                                 </div>
@@ -710,7 +724,63 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const liquidVideo = document.getElementById('liquidVideo');
         let currentSection = 0;
         const sections = [matterStates, matterLiquid, matterChar, matterVideo, matterLiquid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
 
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Matter', currentSection, 'Liquid', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
+
+    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+    // Send the data to the server using fetch (AJAX)
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())  // Use .text() to log the raw response
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  // Log the raw response to the console
+        try {
+            const responseData = JSON.parse(responseText);  // Try to parse the response as JSON
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  // Handle JSON parsing error
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
+    });
+}
         function hideAllSections() {
             sections.forEach(section => {
                 section.classList.remove('matter-content-active');
@@ -768,7 +838,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             hideAllSections();
             sections[index].classList.remove('matter-content');
             sections[index].classList.add('matter-content-active');
-
+            resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
+            
             if (sections[index] === matterStates) {
         playAudio(); 
     } else {
@@ -839,6 +912,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 currentSection = 7;
                 showSection(currentSection);
             } else if (currentSection < sections.length - 1) {
+                stopSectionTimer();      
                 currentSection++; 
                 showSection(currentSection);
             }
@@ -858,6 +932,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             if (currentSection === 0) {
                 window.location.href = 'matterLesson.php?show=matterTopic'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
             }

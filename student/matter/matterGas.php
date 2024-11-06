@@ -102,6 +102,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     .sExample .image-item{
         text-align: center;
         margin: 0;
+        z-index: 10;
     }
     .sExample .image-item:first-child{
         margin-right: 5rem;
@@ -365,7 +366,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5">
                                     <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified p-spacing">
-                                        • Has particles that are far apart, fast-moving and not organised in any particular way.
+                                        Has particles that are far apart, fast-moving and not organised in any particular way.
                                     </p>
                                 </div>
                             </div>
@@ -441,7 +442,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
                                     <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • Heating a gas increases the kinetic energy of particles, causing the gas to expand. 
+                                        Heating a gas increases the kinetic energy of particles, causing the gas to expand. 
                                     </p>
                                 </div>
 
@@ -466,7 +467,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas5.png" alt="Gas">
+                                        <img src="../../image/mgas5.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Helium in a balloon is gas because it is lighter than air, which helps the balloon float up into the sky.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Helium in Balloon</p>
                                 </div>
@@ -474,7 +478,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Second Image -->
                                 <div class="image-item" id="steam">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas6.png" alt="Gas">
+                                        <img src="../../image/mgas6.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Steam is gas because it forms when water is heated and turns into tiny water vapor droplets that rise into the air.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Steam</p>
                                 </div>
@@ -493,7 +500,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas7.png" alt="Gas">
+                                        <img src="../../image/mgas7.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            An oxygen tank holds gas because it compresses oxygen into a smaller space, making it easy to carry and use for breathing.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Oxygen Tank</p>
                                 </div>
@@ -501,7 +511,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mgas8.png" alt="Gas">
+                                        <img src="../../image/mgas8.png" alt="Gas" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Smoke is gas because it is made of tiny particles that are released when something burns, 
+                                            and these particles mix with air, making it rise and spread.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Smoke</p>
                                 </div>
@@ -700,6 +714,63 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const gasVideo = document.getElementById('gasVideo');
         let currentSection = 0;
         const sections = [matterStates, matterGas, matterChar, matterVideo, matterGas2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
+
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Matter', currentSection, 'Gas', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
+
+    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text()) 
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  
+        try {
+            const responseData = JSON.parse(responseText);  
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
+    });
+}
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -758,7 +829,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             hideAllSections();
             sections[index].classList.remove('matter-content');
             sections[index].classList.add('matter-content-active');
-
+            resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
+            
             if (sections[index] === matterStates) {
         playAudio(); 
     } else {
@@ -830,6 +904,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 currentSection = 7;
                 showSection(currentSection);
             } else if (currentSection < sections.length - 1) {
+                stopSectionTimer();
                 currentSection++; 
                 showSection(currentSection);
             }
@@ -849,6 +924,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             if (currentSection === 0) {
                 window.location.href = 'matterLesson.php?show=matterTopic'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
             }

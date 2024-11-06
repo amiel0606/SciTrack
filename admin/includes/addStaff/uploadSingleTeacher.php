@@ -9,7 +9,7 @@ if (isset($_POST["submit"])) {
     $password = $lastName;
     $name = $firstName. " ". $lastName;
     $role = "Teacher";
-    $section = $_POST["section"];
+    $section = 'Papaya';
 
     $hashedPass = password_hash($password, PASSWORD_DEFAULT);
 
@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
     $stmt = $conn->prepare("INSERT INTO tbl_teachers (id, name, username, section) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("isss", $last_id, $name, $username, $section);
     $stmt->execute();
-    echo "Teacher has been successfully added.";
+    header("Location: ../../adminStudents.php?error=addTeacherSuccess");
 
     $stmt->close();
     $conn->close();

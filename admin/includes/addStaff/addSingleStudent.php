@@ -24,8 +24,7 @@ if (isset($_POST["submit"])) {
     $stmt->bind_param("isss", $last_id, $name, $username, $section);
     $stmt->execute();
 
-    echo "Student have been successfully added.";
-
+    header("Location: ../../adminStudents.php?error=addStudentSuccess");
     $stmt->close();
     $conn->close();
 }

@@ -97,6 +97,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     .sExample .image-item{
         text-align: center;
         margin: 0;
+        z-index: 10;
     }
     .sExample .image-item:first-child{
         margin-right: 5rem;
@@ -130,7 +131,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         line-height: 1.5;
     }
     .tight-spacing {
-        margin-right: -0.5em; 
+        margin-right: -1em; 
     }
     .placeholder {
         width: 100%;
@@ -338,7 +339,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5">
                                     <p class="subtitle main-font is-size-3-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified">
-                                        • Has particles that are packed closely together and usually arranged in regular pattern.
+                                        Has particles that are packed closely together and usually arranged in regular pattern.
                                     </p>
                                 </div>
                             </div>
@@ -354,10 +355,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                             <div class="image-container" id="sChar">
                                 <!-- Solid Image -->
                                 <div class="image-item" id="char1">
-                                    <figure class="image">
+                                    <figure class="image mb-3">
                                         <img src="../../image/ssChar1.gif" alt="Solid">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed shape</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">Fixed shape</p>
                                 </div>
 
                                 <!-- Solid Image -->
@@ -365,15 +366,15 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                     <figure class="image">
                                         <img src="../../image/ssChar2.gif" alt="Solid">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Fixed volume</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">Fixed volume</p>
                                 </div>
 
                                 <!-- Solid Image -->
                                 <div class="image-item" id="char3">
-                                    <figure class="image">
+                                    <figure class="image mb-5">
                                         <img src="../../image/ssChar3.gif" alt="Solid">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">High density</p>
+                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">High density</p>
                                 </div>
                             </div>
                         </div>
@@ -406,11 +407,8 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                             <div class="columns is-vcentered is-mobile is-multiline">
                                 <!-- Text Column -->
                                 <div class="column is-5" id="solid-text">
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified">
-                                        • Has Definite shape and volume
-                                    </p>
-                                    <p class="subtitle main-font is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • When a solid is heated, its molecules gain energy and vibrate fast.
+                                    <p class="subtitle main-font is-size-4-tablet is-size-2-desktop is-size-1-widescreen has-text-white has-text-justified tight-spacing">
+                                        Has Definite shape and volume. When a solid is heated, its molecules gain energy and vibrate fast.
                                     </p>
                                 </div>
 
@@ -435,7 +433,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid3.png" alt="Solid">
+                                        <img src="../../image/msolid3.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            A book is a solid because it has a fixed shape, doesn't change when you hold it, 
+                                            and the particles inside are tightly packed together.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Books</p>
                                 </div>
@@ -443,7 +445,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Second Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid4.png" alt="Solid">
+                                        <img src="../../image/msolid4.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Erasers are solid because they keep their shape even when you use them to erase pencil marks.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Eraser</p>
                                 </div>
@@ -462,7 +467,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid5.png" alt="Solid">
+                                        <img src="../../image/msolid5.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            A shirt is a solid because it has a definite shape, occupies a fixed volume, and is made of tightly packed 
+                                            fibers that keep it from changing shape when you wear it or move it.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shirt</p>
                                 </div>
@@ -470,7 +479,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid6.png" alt="Solid">
+                                        <img src="../../image/msolid6.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            A bag is a solid because it has a shape that stays the same, takes up a certain amount of space, 
+                                            and is made of materials that don't easily change shape when you carry it.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Bag</p>
                                 </div>
@@ -676,10 +689,35 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const audio3 = document.getElementById('matterAudio3');
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
-        let timeSpent = 180; 
-        let timerInterval;
         let currentSection = 0;
         const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
+
+
+
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Matter', currentSection, 'Solid', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -687,20 +725,6 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 section.classList.add('matter-content');
             });
         }
-
-    function startTimer() {
-    timerInterval = setInterval(function () {
-        timeSpent += 1; 
-        console.log("Time spent: " + timeSpent + " seconds"); 
-    }, 1000); 
-}
-
-
-    function stopTimer() {
-        clearInterval(timerInterval);
-    }
-
-    startTimer();
 
         function stopVideo() {
         solidVideo.pause(); 
@@ -751,7 +775,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     function showSection(index) {
         hideAllSections();
         sections[index].classList.remove('matter-content');
-        sections[index].classList.add('matter-content-active');
+        sections[index].classList.add('matter-content-active'); 
+        resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
 
         if (sections[index] === matterStates) {
             playAudio(); 
@@ -780,6 +807,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 stopVideo(); 
             }
 
+            
 
         if (index >= 0 && index <= 6) { 
             examplesButton.style.display = 'flex';
@@ -816,14 +844,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             leftButton.style.display = 'none';
             rightButton.style.display = 'none';
         }
-        if (index === 8) { 
-            if (timeSpent < 180) { 
-                proceedToQuizButton.disabled = true; 
-                alert("Please spend at least 3 minutes reading the lesson before taking the quiz.");
-            } else {
-                proceedToQuizButton.disabled = false; 
-            }
-        }
+        
     }
 
 
@@ -832,6 +853,8 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 currentSection = 7;
                 showSection(currentSection);
             } else if (currentSection < sections.length - 1) {
+                stopSectionTimer();
+            
                 currentSection++; 
                 showSection(currentSection);
             }
@@ -843,7 +866,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         });
 
         proceedToQuizButton.addEventListener('click', function () {
-        if (timeSpent < 180) {
+        if (sectionTimeSpent < 180) {
             alert("Please spend at least 3 minutes reading the lesson before taking the quiz.");
             return; 
         }
@@ -855,8 +878,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             if (currentSection === 0) {
                 window.location.href = 'matterLesson.php?show=matterTopic'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
+                
             }
         });
 
@@ -1075,6 +1100,38 @@ function sendScoreToServer(score) {
     .catch(error => {
         console.error('Error saving score:', error);
         alert('There was a problem saving your score. Please try again later.');
+    });
+}
+
+function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+    // Send the data to the server using fetch (AJAX)
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())  // Use .text() to log the raw response
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  // Log the raw response to the console
+        try {
+            const responseData = JSON.parse(responseText);  // Try to parse the response as JSON
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  // Handle JSON parsing error
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
     });
 }
 

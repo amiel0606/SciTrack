@@ -26,3 +26,30 @@ function giveLesson($db, $section, $lesson, $date) {
     $stmt->close();
     return $success;
 }
+
+function fetchQuizScores($db) {
+    $query = '
+        SELECT 
+            qs.id AS quiz_id, 
+            qs.student_id, 
+            qs.quiz_id, 
+            qs.lesson, 
+            qs.score,
+            qs.date_taken,
+            s.name AS student_name
+        FROM 
+            tbl_quiz_scores AS qs
+        JOIN 
+        tbl_students AS s ON qs.student_id = s.id;
+    ';
+
+    $result = $db->query($query);
+    
+    $quizScores = [];
+    
+    while ($row = $result->fetch_assoc()) {
+        $quizScores[] = $row;
+    }
+    
+    return $quizScores;
+}

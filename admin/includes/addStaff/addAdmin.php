@@ -29,6 +29,6 @@ if (isset($_POST["register"])) {
     createUser($conn,$UserName,$Lname,$Fname,$role,$ConfPassword);
 }
 else {
-    header("location: ../../adminRegister.php?Success");
+    header("location: ../../adminRegister.php?error=Success");
     exit();
 }

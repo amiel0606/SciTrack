@@ -107,6 +107,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         color: white;
     }
 
+    #letsTryButton {
+        right: -10rem;
+        z-index: 10;
+    }
     
     #header{
         font-size: 4rem;
@@ -305,9 +309,9 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
-                                        <p class="mb-5 main-font">• Define what are the Estuaries</p>
-                                        <p class="mb-5 main-font">• Identify different wildlife that lives in estuaries</p>
-                                        <p class="mb-5 main-font">• Identify the different estuaries</p>
+                                        <p class="mb-5 main-font"> Define what are the Estuaries</p>
+                                        <p class="mb-5 main-font"> Identify different wildlife that lives in estuaries</p>
+                                        <p class="mb-5 main-font"> Identify the different estuaries</p>
                                     </div>
                                 </div>
                             </div>
@@ -438,7 +442,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-5" id="eco-text">
                                     <p class="subtitle main-font is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-justified tight-spacing">
-                                        • They are often called the “nurseries of the sea” because numerous animal species rely on estuaries for nesting and breeding.
+                                        They are often called the “nurseries of the sea” because numerous animal species rely on estuaries for nesting and breeding.
                                     </p>
                                 </div>
 
@@ -482,7 +486,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         Brackish water
                                     </p>
                                     <p class="title description1 main-font has-text-white">
-                                        • <span style="color: yellow;">Brackish water</span> is found in an area where the river meets the sea.
+                                        <span style="color: yellow;">Brackish water</span> is found in an area where the river meets the sea.
                                     </p>
                                 </div>
 
@@ -508,7 +512,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         Sediment
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white">
-                                        • <span style="color: yellow;">Sediment</span> are the particles such as sand and soil which settle on the side and bottom of water bodies.
+                                        <span style="color: yellow;">Sediment</span> are the particles such as sand and soil which settle on the side and bottom of water bodies.
                                     </p>
                                 </div>
 
@@ -533,7 +537,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                     <figure class="image">
                                         <img src="../../image/ecoExamples1.png" alt="Sediments">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Pebbles</p>
+                                    <p class="main-font title is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">Pebbles</p>
                                 </div>
 
                                 <!-- Eco Image -->
@@ -541,7 +545,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                     <figure class="image">
                                         <img src="../../image/ecoExamples2.png" alt="Sediments">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Sand</p>
+                                    <p class="main-font title is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">Sand</p>
                                 </div>
 
                                 <!-- Eco Image -->
@@ -549,7 +553,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                     <figure class="image">
                                         <img src="../../image/ecoExamples3.png" alt="Sediments">
                                     </figure>
-                                    <p class="main-font subtitle is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white has-text-centered">Clay</p>
+                                    <p class="main-font title is-size-5-tablet is-size-4-desktop is-size-2-widescreen has-text-white has-text-centered">Clay</p>
                                 </div>
                             </div>
                         </div>
@@ -567,7 +571,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         Murky Water
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white">
-                                        • The <span style="color: yellow;">Murky Water</span> in an estuary is due to the presence of sediments and provides good camouflage for small organisms
+                                        The <span style="color: yellow;">Murky Water</span> in an estuary is due to the presence of sediments and provides good camouflage for small organisms
                                     </p>
                                 </div>
 
@@ -593,7 +597,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         Estuary
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white p-spacing">
-                                        • An <span style="color: yellow;">Estuary</span>, characterized by having brackish water, is home to many organisms
+                                        An <span style="color: yellow;">Estuary</span>, characterized by having brackish water, is home to many organisms
                                     </p>
                                 </div>
 
@@ -603,6 +607,37 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         <img src="../../image/eco8.gif" alt="Eco">
                                     </figure>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LetsTry -->
+                    <div class="eco-content" id="letsTry">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                            <!-- Content Layout -->
+                            <div class="columns is-centered">
+                                <!-- Image Column -->
+                                <div class="column is-half pl-6">
+                                    <figure class="image c-image">
+                                        <img src="../../image/einstein.png" alt="Einstein">
+                                    </figure>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-half pr-6 mr-6">
+                                    <figure class="image letstry">
+                                        <img src="../../image/letstry.png" alt="letstry">
+                                    </figure>
+                                </div>
+                            </div>
+                            
+                            <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" id="letsTryButton">
+                                <button class="button main-font is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
+                                    Go Back
+                                </button>
+                                <button class="button main-font is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
+                                    Proceed to quiz
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -647,7 +682,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                     </div>
                                 </div>
                             </div>
-<!-- Quiz Result -->
+                            <!-- Quiz Result -->
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
                                 <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
@@ -770,8 +805,12 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const ecoExamples = document.getElementById('ecoExamples');
         const eco4 = document.getElementById('eco4');
         const eco5 = document.getElementById('eco5');
+        const letsTry = document.getElementById('letsTry');
         const ecoQuiz = document.getElementById('ecoQuiz');
         const ecoCompleted = document.getElementById('ecoCompleted');
+        const letsTryButton = document.getElementById('letsTryButton');
+        const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
+        const goBackButton = letsTryButton.querySelector('.button.is-danger');
         let currentSection = 0;
         const audio = document.getElementById('ecoEstAudio');
         const audio2 = document.getElementById('ecoEstAudio2');
@@ -782,7 +821,64 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const audio7 = document.getElementById('ecoEstAudio7');
         const audio8 = document.getElementById('ecoEstAudio8');
         const audio9 = document.getElementById('ecoEstAudio9');
-        const sections = [objectives, ecoDef, ecoBefore, ecoBiotic, ecoAbiotic, eco1, ecoVideo, eco2, eco3, ecoExamples, eco4, eco5, ecoQuiz, ecoCompleted];
+        const sections = [objectives, ecoDef, ecoBefore, ecoBiotic, ecoAbiotic, eco1, ecoVideo, eco2, eco3, ecoExamples, eco4, eco5, letsTry, ecoQuiz, ecoCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
+
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Ecosystem', currentSection, 'Estuaries', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
+
+    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text()) 
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  
+        try {
+            const responseData = JSON.parse(responseText);  
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
+    });
+}
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -792,7 +888,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 2 || currentSection === 12 || currentSection === 13) {
+            if (currentSection === 2 || currentSection === 12 || currentSection === 13  || currentSection === 14) {
                 einsteinImage.style.display = 'none';
                 examplesButton.style.marginLeft = '100%';    
             } else {
@@ -800,7 +896,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 examplesButton.style.marginLeft = '0%'; 
             }
 
-            if (currentSection === 13) {
+            if (currentSection === 12 || currentSection === 14) {
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none'; 
             } else {
@@ -900,61 +996,65 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         });
     }
 
-        function showSection(index) {
-            hideAllSections();
-            sections[index].classList.remove('eco-content');
-            sections[index].classList.add('eco-content-active');
-            updateEinsteinImageAndButtons();
+    function showSection(index) {
+        hideAllSections();
+        sections[index].classList.remove('eco-content');
+        sections[index].classList.add('eco-content-active');
+        updateEinsteinImageAndButtons();
+        resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
 
-    if (sections[index] === ecoDef) {
-        playAudio(); 
-    } else {
-        stopAudio();
-    }
-    if (sections[index] === ecoBefore) {
-        playAudio2(); 
-    } else {
-        stopAudio2();
-    }
-    if (sections[index] === ecoBiotic) {
-        playAudio3(); 
-    } else {
-        stopAudio3();
-    }
-    if (sections[index] === ecoAbiotic) {
-        playAudio4(); 
-    } else {
-        stopAudio4();
-    }
-    if (sections[index] === eco1) {
-        playAudio5(); 
-    } else {
-        stopAudio5();
-    }
-    if (sections[index] === eco2) {
-        playAudio6(); 
-    } else {
-        stopAudio6();
-    }
-    if (sections[index] === eco3) {
-        playAudio7(); 
-    } else {
-        stopAudio7();
-    }
-    if (sections[index] === eco4) {
-        playAudio8(); 
-    } else {
-        stopAudio8();
-    }
-    if (sections[index] === eco5) {
-        playAudio9(); 
-    } else {
-        stopAudio9();
-    }
+        if (sections[index] === ecoDef) {
+            playAudio(); 
+        } else {
+            stopAudio();
         }
+        if (sections[index] === ecoBefore) {
+            playAudio2(); 
+        } else {
+            stopAudio2();
+        }
+        if (sections[index] === ecoBiotic) {
+            playAudio3(); 
+        } else {
+            stopAudio3();
+        }
+        if (sections[index] === ecoAbiotic) {
+            playAudio4(); 
+        } else {
+            stopAudio4();
+        }
+        if (sections[index] === eco1) {
+            playAudio5(); 
+        } else {
+            stopAudio5();
+        }
+        if (sections[index] === eco2) {
+            playAudio6(); 
+        } else {
+            stopAudio6();
+        }
+        if (sections[index] === eco3) {
+            playAudio7(); 
+        } else {
+            stopAudio7();
+        }
+        if (sections[index] === eco4) {
+            playAudio8(); 
+        } else {
+            stopAudio8();
+        }
+        if (sections[index] === eco5) {
+            playAudio9(); 
+        } else {
+            stopAudio9();
+        }
+    }
 
         rightButton.addEventListener('click', function () {
             if (currentSection < sections.length - 1) {
+                stopSectionTimer();
                 currentSection++;
                 showSection(currentSection);
             }
@@ -964,9 +1064,22 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             if (currentSection === 0) {
                 window.location.href = 'ecosystemLesson.php'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
             }
+        });
+
+        
+
+        goBackButton.addEventListener('click', function () {
+            currentSection = 11; 
+            showSection(currentSection);
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            currentSection = 13; 
+            showSection(currentSection);
         });
 
         hideAllSections();

@@ -51,18 +51,41 @@ class UserLoader implements MessageComponentInterface {
             $this->loadStudent($from, $data['id']);
         } elseif ($data['type'] === 'getLessons') {
             $this->getLesson($from);
-        } else if ($data['type'] === 'getCountRoles') {
-            $this->getCountRoles($from);
+        } elseif ($data['type'] === 'getCountStudents') {
+            $this->getCountStudents($from);
+        } elseif ($data['type'] === 'getTeacherCounts') {
+            $this->getCountTeachers($from);
+        } elseif ($data['type'] === 'getQuizScores') { 
+            $this->sendQuizScores($from);
         }
     }
     
-    private function getCountRoles(ConnectionInterface $conn) {
-        $count = getCountRoles($this->db);
-        if ($conn->send(json_encode([
-            'type' => 'roleCount',
-            'counts' => $count
-        ])));
+    private function sendQuizScores(ConnectionInterface $conn) {
+        $quizScores = fetchQuizScores($this->db);
+        foreach ($quizScores as $quizScore) {
+            $quizScore['type'] = 'quiz_score';
+            $conn->send(json_encode($quizScore));
+        }
     }
+
+    private function getCountStudents(ConnectionInterface $conn) {
+        $count = getCountActiveStudents($this->db);
+        $response = json_encode([
+            'type' => 'studentCount',
+            'counts' => $count
+        ]);
+        $conn->send($response);
+    }
+
+    private function getCountTeachers(ConnectionInterface $conn) {
+        $count = getCountActiveTeachers($this->db);
+        $response = json_encode([
+            'type' => 'teacherCount',
+            'counts' => $count
+        ]);
+        $conn->send($response);
+    }
+    
     
 
     private function getLesson(ConnectionInterface $conn) {

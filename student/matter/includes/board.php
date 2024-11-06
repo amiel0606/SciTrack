@@ -61,6 +61,39 @@
             background-color: #266bbb;
             color: white;
         }
+        
+    
+        .image-item {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+        .info-text {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            color: black;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: wrap;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            max-width: 500px;
+            width: 110%;
+            text-align: center; 
+            text-align: justify;
+            font-size: 1.3rem;
+            margin-right: 1.5rem;
+        }
+
+        .image-item:hover .info-text {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 
         <!-- Navbar -->

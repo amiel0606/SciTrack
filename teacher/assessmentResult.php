@@ -44,128 +44,18 @@ th {
         <div class="column is-1"></div>
         <div class="column mt-6">
             <div class="table-container">
-                <table class="table is-hoverable">
-                    <thead class="has-text-centered">
+                <table  class="table is-hoverable">
+                    <thead id="assessment" class="has-text-centered">
                         <tr>
                             <th>Name</th>
-                            <th>Assessment 1</th>
-                            <th>Assessment 2</th>
-                            <th>Assessment 3</th>
-                            <th>Assessment 4</th>
+                            <th>Score</th>
+                            <th>Lesson</th>
+                            <th>Date Taken</th>
                         </tr>
                         </thead>
                         <tbody class="has-text-centered">
                         <tr>
-                            <td>Amiel Carhyl Lapid</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Mark Nelson Garcia</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Joseph Lorenzo Ferrer</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Amiel Carhyl Lapid</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Mark Nelson Garcia</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Joseph Lorenzo Ferrer</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Amiel Carhyl Lapid</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Mark Nelson Garcia</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Joseph Lorenzo Ferrer</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Amiel Carhyl Lapid</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Mark Nelson Garcia</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Joseph Lorenzo Ferrer</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>20/20</td>
-                            <td>30/30</td>
-                            <td>69/100</td>
-                            <td>30/30</td>
+
                         </tr>
                     </tbody>
                 </table>
@@ -173,3 +63,48 @@ th {
         </div>
     </div>
 </div>
+<script>
+// Websocket connection
+var conn = new WebSocket('ws://localhost:8080');
+
+conn.onopen = function() { 
+    conn.send(JSON.stringify({ type: 'getQuizScores' }));
+}
+
+conn.onmessage = function(e) {
+    var data = JSON.parse(e.data);
+    console.log(data); 
+
+    if (data.type === 'quiz_score') {
+        displayQuizScore(data);
+    }
+}
+
+function displayQuizScore(quizScore) {
+    var tableBody = document.querySelector('.table tbody');
+
+    var row = document.createElement('tr');
+
+    var nameCell = document.createElement('td');
+    nameCell.textContent = quizScore.student_name; 
+    nameCell.className = 'has-text-centered';
+    row.appendChild(nameCell);
+
+    var scoreCell = document.createElement('td');
+    scoreCell.textContent = quizScore.score;
+    scoreCell.className = 'has-text-centered';
+    row.appendChild(scoreCell);
+
+    var lessonCell = document.createElement('td');
+    lessonCell.textContent = quizScore.lesson;
+    lessonCell.className = 'has-text-centered';
+    row.appendChild(lessonCell);
+
+    var dateTakenCell = document.createElement('td');
+    dateTakenCell.textContent = quizScore.date_taken;
+    dateTakenCell.className = 'has-text-centered';
+    row.appendChild(dateTakenCell);
+
+    tableBody.appendChild(row);
+}
+</script>

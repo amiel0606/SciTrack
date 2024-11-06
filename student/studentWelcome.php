@@ -126,7 +126,7 @@
                             <div class="columns is-centered mb-6 mt-6">
                                 <div class="column is-four-fifths">
                                     <p class="title has-text-white has-text-centered main-font welcomeText">
-                                        Welcome <span id="studentName" style="color: yellow;">,</span> Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
+                                        Welcome <span id="studentName" style="color: yellow;"></span>, Dive into the fascinating world of Science with Sci-Track and spark your scientific curiosity!
                                     </p>
                                 </div>
                             </div>
@@ -140,16 +140,16 @@
                                 <div class="columns is-multiline is-centered">
                                     <div class="column is-half has-text-centered title is-size-3 studentdb">
                                         <a href="" id="lessonLink">
-                                            <figure class="image">
-                                                <img src="../image/lesson.png" alt="Lesson Image" class="lesson-image">
+                                            <figure class="image" style="width: 500px; height: 500px;">
+                                                <img src="../image/lesson.png" alt="Lesson Image">
                                             </figure>
                                             <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">LESSON</p>
                                         </a>
                                     </div>
                                     <div class="column is-half has-text-centered title is-size-3 studentdb">
                                         <a href="">
-                                            <figure class="image">
-                                                <img src="../image/assessment.png" alt="Assessment Image" class="lesson-image">
+                                            <figure class="image" style="width: 500px; height: 500px;">
+                                                <img src="../image/assessment.png" alt="Assessment Image">
                                             </figure>
                                             <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">ASSESSMENT</p>
                                         </a>
@@ -167,7 +167,7 @@
                                     <a href="./matter/matterLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/matterTopic1.gif" alt="Matter">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">MATTER</p>
                                         </figure>
                                     </a>
                                 </div>
@@ -175,7 +175,7 @@
                                     <a href="./esystem/ecosystemLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/ecosystemTopic1.gif" alt="Ecosystem">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">ECOSYSTEM</p>
                                         </figure>
                                     </a>
                                 </div>
@@ -183,15 +183,15 @@
                                     <a href="./motion/motionLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/motionTopicx.gif" alt="Motion">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">MOTION</p>
                                         </figure>
                                     </a>
                                 </div>
                                 <div id="earth" class="column has-text-centered ">
-                                    <a href="./oldsurface/surfaceDef.php">
+                                    <a href="./surface/surfaceLesson.php">
                                         <figure class="image lesson-image">
                                             <img src="../image/surfaceTopic1.gif" alt="Surface">
-                                            <p class="subtitle is-size-3 has-text-white has-text-centered secondary-font mt-2">SURFACE</p>
+                                            <p class="subtitle is-size-2 has-text-white has-text-centered secondary-font mt-2">SURFACE</p>
                                         </figure>
                                     </a>
                                 </div>
@@ -234,51 +234,59 @@
             conn.send(JSON.stringify({ type: 'loadLessons', section: 'Papaya' }));
         };
         conn.onmessage = function(e) {
-    var data = JSON.parse(e.data);
-    console.log(data);
-    var matter = document.getElementById('matters');
-    var eco = document.getElementById('eco');
-    var motion = document.getElementById('motion');
-    var earth = document.getElementById('earth');
-    const today = new Date();
-    const offset = today.getTimezoneOffset();
-    const philippinesOffset = 360; // Philippines is UTC+8, which is 360 minutes ahead of UTC
-    const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
-    const formattedToday = philippinesTime.toISOString().slice(0, 10); // Get today's date in yyyy-MM-dd format, using Philippines timezone
+            var data = JSON.parse(e.data);
+            console.log(data);
+            var matterImage = document.querySelector('#matters figure.image img');
+            var ecoImage = document.querySelector('#eco figure.image img');
+            var motionImage = document.querySelector('#motion figure.image img');
+            var earthImage = document.querySelector('#earth figure.image img');
+            const today = new Date();
+            const offset = today.getTimezoneOffset();
+            const philippinesOffset = 360; 
+            const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
+            const formattedToday = philippinesTime.toISOString().slice(0, 10); 
 
-    if (data.type === 'student') {
-        document.getElementById('studentName').innerText = data.name;
-    }
-    if (data.type === 'lessons') {
-        if (data.matter === formattedToday) {
-            matter.classList.remove('is-invisible');
-            console.log('Matter is set to today');
-        } else {
-            matter.classList.add('is-invisible');
-            console.log('Matter is not set to today');
-        }
-        if (data.ecosystem === formattedToday) {
-            eco.classList.remove('is-invisible');
-            console.log('Ecosystem is set to today');
-        } else {
-            eco.classList.add('is-invisible');
-            console.log('Ecosystem is not set to today');
-        }
-        if (data.motion === formattedToday) {
-            motion.classList.remove('is-invisible');
-            console.log('Motion is set to today');
-        } else {
-            motion.classList.add('is-invisible');
-            console.log('Motion is not set to today');
-        }
-        if (data.earth === formattedToday) {
-            earth.classList.remove('is-invisible');
-            console.log('Earth is set to today');
-        } else {
-            earth.classList.add('is-invisible');
-            console.log('Earth is not set to today');
-        }
-    }
+            if (data.type === 'student') {
+                document.getElementById('studentName').innerText = data.name;
+            }
+            if (data.type === 'lessons') {
+                if (data.matter <= formattedToday) {
+                    matterImage.src = '../image/matterTopic1.gif'; 
+                    matterImage.parentNode.parentNode.style.pointerEvents = 'auto'; 
+                    console.log('Matter is set to today');
+                } else {
+                    matterImage.src = '../image/matterlock.gif'; 
+                    matterImage.parentNode.parentNode.style.pointerEvents = 'none'; 
+                    console.log('Matter is not set to today');
+                }
+                if (data.ecosystem <= formattedToday) {
+                    ecoImage.src = '../image/ecosystemTopic1.gif'; 
+                    ecoImage.parentNode.parentNode.style.pointerEvents = 'auto'; 
+                    console.log('Ecosystem is set to today');
+                } else {
+                    ecoImage.src = '../image/ecosystemlock.gif'; 
+                    ecoImage.parentNode.parentNode.style.pointerEvents = 'none'; 
+                    console.log('Ecosystem is not set to today');
+                }
+                if (data.motion <= formattedToday) {
+                    motionImage.src = '../image/motionTopicx.gif'; 
+                    motionImage.parentNode.parentNode.style.pointerEvents = 'auto'; 
+                    console.log('Motion is set to today');
+                } else {
+                    motionImage.src = '../image/motionlock.gif'; 
+                    motionImage.parentNode.parentNode.style.pointerEvents = 'none'; 
+                    console.log('Motion is not set to today');
+                }
+                if (data.earth <= formattedToday) {
+                    earthImage.src = '../image/surfaceTopic1.gif'; 
+                    earthImage.parentNode.parentNode.style.pointerEvents = 'auto'; 
+                    console.log('Earth is set to today');
+                } else {
+                    earthImage.src = '../image/surfacelock.gif'; 
+                    earthImage.parentNode.parentNode.style.pointerEvents = 'none'; 
+                    console.log('Earth is not set to today');
+                }
+            }
 };
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');

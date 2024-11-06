@@ -91,6 +91,8 @@
                     <p class="has-text-primary is-size-3 has-text-weight-bold">Students' Progress</p>
                     <a href="./studentProgress.php" class="has-text-primary">View All</a>
                 </div>
+                <p>Not yet functional</p>
+
             <div class="table-container">
             <table class="table dash-table is-hoverable">
                     <tbody class="has-text-centered">

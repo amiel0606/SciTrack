@@ -60,13 +60,15 @@ body::-webkit-scrollbar {
 <div class="container">
 <div class="columns">
     <div class="column is-half is-offset-one-quarter">
+        
         <div class="has-background-primary-light py-1 px-2">
             <p class="title has-text-primary has-text-centered has-text-weight-bold mb-6 mt-6">Add an Admin</p>
-            <div class="notification is-success addNotification has-text-centered">
+            <div class="<?php echo $notificationClass; ?>">
             <button class="delete"></button>
-                Added Staff Successfully.
+                <?php echo $errorMessage; ?>
             </div>
         </div>
+        
         <form action="./includes/addStaff/addAdmin.php" method="post" id="regForm">
         <div class="field">
                 <label class="label is-size-5 has-text-primary" for="firstName">First Name</label>
@@ -104,5 +106,13 @@ body::-webkit-scrollbar {
 </div>
 </div>
 
+<script>
+        const deleteButton = document.querySelector('.notification .delete');
+    const notification = document.querySelector('.notification');
 
+    deleteButton.addEventListener('click', () => {
+        notification.classList.toggle('is-invisible');
+    });
+
+</script>
 

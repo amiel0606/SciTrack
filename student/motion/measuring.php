@@ -106,6 +106,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         color: white;
     }
 
+
+    #letsTryButton {
+        right: -10rem;
+        z-index: 10;
+    }
     
     #header{
         font-size: 4rem;
@@ -366,9 +371,9 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
-                                        <p class="mb-5 main-font">• Describe and use appropriate tools for measuring distance and time</p>
-                                        <p class="mb-5 main-font">• Identity the correct standard unit for measuring distance</p>
-                                        <p class="mb-5 main-font">• Explain the importance of using measuring tools or device</p>
+                                        <p class="mb-5 main-font">Describe and use appropriate tools for measuring distance and time</p>
+                                        <p class="mb-5 main-font">Identity the correct standard unit for measuring distance</p>
+                                        <p class="mb-5 main-font">Explain the importance of using measuring tools or device</p>
                                     </div>
                                 </div>
                             </div>
@@ -482,7 +487,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         Tape Measure
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
-                                        • A retractable tape measure is used usually made of thin metal sheet that can straighten up or fold 
+                                        • A retractable tape measure is used for quantifying size of objects or distances between objects, it is usually made of thin metal sheet that can straighten up or fold.
                                     </p>
                                 </div>
 
@@ -508,7 +513,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         Odometer
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
-                                        • Vehicles have a build-in odometer, an electric device that measures distance
+                                        • Vehicles have a built-in odometer, an electric device that measures the distance traveled by the vehicle.
                                     </p>
                                 </div>
 
@@ -644,6 +649,37 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                         </div>
                     </div>
 
+                    <!-- LetsTry -->
+                    <div class="eco-content" id="letsTry">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6">
+                            <!-- Content Layout -->
+                            <div class="columns is-centered">
+                                <!-- Image Column -->
+                                <div class="column is-half pl-6">
+                                    <figure class="image c-image">
+                                        <img src="../../image/einstein.png" alt="Einstein">
+                                    </figure>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="column is-half pr-6 mr-6">
+                                    <figure class="image letstry">
+                                        <img src="../../image/letstry.png" alt="letstry">
+                                    </figure>
+                                </div>
+                            </div>
+                            
+                            <div class="is-overlay is-flex is-align-items-end is-justify-content-flex-end p-6" id="letsTryButton">
+                                <button class="button main-font is-danger is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile has-text-white">
+                                    Go Back
+                                </button>
+                                <button class="button main-font is-success is-size-5-widescreen is-size-6-desktop is-size-6-tablet is-size-7-mobile mx-2 has-text-white">
+                                    Proceed to quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Motion Quiz -->
                     <div class="motion-content" id="motionQuiz">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center is-justify-content-center p-6" style="z-index: 1;">
@@ -773,6 +809,15 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         </div>
     </div>
 </section>
+<audio id="motionAudio" src="../../sounds/measure1.mp3"></audio>
+<audio id="motionAudio2" src="../../sounds/measure2.mp3"></audio>
+<audio id="motionAudio3" src="../../sounds/measure3.mp3"></audio>
+<audio id="motionAudio4" src="../../sounds/measure4.mp3"></audio>
+<audio id="motionAudio5" src="../../sounds/measure5.mp3"></audio>
+<audio id="motionAudio6" src="../../sounds/measure6.mp3"></audio>
+<audio id="motionAudio7" src="../../sounds/measure7.mp3"></audio>
+<audio id="motionAudio8" src="../../sounds/measure8.mp3"></audio>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -789,21 +834,169 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const motionSurvey = document.getElementById('motionSurvey');
         const motionCaliper = document.getElementById('motionCaliper');
         const motionMicrometer = document.getElementById('motionMicrometer');
+        const letsTry = document.getElementById('letsTry');
         const motionVideo = document.getElementById('motionVideo');
         const motionQuiz = document.getElementById('motionQuiz');
         const motionCompleted = document.getElementById('motionCompleted');
+        const letsTryButton = document.getElementById('letsTryButton');
+        const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
+        const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('motionAudio');
+        const audio2 = document.getElementById('motionAudio2');
+        const audio3 = document.getElementById('motionAudio3');
+        const audio4 = document.getElementById('motionAudio4');
+        const audio5 = document.getElementById('motionAudio5');
+        const audio6 = document.getElementById('motionAudio6');
+        const audio7 = document.getElementById('motionAudio7');
+        const audio8 = document.getElementById('motionAudio8');
         let currentSection = 0;
-        const sections = [objectives, motionMeasuring1, motionMeasuring2, motionRuler, motionTape, motionOdo, motionSpeedo, motionSurvey, motionCaliper, motionMicrometer,  motionVideo, motionQuiz, motionCompleted];
+        const sections = [objectives, motionMeasuring1, motionMeasuring2, motionRuler, motionTape, motionOdo, motionSpeedo, motionSurvey, motionCaliper, motionMicrometer,  motionVideo, letsTry, motionQuiz, motionCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
 
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Motion', currentSection, 'Measuring Distance and Time', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
+
+    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text()) 
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  
+        try {
+            const responseData = JSON.parse(responseText);  
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
+    });
+}
         function hideAllSections() {
             sections.forEach(section => {
                 section.classList.remove('motion-content-active');
                 section.classList.add('motion-content');
             });
         }
+        function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; 
+    }
+
+    function playAudio() {
+        audio.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio2() {
+        audio2.pause();
+        audio2.currentTime = 0; 
+    }
+
+    function playAudio2() {
+        audio2.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio3() {
+        audio3.pause();
+        audio3.currentTime = 0; 
+    }
+
+    function playAudio3() {
+        audio3.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio4() {
+        audio4.pause();
+        audio4.currentTime = 0; 
+    }
+
+    function playAudio4() {
+        audio4.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio5() {
+        audio5.pause();
+        audio5.currentTime = 0; 
+    }
+
+    function playAudio5() {
+        audio5.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio6() {
+        audio6.pause();
+        audio6.currentTime = 0; 
+    }
+
+    function playAudio6() {
+        audio6.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio7() {
+        audio7.pause();
+        audio7.currentTime = 0; 
+    }
+
+    function playAudio7() {
+        audio7.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio8() {
+        audio8.pause();
+        audio8.currentTime = 0; 
+    }
+
+    function playAudio8() {
+        audio8.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
 
         function updateEinsteinImageAndButtons() {
-            if (currentSection === 11 || currentSection === 12) {
+            if (currentSection === 11 || currentSection === 12 || currentSection === 13) {
                 einsteinImage.style.display = 'none';
                 examplesButton.style.marginLeft = '100%';    
             } else {
@@ -811,7 +1004,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 examplesButton.style.marginLeft = '0%'; 
             }
 
-            if (currentSection === 12) {
+            if (currentSection === 11 || currentSection === 13) {
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none'; 
             } else {
@@ -825,10 +1018,57 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             sections[index].classList.remove('motion-content');
             sections[index].classList.add('motion-content-active');
             updateEinsteinImageAndButtons();
+            resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
+
+            if (sections[index] === motionMeasuring1) {
+            playAudio(); 
+        } else {
+            stopAudio();
+        }
+        if (sections[index] === motionRuler) {
+            playAudio2(); 
+        } else {
+            stopAudio2();
+        }
+        if (sections[index] === motionTape) {
+            playAudio3(); 
+        } else {
+            stopAudio3();
+        }
+
+        if (sections[index] === motionOdo) {
+            playAudio4(); 
+        } else {
+            stopAudio4();
+        }
+        if (sections[index] === motionSpeedo) {
+            playAudio5(); 
+        } else {
+            stopAudio5();
+        }
+        if (sections[index] === motionSurvey) {
+            playAudio6(); 
+        } else {
+            stopAudio6();
+        }
+        if (sections[index] === motionCaliper) {
+            playAudio7(); 
+        } else {
+            stopAudio7();
+        }
+
+        if (sections[index] === motionMicrometer) {
+            playAudio8(); 
+        } else {
+            stopAudio8();
+        }
         }
 
         rightButton.addEventListener('click', function () {
             if (currentSection < sections.length - 1) {
+                stopSectionTimer();
                 currentSection++;
                 showSection(currentSection);
             }
@@ -838,9 +1078,20 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             if (currentSection === 0) {
                 window.location.href = 'motionLesson.php'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
             }
+        });
+
+        goBackButton.addEventListener('click', function () {
+            currentSection = 10; 
+            showSection(currentSection);
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            currentSection = 12; 
+            showSection(currentSection);
         });
 
         hideAllSections();
