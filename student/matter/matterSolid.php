@@ -97,6 +97,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     .sExample .image-item{
         text-align: center;
         margin: 0;
+        z-index: 10;
     }
     .sExample .image-item:first-child{
         margin-right: 5rem;
@@ -432,7 +433,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid3.png" alt="Solid">
+                                        <img src="../../image/msolid3.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            A book is a solid because it has a fixed shape, doesn't change when you hold it, 
+                                            and the particles inside are tightly packed together.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Books</p>
                                 </div>
@@ -440,7 +445,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Second Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid4.png" alt="Solid">
+                                        <img src="../../image/msolid4.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Erasers are solid because they keep their shape even when you use them to erase pencil marks.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Eraser</p>
                                 </div>
@@ -459,7 +467,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid5.png" alt="Solid">
+                                        <img src="../../image/msolid5.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            A shirt is a solid because it has a definite shape, occupies a fixed volume, and is made of tightly packed 
+                                            fibers that keep it from changing shape when you wear it or move it.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shirt</p>
                                 </div>
@@ -467,7 +479,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/msolid6.png" alt="Solid">
+                                        <img src="../../image/msolid6.png" alt="Solid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            A bag is a solid because it has a shape that stays the same, takes up a certain amount of space, 
+                                            and is made of materials that don't easily change shape when you carry it.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Bag</p>
                                 </div>
@@ -673,7 +689,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const audio3 = document.getElementById('matterAudio3');
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
-        let timeSpent = 180; 
+        let timeSpent = 150; 
         let timerInterval;
         let currentSection = 0;
         const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];

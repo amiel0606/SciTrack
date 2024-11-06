@@ -89,6 +89,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     .sExample .image-item{
         text-align: center;
         margin: 0;
+        z-index: 10;
     }
     .sExample .image-item:first-child{
         margin-right: 5rem;
@@ -470,7 +471,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- First Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mliquid4.png" alt="Liquid">
+                                        <img src="../../image/mliquid4.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Shampoo is liquid so it can easily spread through your hair and wash away dirt and oil without leaving any clumps.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Shampoo</p>
                                 </div>
@@ -478,7 +482,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Second Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mliquid5.png" alt="Liquid">
+                                        <img src="../../image/mliquid5.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Orange juice is liquid because it comes from squeezing oranges, which release their watery juice, making it easy to drink.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Orange Juice</p>
                                 </div>
@@ -497,7 +504,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Third Image -->
                                 <div class="image-item">
                                     <figure class="image mb-4">
-                                        <img src="../../image/mliquid6.png" alt="Liquid">
+                                        <img src="../../image/mliquid6.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Hand sanitizer is liquid so it can quickly spread on your hands and kill germs effectively.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Hand Sanitizer</p>
                                 </div>
@@ -505,7 +515,11 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 <!-- Fourth Image -->
                                 <div class="image-item">
                                     <figure class="image" id="soy">
-                                        <img src="../../image/mliquid7.png" alt="Liquid">
+                                        <img src="../../image/mliquid7.png" alt="Liquid" class="hover-info">
+                                        <div class="info-text subtitle main-font">
+                                            Soy sauce is liquid because it is made by fermenting soybeans and wheat, 
+                                            which creates a smooth, salty sauce that can easily pour over food.
+                                        </div>
                                     </figure>
                                     <p class="main-font subtitle is-size-4-tablet is-size-3-desktop is-size-2-widescreen has-text-white has-text-centered">Soy Sauce</p>
                                 </div>
