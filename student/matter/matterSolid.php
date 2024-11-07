@@ -689,10 +689,35 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const audio3 = document.getElementById('matterAudio3');
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
-        let timeSpent = 150; 
-        let timerInterval;
         let currentSection = 0;
         const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
+
+
+
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Matter', currentSection, 'Solid', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
 
         function hideAllSections() {
             sections.forEach(section => {
@@ -700,20 +725,6 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 section.classList.add('matter-content');
             });
         }
-
-    function startTimer() {
-    timerInterval = setInterval(function () {
-        timeSpent += 1; 
-        console.log("Time spent: " + timeSpent + " seconds"); 
-    }, 1000); 
-}
-
-
-    function stopTimer() {
-        clearInterval(timerInterval);
-    }
-
-    startTimer();
 
         function stopVideo() {
         solidVideo.pause(); 
@@ -764,7 +775,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     function showSection(index) {
         hideAllSections();
         sections[index].classList.remove('matter-content');
-        sections[index].classList.add('matter-content-active');
+        sections[index].classList.add('matter-content-active'); 
+        resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
 
         if (sections[index] === matterStates) {
             playAudio(); 
@@ -793,6 +807,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 stopVideo(); 
             }
 
+            
 
         if (index >= 0 && index <= 6) { 
             examplesButton.style.display = 'flex';
@@ -829,14 +844,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             leftButton.style.display = 'none';
             rightButton.style.display = 'none';
         }
-        if (index === 8) { 
-            if (timeSpent < 180) { 
-                proceedToQuizButton.disabled = true; 
-                alert("Please spend at least 3 minutes reading the lesson before taking the quiz.");
-            } else {
-                proceedToQuizButton.disabled = false; 
-            }
-        }
+        
     }
 
 
@@ -845,6 +853,8 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                 currentSection = 7;
                 showSection(currentSection);
             } else if (currentSection < sections.length - 1) {
+                stopSectionTimer();
+            
                 currentSection++; 
                 showSection(currentSection);
             }
@@ -856,7 +866,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         });
 
         proceedToQuizButton.addEventListener('click', function () {
-        if (timeSpent < 180) {
+        if (sectionTimeSpent < 180) {
             alert("Please spend at least 3 minutes reading the lesson before taking the quiz.");
             return; 
         }
@@ -868,8 +878,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             if (currentSection === 0) {
                 window.location.href = 'matterLesson.php?show=matterTopic'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
+                
             }
         });
 
@@ -1088,6 +1100,38 @@ function sendScoreToServer(score) {
     .catch(error => {
         console.error('Error saving score:', error);
         alert('There was a problem saving your score. Please try again later.');
+    });
+}
+
+function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+    // Send the data to the server using fetch (AJAX)
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())  // Use .text() to log the raw response
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  // Log the raw response to the console
+        try {
+            const responseData = JSON.parse(responseText);  // Try to parse the response as JSON
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  // Handle JSON parsing error
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
     });
 }
 

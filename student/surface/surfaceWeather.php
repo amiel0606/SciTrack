@@ -1,5 +1,16 @@
 <?php
-    include_once('./includes/board.php');
+session_start(); 
+include_once('./includes/board.php'); 
+include_once('../../admin/includes/dbCon.php'); 
+
+if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
+    $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
+    $id = $_SESSION["id"]; 
+} else {
+    
+    header("Location: index.php"); 
+    exit();
+}
 ?>
 
 <style>
@@ -374,7 +385,7 @@
                                         Erosion
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white tight-spacing">
-                                        Small particles are removed and transferred from one location to another, erosion occurs.
+                                        Erosion occurs when small particles are removed and transferred from one location to another.
                                     </p>
                                 </div>
 
@@ -451,7 +462,7 @@
                                         Physical Weathering
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white ty-spacing">
-                                        It is also known as mechanical weathering, It may be a natural or man-made process. 
+                                        It is also known as mechanical weathering, is a natural or man-made process that causes the break down of rocks and minerals.
                                     </p>
                                 </div>
 
@@ -477,7 +488,7 @@
                                         Chemical Weathering
                                     </p>
                                     <p class="title description1 main-font has-text-justified has-text-white ty-spacing">
-                                        It occurs when substances in the air or water mix with substances found in rocks and minerals
+                                        It pertains to the changes in rock structure under the action or influence of chemical reactions. 
                                     </p>
                                 </div>
 
@@ -703,6 +714,14 @@
         </div>
     </div>
 </section>
+<audio id="surfaceAudio" src="../../sounds/surface1.mp3"></audio>
+<audio id="surfaceAudio2" src="../../sounds/surface2.mp3"></audio>
+<audio id="surfaceAudio3" src="../../sounds/surface3.mp3"></audio>
+<audio id="surfaceAudio4" src="../../sounds/surface4.mp3"></audio>
+<audio id="surfaceAudio5" src="../../sounds/surface5.mp3"></audio>
+<audio id="surfaceAudio6" src="../../sounds/surface6.mp3"></audio>
+<audio id="surfaceAudio7" src="../../sounds/surface7.mp3"></audio>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -724,15 +743,148 @@
         const letsTryButton = document.getElementById('letsTryButton');
         const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
         const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('surfaceAudio');
+        const audio2 = document.getElementById('surfaceAudio2');
+        const audio3 = document.getElementById('surfaceAudio3');
+        const audio4 = document.getElementById('surfaceAudio4');
+        const audio5 = document.getElementById('surfaceAudio5');
+        const audio6 = document.getElementById('surfaceAudio6');
+        const audio7 = document.getElementById('surfaceAudio7');
         let currentSection = 0;
         const sections = [objectives, surfaceWeathering, surfaceErosion, surfaceVideo, surfaceTypes, surfacePhysical, surfaceChemical, surfaceBiological, surfaceRock, letsTry, surfaceQuiz, surfaceCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
 
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Earths Surface', currentSection, 'Weathering and Soil Formation', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
+
+    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text()) 
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  
+        try {
+            const responseData = JSON.parse(responseText);  
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
+    });
+}
         function hideAllSections() {
             sections.forEach(section => {
                 section.classList.remove('surface-content-active');
                 section.classList.add('surface-content');
             });
         }
+        function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; 
+    }
+
+    function playAudio() {
+        audio.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio2() {
+        audio2.pause();
+        audio2.currentTime = 0; 
+    }
+
+    function playAudio2() {
+        audio2.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio3() {
+        audio3.pause();
+        audio3.currentTime = 0; 
+    }
+
+    function playAudio3() {
+        audio3.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio4() {
+        audio4.pause();
+        audio4.currentTime = 0; 
+    }
+
+    function playAudio4() {
+        audio4.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio5() {
+        audio5.pause();
+        audio5.currentTime = 0; 
+    }
+
+    function playAudio5() {
+        audio5.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio6() {
+        audio6.pause();
+        audio6.currentTime = 0; 
+    }
+
+    function playAudio6() {
+        audio6.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio7() {
+        audio7.pause();
+        audio7.currentTime = 0; 
+    }
+
+    function playAudio7() {
+        audio7.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
 
         function updateEinsteinImageAndButtons() {
             if (currentSection === 9 || currentSection === 10 || currentSection === 11) {
@@ -757,10 +909,51 @@
             sections[index].classList.remove('surface-content');
             sections[index].classList.add('surface-content-active');
             updateEinsteinImageAndButtons();
+            resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
+            if (sections[index] === surfaceWeathering) {
+            playAudio(); 
+        } else {
+            stopAudio();
+        }
+        if (sections[index] === surfaceErosion) {
+            playAudio2(); 
+        } else {
+            stopAudio2();
+        }
+        if (sections[index] === surfaceTypes) {
+            playAudio3(); 
+        } else {
+            stopAudio3();
+        }
+
+        if (sections[index] === surfacePhysical) {
+            playAudio4(); 
+        } else {
+            stopAudio4();
+        }
+        if (sections[index] === surfaceChemical) {
+            playAudio5(); 
+        } else {
+            stopAudio5();
+        }
+        if (sections[index] === surfaceBiological) {
+            playAudio6(); 
+        } else {
+            stopAudio6();
+        }
+        if (sections[index] === surfaceRock) {
+            playAudio7(); 
+        } else {
+            stopAudio7();
+        }
+
         }
 
         rightButton.addEventListener('click', function () {
             if (currentSection < sections.length - 1) {
+                stopSectionTimer();
                 currentSection++;
                 showSection(currentSection);
             }
@@ -770,6 +963,7 @@
             if (currentSection === 0) {
                 window.location.href = 'surfaceLesson.php'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
             }

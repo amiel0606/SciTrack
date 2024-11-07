@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
     $lastName = $_POST["lastName"];
     $password = $lastName;
     $role = "Student";
-    $section = 'Papaya';
+    $section = $_POST["section"];
     $name = $firstName . " " . $lastName;
 
     $hashedPass = password_hash($password, PASSWORD_DEFAULT);

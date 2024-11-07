@@ -462,7 +462,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 </figure>
 
                                 <p class="title main-font column is-one-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
-                                    Measures of how fast an object moves
+                                    Is the measurement of how fast an object moves.
                                 </p>
                             </div>
                         </div>
@@ -480,7 +480,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 </figure>
 
                                 <p class="title main-font column is-four-fifths is-size-5-tablet is-size-3-desktop is-size-2-widescreen has-text-white mb-6">
-                                    The measure of rate at which an object changes its position
+                                    The measure of rate at which an object changes its position.
                                 </p>
                             </div>
                         </div>
@@ -489,7 +489,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                     <!-- Motion Video -->
                     <div class="motion-content" id="motionVideo">
                         <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
-                            <h1 class="title has-text-white secondary-font" id="header2">The Motion</h1>
+                            <h1 class="title has-text-white secondary-font" id="header2">Motion</h1>
 
                             <!-- Video for -->
                             <div class="box">
@@ -515,7 +515,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                         Speed Formula
                                     </p>
                                     <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
-                                        Speed = Distance divided by Time → How fast you're going is how far you went, split by how long it took.
+                                        Speed = Distance divided by Time → How fast you're going is how far the distance you went, divided by how long it took.
                                     </p>
                                     <p class="title is-size-3-widescreen main-font has-text-white has-text-justified">
                                         Formula: s (speed) = d (distance) / t (time)
@@ -602,7 +602,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                             <!-- Content Layout -->
                             <div class="column is-flex is-flex-direction-column is-align-items-center has-text-centered" id="formula1">
                                 <p class="title main-font column is-one-fifths is-size-5-tablet is-size-4-desktop is-size-3-widescreen has-text-white mb-6" id="question">
-                                    How long will take Carlo to reach the end of the room 5.8 meters away if he sprints at a speed of 1.2m/s? 
+                                    How long will it take Carlo to reach the end of the room 5.8 meters away if he sprints at a speed of 1.2m/s? 
                                 </p>
                             </div>
                             
@@ -858,6 +858,20 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     </div>
 </section>
 
+<audio id="motionAudio" src="../../sounds/motion1.mp3"></audio>
+<audio id="motionAudio2" src="../../sounds/motion2.mp3"></audio>
+<audio id="motionAudio3" src="../../sounds/motion3.mp3"></audio>
+<audio id="motionAudio4" src="../../sounds/motion4.mp3"></audio>
+<audio id="motionAudio5" src="../../sounds/motion5.mp3"></audio>
+<audio id="motionAudio6" src="../../sounds/motion6.mp3"></audio>
+<audio id="motionAudio7" src="../../sounds/motion7.mp3"></audio>
+<audio id="motionAudio8" src="../../sounds/motion8.mp3"></audio>
+<audio id="motionAudio9" src="../../sounds/motion9.mp3"></audio>
+<audio id="motionAudio10" src="../../sounds/motion10.mp3"></audio>
+<audio id="motionAudio11" src="../../sounds/motion11.mp3"></audio>
+<audio id="motionAudio12" src="../../sounds/motion12.mp3"></audio>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
@@ -883,10 +897,78 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
         const letsTryButton = document.getElementById('letsTryButton');
         const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
         const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('motionAudio');
+        const audio2 = document.getElementById('motionAudio2');
+        const audio3 = document.getElementById('motionAudio3');
+        const audio4 = document.getElementById('motionAudio4');
+        const audio5 = document.getElementById('motionAudio5');
+        const audio6 = document.getElementById('motionAudio6');
+        const audio7 = document.getElementById('motionAudio7');
+        const audio8 = document.getElementById('motionAudio8');
+        const audio9 = document.getElementById('motionAudio9');
+        const audio10 = document.getElementById('motionAudio10');
+        const audio11 = document.getElementById('motionAudio11');
+        const audio12 = document.getElementById('motionAudio12');
         let currentSection = 0;
         const sections = [objectives, motionFirst, motionDef, motionDistance, motionTime, motionSpeed, motionVelocity, motionVideo, motionFormula, 
                         motionExample1, motionFormula2, motionExample2, motionFormula3, motionExample3, letsTry, motionQuiz, motionCompleted];
+                        let sectionTimeSpent = new Array(sections.length).fill(0); 
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
 
+        function startSectionTimer() {
+    console.log("Starting timer for section " + currentSection);
+    sectionTimerInterval = setInterval(() => {
+        sectionTimeSpent[currentSection]++;
+        console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+    }, 1000);
+}
+
+function stopSectionTimer() {
+    if (sectionTimerInterval) {
+        console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+        sendTimeData(studentId, 'Motion', currentSection, 'What is Motion?', sectionTimeSpent[currentSection]);
+        clearInterval(sectionTimerInterval);
+        sectionTimerInterval = null;
+    }
+}
+
+function resetSectionTimer() {
+        sectionTimeSpent[currentSection] = 0; 
+    }
+
+    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+    const data = {
+        student_id: studentId,  // from PHP
+        lesson: lessonName,
+        section_index: sectionIndex,
+        section_name: sectionName,
+        time_spent: timeSpent
+    };
+
+
+    fetch('../record_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text()) 
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  
+        try {
+            const responseData = JSON.parse(responseText);  
+            console.log("Time data saved successfully", responseData);
+        } catch (error) {
+            console.error("Error parsing JSON response", error);  
+        }
+    })
+    .catch((error) => {
+        console.error("Error saving time data", error);
+    });
+}
         function hideAllSections() {
             sections.forEach(section => {
                 section.classList.remove('motion-content-active');
@@ -894,6 +976,126 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             });
         }
 
+        function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; 
+    }
+
+    function playAudio() {
+        audio.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio2() {
+        audio2.pause();
+        audio2.currentTime = 0; 
+    }
+
+    function playAudio2() {
+        audio2.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio3() {
+        audio3.pause();
+        audio3.currentTime = 0; 
+    }
+
+    function playAudio3() {
+        audio3.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio4() {
+        audio4.pause();
+        audio4.currentTime = 0; 
+    }
+
+    function playAudio4() {
+        audio4.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio5() {
+        audio5.pause();
+        audio5.currentTime = 0; 
+    }
+
+    function playAudio5() {
+        audio5.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio6() {
+        audio6.pause();
+        audio6.currentTime = 0; 
+    }
+
+    function playAudio6() {
+        audio6.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio7() {
+        audio7.pause();
+        audio7.currentTime = 0; 
+    }
+
+    function playAudio7() {
+        audio7.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio8() {
+        audio8.pause();
+        audio8.currentTime = 0; 
+    }
+
+    function playAudio8() {
+        audio8.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio9() {
+        audio9.pause();
+        audio9.currentTime = 0; 
+    }
+
+    function playAudio9() {
+        audio9.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio10() {
+        audio10.pause();
+        audio10.currentTime = 0; 
+    }
+
+    function playAudio10() {
+        audio10.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio11() {
+        audio11.pause();
+        audio11.currentTime = 0; 
+    }
+
+    function playAudio11() {
+        audio11.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
+    function stopAudio12() {
+        audio12.pause();
+        audio12.currentTime = 0; 
+    }
+
+    function playAudio12() {
+        audio12.play().catch(function (error) {
+            console.log("Autoplay prevented by browser, waiting for user interaction.");
+        });
+    }
         function updateEinsteinImageAndButtons() {
             if (currentSection === 14 || currentSection === 15 || currentSection === 16) {
                 einsteinImage.style.display = 'none';
@@ -917,10 +1119,78 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             sections[index].classList.remove('motion-content');
             sections[index].classList.add('motion-content-active');
             updateEinsteinImageAndButtons();
+            resetSectionTimer()
+            currentSection = index; 
+            startSectionTimer();
+            if (sections[index] === motionFirst) {
+            playAudio(); 
+        } else {
+            stopAudio();
+        }
+        if (sections[index] === motionDef) {
+            playAudio2(); 
+        } else {
+            stopAudio2();
+        }
+        if (sections[index] === motionDistance) {
+            playAudio3(); 
+        } else {
+            stopAudio3();
+        }
+
+        if (sections[index] === motionTime) {
+            playAudio4(); 
+        } else {
+            stopAudio4();
+        }
+        if (sections[index] === motionSpeed) {
+            playAudio5(); 
+        } else {
+            stopAudio5();
+        }
+        if (sections[index] === motionVelocity) {
+            playAudio6(); 
+        } else {
+            stopAudio6();
+        }
+        if (sections[index] === motionFormula) {
+            playAudio7(); 
+        } else {
+            stopAudio7();
+        }
+
+        if (sections[index] === motionExample1) {
+            playAudio8(); 
+        } else {
+            stopAudio8();
+        }
+        if (sections[index] === motionFormula2) {
+            playAudio9(); 
+        } else {
+            stopAudio9();
+        }
+        if (sections[index] === motionExample2) {
+            playAudio10(); 
+        } else {
+            stopAudio10();
+        }
+        if (sections[index] === motionFormula3) {
+            playAudio11(); 
+        } else {
+            stopAudio11();
+        }
+
+        if (sections[index] === motionExample3) {
+            playAudio12(); 
+        } else {
+            stopAudio12();
+        }
+
         }
 
         rightButton.addEventListener('click', function () {
             if (currentSection < sections.length - 1) {
+                stopSectionTimer();
                 currentSection++;
                 showSection(currentSection);
             }
@@ -930,6 +1200,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
             if (currentSection === 0) {
                 window.location.href = 'motionLesson.php'; 
             } else if (currentSection > 0) {
+                stopSectionTimer();
                 currentSection--;
                 showSection(currentSection);
             }
