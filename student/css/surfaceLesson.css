@@ -1,0 +1,93 @@
+
+.matter-content {
+    display: none;
+}
+.matter-content-active {
+    display: block;
+}
+#matterTopic{
+    position: absolute; 
+    top: 3%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+    width: 90%; 
+    text-align: center;
+}
+#einstein-image{
+    width: 100%;
+    max-width: 31%;
+    margin-right: -25.7%;
+    margin-left: -10%;
+    margin-bottom: -6.8%;
+}
+.button-text {
+    font-size: 0.75em;
+}
+.lesson-image{
+    width: 150%;
+    max-width: 150%;
+    margin-left: -25%;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    z-index: 5;
+}
+.lesson-image:hover {
+    transform: scale(1.05);
+}
+.button-transparent {
+    background-color: transparent; 
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 0; 
+}
+.lessons-button-container {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    transform: translateY(-50%);
+    width: 110%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25%;
+    z-index: 2;
+}
+.navbar{
+    background-color: #4A90E2 !important;
+}
+.navbar-item:hover{
+    background-color: #266bbb;
+    color: white;
+}
+.is-hidden {
+    display: none;
+}
+
+
+#headers{
+    font-size: 3.5rem;
+    margin-top: 2%;
+}
+#lessonImage1{
+    margin-top: -15%;
+}
+#lessonImage2{
+    width: 125%;
+    max-width: 125%;
+    margin-left: -10%;
+}
+
+@font-face {
+    font-family: 'verdana';
+    src: url('../../font/verdana.ttf') format('opentype');
+}
+@font-face {
+    font-family: 'Haniley';
+    src: url('../../font/Haniley.otf') format('opentype');
+}
+.main-font {
+    font-family: 'verdana';
+}
+.secondary-font{
+    font-family: 'Haniley';
+}
