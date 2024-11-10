@@ -12,6 +12,22 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     header("Location: index.php"); // Redirect to login or handle error
     exit();
 }
+$sql = "SELECT question, choices, quiz_image, correct_answer, additional_info FROM quiz_questions_intertidal";
+$result = $conn->query($sql);
+
+$quiz_questions_solid = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']); 
+        $quiz_questions_solid[] = $row;
+    }
+} else {
+    echo "No quiz questions found.";
+}
+
+
+$conn->close();
 ?>
 
 <style>
@@ -769,7 +785,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 </div>
                             </div>
 
-                             <!-- Quiz Result -->
+                            <!-- Quiz Result -->
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
                                 <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
@@ -1130,150 +1146,113 @@ function resetSectionTimer() {
         showSection(0); 
     });
 
-    //for quiz
-    // Quiz Data
-    const quizData = [
-        {
-            question: "What is the Splash Zone in the intertidal zone also known as?",
-            choices: ["Spray Zone", "Low Tide Zone", "Middle Tide Zone", "High Tide Zone"],
-            quizImage: "../quizImage/interQuizImage1.png",
-            correctAnswer: "Spray Zone",
-            additionalInfo: "The Splash Zone, also known as the spray zone or upper littoral zone, is the region that is submerged only during extremely high tides or storms."
-        },
-        {
-            question: "Which organism is commonly found in the High Tide Zone?",
-            choices: ["Sea Urchins", "Hermit Crabs", "Sea Stars", "Periwinkle Snails"],
-            quizImage: "../quizImage/interQuizImage2.png",
-            correctAnswer: "Hermit Crabs",
-            additionalInfo: "Hermit crabs are commonly found in the High Tide Zone, which is submerged only during high tide."
-        },
-        {
-            question: "What organisms are typically found in the Low Tide Zone?",
-            choices: ["Barnacles", "Lichens", "Sea Stars", "Periwinkle Snails"],
-            quizImage: "../quizImage/interQuizImage3.png",
-            correctAnswer: "Sea Stars",
-            additionalInfo: "Sea stars are commonly found in the Low Tide Zone, which is submerged most of the time and exposed only during extremely low tides."
-        },
-        {
-            question: "Which of the following organisms live in the Middle Tide Zone?",
-            choices: ["Fish", "Barnacles", "Periwinkle Snails", "Lichens"],
-            quizImage: "../quizImage/interQuizImage4.png",
-            correctAnswer: "Fish",
-            additionalInfo: "Fish are often found in the Middle Tide Zone, which is generally submerged and exposed only during low tide."
-        },
-        {
-            question: "Which zone in the intertidal area is always submerged except during extremely low tides?",
-            choices: ["Splash Zone", "High Tide Zone", "Low Tide Zone", "Middle Tide Zone"],
-            quizImage: "../quizImage/interQuizImage5.png",
-            correctAnswer: "Low Tide Zone",
-            additionalInfo: "The Low Tide Zone is always submerged except during extremely low tides, and it is home to organisms like sea stars and sea sponges."
-        }
-    ];
 
-    let currentQuestionIndex = 0;
-    let correctAnswersCount = 0;
-    let totalQuestions = quizData.length;
-    let selectedAnswer = null;
+// Quiz Data
+const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
 
-    const choices = document.querySelectorAll('.choice-btn');
-    const nextButton = document.getElementById('nextButton');
-    const extraInfoBox = document.getElementById('extraInfoBox');
-    const questionNumber = document.getElementById('questionNumber');
-    const questionText = document.getElementById('questionText');
-    const quizImage = document.getElementById('quizImage');
-    const extraInfoText = document.getElementById('extraInfoText');
-    const quizResult = document.getElementById('quizResult');
-    const totalQuestionsDisplay = document.getElementById('totalQuestions');
-    const correctAnswersDisplay = document.getElementById('correctAnswers');
-    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
-    const percentageDisplay = document.getElementById('percentage');
-    const totalScoreDisplay = document.getElementById('totalScore');
+let currentQuestionIndex = 0;
+let correctAnswersCount = 0;
+const totalQuestions = quizData.length;
+let selectedAnswer = null;
 
-    // Function to load a question
-    function loadQuestion() {
-        const currentQuestion = quizData[currentQuestionIndex];
+const choices = document.querySelectorAll('.choice-btn');
+const nextButton = document.getElementById('nextButton');
+const extraInfoBox = document.getElementById('extraInfoBox');
+const questionNumber = document.getElementById('questionNumber');
+const questionText = document.getElementById('questionText');
+const quizImage = document.getElementById('quizImage');
+const extraInfoText = document.getElementById('extraInfoText');
+const quizResult = document.getElementById('quizResult');
+const totalQuestionsDisplay = document.getElementById('totalQuestions');
+const correctAnswersDisplay = document.getElementById('correctAnswers');
+const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+const percentageDisplay = document.getElementById('percentage');
+const totalScoreDisplay = document.getElementById('totalScore');
 
-        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-        questionText.textContent = currentQuestion.question;
-        quizImage.src = currentQuestion.quizImage;
+// Function to load a question
+function loadQuestion() {
+    const currentQuestion = quizData[currentQuestionIndex];
 
-        choices.forEach((button, index) => {
-            button.textContent = currentQuestion.choices[index];
-            button.classList.remove('correct', 'wrong');
-            button.style.display = 'inline-block';
-            button.style.color = 'black'; 
-        });
+    questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+    questionText.textContent = currentQuestion.question;
+    quizImage.src = currentQuestion.quiz_image;
 
-        extraInfoBox.style.display = 'none';
-        nextButton.disabled = true;
-        selectedAnswer = null;
-    }
+    choices.forEach((button, index) => {
+        button.textContent = currentQuestion.choices[index];
+        button.classList.remove('correct', 'wrong');
+        button.style.display = 'inline-block';
+        button.style.color = 'black'; 
+    });
 
-    // Adding click event listeners to choices
-    choices.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedAnswer) return; // Prevent selecting again
+    extraInfoBox.style.display = 'none';
+    nextButton.disabled = true;
+    selectedAnswer = null;
+}
 
-            selectedAnswer = button.textContent; // Set the selected answer
-            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+// Adding click event listeners to choices
+choices.forEach(button => {
+    button.addEventListener('click', function() {
+        if (selectedAnswer) return; // Prevent selecting again
 
-            // Check each choice
-            choices.forEach(btn => {
-                // Hide incorrect answers if they are not selected
-                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
-                    btn.style.display = 'none'; // Hides the button
-                } else {
-                    // Add correct or wrong class based on the selected answer
-                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
-                    btn.style.color = 'white';
-                }
-            });
+        selectedAnswer = button.textContent; // Set the selected answer
+        const correctAnswer = quizData[currentQuestionIndex].correct_answer;
 
-            // Display additional information about the question
-            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
-            extraInfoBox.style.display = 'block';
-            nextButton.disabled = false; // Enable the next button
-
-            // Check if the answer is correct
-            if (selectedAnswer === correctAnswer) {
-                correctAnswersCount++; // Increment the correct answers count
+        // Check each choice
+        choices.forEach(btn => {
+            // Hide incorrect answers if they are not selected
+            if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                btn.style.display = 'none'; // Hides the button
+            } else {
+                // Add correct or wrong class based on the selected answer
+                btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                btn.style.color = 'white';
             }
         });
-    });
 
-    // Function to handle next question
-    nextButton.addEventListener('click', function () {
-        if (!selectedAnswer) {
-            alert('Please select an answer!');
-            return;
-        }
+        // Display additional information about the question
+        extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
+        extraInfoBox.style.display = 'block';
+        nextButton.disabled = false; // Enable the next button
 
-        // Increment the current question index
-        currentQuestionIndex++;
-
-        // Check if the current question index is the last one
-        if (currentQuestionIndex >= quizData.length) {
-            // Call the showResults function to display the results
-            showResults();
-        } else {
-            // Load the next question
-            loadQuestion();
+        // Check if the answer is correct
+        if (selectedAnswer === correctAnswer) {
+            correctAnswersCount++; // Increment the correct answers count
         }
     });
+});
 
-    function showResults() {
+// Function to handle next question
+nextButton.addEventListener('click', function () {
+    if (!selectedAnswer) {
+        alert('Please select an answer!');
+        return;
+    }
+
+    // Increment the current question index
+    currentQuestionIndex++;
+
+    // Check if the current question index is the last one
+    if (currentQuestionIndex >= quizData.length) {
+        // Call the showResults function to display the results
+        showResults();
+    } else {
+        // Load the next question
+        loadQuestion();
+    }
+});
+
+function showResults() {
     const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
     quizContainer.style.display = 'none'; // Hide the quiz container
 
-    // Show the quiz result container
     quizResult.style.display = 'block';
     totalQuestionsDisplay.textContent = totalQuestions;
     correctAnswersDisplay.textContent = correctAnswersCount;
     wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
     percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
 
-    // Send the score to the server
+    // Send the score to the server (optional)
     sendScoreToServer(correctAnswersCount);
 }
 

@@ -11,6 +11,23 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     header("Location: index.php"); 
     exit();
 }
+
+$sql = "SELECT question, choices, quiz_image, correct_answer, additional_info FROM quiz_questions_solid";
+$result = $conn->query($sql);
+
+$quiz_questions_solid = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']); 
+        $quiz_questions_solid[] = $row;
+    }
+} else {
+    echo "No quiz questions found.";
+}
+
+
+$conn->close();
 ?>
 
 
@@ -891,189 +908,113 @@ function resetSectionTimer() {
     });
 
     // Quiz Data
-    const quizData = [
-    {
-        question: "What is a characteristic of a solid?",
-        choices: ["Has a definite shape and volume", "Takes the shape of its container", "Has no definite volume", "Flows easily"],
-        quizImage: "../quizImage/solidQuizImage1.png",
-        correctAnswer: "Has a definite shape and volume",
-        additionalInfo: "Solids have a fixed shape and volume because their particles are tightly packed together."
-    },
-    {
-        question: "Which of the following is an example of a solid?",
-        choices: ["Water", "Air", "Ice", "Steam"],
-        quizImage: "../quizImage/solidQuizImage2.png",
-        correctAnswer: "Ice",
-        additionalInfo: "Ice is the solid form of water, with a fixed shape and volume."
-    },
-        {
-        question: "What happens to the particles in most solids when they are heated?",
-        choices: ["They move faster", "They move slower", "They stop moving", "They stay the same"],
-        quizImage: "../quizImage/solidQuizImage3.png",
-        correctAnswer: "They move faster",
-        additionalInfo: "When solids are heated, the particles gain energy and move faster, which can cause the solid to melt if enough heat is applied."
-    }
-    ,
-    {
-        question: "Which of these objects is NOT a solid?",
-        choices: ["Rock", "Book", "Water", "Chair"],
-        quizImage: "../quizImage/solidQuizImage4.png",
-        correctAnswer: "Water",
-        additionalInfo: "Water is a liquid, not a solid. Solids like rocks and books have a definite shape."
-    },
-    {
-        question: "Why do solids have a fixed shape?",
-        choices: ["Because their particles are tightly packed", "Because their particles move freely", "Because they have no volume", "Because they are soft"],
-        quizImage: "../quizImage/solidQuizImage5.png",
-        correctAnswer: "Because their particles are tightly packed",
-        additionalInfo: "The particles in solids are closely packed and do not move freely, which gives solids a fixed shape."
-    },
-    {
-        question: "Which of the following is a solid material used in building houses?",
-        choices: ["Wood", "Water", "Air", "Milk"],
-        quizImage: "../quizImage/solidQuizImage1.png",
-        correctAnswer: "Wood",
-        additionalInfo: "Wood is a solid material used in construction because it is strong and durable."
-    },
-    {
-        question: "What happens to a solid when you break it into smaller pieces?",
-        choices: ["It becomes a liquid", "It stays a solid", "It becomes a gas", "It disappears"],
-        quizImage: "../quizImage/solidQuizImage7.png",
-        correctAnswer: "It stays a solid",
-        additionalInfo: "When you break a solid into smaller pieces, it still remains a solid. The pieces just get smaller!"
-    }
-    ,
-    {
-    question: "What is another example of a solid?",
-    choices: ["Apple", "Juice", "Smoke", "Air"],
-    quizImage: "../quizImage/solidQuizImage8.png",
-    correctAnswer: "Apple",
-    additionalInfo: "Apple is a solid, which has a definite shape and volume."
-    }
-    ,
-    {
-        question: "What is the state of matter of a pencil?",
-        choices: ["Solid", "Liquid", "Gas", "Plasma"],
-        quizImage: "../quizImage/solidQuizImage9.png",
-        correctAnswer: "Solid",
-        additionalInfo: "A pencil is a solid because it has a fixed shape and volume."
-    },
-    {
-        question: "Which of these properties do all solids share?",
-        choices: ["They flow easily", "They have a fixed shape", "They can be poured", "They expand to fill a container"],
-        quizImage: "../quizImage/solidQuizImage10.png",
-        correctAnswer: "They have a fixed shape",
-        additionalInfo: "Solids maintain their shape, unlike liquids and gases which take the shape of their container."
-    }
-];
+    const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
 
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0;
+        const totalQuestions = quizData.length;
+        let selectedAnswer = null;
 
+        const choices = document.querySelectorAll('.choice-btn');
+        const nextButton = document.getElementById('nextButton');
+        const extraInfoBox = document.getElementById('extraInfoBox');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionText = document.getElementById('questionText');
+        const quizImage = document.getElementById('quizImage');
+        const extraInfoText = document.getElementById('extraInfoText');
+        const quizResult = document.getElementById('quizResult');
+        const totalQuestionsDisplay = document.getElementById('totalQuestions');
+        const correctAnswersDisplay = document.getElementById('correctAnswers');
+        const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+        const percentageDisplay = document.getElementById('percentage');
+        const totalScoreDisplay = document.getElementById('totalScore');
 
-    let currentQuestionIndex = 0;
-    let correctAnswersCount = 0;
-    let totalQuestions = quizData.length;
-    let selectedAnswer = null;
+        // Function to load a question
+        function loadQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
 
-    const choices = document.querySelectorAll('.choice-btn');
-    const nextButton = document.getElementById('nextButton');
-    const extraInfoBox = document.getElementById('extraInfoBox');
-    const questionNumber = document.getElementById('questionNumber');
-    const questionText = document.getElementById('questionText');
-    const quizImage = document.getElementById('quizImage');
-    const extraInfoText = document.getElementById('extraInfoText');
-    const quizResult = document.getElementById('quizResult');
-    const totalQuestionsDisplay = document.getElementById('totalQuestions');
-    const correctAnswersDisplay = document.getElementById('correctAnswers');
-    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
-    const percentageDisplay = document.getElementById('percentage');
-    const totalScoreDisplay = document.getElementById('totalScore');
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+            questionText.textContent = currentQuestion.question;
+            quizImage.src = currentQuestion.quiz_image;
 
-    // Function to load a question
-    function loadQuestion() {
-        const currentQuestion = quizData[currentQuestionIndex];
-
-        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-        questionText.textContent = currentQuestion.question;
-        quizImage.src = currentQuestion.quizImage;
-
-        choices.forEach((button, index) => {
-            button.textContent = currentQuestion.choices[index];
-            button.classList.remove('correct', 'wrong');
-            button.style.display = 'inline-block';
-            button.style.color = 'black'; 
-        });
-
-        extraInfoBox.style.display = 'none';
-        nextButton.disabled = true;
-        selectedAnswer = null;
-    }
-
-    // Adding click event listeners to choices
-    choices.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedAnswer) return; // Prevent selecting again
-
-            selectedAnswer = button.textContent; // Set the selected answer
-            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
-
-            // Check each choice
-            choices.forEach(btn => {
-                // Hide incorrect answers if they are not selected
-                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
-                    btn.style.display = 'none'; // Hides the button
-                } else {
-                    // Add correct or wrong class based on the selected answer
-                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
-                    btn.style.color = 'white';
-                }
+            choices.forEach((button, index) => {
+                button.textContent = currentQuestion.choices[index];
+                button.classList.remove('correct', 'wrong');
+                button.style.display = 'inline-block';
+                button.style.color = 'black'; 
             });
 
-            // Display additional information about the question
-            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
-            extraInfoBox.style.display = 'block';
-            nextButton.disabled = false; // Enable the next button
+            extraInfoBox.style.display = 'none';
+            nextButton.disabled = true;
+            selectedAnswer = null;
+        }
 
-            // Check if the answer is correct
-            if (selectedAnswer === correctAnswer) {
-                correctAnswersCount++; // Increment the correct answers count
+        // Adding click event listeners to choices
+        choices.forEach(button => {
+            button.addEventListener('click', function() {
+                if (selectedAnswer) return; // Prevent selecting again
+
+                selectedAnswer = button.textContent; // Set the selected answer
+                const correctAnswer = quizData[currentQuestionIndex].correct_answer;
+
+                // Check each choice
+                choices.forEach(btn => {
+                    // Hide incorrect answers if they are not selected
+                    if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                        btn.style.display = 'none'; // Hides the button
+                    } else {
+                        // Add correct or wrong class based on the selected answer
+                        btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                        btn.style.color = 'white';
+                    }
+                });
+
+                // Display additional information about the question
+                extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
+                extraInfoBox.style.display = 'block';
+                nextButton.disabled = false; // Enable the next button
+
+                // Check if the answer is correct
+                if (selectedAnswer === correctAnswer) {
+                    correctAnswersCount++; // Increment the correct answers count
+                }
+            });
+        });
+
+        // Function to handle next question
+        nextButton.addEventListener('click', function () {
+            if (!selectedAnswer) {
+                alert('Please select an answer!');
+                return;
+            }
+
+            // Increment the current question index
+            currentQuestionIndex++;
+
+            // Check if the current question index is the last one
+            if (currentQuestionIndex >= quizData.length) {
+                // Call the showResults function to display the results
+                showResults();
+            } else {
+                // Load the next question
+                loadQuestion();
             }
         });
-    });
 
-    // Function to handle next question
-    nextButton.addEventListener('click', function () {
-        if (!selectedAnswer) {
-            alert('Please select an answer!');
-            return;
+        function showResults() {
+            const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+            quizContainer.style.display = 'none'; // Hide the quiz container
+
+            quizResult.style.display = 'block';
+            totalQuestionsDisplay.textContent = totalQuestions;
+            correctAnswersDisplay.textContent = correctAnswersCount;
+            wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+            percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+            totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
+
+            // Send the score to the server (optional)
+            sendScoreToServer(correctAnswersCount);
         }
-
-        // Increment the current question index
-        currentQuestionIndex++;
-
-        // Check if the current question index is the last one
-        if (currentQuestionIndex >= quizData.length) {
-            // Call the showResults function to display the results
-            showResults();
-        } else {
-            // Load the next question
-            loadQuestion();
-        }
-    });
-
-    function showResults() {
-    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-    quizContainer.style.display = 'none'; // Hide the quiz container
-
-    quizResult.style.display = 'block';
-    totalQuestionsDisplay.textContent = totalQuestions;
-    correctAnswersDisplay.textContent = correctAnswersCount;
-    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
-
-    // Send the score to the server
-    sendScoreToServer(correctAnswersCount);
-}
 
 // Function to send score to server
 function sendScoreToServer(score) {

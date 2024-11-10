@@ -1,17 +1,32 @@
 <?php
-session_start(); // Start the session
-// Include necessary files
-include_once('./includes/board.php'); // If needed
-include_once('../../admin/includes/dbCon.php'); // Include database connection
-// Check if session variables are set
+session_start(); 
+include_once('./includes/board.php'); 
+include_once('../../admin/includes/dbCon.php'); 
+
 if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
     $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
-    $id = $_SESSION["id"]; // Get the student ID from the session
+    $id = $_SESSION["id"]; 
 } else {
-    // Handle the case where session variables are not set
-    header("Location: index.php"); // Redirect to login or handle error
+    
+    header("Location: index.php"); 
     exit();
 }
+$sql = "SELECT question, choices, quiz_image, correct_answer, additional_info FROM quiz_questions_gas";
+$result = $conn->query($sql);
+
+$quiz_questions_solid = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']); 
+        $quiz_questions_solid[] = $row;
+    }
+} else {
+    echo "No quiz questions found.";
+}
+
+
+$conn->close();
 ?>
 
 <style>
@@ -935,188 +950,114 @@ function resetSectionTimer() {
 
     });
 
-    //for quiz
     // Quiz Data
-    const quizData = [
-        {
-            question: "What state of matter is characterized by particles that are far apart and move quickly?",
-            choices: ["Solid", "Liquid", "Gas", "Plasma"],
-            quizImage: "../quizImage/gasQuizImage1.png",
-            correctAnswer: "Gas",
-            additionalInfo: "Gases consist of particles that are much further apart than those in solids or liquids, allowing them to move freely and fill the available space."
-        },
-        {
-            question: "Which of the following statements is true about gases?",
-            choices: ["They have a definite shape and volume.", "They flow easily and take the shape of their container.", "They are tightly packed together.", "They cannot be compressed."],
-            quizImage: "../quizImage/gasQuizImage2.png",
-            correctAnswer: "They flow easily and take the shape of their container.",
-            additionalInfo: "Gases have no fixed shape or volume; they will expand to fill the shape and volume of their container."
-        },
-        {
-            question: "What happens to gas particles when they are heated?",
-            choices: ["They move slower.", "They stay in one place.", "They lose energy.", "They move faster and expand."],
-            quizImage: "../quizImage/gasQuizImage3.png",
-            correctAnswer: "They move faster and expand.",
-            additionalInfo: "Heating a gas increases the kinetic energy of its particles, causing them to move more rapidly and occupy more space."
-        },
-        {
-            question: "Which gas is commonly used in balloons?",
-            choices: ["Oxygen", "Carbon Dioxide", "Helium", "Nitrogen"],
-            quizImage: "../quizImage/gasQuizImage4.png",
-            correctAnswer: "Helium",
-            additionalInfo: "Helium is lighter than air and is used in balloons to make them float."
-        },
-        {
-            question: "What is the density characteristic of gases?",
-            choices: ["High density", "Variable density", "Low density", "No density"],
-            quizImage: "../quizImage/gasQuizImage5.png",
-            correctAnswer: "Low density",
-            additionalInfo: "Gases have low density compared to solids and liquids, making them less heavy unless compressed."
-        },
-        {
-        question: "Which of the following is an example of a gas?",
-        choices: ["Air", "Water", "Ice", "Sand"],
-        quizImage: "../quizImage/gasQuizImage6.png",
-        correctAnswer: "Air",
-        additionalInfo: "Air is a gas that we breathe in."
-        },
-        {
-            question: "Which of these is NOT a gas?",
-            choices: ["Helium", "Carbon Dioxide", "Water", "Nitrogen"],
-            quizImage: "../quizImage/gasQuizImage7.png",
-            correctAnswer: "Water",
-            additionalInfo: "Water is a liquid, while helium, carbon dioxide, and nitrogen are gases."
-        },
-        {
-            question: "Which gas is found in soda?",
-            choices: ["Carbon Dioxide", "Oxygen", "Water", "Ice"],
-            quizImage: "../quizImage/gasQuizImage8.png",
-            correctAnswer: "Carbon Dioxide",
-            additionalInfo: "Carbon dioxide is the gas that creates bubbles in fizzy drinks."
-        },
-        {
-            question: "What do we call the air that we breathe?",
-            choices: ["Gas", "Liquid", "Solid", "Plasma"],
-            quizImage: "../quizImage/gasQuizImage9.png",
-            correctAnswer: "Gas",
-            additionalInfo: "The air we breathe is a mixture of gases."
-        },
-        {
-            question: "Which of these is a property of gases?",
-            choices: ["They have a definite shape.", "They fill the space of their container.", "They are solid.", "They are always cold."],
-            quizImage: "../quizImage/gasQuizImage10.png",
-            correctAnswer: "They fill the space of their container.",
-            additionalInfo: "Gases do not have a fixed shape and will expand to fill any container."
+    const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
 
-        }
-    ];
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0;
+        const totalQuestions = quizData.length;
+        let selectedAnswer = null;
 
-    let currentQuestionIndex = 0;
-    let correctAnswersCount = 0;
-    let totalQuestions = quizData.length;
-    let selectedAnswer = null;
+        const choices = document.querySelectorAll('.choice-btn');
+        const nextButton = document.getElementById('nextButton');
+        const extraInfoBox = document.getElementById('extraInfoBox');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionText = document.getElementById('questionText');
+        const quizImage = document.getElementById('quizImage');
+        const extraInfoText = document.getElementById('extraInfoText');
+        const quizResult = document.getElementById('quizResult');
+        const totalQuestionsDisplay = document.getElementById('totalQuestions');
+        const correctAnswersDisplay = document.getElementById('correctAnswers');
+        const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+        const percentageDisplay = document.getElementById('percentage');
+        const totalScoreDisplay = document.getElementById('totalScore');
 
-    const choices = document.querySelectorAll('.choice-btn');
-    const nextButton = document.getElementById('nextButton');
-    const extraInfoBox = document.getElementById('extraInfoBox');
-    const questionNumber = document.getElementById('questionNumber');
-    const questionText = document.getElementById('questionText');
-    const quizImage = document.getElementById('quizImage');
-    const extraInfoText = document.getElementById('extraInfoText');
-    const quizResult = document.getElementById('quizResult');
-    const totalQuestionsDisplay = document.getElementById('totalQuestions');
-    const correctAnswersDisplay = document.getElementById('correctAnswers');
-    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
-    const percentageDisplay = document.getElementById('percentage');
-    const totalScoreDisplay = document.getElementById('totalScore');
+        // Function to load a question
+        function loadQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
 
-    // Function to load a question
-    function loadQuestion() {
-        const currentQuestion = quizData[currentQuestionIndex];
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+            questionText.textContent = currentQuestion.question;
+            quizImage.src = currentQuestion.quiz_image;
 
-        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-        questionText.textContent = currentQuestion.question;
-        quizImage.src = currentQuestion.quizImage;
-
-        choices.forEach((button, index) => {
-            button.textContent = currentQuestion.choices[index];
-            button.classList.remove('correct', 'wrong');
-            button.style.display = 'inline-block';
-            button.style.color = 'black'; 
-        });
-
-        extraInfoBox.style.display = 'none';
-        nextButton.disabled = true;
-        selectedAnswer = null;
-    }
-
-    // Adding click event listeners to choices
-    choices.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedAnswer) return; // Prevent selecting again
-
-            selectedAnswer = button.textContent; // Set the selected answer
-            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
-
-            // Check each choice
-            choices.forEach(btn => {
-                // Hide incorrect answers if they are not selected
-                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
-                    btn.style.display = 'none'; // Hides the button
-                } else {
-                    // Add correct or wrong class based on the selected answer
-                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
-                    btn.style.color = 'white';
-                }
+            choices.forEach((button, index) => {
+                button.textContent = currentQuestion.choices[index];
+                button.classList.remove('correct', 'wrong');
+                button.style.display = 'inline-block';
+                button.style.color = 'black'; 
             });
 
-            // Display additional information about the question
-            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
-            extraInfoBox.style.display = 'block';
-            nextButton.disabled = false; // Enable the next button
+            extraInfoBox.style.display = 'none';
+            nextButton.disabled = true;
+            selectedAnswer = null;
+        }
 
-            // Check if the answer is correct
-            if (selectedAnswer === correctAnswer) {
-                correctAnswersCount++; // Increment the correct answers count
+        // Adding click event listeners to choices
+        choices.forEach(button => {
+            button.addEventListener('click', function() {
+                if (selectedAnswer) return; // Prevent selecting again
+
+                selectedAnswer = button.textContent; // Set the selected answer
+                const correctAnswer = quizData[currentQuestionIndex].correct_answer;
+
+                // Check each choice
+                choices.forEach(btn => {
+                    // Hide incorrect answers if they are not selected
+                    if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                        btn.style.display = 'none'; // Hides the button
+                    } else {
+                        // Add correct or wrong class based on the selected answer
+                        btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                        btn.style.color = 'white';
+                    }
+                });
+
+                // Display additional information about the question
+                extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
+                extraInfoBox.style.display = 'block';
+                nextButton.disabled = false; // Enable the next button
+
+                // Check if the answer is correct
+                if (selectedAnswer === correctAnswer) {
+                    correctAnswersCount++; // Increment the correct answers count
+                }
+            });
+        });
+
+        // Function to handle next question
+        nextButton.addEventListener('click', function () {
+            if (!selectedAnswer) {
+                alert('Please select an answer!');
+                return;
+            }
+
+            // Increment the current question index
+            currentQuestionIndex++;
+
+            // Check if the current question index is the last one
+            if (currentQuestionIndex >= quizData.length) {
+                // Call the showResults function to display the results
+                showResults();
+            } else {
+                // Load the next question
+                loadQuestion();
             }
         });
-    });
 
-    // Function to handle next question
-    nextButton.addEventListener('click', function () {
-        if (!selectedAnswer) {
-            alert('Please select an answer!');
-            return;
+        function showResults() {
+            const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+            quizContainer.style.display = 'none'; // Hide the quiz container
+
+            quizResult.style.display = 'block';
+            totalQuestionsDisplay.textContent = totalQuestions;
+            correctAnswersDisplay.textContent = correctAnswersCount;
+            wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+            percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+            totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
+
+            // Send the score to the server (optional)
+            sendScoreToServer(correctAnswersCount);
         }
-
-        // Increment the current question index
-        currentQuestionIndex++;
-
-        // Check if the current question index is the last one
-        if (currentQuestionIndex >= quizData.length) {
-            // Call the showResults function to display the results
-            showResults();
-        } else {
-            // Load the next question
-            loadQuestion();
-        }
-    });
-
-    function showResults() {
-    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-    quizContainer.style.display = 'none'; // Hide the quiz container
-
-    // Show the quiz result container
-    quizResult.style.display = 'block';
-    totalQuestionsDisplay.textContent = totalQuestions;
-    correctAnswersDisplay.textContent = correctAnswersCount;
-    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
-
-    // Send the score to the server
-    sendScoreToServer(correctAnswersCount);
-}
 
 // Function to send score to server
 function sendScoreToServer(score) {

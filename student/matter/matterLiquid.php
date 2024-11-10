@@ -11,6 +11,22 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     header("Location: index.php"); 
     exit();
 }
+$sql = "SELECT question, choices, quiz_image, correct_answer, additional_info FROM quiz_questions_liquid";
+$result = $conn->query($sql);
+
+$quiz_questions_solid = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']); 
+        $quiz_questions_solid[] = $row;
+    }
+} else {
+    echo "No quiz questions found.";
+}
+
+
+$conn->close();
 ?>
 
 <style>
@@ -599,7 +615,7 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
                                 </div>
                             </div>
 
-                             <!-- Quiz Result -->
+                            <!-- Quiz Result -->
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
                                 <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
@@ -943,191 +959,114 @@ function resetSectionTimer() {
 
     });
     
-    //for quiz
     // Quiz Data
-        const quizData = [
+    const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
 
-        {
-            question: "Which state of matter has a fixed volume but no fixed shape?",
-            choices: ["Liquid", "Solid", "Gas", "Plasma"],
-            quizImage: "../quizImage/liquidQuizImage1.png",
-            correctAnswer: "Liquid",
-            additionalInfo: "Liquids have a fixed volume but can change shape to fit their container."
-        },
-        {
-            question: "What is a characteristic of liquids?",
-            choices: ["They have a definite shape.", "They have a fixed volume but no fixed shape.", "They cannot be compressed.", "They are less dense than gases."],
-            quizImage: "../quizImage/liquidQuizImage2.png",
-            correctAnswer: "They have a fixed volume but no fixed shape.",
-            additionalInfo: "Liquids maintain a fixed volume, but they take the shape of their container."
-        },
-        {
-            question: "Which of the following is a liquid?",
-            choices: ["Ice", "Water", "Rock", "Air"],
-            quizImage: "../quizImage/liquidQuizImage3.png",
-            correctAnswer: "Water",
-            additionalInfo: "Water is a common example of a liquid."
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0;
+        const totalQuestions = quizData.length;
+        let selectedAnswer = null;
 
-        },
-        {
-            question: "What happens to the particles in a liquid when it is heated?",
-            choices: ["They move rapidly.", "They become solid.", "They stop moving.", "They are tightly packed."],
-            quizImage: "../quizImage/liquidQuizImage4.png",
-            correctAnswer: "They move rapidly.",
-            additionalInfo: "Heating a liquid increases the energy of its particles, causing them to move more rapidly."
-        },
-        {
-            question: "Which of the following is NOT a liquid?",
-            choices: ["Milk", "Honey", "Salt", "Juice"],
-            quizImage: "../quizImage/liquidQuizImage5.png",
-            correctAnswer: "Salt",
-            additionalInfo: "Salt is a solid, while the others are liquids."
-        },
-        {
-            question: "What can liquids do that solids cannot?",
-            choices: ["Change shape", "Stay in one place", "Take up space", "Have a fixed shape"],
-            quizImage: "../quizImage/liquidQuizImage6.png",
-            correctAnswer: "Change shape",
-            additionalInfo: "Liquids can change shape to fit their container."
-        },
-        {
-            question: "Which of these liquids can be poured?",
-            choices: ["Sand", "Oil", "Rock", "Metal"],
-            quizImage: "../quizImage/liquidQuizImage7.png",
-            correctAnswer: "Oil",
-            additionalInfo: "Oil is a liquid and can be poured easily."
-        },
-        {
-            question: "Which of these is NOT a liquid?",
-            choices: ["Water", "Milk", "Ice", "Juice"],
-            quizImage: "../quizImage/liquidQuizImage8.png",
-            correctAnswer: "Ice",
-            additionalInfo: "Ice is the solid form of water, while water, milk, and juice are liquids."
-        }
-        ,
-        {
-            question: "Which of these is an example of a liquid?",
-            choices: ["Sand", "Lotion", "Ice", "Air"],
-            quizImage: "../quizImage/liquidQuizImage9.png",
-            correctAnswer: "Lotion",
-            additionalInfo: "Lotion is a liquid and can take the shape of its container."
-        },
-        {
-        question: "Which of these liquids do we drink every day?",
-        choices: ["Syrup", "Water", "Mud", "Oil"],
-        quizImage: "../quizImage/liquidQuizImage10.png",
-        correctAnswer: "Water",
-        additionalInfo: "Water is very important liquid, and we drink it every day."
-        }
-    ];
+        const choices = document.querySelectorAll('.choice-btn');
+        const nextButton = document.getElementById('nextButton');
+        const extraInfoBox = document.getElementById('extraInfoBox');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionText = document.getElementById('questionText');
+        const quizImage = document.getElementById('quizImage');
+        const extraInfoText = document.getElementById('extraInfoText');
+        const quizResult = document.getElementById('quizResult');
+        const totalQuestionsDisplay = document.getElementById('totalQuestions');
+        const correctAnswersDisplay = document.getElementById('correctAnswers');
+        const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+        const percentageDisplay = document.getElementById('percentage');
+        const totalScoreDisplay = document.getElementById('totalScore');
 
-    
-    let currentQuestionIndex = 0;
-    let correctAnswersCount = 0;
-    let totalQuestions = quizData.length;
-    let selectedAnswer = null;
+        // Function to load a question
+        function loadQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
 
-    const choices = document.querySelectorAll('.choice-btn');
-    const nextButton = document.getElementById('nextButton');
-    const extraInfoBox = document.getElementById('extraInfoBox');
-    const questionNumber = document.getElementById('questionNumber');
-    const questionText = document.getElementById('questionText');
-    const quizImage = document.getElementById('quizImage');
-    const extraInfoText = document.getElementById('extraInfoText');
-    const quizResult = document.getElementById('quizResult');
-    const totalQuestionsDisplay = document.getElementById('totalQuestions');
-    const correctAnswersDisplay = document.getElementById('correctAnswers');
-    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
-    const percentageDisplay = document.getElementById('percentage');
-    const totalScoreDisplay = document.getElementById('totalScore');
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+            questionText.textContent = currentQuestion.question;
+            quizImage.src = currentQuestion.quiz_image;
 
-    // Function to load a question
-    function loadQuestion() {
-        const currentQuestion = quizData[currentQuestionIndex];
-
-        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-        questionText.textContent = currentQuestion.question;
-        quizImage.src = currentQuestion.quizImage;
-
-        choices.forEach((button, index) => {
-            button.textContent = currentQuestion.choices[index];
-            button.classList.remove('correct', 'wrong');
-            button.style.display = 'inline-block';
-            button.style.color = 'black'; 
-        });
-
-        extraInfoBox.style.display = 'none';
-        nextButton.disabled = true;
-        selectedAnswer = null;
-    }
-
-    // Adding click event listeners to choices
-    choices.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedAnswer) return; // Prevent selecting again
-
-            selectedAnswer = button.textContent; // Set the selected answer
-            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
-
-            // Check each choice
-            choices.forEach(btn => {
-                // Hide incorrect answers if they are not selected
-                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
-                    btn.style.display = 'none'; // Hides the button
-                } else {
-                    // Add correct or wrong class based on the selected answer
-                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
-                    btn.style.color = 'white';
-                }
+            choices.forEach((button, index) => {
+                button.textContent = currentQuestion.choices[index];
+                button.classList.remove('correct', 'wrong');
+                button.style.display = 'inline-block';
+                button.style.color = 'black'; 
             });
 
-            // Display additional information about the question
-            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
-            extraInfoBox.style.display = 'block';
-            nextButton.disabled = false; // Enable the next button
+            extraInfoBox.style.display = 'none';
+            nextButton.disabled = true;
+            selectedAnswer = null;
+        }
 
-            // Check if the answer is correct
-            if (selectedAnswer === correctAnswer) {
-                correctAnswersCount++; // Increment the correct answers count
+        // Adding click event listeners to choices
+        choices.forEach(button => {
+            button.addEventListener('click', function() {
+                if (selectedAnswer) return; // Prevent selecting again
+
+                selectedAnswer = button.textContent; // Set the selected answer
+                const correctAnswer = quizData[currentQuestionIndex].correct_answer;
+
+                // Check each choice
+                choices.forEach(btn => {
+                    // Hide incorrect answers if they are not selected
+                    if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                        btn.style.display = 'none'; // Hides the button
+                    } else {
+                        // Add correct or wrong class based on the selected answer
+                        btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                        btn.style.color = 'white';
+                    }
+                });
+
+                // Display additional information about the question
+                extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
+                extraInfoBox.style.display = 'block';
+                nextButton.disabled = false; // Enable the next button
+
+                // Check if the answer is correct
+                if (selectedAnswer === correctAnswer) {
+                    correctAnswersCount++; // Increment the correct answers count
+                }
+            });
+        });
+
+        // Function to handle next question
+        nextButton.addEventListener('click', function () {
+            if (!selectedAnswer) {
+                alert('Please select an answer!');
+                return;
+            }
+
+            // Increment the current question index
+            currentQuestionIndex++;
+
+            // Check if the current question index is the last one
+            if (currentQuestionIndex >= quizData.length) {
+                // Call the showResults function to display the results
+                showResults();
+            } else {
+                // Load the next question
+                loadQuestion();
             }
         });
-    });
 
-    // Function to handle next question
-    nextButton.addEventListener('click', function () {
-        if (!selectedAnswer) {
-            alert('Please select an answer!');
-            return;
+        function showResults() {
+            const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+            quizContainer.style.display = 'none'; // Hide the quiz container
+
+            quizResult.style.display = 'block';
+            totalQuestionsDisplay.textContent = totalQuestions;
+            correctAnswersDisplay.textContent = correctAnswersCount;
+            wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+            percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+            totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
+
+            // Send the score to the server (optional)
+            sendScoreToServer(correctAnswersCount);
         }
-
-        // Increment the current question index
-        currentQuestionIndex++;
-
-        // Check if the current question index is the last one
-        if (currentQuestionIndex >= quizData.length) {
-            // Call the showResults function to display the results
-            showResults();
-        } else {
-            // Load the next question
-            loadQuestion();
-        }
-    });
-
-    function showResults() {
-    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-    quizContainer.style.display = 'none'; // Hide the quiz container
-
-    // Show the quiz result container
-    quizResult.style.display = 'block';
-    totalQuestionsDisplay.textContent = totalQuestions;
-    correctAnswersDisplay.textContent = correctAnswersCount;
-    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
-
-    // Send the score to the server
-    sendScoreToServer(correctAnswersCount);
-}
 
 // Function to send score to server
 function sendScoreToServer(score) {
