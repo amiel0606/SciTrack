@@ -773,6 +773,32 @@ $conn->close();
         const studentId = <?php echo json_encode($id); ?>;
         console.log("Student ID from PHP:", studentId);
 
+
+        function checkQuizTaken() {
+    fetch('../check_quiz_status.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            student_id: studentId,
+            quiz_id: 8,
+            lesson: 'Earth\'s Surface'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Server response:', data);
+        if (data.status === 'taken') {
+            rightButton.style.display = 'flex';
+        } else {
+            rightButton.style.display = 'none';
+        }
+    })
+    .catch(error => {
+        console.error('Error checking quiz status:', error);
+    });
+}
         function startSectionTimer() {
     console.log("Starting timer for section " + currentSection);
     sectionTimerInterval = setInterval(() => {
@@ -963,6 +989,10 @@ function resetSectionTimer() {
             playAudio7(); 
         } else {
             stopAudio7();
+        }
+        if (sections[index] === surfaceQuiz) {
+            checkQuizTaken();
+
         }
 
         }
