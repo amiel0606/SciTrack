@@ -883,7 +883,7 @@ $conn->close();
 function stopSectionTimer() {
     if (sectionTimerInterval) {
         console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
-        sendTimeData(studentId, 'Motion', currentSection, 'Measuring Distance and Time', sectionTimeSpent[currentSection]);
+        sendTimeData(studentId, 'Motion', currentSection, 'Measuring', sectionTimeSpent[currentSection]);
         clearInterval(sectionTimerInterval);
         sectionTimerInterval = null;
     }

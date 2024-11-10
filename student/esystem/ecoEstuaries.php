@@ -1017,7 +1017,7 @@ function resetSectionTimer() {
         sections[index].classList.remove('eco-content');
         sections[index].classList.add('eco-content-active');
         updateEinsteinImageAndButtons();
-        resetSectionTimer()
+        resetSectionTimer();
             currentSection = index; 
             startSectionTimer();
 
@@ -1069,7 +1069,7 @@ function resetSectionTimer() {
     }
 
         rightButton.addEventListener('click', function () {
-            if (currentSection < sections.length - 1) {
+            if (currentSection < sections.length + 1) {
                 stopSectionTimer();
                 currentSection++;
                 showSection(currentSection);

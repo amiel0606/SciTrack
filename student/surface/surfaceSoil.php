@@ -800,7 +800,7 @@ $conn->close();
 function stopSectionTimer() {
     if (sectionTimerInterval) {
         console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
-        sendTimeData(studentId, 'Earths Surface', currentSection, 'Soil Erosion', sectionTimeSpent[currentSection]);
+        sendTimeData(studentId, 'Earths Surface', currentSection, 'Erosion', sectionTimeSpent[currentSection]);
         clearInterval(sectionTimerInterval);
         sectionTimerInterval = null;
     }

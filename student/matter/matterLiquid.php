@@ -926,10 +926,15 @@ function resetSectionTimer() {
         rightButton.addEventListener('click', function () {
             if (currentSection === 6) {
                 currentSection = 7;
+                stopSectionTimer();
                 showSection(currentSection);
-            } else if (currentSection < sections.length - 1) {
-                stopSectionTimer();      
-                currentSection++; 
+                if (currentSection === 7) {
+                    currentSection = 6;
+                    stopSectionTimer();
+                }
+            } else if (currentSection < sections.length + 1) {
+                stopSectionTimer();
+                currentSection++;
                 showSection(currentSection);
             }
         });
