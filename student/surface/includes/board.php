@@ -72,17 +72,17 @@
         </div>
         <div class="navbar-menu">
             <div class="navbar-end">
-                <a href="student.php" class="navbar-item has-text-white">
+                <a href="../studentdashBoard.php" class="navbar-item has-text-white">
                     <span class="icon is-medium mr-2"><i class="fas fa-chart-line fa-lg"></i></span> 
                     Dashboard
                 </a>
-                <a href="#.php" class="navbar-item has-text-white">
+                <a href="../leaderboards.php" class="navbar-item has-text-white">
                     <span class="icon is-medium mr-2"><i class="fas fa-trophy fa-lg"></i></span> 
                     Leaderboards
                 </a>
-                <a href="#.php" class="navbar-item has-text-white">
+                <a href="../studentWelcome.php" class="navbar-item has-text-white">
                     <span class="icon is-medium mr-2"><i class="fas fa-user fa-lg"></i></span> 
-                    Student
+                    Lessons
                 </a>
                 <a href="#.php" class="navbar-item has-text-white">
                     <span class="icon is-medium mr-2"><i class="fas fa-sign-out-alt fa-lg"></i></span> 

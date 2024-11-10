@@ -109,7 +109,7 @@
                     <span class="icon is-medium mr-2"><i class="fas fa-chart-line fa-lg"></i></span> 
                     Dashboard
                 </a>
-                <a href="#.php" class="navbar-item has-text-white">
+                <a href="../leaderboards.php" class="navbar-item has-text-white">
                     <span class="icon is-medium mr-2"><i class="fas fa-trophy fa-lg"></i></span> 
                     Leaderboards
                 </a>

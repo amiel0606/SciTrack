@@ -11,6 +11,22 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     header("Location: index.php"); 
     exit();
 }
+$sql = "SELECT question, choices, quiz_image, correct_answer, additional_info FROM quiz_questions_motion";
+$result = $conn->query($sql);
+
+$quiz_questions_solid = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']); 
+        $quiz_questions_solid[] = $row;
+    }
+} else {
+    echo "No quiz questions found.";
+}
+
+
+$conn->close();
 ?>
 
 <style>
@@ -293,10 +309,10 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     #quizImage{
         max-width: 100%; 
         height: auto;
-        margin-top: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 5px;
     }
     .placeholderImage {
         background-color: #d3d3d3; 
@@ -1220,150 +1236,112 @@ function resetSectionTimer() {
         showSection(0); 
     });
 
-    //for quiz
-    // Quiz Data
-    const quizData = [
-        {
-            question: "What is an estuary?",
-            choices: ["A forest", "Where a river meets the sea", "A desert", "A mountain range"],
-            quizImage: "../quizImage/esQuizImage1.png",
-            correctAnswer: "Where a river meets the sea",
-            additionalInfo: "An estuary is a unique place where fresh water from rivers mixes with salty sea water, creating a brackish environment perfect for many organisms."
-        },
-        {
-            question: "What type of water is found in estuaries?",
-            choices: ["Freshwater", "Saltwater", "Brackish", "Pure"],
-            quizImage: "../quizImage/esQuizImage2.png",
-            correctAnswer: "Brackish",
-            additionalInfo: "Estuaries have brackish water, which is a mix of fresh and saltwater. It's like the 'Goldilocks' water—just right for certain wildlife!"
-        },
-        {
-            question: "Which of these animals often relies on estuaries for nesting and breeding?",
-            choices: ["Elephants", "Sharks", "Birds", "Monkeys"],
-            quizImage: "../quizImage/esQuizImage3.png",
-            correctAnswer: "Birds",
-            additionalInfo: "Birds love estuaries for nesting and breeding because they provide lots of food and safe places to raise their young. It's like nature's daycare!"
-        },
-        {
-            question: "What causes the murky water in estuaries?",
-            choices: ["Trash", "Rain", "Sediment", "Fish parties"],
-            quizImage: "../quizImage/esQuizImage4.png",
-            correctAnswer: "Sediment",
-            additionalInfo: "Sediments like sand and clay make the water look murky, but don’t worry! It’s perfect for small critters who love hiding in the 'underwater fog.'"
-        },
-        {
-            question: "Which of these is an example of sediment in an estuary?",
-            choices: ["Pebbles", "Diamonds", "Gold", "Ice"],
-            quizImage: "../quizImage/esQuizImage5.png",
-            correctAnswer: "Pebbles",
-            additionalInfo: "Pebbles, along with sand and clay, are common sediments found in estuaries. They’re like nature’s tiny building blocks!"
-        }
-    ];
+// Quiz Data
+const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
 
-    let currentQuestionIndex = 0;
-    let correctAnswersCount = 0;
-    let totalQuestions = quizData.length;
-    let selectedAnswer = null;
+let currentQuestionIndex = 0;
+let correctAnswersCount = 0;
+const totalQuestions = quizData.length;
+let selectedAnswer = null;
 
-    const choices = document.querySelectorAll('.choice-btn');
-    const nextButton = document.getElementById('nextButton');
-    const extraInfoBox = document.getElementById('extraInfoBox');
-    const questionNumber = document.getElementById('questionNumber');
-    const questionText = document.getElementById('questionText');
-    const quizImage = document.getElementById('quizImage');
-    const extraInfoText = document.getElementById('extraInfoText');
-    const quizResult = document.getElementById('quizResult');
-    const totalQuestionsDisplay = document.getElementById('totalQuestions');
-    const correctAnswersDisplay = document.getElementById('correctAnswers');
-    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
-    const percentageDisplay = document.getElementById('percentage');
-    const totalScoreDisplay = document.getElementById('totalScore');
+const choices = document.querySelectorAll('.choice-btn');
+const nextButton = document.getElementById('nextButton');
+const extraInfoBox = document.getElementById('extraInfoBox');
+const questionNumber = document.getElementById('questionNumber');
+const questionText = document.getElementById('questionText');
+const quizImage = document.getElementById('quizImage');
+const extraInfoText = document.getElementById('extraInfoText');
+const quizResult = document.getElementById('quizResult');
+const totalQuestionsDisplay = document.getElementById('totalQuestions');
+const correctAnswersDisplay = document.getElementById('correctAnswers');
+const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+const percentageDisplay = document.getElementById('percentage');
+const totalScoreDisplay = document.getElementById('totalScore');
 
-    // Function to load a question
-    function loadQuestion() {
-        const currentQuestion = quizData[currentQuestionIndex];
+// Function to load a question
+function loadQuestion() {
+    const currentQuestion = quizData[currentQuestionIndex];
 
-        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-        questionText.textContent = currentQuestion.question;
-        quizImage.src = currentQuestion.quizImage;
+    questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+    questionText.textContent = currentQuestion.question;
+    quizImage.src = currentQuestion.quiz_image;
 
-        choices.forEach((button, index) => {
-            button.textContent = currentQuestion.choices[index];
-            button.classList.remove('correct', 'wrong');
-            button.style.display = 'inline-block';
-            button.style.color = 'black'; 
-        });
+    choices.forEach((button, index) => {
+        button.textContent = currentQuestion.choices[index];
+        button.classList.remove('correct', 'wrong');
+        button.style.display = 'inline-block';
+        button.style.color = 'black'; 
+    });
 
-        extraInfoBox.style.display = 'none';
-        nextButton.disabled = true;
-        selectedAnswer = null;
-    }
+    extraInfoBox.style.display = 'none';
+    nextButton.disabled = true;
+    selectedAnswer = null;
+}
 
-    // Adding click event listeners to choices
-    choices.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedAnswer) return; // Prevent selecting again
+// Adding click event listeners to choices
+choices.forEach(button => {
+    button.addEventListener('click', function() {
+        if (selectedAnswer) return; // Prevent selecting again
 
-            selectedAnswer = button.textContent; // Set the selected answer
-            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+        selectedAnswer = button.textContent; // Set the selected answer
+        const correctAnswer = quizData[currentQuestionIndex].correct_answer;
 
-            // Check each choice
-            choices.forEach(btn => {
-                // Hide incorrect answers if they are not selected
-                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
-                    btn.style.display = 'none'; // Hides the button
-                } else {
-                    // Add correct or wrong class based on the selected answer
-                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
-                    btn.style.color = 'white';
-                }
-            });
-
-            // Display additional information about the question
-            extraInfoText.textContent = quizData[currentQuestionIndex].additionalInfo;
-            extraInfoBox.style.display = 'block';
-            nextButton.disabled = false; // Enable the next button
-
-            // Check if the answer is correct
-            if (selectedAnswer === correctAnswer) {
-                correctAnswersCount++; // Increment the correct answers count
+        // Check each choice
+        choices.forEach(btn => {
+            // Hide incorrect answers if they are not selected
+            if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                btn.style.display = 'none'; // Hides the button
+            } else {
+                // Add correct or wrong class based on the selected answer
+                btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                btn.style.color = 'white';
             }
         });
-    });
 
-    // Function to handle next question
-    nextButton.addEventListener('click', function () {
-        if (!selectedAnswer) {
-            alert('Please select an answer!');
-            return;
-        }
+        // Display additional information about the question
+        extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
+        extraInfoBox.style.display = 'block';
+        nextButton.disabled = false; // Enable the next button
 
-        // Increment the current question index
-        currentQuestionIndex++;
-
-        // Check if the current question index is the last one
-        if (currentQuestionIndex >= quizData.length) {
-            // Call the showResults function to display the results
-            showResults();
-        } else {
-            // Load the next question
-            loadQuestion();
+        // Check if the answer is correct
+        if (selectedAnswer === correctAnswer) {
+            correctAnswersCount++; // Increment the correct answers count
         }
     });
+});
 
-    function showResults() {
+// Function to handle next question
+nextButton.addEventListener('click', function () {
+    if (!selectedAnswer) {
+        alert('Please select an answer!');
+        return;
+    }
+
+    // Increment the current question index
+    currentQuestionIndex++;
+
+    // Check if the current question index is the last one
+    if (currentQuestionIndex >= quizData.length) {
+        // Call the showResults function to display the results
+        showResults();
+    } else {
+        // Load the next question
+        loadQuestion();
+    }
+});
+
+function showResults() {
     const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
     quizContainer.style.display = 'none'; // Hide the quiz container
 
-    // Show the quiz result container
     quizResult.style.display = 'block';
     totalQuestionsDisplay.textContent = totalQuestions;
     correctAnswersDisplay.textContent = correctAnswersCount;
     wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
     percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions; // Assuming each correct answer is worth 1 point
+    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
 
-    // Send the score to the server
+    // Send the score to the server (optional)
     sendScoreToServer(correctAnswersCount);
 }
 

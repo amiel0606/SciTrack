@@ -147,11 +147,11 @@
                                         </a>
                                     </div>
                                     <div class="column is-half has-text-centered title is-size-3 studentdb">
-                                        <a href="">
+                                        <a href="assessments.php">
                                             <figure class="image" style="width: 500px; height: 500px;">
                                                 <img src="../image/assessment.png" alt="Assessment Image">
                                             </figure>
-                                            <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">ASSESSMENT</p>
+                                            <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">ASSESSMENTS</p>
                                         </a>
                                     </div>
                                 </div>
