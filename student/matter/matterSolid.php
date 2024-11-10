@@ -466,406 +466,406 @@ $conn->close();
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const leftButton = document.getElementById('leftButton');
-    const rightButton = document.getElementById('rightButton');
-    const einsteinImage = document.getElementById('einstein-image');
-    const examplesButton = document.getElementById('examplesButton');
-    const matterStates = document.getElementById('matterStates');
-    const matterSolid = document.getElementById('matterSolid');
-    const matterChar = document.getElementById('matterChar');
-    const matterVideo = document.getElementById('matterVideo');
-    const matterSolid2 = document.getElementById('matterSolid2');
-    const matterExamples = document.getElementById('matterExamples');
-    const matterExamples2 = document.getElementById('matterExamples2');
-    const matterLetsTry = document.getElementById('matterLetsTry');
-    const matterQuiz = document.getElementById('matterQuiz');
-    const matterCompleted = document.getElementById('matterCompleted');
-    const letsTryButton = document.getElementById('letsTryButton');
-    const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
-    const goBackButton = letsTryButton.querySelector('.button.is-danger');
-    const audio = document.getElementById('matterAudio');
-    const audio2 = document.getElementById('matterAudio2');
-    const audio3 = document.getElementById('matterAudio3');
-    const audio4 = document.getElementById('matterAudio4');
-    const solidVideo = document.getElementById('solidVideo');
-    
-    let currentSection = 0;
-    const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
-    let sectionTimeSpent = new Array(sections.length).fill(0);
-    let sectionTimerInterval;
-    const studentId = <?php echo json_encode($id); ?>;
-    console.log("Student ID from PHP:", studentId);
+    document.addEventListener('DOMContentLoaded', function () {
+        const leftButton = document.getElementById('leftButton');
+        const rightButton = document.getElementById('rightButton');
+        const einsteinImage = document.getElementById('einstein-image');
+        const examplesButton = document.getElementById('examplesButton');
+        const matterStates = document.getElementById('matterStates');
+        const matterSolid = document.getElementById('matterSolid');
+        const matterChar = document.getElementById('matterChar');
+        const matterVideo = document.getElementById('matterVideo');
+        const matterSolid2 = document.getElementById('matterSolid2');
+        const matterExamples = document.getElementById('matterExamples');
+        const matterExamples2 = document.getElementById('matterExamples2');
+        const matterLetsTry = document.getElementById('matterLetsTry');
+        const matterQuiz = document.getElementById('matterQuiz');
+        const matterCompleted = document.getElementById('matterCompleted');
+        const letsTryButton = document.getElementById('letsTryButton');
+        const proceedToQuizButton = letsTryButton.querySelector('.button.is-success');
+        const goBackButton = letsTryButton.querySelector('.button.is-danger');
+        const audio = document.getElementById('matterAudio');
+        const audio2 = document.getElementById('matterAudio2');
+        const audio3 = document.getElementById('matterAudio3');
+        const audio4 = document.getElementById('matterAudio4');
+        const solidVideo = document.getElementById('solidVideo');
 
-    function checkQuizTaken() {
-        fetch('../check_quiz_status.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                student_id: studentId,
-                quiz_id: 1,
-                lesson: 'Matter'
+        let currentSection = 0;
+        const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
+        let sectionTimeSpent = new Array(sections.length).fill(0);
+        let sectionTimerInterval;
+        const studentId = <?php echo json_encode($id); ?>;
+        console.log("Student ID from PHP:", studentId);
+
+        function checkQuizTaken() {
+            fetch('../check_quiz_status.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    student_id: studentId,
+                    quiz_id: 1,
+                    lesson: 'Matter'
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Server response:', data);
-            rightButton.style.display = data.status === 'taken' ? 'flex' : 'none';
-        })
-        .catch(error => {
-            console.error('Error checking quiz status:', error);
-        });
-    }
-
-    function startSectionTimer() {
-        console.log("Starting timer for section " + currentSection);
-        sectionTimerInterval = setInterval(() => {
-            sectionTimeSpent[currentSection]++;
-            console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
-        }, 1000);
-    }
-
-    function stopSectionTimer() {
-        if (sectionTimerInterval) {
-            console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
-            sendTimeData(studentId, 'Matter', currentSection, 'Solid', sectionTimeSpent[currentSection]);
-            clearInterval(sectionTimerInterval);
-            sectionTimerInterval = null;
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server response:', data);
+                    rightButton.style.display = data.status === 'taken' ? 'flex' : 'none';
+                })
+                .catch(error => {
+                    console.error('Error checking quiz status:', error);
+                });
         }
-    }
 
-    function resetSectionTimer() {
-        sectionTimeSpent[currentSection] = 0;
-    }
-
-    function hideAllSections() {
-        sections.forEach(section => {
-            section.classList.remove('matter-content-active');
-            section.classList.add('matter-content');
-        });
-    }
-
-    function stopVideo() {
-        solidVideo.pause();
-        solidVideo.currentTime = 0;
-    }
-
-    function stopAudio() {
-        audio.pause();
-        audio.currentTime = 0;
-    }
-
-    function playAudio() {
-        audio.play().catch(function (error) {
-            console.log("Autoplay prevented by browser, waiting for user interaction.");
-        });
-    }
-
-    function stopAudio2() {
-        audio2.pause();
-        audio2.currentTime = 0;
-    }
-
-    function playAudio2() {
-        audio2.play().catch(function (error) {
-            console.log("Autoplay prevented by browser, waiting for user interaction.");
-        });
-    }
-
-    function stopAudio3() {
-        audio3.pause();
-        audio3.currentTime = 0;
-    }
-
-    function playAudio3() {
-        audio3.play().catch(function (error) {
-            console.log("Autoplay prevented by browser, waiting for user interaction.");
-        });
-    }
-
-function stopAudio4() {
-    audio4.pause();
-    audio4.currentTime = 0;
-}
-
-function playAudio4() {
-    audio4.play().catch(function (error) {
-        console.log("Autoplay prevented by browser, waiting for user interaction.");
-    });
-}
-
-function showSection(index) {
-    hideAllSections();
-    sections[index].classList.remove('matter-content');
-    sections[index].classList.add('matter-content-active');
-    resetSectionTimer();
-    currentSection = index;
-    startSectionTimer();
-
-    // Play or stop audio and video based on the current section
-    if (sections[index] === matterStates) {
-        playAudio();
-    } else {
-        stopAudio();
-    }
-    if (sections[index] === matterSolid) {
-        playAudio2();
-    } else {
-        stopAudio2();
-    }
-    if (sections[index] === matterChar) {
-        playAudio3();
-    } else {
-        stopAudio3();
-    }
-    if (sections[index] === matterSolid2) {
-        playAudio4();
-    } else {
-        stopAudio4();
-    }
-    if (sections[index] === matterVideo) {
-        solidVideo.play();
-    } else {
-        stopVideo();
-    }
-
-    // Manage visibility of buttons based on the current section
-    if (index >= 0 && index <= 6) {
-        examplesButton.style.display = 'flex';
-        einsteinImage.style.display = 'block';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'flex';
-        rightButton.style.display = 'flex';
-    } else if (sections[index] === matterLetsTry) {
-        examplesButton.style.display = 'none';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'flex';
-        goBackButton.style.display = 'flex';
-        proceedToQuizButton.style.display = 'flex';
-        leftButton.style.display = 'none';
-        rightButton.style.display = 'none';
-    } else if (sections[index] === matterQuiz) {
-        examplesButton.style.display = 'flex';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'flex';
-        checkQuizTaken();
-        examplesButton.style.marginLeft = '100%';
-    } else if (sections[index] === matterCompleted) {
-        examplesButton.style.display = 'none';
-        einsteinImage.style.display = 'none';
-        letsTryButton.style.display = 'none';
-        goBackButton.style.display = 'none';
-        proceedToQuizButton.style.display = 'none';
-        leftButton.style.display = 'none';
-        rightButton.style.display = 'none';
-    }
-}
-
-rightButton.addEventListener('click', function () {
-    if (currentSection === 6) {
-        currentSection = 7;
-        stopSectionTimer();
-        showSection(currentSection);
-        if (currentSection === 7) {
-            currentSection = 6;
-            stopSectionTimer();
+        function startSectionTimer() {
+            console.log("Starting timer for section " + currentSection);
+            sectionTimerInterval = setInterval(() => {
+                sectionTimeSpent[currentSection]++;
+                console.log(`Time in section ${currentSection}: ${sectionTimeSpent[currentSection]} seconds`);
+            }, 1000);
         }
-    } else if (currentSection < sections.length - 1) {
-        stopSectionTimer();
-        currentSection++;
-        showSection(currentSection);
-    }
-});
 
-goBackButton.addEventListener('click', function () {
-    currentSection = 6;
-    showSection(currentSection);
-});
+        function stopSectionTimer() {
+            if (sectionTimerInterval) {
+                console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
+                sendTimeData(studentId, 'Matter', currentSection, 'Solid', sectionTimeSpent[currentSection]);
+                clearInterval(sectionTimerInterval);
+                sectionTimerInterval = null;
+            }
+        }
 
-proceedToQuizButton.addEventListener('click', function () {
-    currentSection = 8;
-    showSection(currentSection);
-});
+        function resetSectionTimer() {
+            sectionTimeSpent[currentSection] = 0;
+        }
 
-leftButton.addEventListener('click', function () {
-    if (currentSection === 0) {
-        window.location.href = 'matterLesson.php?show=matterTopic';
-    } else if (currentSection > 0) {
-        stopSectionTimer();
-        currentSection--;
-        showSection(currentSection);
-    }
-});
+        function hideAllSections() {
+            sections.forEach(section => {
+                section.classList.remove('matter-content-active');
+                section.classList.add('matter-content');
+            });
+        }
 
-hideAllSections();
-showSection(0);
+        function stopVideo() {
+            solidVideo.pause();
+            solidVideo.currentTime = 0;
+        }
 
-// Quiz Data
-const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
 
-let currentQuestionIndex = 0;
-let correctAnswersCount = 0;
-const totalQuestions = quizData.length;
-let selectedAnswer = null;
-const choices = document.querySelectorAll('.choice-btn');
-const nextButton = document.getElementById('nextButton');
-const extraInfoBox = document.getElementById('extraInfoBox');
-const questionNumber = document.getElementById('questionNumber');
-const questionText = document.getElementById('questionText');
-const quizImage = document.getElementById('quizImage');
-const extraInfoText = document.getElementById('extraInfoText');
-    const quizResult = document.getElementById('quizResult');
-    const totalQuestionsDisplay = document.getElementById('totalQuestions');
-    const correctAnswersDisplay = document.getElementById('correctAnswers');
-    const wrongAnswersDisplay = document.getElementById('wrongAnswers');
-    const percentageDisplay = document.getElementById('percentage');
-    const totalScoreDisplay = document.getElementById('totalScore');
+        function playAudio() {
+            audio.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
 
-    // Function to load a question
-    function loadQuestion() {
-        const currentQuestion = quizData[currentQuestionIndex];
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0;
+        }
 
-        questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-        questionText.textContent = currentQuestion.question;
-        quizImage.src = currentQuestion.quiz_image;
+        function playAudio2() {
+            audio2.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
 
-        choices.forEach((button, index) => {
-            button.textContent = currentQuestion.choices[index];
-            button.classList.remove('correct', 'wrong');
-            button.style.display = 'inline-block';
-            button.style.color = 'black';
-        });
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0;
+        }
 
-        extraInfoBox.style.display = 'none';
-        nextButton.disabled = true;
-        selectedAnswer = null;
-    }
+        function playAudio3() {
+            audio3.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
 
-    choices.forEach(button => {
-        button.addEventListener('click', function() {
-            if (selectedAnswer) return;
+        function stopAudio4() {
+            audio4.pause();
+            audio4.currentTime = 0;
+        }
 
-            selectedAnswer = button.textContent;
-            const correctAnswer = quizData[currentQuestionIndex].correct_answer;
+        function playAudio4() {
+            audio4.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
 
-            choices.forEach(btn => {
-                if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
-                    btn.style.display = 'none';
-                } else {
-                    btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
-                    btn.style.color = 'white';
+        function showSection(index) {
+            hideAllSections();
+            sections[index].classList.remove('matter-content');
+            sections[index].classList.add('matter-content-active');
+            resetSectionTimer();
+            currentSection = index;
+            startSectionTimer();
+
+            // Play or stop audio and video based on the current section
+            if (sections[index] === matterStates) {
+                playAudio();
+            } else {
+                stopAudio();
+            }
+            if (sections[index] === matterSolid) {
+                playAudio2();
+            } else {
+                stopAudio2();
+            }
+            if (sections[index] === matterChar) {
+                playAudio3();
+            } else {
+                stopAudio3();
+            }
+            if (sections[index] === matterSolid2) {
+                playAudio4();
+            } else {
+                stopAudio4();
+            }
+            if (sections[index] === matterVideo) {
+                solidVideo.play();
+            } else {
+                stopVideo();
+            }
+
+            // Manage visibility of buttons based on the current section
+            if (index >= 0 && index <= 6) {
+                examplesButton.style.display = 'flex';
+                einsteinImage.style.display = 'block';
+                letsTryButton.style.display = 'none';
+                goBackButton.style.display = 'none';
+                proceedToQuizButton.style.display = 'none';
+                leftButton.style.display = 'flex';
+                rightButton.style.display = 'flex';
+            } else if (sections[index] === matterLetsTry) {
+                examplesButton.style.display = 'none';
+                einsteinImage.style.display = 'none';
+                letsTryButton.style.display = 'flex';
+                goBackButton.style.display = 'flex';
+                proceedToQuizButton.style.display = 'flex';
+                leftButton.style.display = 'none';
+                rightButton.style.display = 'none';
+            } else if (sections[index] === matterQuiz) {
+                examplesButton.style.display = 'flex';
+                einsteinImage.style.display = 'none';
+                letsTryButton.style.display = 'none';
+                goBackButton.style.display = 'none';
+                proceedToQuizButton.style.display = 'none';
+                leftButton.style.display = 'flex';
+                checkQuizTaken();
+                examplesButton.style.marginLeft = '100%';
+            } else if (sections[index] === matterCompleted) {
+                examplesButton.style.display = 'none';
+                einsteinImage.style.display = 'none';
+                letsTryButton.style.display = 'none';
+                goBackButton.style.display = 'none';
+                proceedToQuizButton.style.display = 'none';
+                leftButton.style.display = 'none';
+                rightButton.style.display = 'none';
+            }
+        }
+
+        rightButton.addEventListener('click', function () {
+            if (currentSection === 6) {
+                currentSection = 7;
+                stopSectionTimer();
+                showSection(currentSection);
+                if (currentSection === 7) {
+                    currentSection = 6;
+                    stopSectionTimer();
                 }
+            } else if (currentSection < sections.length + 1) {
+                stopSectionTimer();
+                currentSection++;
+                showSection(currentSection);
+            }
+        });
+
+        goBackButton.addEventListener('click', function () {
+            currentSection = 6;
+            showSection(currentSection);
+        });
+
+        proceedToQuizButton.addEventListener('click', function () {
+            currentSection = 8;
+            showSection(currentSection);
+        });
+
+        leftButton.addEventListener('click', function () {
+            if (currentSection === 0) {
+                window.location.href = 'matterLesson.php?show=matterTopic';
+            } else if (currentSection > 0) {
+                stopSectionTimer();
+                currentSection--;
+                showSection(currentSection);
+            }
+        });
+
+        hideAllSections();
+        showSection(0);
+
+        // Quiz Data
+        const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
+
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0;
+        const totalQuestions = quizData.length;
+        let selectedAnswer = null;
+        const choices = document.querySelectorAll('.choice-btn');
+        const nextButton = document.getElementById('nextButton');
+        const extraInfoBox = document.getElementById('extraInfoBox');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionText = document.getElementById('questionText');
+        const quizImage = document.getElementById('quizImage');
+        const extraInfoText = document.getElementById('extraInfoText');
+        const quizResult = document.getElementById('quizResult');
+        const totalQuestionsDisplay = document.getElementById('totalQuestions');
+        const correctAnswersDisplay = document.getElementById('correctAnswers');
+        const wrongAnswersDisplay = document.getElementById('wrongAnswers');
+        const percentageDisplay = document.getElementById('percentage');
+        const totalScoreDisplay = document.getElementById('totalScore');
+
+        // Function to load a question
+        function loadQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+            questionText.textContent = currentQuestion.question;
+            quizImage.src = currentQuestion.quiz_image;
+
+            choices.forEach((button, index) => {
+                button.textContent = currentQuestion.choices[index];
+                button.classList.remove('correct', 'wrong');
+                button.style.display = 'inline-block';
+                button.style.color = 'black';
             });
 
-            extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
-            extraInfoBox.style.display = 'block';
-            nextButton.disabled = false;
+            extraInfoBox.style.display = 'none';
+            nextButton.disabled = true;
+            selectedAnswer = null;
+        }
 
-            if (selectedAnswer === correctAnswer) {
-                correctAnswersCount++;
-            }
+        choices.forEach(button => {
+            button.addEventListener('click', function () {
+                if (selectedAnswer) return;
+
+                selectedAnswer = button.textContent;
+                const correctAnswer = quizData[currentQuestionIndex].correct_answer;
+
+                choices.forEach(btn => {
+                    if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
+                        btn.style.display = 'none';
+                    } else {
+                        btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                        btn.style.color = 'white';
+                    }
+                });
+
+                extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
+                extraInfoBox.style.display = 'block';
+                nextButton.disabled = false;
+
+                if (selectedAnswer === correctAnswer) {
+                    correctAnswersCount++;
+                }
+            });
         });
-    });
 
-    // Function to handle next question
-    nextButton.addEventListener('click', function () {
-        if (!selectedAnswer) {
-            alert('Please select an answer!');
-            return;
-        }
+        // Function to handle next question
+        nextButton.addEventListener('click', function () {
+            if (!selectedAnswer) {
+                alert('Please select an answer!');
+                return;
+            }
 
-        currentQuestionIndex++;
+            currentQuestionIndex++;
 
-        if (currentQuestionIndex >= quizData.length) {
-            showResults();
-            checkQuizTaken();
-        } else {
-            loadQuestion();
-        }
-    });
-
-    function showResults() {
-        const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-        quizContainer.style.display = 'none'; // Hide the quiz container
-
-        document.getElementById('displayTotalQuestions').textContent = totalQuestions;
-        document.getElementById('displayCorrectAnswers').textContent = correctAnswersCount;
-
-        quizResult.style.display = 'block';
-        totalQuestionsDisplay.textContent = totalQuestions;
-        correctAnswersDisplay.textContent = correctAnswersCount;
-        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-        totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
-
-        // Send the score to the server (optional)
-        sendScoreToServer(correctAnswersCount);
-    }
-
-    // Function to send score to server
-    function sendScoreToServer(score) {
-        const quizId = 1; 
-        const lesson = "Matter"; 
-
-        fetch('../save_quiz_score.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'error') {
-                alert(data.message); // Show alert if there's an error
+            if (currentQuestionIndex >= quizData.length) {
+                showResults();
+                checkQuizTaken();
             } else {
-                console.log('Score saved successfully:', data.message);
+                loadQuestion();
             }
-        })
-        .catch(error => {
-            console.error('Error saving score:', error);
-            alert('There was a problem saving your score. Please try again later.');
         });
-    }
 
-    function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
-        const data = {
-            student_id: studentId,
-            lesson: lessonName,
-            section_index: sectionIndex,
-            section_name: sectionName,
-            time_spent: timeSpent
-        };
+        function showResults() {
+            const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+            quizContainer.style.display = 'none'; // Hide the quiz container
 
-        fetch('../record_time.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.text())
-        .then(responseText => {
-            console.log('Raw response from server:', responseText);
-            try {
-                const responseData = JSON.parse(responseText);
-                console.log("Time data saved successfully", responseData);
-            } catch (error) {
-                console.error("Error parsing JSON response", error);
-            }
-        })
-        .catch((error) => {
-            console.error("Error saving time data", error);
-        });
-    }
+            document.getElementById('displayTotalQuestions').textContent = totalQuestions;
+            document.getElementById('displayCorrectAnswers').textContent = correctAnswersCount;
 
-    loadQuestion();
-});
+            quizResult.style.display = 'block';
+            totalQuestionsDisplay.textContent = totalQuestions;
+            correctAnswersDisplay.textContent = correctAnswersCount;
+            wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+            percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+            totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
+
+            // Send the score to the server (optional)
+            sendScoreToServer(correctAnswersCount);
+        }
+
+        // Function to send score to server
+        function sendScoreToServer(score) {
+            const quizId = 1;
+            const lesson = "Matter";
+
+            fetch('../save_quiz_score.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'error') {
+                        alert(data.message); // Show alert if there's an error
+                    } else {
+                        console.log('Score saved successfully:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error saving score:', error);
+                    alert('There was a problem saving your score. Please try again later.');
+                });
+        }
+
+        function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
+            const data = {
+                student_id: studentId,
+                lesson: lessonName,
+                section_index: sectionIndex,
+                section_name: sectionName,
+                time_spent: timeSpent
+            };
+
+            fetch('../record_time.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.text())
+                .then(responseText => {
+                    console.log('Raw response from server:', responseText);
+                    try {
+                        const responseData = JSON.parse(responseText);
+                        console.log("Time data saved successfully", responseData);
+                    } catch (error) {
+                        console.error("Error parsing JSON response", error);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error saving time data", error);
+                });
+        }
+
+        loadQuestion();
+    });
 </script>
