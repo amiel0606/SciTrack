@@ -4,6 +4,7 @@ require __DIR__ . '/admin/includes/dbCon.php';
 require __DIR__ . '/admin/includes/userFunctions.php';
 require __DIR__ . '/teacher/includes/userFunctions.php'; 
 require __DIR__ . '/student/includes/userFunctions.php'; 
+require __DIR__ . '/student/check_quiz_status.php'; 
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;

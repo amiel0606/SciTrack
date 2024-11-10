@@ -433,6 +433,32 @@ $conn->close();
         console.log("Student ID from PHP:", studentId);
 
 
+        function checkQuizTaken() {
+    fetch('../check_quiz_status.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            student_id: studentId,
+            quiz_id: 1,
+            lesson: 'Matter'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Server response:', data);
+        if (data.status === 'taken') {
+            rightButton.style.display = 'flex';
+        } else {
+            rightButton.style.display = 'none';
+        }
+    })
+    .catch(error => {
+        console.error('Error checking quiz status:', error);
+    });
+}
+
 
         function startSectionTimer() {
     console.log("Starting timer for section " + currentSection);
@@ -531,7 +557,6 @@ function resetSectionTimer() {
         } else {
             stopAudio3();
         }
-
         if (sections[index] === matterSolid2) {
             playAudio4(); 
         } else {
@@ -568,7 +593,7 @@ function resetSectionTimer() {
             goBackButton.style.display = 'none';
             proceedToQuizButton.style.display = 'none';
             leftButton.style.display = 'flex';
-            rightButton.style.display = 'flex';
+            checkQuizTaken();
 
             examplesButton.style.marginLeft = '100%';  
         } else if (sections[index] === matterCompleted) {
@@ -633,7 +658,6 @@ function resetSectionTimer() {
         let correctAnswersCount = 0;
         const totalQuestions = quizData.length;
         let selectedAnswer = null;
-
         const choices = document.querySelectorAll('.choice-btn');
         const nextButton = document.getElementById('nextButton');
         const extraInfoBox = document.getElementById('extraInfoBox');
@@ -668,34 +692,33 @@ function resetSectionTimer() {
             selectedAnswer = null;
         }
 
-        // Adding click event listeners to choices
+
         choices.forEach(button => {
             button.addEventListener('click', function() {
-                if (selectedAnswer) return; // Prevent selecting again
+                if (selectedAnswer) return; 
 
-                selectedAnswer = button.textContent; // Set the selected answer
+                selectedAnswer = button.textContent; 
                 const correctAnswer = quizData[currentQuestionIndex].correct_answer;
 
-                // Check each choice
                 choices.forEach(btn => {
-                    // Hide incorrect answers if they are not selected
+                    
                     if (btn.textContent !== correctAnswer && btn.textContent !== selectedAnswer) {
-                        btn.style.display = 'none'; // Hides the button
+                        btn.style.display = 'none';
                     } else {
-                        // Add correct or wrong class based on the selected answer
+                        
                         btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
                         btn.style.color = 'white';
                     }
                 });
 
-                // Display additional information about the question
+                
                 extraInfoText.textContent = quizData[currentQuestionIndex].additional_info;
                 extraInfoBox.style.display = 'block';
-                nextButton.disabled = false; // Enable the next button
+                nextButton.disabled = false; 
 
-                // Check if the answer is correct
+                
                 if (selectedAnswer === correctAnswer) {
-                    correctAnswersCount++; // Increment the correct answers count
+                    correctAnswersCount++; 
                 }
             });
         });
@@ -707,15 +730,14 @@ function resetSectionTimer() {
                 return;
             }
 
-            // Increment the current question index
             currentQuestionIndex++;
 
-            // Check if the current question index is the last one
             if (currentQuestionIndex >= quizData.length) {
-                // Call the showResults function to display the results
+
                 showResults();
+                checkQuizTaken();
             } else {
-                // Load the next question
+                
                 loadQuestion();
             }
         });
@@ -757,7 +779,6 @@ function sendScoreToServer(score) {
             alert(data.message); // Show alert if there's an error
         } else {
             console.log('Score saved successfully:', data.message);
-            // You can redirect or provide feedback to the user here
         }
     })
     .catch(error => {
@@ -768,14 +789,13 @@ function sendScoreToServer(score) {
 
 function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpent) {
     const data = {
-        student_id: studentId,  // from PHP
+        student_id: studentId,  
         lesson: lessonName,
         section_index: sectionIndex,
         section_name: sectionName,
         time_spent: timeSpent
     };
 
-    // Send the data to the server using fetch (AJAX)
     fetch('../record_time.php', {
         method: 'POST',
         headers: {
@@ -783,14 +803,14 @@ function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpen
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.text())  // Use .text() to log the raw response
+    .then(response => response.text()) 
     .then(responseText => {
-        console.log('Raw response from server:', responseText);  // Log the raw response to the console
+        console.log('Raw response from server:', responseText);  
         try {
-            const responseData = JSON.parse(responseText);  // Try to parse the response as JSON
+            const responseData = JSON.parse(responseText);  
             console.log("Time data saved successfully", responseData);
         } catch (error) {
-            console.error("Error parsing JSON response", error);  // Handle JSON parsing error
+            console.error("Error parsing JSON response", error);  
         }
     })
     .catch((error) => {
@@ -798,7 +818,6 @@ function sendTimeData(studentId, lessonName, sectionIndex, sectionName, timeSpen
     });
 }
 
-    // Load the first question
     loadQuestion();
     
 </script>

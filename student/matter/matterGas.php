@@ -428,6 +428,32 @@ $conn->close();
         const studentId = <?php echo json_encode($id); ?>;
         console.log("Student ID from PHP:", studentId);
 
+        function checkQuizTaken() {
+    fetch('../check_quiz_status.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            student_id: studentId,
+            quiz_id: 3,
+            lesson: 'Matter'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Server response:', data);
+        if (data.status === 'taken') {
+            rightButton.style.display = 'flex';
+        } else {
+            rightButton.style.display = 'none';
+        }
+    })
+    .catch(error => {
+        console.error('Error checking quiz status:', error);
+    });
+}
+
         function startSectionTimer() {
     console.log("Starting timer for section " + currentSection);
     sectionTimerInterval = setInterval(() => {
@@ -594,7 +620,7 @@ function resetSectionTimer() {
                 goBackButton.style.display = 'none';
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'flex';
-                rightButton.style.display = 'flex';
+                checkQuizTaken();
 
                 examplesButton.style.marginLeft = '100%';  
             } else if (sections[index] === matterCompleted) {
@@ -732,6 +758,7 @@ function resetSectionTimer() {
             if (currentQuestionIndex >= quizData.length) {
                 // Call the showResults function to display the results
                 showResults();
+                checkQuizTaken();
             } else {
                 // Load the next question
                 loadQuestion();
