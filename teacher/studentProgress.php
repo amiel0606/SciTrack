@@ -35,8 +35,6 @@ th {
     box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4) !important;
 }
 
-
-
 </style>
 <div class="column mt-1 ml-3">
     <p class="has-text-primary is-size-2 mt-6 ml-4 mb-6 has-text-weight-semibold">Students Progress</p>
@@ -48,7 +46,7 @@ th {
                     <thead class="has-text-centered">
                         <tr>
                             <th>Name</th>
-                            <th>Section</th>
+                            <th>Username</th>
                             <th>Overall Progress</th>
                         </tr>
                         </thead>
@@ -58,90 +56,9 @@ th {
                             <td>Papaya</td>
                             <td>69%</td>
                         </tr>
-                        <tr>
-                            <td>Mark Nelson Garcia</td>
-                            <td>Papaya</td>
-                            <td>71%</td>
-                        </tr>
-                        <tr>
-                            <td>Joseph Lorenzo Ferrer</td>
-                            <td>Papaya</td>
-                            <td>98%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Papaya</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Apple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
-                            <td>92%</td>
-                        </tr>
-                        <tr>
-                            <td>Chris Angelo Zulueta</td>
-                            <td>Pineapple</td>
-                            <td>92%</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 </div>
