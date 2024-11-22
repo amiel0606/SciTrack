@@ -9,7 +9,8 @@
     <script src="https://kit.fontawesome.com/bfc8b900f1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
@@ -114,6 +115,9 @@
                 <li><a href="./teacherLessons.php" class="menu-item has-background-primary mt-6"><i
                             class="fa-solid fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span
                             class="text has-text-white is-size-4">Lessons</span></a></li>
+                <li><a href="./studentProgress.php" class="menu-item has-background-primary mt-6"><i
+                            class="fa-solid fa-bars-progress fa-2x icon is-large mr-4 has-text-white"></i><span
+                            class="text has-text-white is-size-4">Lessons Progress</span></a></li>
                 <!-- <li><a href="#" class="menu-item has-background-primary mt-6"><i class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span class="text has-text-white is-size-4">Settings</span></a></li> -->
                 <li><a href="../admin/includes/logout.php" class="menu-item has-background-primary mt-6"><i
                             class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span
