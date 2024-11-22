@@ -129,7 +129,7 @@ include_once('./includes/sidebar.php');
                         <button class="button is-primary has-text-white" type="submit">Confirm</button>
                     </div>
                     <div class="column has-background-white">
-                        <button class="button">Cancel</button>
+                        <button type="button" class="modal-off button">Cancel</button>
                     </div>
                 </div>
             </form>

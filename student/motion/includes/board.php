@@ -80,11 +80,11 @@
                     <span class="icon is-medium mr-2"><i class="fas fa-trophy fa-lg"></i></span> 
                     Leaderboards
                 </a>
-                <a href="../studentWelcome.php" class="navbar-item has-text-white">
+                <a href="../studentWelcome.php?show=Lessons" class="navbar-item has-text-white">
                     <span class="icon is-medium mr-2"><i class="fas fa-user fa-lg"></i></span> 
                     Lessons
                 </a>
-                <a href="#.php" class="navbar-item has-text-white">
+                <a href="http://localhost/SciTrack/admin/includes/logout.php" class="navbar-item has-text-white">
                     <span class="icon is-medium mr-2"><i class="fas fa-sign-out-alt fa-lg"></i></span> 
                     Logout
                 </a>

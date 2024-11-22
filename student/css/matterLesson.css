@@ -1,0 +1,124 @@
+
+.matter-content {
+    display: none;
+}
+.matter-content-active {
+    display: block;
+}
+#matterTopic{
+    position: absolute; 
+    top: 3%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+    width: 90%; 
+    text-align: center;
+}
+#einstein-image{
+    width: 100%;
+    max-width: 31%;
+    margin-right: -25.7%;
+    margin-left: -10%;
+    margin-bottom: -6.8%;
+}
+.button-text {
+    font-size: 0.75em;
+}
+.lesson-image{
+    width: 140%;
+    max-width: 450px; 
+    margin-right: 12rem;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    z-index: 5;
+}
+.lesson-image:hover {
+    transform: scale(1.05);
+}
+.button-transparent {
+    background-color: transparent; 
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 0; 
+}
+.lessons-button-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25%;
+    z-index: 2;
+}
+.topic-container {
+    width: 120%;
+    max-width: 140%; 
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    text-align: center;
+}
+.topic-container:hover {
+    transform: scale(1.05);
+}
+.topic-container:hover figure img {
+    filter: brightness(1.2);
+}
+.navbar{
+    background-color: #4A90E2 !important;
+}
+.navbar-item:hover{
+    background-color: #266bbb;
+    color: white;
+}
+
+@font-face {
+    font-family: 'verdana';
+    src: url('../../font/verdana.ttf') format('opentype');
+}
+@font-face {
+    font-family: 'Haniley';
+    src: url('../../font/Haniley.otf') format('opentype');
+}
+.main-font {
+    font-family: 'verdana';
+}
+.secondary-font{
+    font-family: 'Haniley';
+}
+#headers{
+    font-size: 4rem;
+    margin-bottom: 7%;
+}
+#headers1{
+    font-size: 4rem;
+    margin-top: -13%;
+    margin-bottom: 10%;
+}
+#headers2{
+    font-size: 4rem;
+}
+#description1{
+    font-size: 2rem;
+}
+.description2{
+    font-size: 2.2rem;
+}
+.topic-container #sol{
+    margin-left: -55%;
+    margin-top: 10%;
+    width: 110%;
+    max-width: 130%;
+}
+.topic-container #liquid{
+    margin-left: -10%;
+    margin-top: 10%;
+    width: 110%;
+    max-width: 130%; 
+}
+.topic-container #gas{
+    margin-left: 25%;
+    margin-top: 10%;
+    width: 110%;
+    max-width: 130%; 
+}

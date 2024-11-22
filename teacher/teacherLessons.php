@@ -255,23 +255,36 @@ include_once './includes/sidebar.php';
             'motion': 'motion',
             'earth': 'earth'
         };
+        function getPhilippinesDate(date) {
+            const options = { timeZone: 'Asia/Manila', year: 'numeric', month: '2-digit', day: '2-digit' };
+            const philippinesDate = new Date(date.toLocaleString('en-PH', options));
+            return philippinesDate;
+        }
+        function offsetDateByOneDay(date) {
+            const newDate = new Date(date);
+            newDate.setDate(date.getDate() + 1);
+            return newDate;
+        }
         var conn = new WebSocket('ws://localhost:8080/ws/');
         conn.onopen = function () {
             conn.send(JSON.stringify({ type: 'loadLessons', section: "Papaya" }));
         };
         conn.onmessage = function (e) {
             var data = JSON.parse(e.data);
-            // console.log(data);
             const today = new Date();
-            const formattedToday = today.toISOString().slice(0, 10);
-            console.log(formattedToday);
+            let philippinesToday = getPhilippinesDate(today);
+            philippinesToday = offsetDateByOneDay(philippinesToday);
+            // console.log('Formatted Today in Philippines (with +1 offset):', philippinesToday.toISOString().slice(0, 10));
             Object.keys(idsToProperties).forEach(id => {
                 const element = document.querySelector(`.${id}`);
                 const buttonElement = document.querySelector(`.btn-${id}`);
                 if (element) {
                     const property = idsToProperties[id];
                     const databaseDate = new Date(data[property]);
-                    if (databaseDate <= today) {
+                    let philippinesDatabaseDate = getPhilippinesDate(databaseDate);
+                    philippinesDatabaseDate = offsetDateByOneDay(philippinesDatabaseDate);
+                    // console.log('Formatted Database Date in Philippines (with +1 offset):', philippinesDatabaseDate.toISOString().slice(0, 10));
+                    if (philippinesDatabaseDate <= philippinesToday) {
                         element.classList.add('no-way');
                     } else {
                         element.classList.remove('no-way');
@@ -282,7 +295,6 @@ include_once './includes/sidebar.php';
                         buttonElement.classList.add('has-background-dark');
                         buttonElement.classList.add('has-text-white');
                     }
-                    // console.log(data[property]);
                 } else {
                     console.error(`Element with class "${id}" not found.`);
                 }
@@ -294,7 +306,6 @@ include_once './includes/sidebar.php';
                 var button = event.target.closest('.lesson-btn');
                 var lesson_value = button.getAttribute('data-lesson');
                 $("#lesson-name").val(lesson_value);
-
             } else if (event.target.closest('#confirmBtn')) {
                 var lesson = $("#lesson-name").val();
                 var date = $("#datepicker").val();
@@ -308,25 +319,4 @@ include_once './includes/sidebar.php';
             }
         });
     });
-    // var data = JSON.parse(e.data);
-    // console.log(data);
-    // const today = new Date();
-    // const offset = today.getTimezoneOffset();
-    // const philippinesOffset = 360;
-    // const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
-    // const formattedToday = philippinesTime.toISOString().slice(0, 10);
-    // console.log(formattedToday);
-    // Object.keys(idsToProperties).forEach(id => {
-    //     const element = document.getElementById(id);
-    //     if (element) {
-    //         const property = idsToProperties[id];
-    //         if (data[property] !== formattedToday) {
-    //             element.classList.remove('no-way');
-    //         } else {
-    //             element.classList.add('no-way');
-    //         }
-    //     } else {
-    //         console.error(`Element with id "${id}" not found.`);
-    //     }
-    // });
 </script>

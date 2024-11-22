@@ -29,319 +29,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<style>
-    .matter-content {
-        display: none;
-    }
-    .matter-content-active {
-        display: block;
-    }
-    #einstein-image{
-        width: 100%;
-        max-width: 31%;
-        margin-right: -25.7%;
-        margin-left: -10%;
-        margin-bottom: -6.8%;
-    }
-    .einstein {
-        width: 100%;
-        height: auto;
-        transform: scaleX(-1);
-    }
-    .c-image img{
-        width: 130%;
-        max-width: 130%;
-        height: auto;
-        margin-left: -15%;
-        transform: scaleX(-1);
-    }
-    .letstry img{
-        width: 130%;
-        max-width: 130%;
-        height: auto;
-        margin-left: 5%;
-    }
-    #leftButton, #rightButton {
-        margin-bottom: -1%;
-    }
-    #letsTryButton {
-        right: -10rem;
-        z-index: 10;
-    }
-    .button-text {
-        font-size: 0.75em;
-    }
-
-    #matterVideo video {
-        z-index: 10; 
-        position: relative; 
-    }
-    .matter-container {
-        width: 100%;
-        max-width: 80%; 
-        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-        text-align: center;
-    }
-    .image-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-top: 2rem;
-    }
-    .image-container .image-item {
-        text-align: center;
-        margin: 0 1rem;
-    }
-    .image-container img {
-        width: 100%;
-        max-width: 350px;
-    }
-    .sExample{
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        margin-top: 2rem;
-    }
-    .sExample .image-item{
-        text-align: center;
-        margin: 0;
-        z-index: 10;
-    }
-    .sExample .image-item:first-child{
-        margin-right: 5rem;
-    }
-    .sExample .image-item:last-child{
-        margin-left: 5rem;
-    }
-    .sExample img {
-        width: 110%;
-        max-width: 1000px;
-        margin-top: 2rem;
-    }
-    #sChar img {
-        width: 100%;
-        min-width: 100%;
-        max-width: 400px;
-    }
-    .solid-image {
-        width: 100%;
-        max-width: 90%;
-        margin-left: 4rem;
-    }
-    .solid-image2 {
-        width: 100%;
-        max-width: 90%;
-        margin-right: 9rem;
-        margin-left: 9rem;
-        margin-top: 1rem;
-    }
-    #solid-text {
-        margin-left: 1rem;
-        margin-top: 3%;
-    }
-    #solid-text p{
-        line-height: 1.5;
-    }
-    .stateImage{
-        width: 100%;
-        max-width: 400px;
-        margin-top: -6%;
-    }
-    #states {
-        margin-bottom: -4%;
-    }
-    .placeholder {
-        width: 100%;
-        max-width: 90%;
-        height: 100%;
-        max-height: 70%;
-        background-color: #D9D9D9;
-    } 
-    #letsTryButton {
-        z-index: 10;
-    }
-    .iframe-container {
-        position: relative;
-        z-index: 2; 
-        width: 80%; 
-        margin: 0 auto;
-    }
-
-    .iframe-container iframe {
-        width: 100%;
-        margin-top: 250px; 
-        border: none;
-        z-index: 2;
-    }
-
-    .image-container {
-        position: relative;
-    }
-
-    .image-container img {
-        width: 100%;
-        height: auto;
-        z-index: 1;
-    }
-    .medal-image img{
-        max-width: 40%;
-        height: auto;
-    }
-    .back-button {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #fff;
-    }
-    .back-button .icon i {
-        color: #000;
-    }
-    .back-button:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    
-    #header{
-        font-size: 4rem;
-    }
-    #header1{
-        font-size: 4rem;
-        margin-top: -2%;
-    }
-    #header2{
-        font-size: 4rem;
-    }
-    #header3{
-        font-size: 4rem;
-        margin-top: -.4%;
-    }
-    #header4{
-        font-size: 4rem;
-        margin-top: -4%;
-    }
-    #header5{
-        font-size: 3rem;
-        margin-bottom: 2.5rem;
-    }
-    #solidGif{
-        margin-right: 7%;
-    }
-    #sChar{
-        margin-top: -1%;
-    }
-    #char1{
-        margin-left: -5%;
-        max-width: 350px;
-    }
-    #char2{
-        margin-left: 5%;
-        max-width: 350px;
-    }
-    #char3{
-        max-width: 350px;
-    }
-    #compButton{
-        margin-left: 15%;
-    }
-    .p-spacing {
-        margin-right: -1.5em; 
-    }
-    #soy{
-        margin-bottom: 25%;
-    }
-    #soy img{
-        width: 110%;
-        max-width: 1000px;
-        margin-top: 3rem;
-    }
-
-    /* for quiz layout */
-    .choice-btn {
-        background-color: #d3d3d3;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-
-    /* Left-to-right fill effect */
-    .choice-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 0;
-        background-color: transparent;
-        z-index: -1;
-        transition: width 0.6s ease, background-color 0.6s ease;
-    }
-
-    /* Correct answer - green fill */
-    .choice-btn.correct::before {
-        background-color: #48c774;
-        width: 100%;
-    }
-
-    /* Wrong answer - red fill */
-    .choice-btn.wrong::before {
-        background-color: #f14668; 
-        width: 100%;
-    }
-
-    .choice-btn {
-        z-index: 1;
-    }
-
-    .extra-info-box {
-        width: 90%; 
-        max-width: 520px; 
-        padding: 10px;
-        margin: 1rem auto; 
-        z-index: 9999; 
-        background-color: white;
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-        display: none;
-    }
-    #quizImage{
-        max-width: 70%; 
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .placeholderImage {
-        background-color: #d3d3d3; 
-        width: 90%; 
-        height: auto;
-        max-height: 350px;
-        border-radius: 5px;
-        margin-top: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #quizResult{
-        display: none; 
-        width: 100%; 
-        max-width: 90%; 
-        padding: 30px; 
-        z-index: 2; 
-        margin-top: 30px;
-    }
-
-    @font-face {
-        font-family: 'verdana';
-        src: url('../../font/verdana.ttf') format('opentype');
-    }
-    @font-face {
-        font-family: 'Haniley';
-        src: url('../../font/Haniley.otf') format('opentype');
-    }
-    .main-font {
-        font-family: 'verdana';
-    }
-    .secondary-font{
-        font-family: 'Haniley';
-    }
-</style>
+<link rel="stylesheet" href="../css/liquid.css">
 
 <section class="hero is-fullheight">
     <div class="hero-body">
@@ -617,32 +305,32 @@ $conn->close();
 
                             <!-- Quiz Result -->
                             <div class="box has-text-centered p-6" id="quizResult">
-                                <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
-                                <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
-                                    <tbody>
-                                        <tr>
-                                            <td><strong>Total Questions</strong></td>
-                                            <td id="totalQuestions">0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Correct</strong></td>
-                                            <td id="correctAnswers">0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Wrong</strong></td>
-                                            <td id="wrongAnswers">0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Percentage</strong></td>
-                                            <td id="percentage">0%</</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Your Total Score</strong></td>
-                                            <td id="totalScore">0</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <h2 class="subtitle secondary-font is-1">Quiz Result</h2>
+                                <p class="subtitle secondary-font is-2">Good Job!</p>
+                                
+                                <div class="columns is-centered is-vcentered mt-5">
+                                    
+                                    <div class="column is-3 has-text-centered">
+                                        <div class="is-flex is-align-items-center is-justify-content-center">
+                                            <p class="has-text-weight-bold" style="font-size: 6rem; color: #FFA500; margin-right: 4rem;" id="displayCorrectAnswers">0</p>
+                                            <p style="font-size: 24px;">Out Of</p>
+                                            <p class="has-text-weight-bold" style="font-size: 6rem; color: #007BFF; margin-left: 4rem;" id="displayTotalQuestions">0</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="columns is-centered mt-5">
+                                    <div class="column is-4 has-text-left">
+                                        <p style="font-size: 24px; margin-left: 60px;" id="displayCorrectAnswers">Total Questions: <span class="has-text-weight-bold" id="totalQuestions">0</span></p>
+                                        <p style="font-size: 24px; margin-left: 60px;" id="displayCorrectAnswers">Percentage: <span class="has-text-weight-bold" id="percentage">0%</span></p>
+                                    </div>
+                                    <div class="column is-4 has-text-left">
+                                        <p style="font-size: 24px; margin-left: 60px;" ><span class="has-text-weight-bold has-text-success">Correct Answers:</span> <span class="has-text-weight-bold has-text-success" id="correctAnswers">0</span></p>
+                                        <p style="font-size: 24px; margin-left: 60px;" ><span class="has-text-weight-bold has-text-danger">Wrong Answers:</span> <span class="has-text-weight-bold has-text-danger" id="wrongAnswers">0</span></p>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -685,7 +373,7 @@ $conn->close();
                                         </p>
                                     </div>
                                     <figure class="image is-flex is-justify-content-center medal-image mt-5 mb-4">
-                                        <img src="../../image/medal1.png" alt="medal1">
+                                        <img src="../../image/med1.png" alt="medal1">
                                     </figure>
                                 </div>
                             </div>
@@ -760,16 +448,87 @@ $conn->close();
     .then(response => response.json())
     .then(data => {
         console.log('Server response:', data);
-        if (data.status === 'taken') {
-            rightButton.style.display = 'flex';
-        } else {
-            rightButton.style.display = 'none';
-        }
+
+
+        rightButton.onclick = (event) => {
+            if (data.status !== 'taken') {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+
+                showSection(8); 
+            } else {
+                if (currentSection < sections.length - 1) {
+                    showSection(currentSection + 1);
+                }
+            }
+        };
     })
     .catch(error => {
         console.error('Error checking quiz status:', error);
     });
 }
+
+function checkSectionComplete() {
+    // Check if the user is in the 'matterCompleted' section
+    if (currentSection === sections.length - 1) {  // 'matterCompleted' is the last section
+        // First, check if the quiz has been taken
+        checkQuizTaken();  // Check quiz status
+
+        // Only add the achievement if the quiz has been taken
+        fetch('../check_quiz_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                student_id: studentId,
+                quiz_id: 2,
+                lesson: 'Matter'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'taken') {
+
+                const achievementData = {
+                    student_id: studentId,
+                    achievement_name: 'liquidComplete',  
+                    image_path: '../image/med1.png'  
+                };
+
+
+                fetch('../add_achievement.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(achievementData)
+                })
+                .then(response => response.json())
+                .then(achievementResponse => {
+                    console.log('Achievement added:', achievementResponse.message);
+                    console.log(achievementData);  
+                })
+                .catch(error => {
+                    console.error('Error adding achievement:', error);
+                });
+            } else {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+                showSection(8); // Show a section to encourage quiz completion
+            }
+        })
+        .catch(error => {
+            console.error('Error checking quiz status:', error);
+        });
+    }
+
+    // Logic for showing the next section (if needed)
+    rightButton.onclick = (event) => {
+        if (currentSection < sections.length - 1) {
+            showSection(currentSection + 1);
+        }
+    };
+}
+
 
         function startSectionTimer() {
     console.log("Starting timer for section " + currentSection);
@@ -935,6 +694,7 @@ function resetSectionTimer() {
                 goBackButton.style.display = 'none';
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'flex';
+                rightButton.style.display = 'flex';
                 checkQuizTaken();
 
                 examplesButton.style.marginLeft = '100%';  
@@ -946,16 +706,22 @@ function resetSectionTimer() {
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none';
+                checkSectionComplete();
             }
         }
 
         rightButton.addEventListener('click', function () {
             if (currentSection === 6) {
                 currentSection = 7;
+                stopSectionTimer();
                 showSection(currentSection);
-            } else if (currentSection < sections.length - 1) {
-                stopSectionTimer();      
-                currentSection++; 
+                if (currentSection === 7) {
+                    currentSection = 6;
+                    stopSectionTimer();
+                }
+            } else if (currentSection < sections.length + 1) {
+                stopSectionTimer();
+                currentSection++;
                 showSection(currentSection);
             }
         });
@@ -1005,7 +771,6 @@ function resetSectionTimer() {
         const correctAnswersDisplay = document.getElementById('correctAnswers');
         const wrongAnswersDisplay = document.getElementById('wrongAnswers');
         const percentageDisplay = document.getElementById('percentage');
-        const totalScoreDisplay = document.getElementById('totalScore');
 
         // Function to load a question
         function loadQuestion() {
@@ -1073,7 +838,6 @@ function resetSectionTimer() {
             if (currentQuestionIndex >= quizData.length) {
                 // Call the showResults function to display the results
                 showResults();
-                checkQuizTaken();
             } else {
                 // Load the next question
                 loadQuestion();
@@ -1084,13 +848,14 @@ function resetSectionTimer() {
             const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
             quizContainer.style.display = 'none'; // Hide the quiz container
 
+            document.getElementById('displayTotalQuestions').textContent = totalQuestions;
+            document.getElementById('displayCorrectAnswers').textContent = correctAnswersCount;
+
             quizResult.style.display = 'block';
             totalQuestionsDisplay.textContent = totalQuestions;
             correctAnswersDisplay.textContent = correctAnswersCount;
             wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
             percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-            totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
-
             // Send the score to the server (optional)
             sendScoreToServer(correctAnswersCount);
         }

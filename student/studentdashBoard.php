@@ -12,6 +12,25 @@ $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Fetch students with achievements and their count
+$query = "
+    SELECT s.id, s.name, COUNT(a.id) AS achievement_count
+    FROM tbl_students s
+    JOIN tbl_achievements a ON s.id = a.student_id
+    GROUP BY s.id, s.name
+    ORDER BY achievement_count DESC
+";
+
+// Execute query and fetch data
+$leadResult = $conn->query($query);
+
+$students = [];
+if ($leadResult) {
+    while ($row = $leadResult->fetch_assoc()) {
+        $students[] = $row;  // Add each student with their achievements count to the array
+    }
+}
+
 while ($row = $result->fetch_assoc()) {
     $scores[] = $row; 
 }
@@ -31,157 +50,8 @@ $quizMapping = [
 $stmt->close();
 $conn->close();
 ?>
-<style>
-    .student-content {
-        display: none;
-    }
-    .student-content-active {
-        display: block;
-    }
-    .hero-body {
-        position: relative; 
-    }
-    .navbar {
-        background-color: #4A90E2 !important;
-    }
-    .navbar-item:hover {
-        background-color: #266bbb;
-        color: white;
-    }
-    .left-align {
-        text-align: left;
-    }
-    .first-box {
-        width: 90%; 
-    }
-    .second-box {
-        width: 105%; 
-        margin-left: -18%; 
-    }
-    .third-box{
-        width: 90%; 
-    }
-    .fourth-box{
-        width: 105%; 
-        margin-left: -18%;
-    }
-    .columns {
-        margin-left: -18%; 
-    }
-    .third-box-container{
-        margin-top: -3%; 
-    }
-    .small-box {
-    background-color: #D2CACA; 
-    padding: 20px; 
-    border-radius: 5px; 
-}
-.small-box2 {
-    background-color: #D2CACA; 
-    padding: 10px; 
-    margin-top: 20px;
-    border-radius: 5px; 
-}
-.small-box3 {
-    background-color: #D2CACA   ; 
-    padding: 20px; 
-    border-radius: 5px; 
-}
-.flex-container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
 
-.flex-container2 {
-    display: flex; 
-    align-items: flex-start; 
-}
-.text-container {
-    margin-left: 10px; 
-}
-
-.flex-container3 {
-    margin-top: -15px;
-    display: flex;
-    flex-direction: column; 
-}
-
-
-.lessonImage {
-    max-width: 15%;
-    height: auto;
-}
-.scrollable-container {
-    max-height: 540px; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-}
-
-.scrollable-container2 {
-    max-height: 500px; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-}
-
-.scrollable-container3 {
-    max-height: 90px; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-}
-
-.flex-container3 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    justify-content: space-between; 
-}
-
-.lesson-item {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 5px;
-    
-}
-
-.progress-container1 {
-    width: 400px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    margin-left: 280px;
-}
-.progress-container2 {
-    width: 400px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    margin-left: 250px;
-}
-.progress-container3 {
-    width: 400px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    margin-left: 75px;
-}
-.progress-container4 {
-    width: 400px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    margin-left: 20px;
-}
-
-.progress-bar {
-    height: 35px;
-    background-color: #76c7c0;
-    text-align: center;
-    color: white;
-    line-height: 20px;
-    border-radius: 5px;
-}
-
-
-</style>
+<link rel="stylesheet" href="./css/dashboard.css">
 
 <section class="hero is-fullheight">
     <div class="hero-body">
@@ -201,17 +71,21 @@ $conn->close();
                         <div class="small-box">
                 <p class="has-text-dark">BOARD LEADERS</p>
                 <div class="scrollable-container3">
-                <p class="has-text-dark">#1</p>
-                <p class="has-text-dark">#2</p>
-                <p class="has-text-dark">#3</p>
-                <p class="has-text-dark">#4</p>
-                <p class="has-text-dark">#5</p>
-                <p class="has-text-dark">#6</p>
-                <p class="has-text-dark">#7</p>
-                <p class="has-text-dark">#8</p>
-                <p class="has-text-dark">#9</p>
-                <p class="has-text-dark">#10</p>
-</div>
+                                <?php
+                                // Displaying top 10 students based on achievement count
+                                $rank = 1;  // Start ranking from 1
+                                foreach ($students as $student) {
+                                    $name = $student['name'];
+                                    $achievement_count = $student['achievement_count'];
+
+                                    // Display top 10 leaderboard (you can adjust this number if necessary)
+                                    if ($rank <= 10) {
+                                        echo "<p class='has-text-dark'>#$rank $name - Medals: $achievement_count</p>";
+                                    }
+                                    $rank++;
+                                }
+                                ?>
+                            </div>
             </div>
                     </div>
                 </div>

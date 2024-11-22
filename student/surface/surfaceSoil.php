@@ -28,310 +28,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<style>
-    .surface-content {
-        display: none;
-    }
-    .surface-content-active {
-        display: block;
-    }
-    #einstein-image{
-        width: 100%;
-        max-width: 31%;
-        margin-right: -25.7%;
-        margin-left: -10%;
-        margin-bottom: -6.8%;
-    }
-    .es-image{
-        width: 50%;
-        max-width: 80%;
-        margin-top: -5%; 
-    }
-    .einstein {
-        width: 100%;
-        height: auto;
-        transform: scaleX(-1);
-    }
-    .c-image img{
-        width: 130%;
-        max-width: 130%;
-        height: auto;
-        margin-left: -15%;
-        transform: scaleX(-1);
-    }
-    .letstry img{
-        width: 130%;
-        max-width: 130%;
-        height: auto;
-        margin-left: 5%;
-    }
-    #letsTryButton {
-        right: -10rem;
-        z-index: 10;
-    }
-    .image-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-top: 2rem;
-    }
-    .image-container .image-item {
-        text-align: center;
-        margin: 0 1rem;
-    }
-    .image-container img {
-        width: 100%;
-        max-width: 350px;
-    }
-    .eco-image {
-        width: 130%;
-        max-width: 130%;
-        margin-left: 5rem;
-        margin-top: 2%;
-    }
-    #eco-text {
-        margin-left: 1rem;
-        margin-top: 4%;
-    }
-    .placeholder {
-        width: 100%;
-        max-width: 90%;
-        height: 100%;
-        max-height: 70%;
-        background-color: #D9D9D9;
-    } 
-    .medal-image img{
-        max-width: 40%;
-        height: auto;
-    }
-    .back-button {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #fff;
-    }
-    .back-button .icon i {
-        color: #000;
-    }
-    .back-button:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-    .button-text {
-        font-size: 0.75em;
-    }
-    .navbar{
-        background-color: #4A90E2 !important;
-    }
-    .navbar-item:hover{
-        background-color: #266bbb;
-        color: white;
-    }
-
-    
-    #header{
-        font-size: 4rem;
-        margin-top: 3%;
-    }
-    #header1{
-        font-size: 4rem;
-        margin-top: -7%;
-        margin-bottom: 10%;
-    }
-    #header2{
-        font-size: 4rem;
-    }
-    #header4{
-        font-size: 4rem;
-        margin-top: -2%;
-    }
-    #header5{
-        font-size: 4rem;
-        margin-bottom: 2.5rem;
-        margin-top: -12%;
-    }
-    #header6{
-        font-size: 3rem;
-        margin-bottom: 2.5rem;
-    }
-    #headerEx{
-        margin-top: 3%;
-        font-size: 4rem;
-    }
-    #headerSur{
-        font-size: 4rem;
-        margin-left: -10%;
-        margin-bottom: 2.5rem;
-        margin-top: -12%;
-    }
-    #headerPhy{
-        font-size: 4rem;
-        margin-left: -30%;
-        margin-bottom: 2.5rem;
-        margin-top: -12%;
-    }
-    #headerChe{
-        font-size: 4rem;
-        margin-left: -40%;
-        margin-bottom: 2.5rem;
-        margin-top: -12%;
-    }
-    #sur-text {
-        margin-left: 3rem;
-        margin-top: 4%;
-    }
-    .description1{
-        font-size: 2.4rem;
-    }
-    .description2{
-        font-size: 2.4rem;
-        margin-left: 5%;
-    }
-    #sChar{
-        margin-top: 2%;
-        margin-left: 10%;
-    }
-    #sChar img{
-        width: 120%;
-        min-width: 100%;
-        max-width: 450px;
-    }
-    .sur-image {
-        width: 130%;
-        max-width: 130%;
-        margin-left: 5rem;
-        margin-top: -25%;
-    }
-    .sur-image2 {
-        width: 130%;
-        max-width: 130%;
-        margin-left: 5rem;
-        margin-top: -5%;
-    }
-    #bio1{
-        margin-left: -20%;
-    }
-    #bio2{
-        margin-left: 5%;
-    }
-    #bio3{
-        margin-left: 5%;
-    }
-    #bio1 p, #bio2 p{
-        margin-left: 15%;
-    }
-    #bio1 p, #bio2 p, #bio3 p{
-        margin-top: 5%;
-    }
-    #eco-text p, #sur-text p{
-        line-height: 1.5;
-    }
-    .tight-spacing {
-        margin-right: -0.2em;
-    }
-    .tight-spacing2 {
-        margin-right: -1em;
-    }
-    .ty-spacing {
-        margin-left: -3.5em;
-    }
-    .ty-spacing2 {
-        margin-left: -4.5em;
-    }
-    #compButton{
-        margin-left: 15%;
-    }
-    
-    /* for quiz layout */
-    .choice-btn {
-        background-color: #d3d3d3;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-
-    /* Left-to-right fill effect */
-    .choice-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 0;
-        background-color: transparent;
-        z-index: -1;
-        transition: width 0.6s ease, background-color 0.6s ease;
-    }
-
-    /* Correct answer - green fill */
-    .choice-btn.correct::before {
-        background-color: #48c774;
-        width: 100%;
-    }
-
-    /* Wrong answer - red fill */
-    .choice-btn.wrong::before {
-        background-color: #f14668; 
-        width: 100%;
-    }
-
-    .choice-btn {
-        z-index: 1;
-    }
-
-    .extra-info-box {
-        width: 90%; 
-        max-width: 520px; 
-        padding: 10px;
-        margin: 1rem auto; 
-        z-index: 9999; 
-        background-color: white;
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-        display: none;
-    }
-    #quizImage{
-        max-width: 100%; 
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-    }
-    .placeholderImage {
-        background-color: #d3d3d3; 
-        width: 90%; 
-        height: auto;
-        max-height: 350px;
-        border-radius: 5px;
-        margin-top: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #quizResult{
-        display: none; 
-        width: 100%; 
-        max-width: 90%; 
-        padding: 30px; 
-        z-index: 2; 
-        margin-top: 30px;
-    }
-
-    @font-face {
-        font-family: 'verdana';
-        src: url('../../font/verdana.ttf') format('opentype');
-    }
-    @font-face {
-        font-family: 'Haniley';
-        src: url('../../font/Haniley.otf') format('opentype');
-    }
-    .main-font {
-        font-family: 'verdana';
-    }
-    .secondary-font{
-        font-family: 'Haniley';
-    }
-    .ecosys{
-        margin-top: -10%;
-    }
-</style>
+<link rel="stylesheet" href="../css/soil.css">
 
 <section class="hero is-fullheight">
     <div class="hero-body">
@@ -466,17 +163,17 @@ $conn->close();
 
                     <!-- Surface Video -->
                     <div class="surface-content" id="surfaceVideo">
-                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6">
+                        <div class="is-overlay is-flex is-flex-direction-column is-align-items-center mt-5 p-6" style="z-index: 1;">
                             <h1 class="title has-text-white secondary-font" id="header2">Weathering and soil Formation</h1>
 
                             <!-- Video for -->
                             <div class="box">
                                 <video id="solidVideo" width="750" height="520" controls>
-                                    <source src="../../videos/.mp4" type="video/mp4">
+                                    <source src="../../videos/soilerosion.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <p class="subtitle main-font column is-full is-size-6-tablet is-size-5-desktop is-size-4-widescreen has-text-centered has-text-dark">
-                                    Credits to: ..... Youtube
+                                    Credits to: learning junction Youtube
                                 </p>
                             </div>
                         </div>
@@ -657,33 +354,33 @@ $conn->close();
                             </div>
 
                             <!-- Quiz Result -->
-                            <div class="box has-text-centered p-6" id="quizResult">
-                                <h2 class="subtitle secondary-font is-2">Quiz Result</h2>
-                                <table class="table main-font is-bordered is-striped is-fullwidth" style="margin-top: 2rem;">
-                                    <tbody>
-                                        <tr>
-                                            <td><strong>Total Questions</strong></td>
-                                            <td id="totalQuestions">0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Correct</strong></td>
-                                            <td id="correctAnswers">0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Wrong</strong></td>
-                                            <td id="wrongAnswers">0</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Percentage</strong></td>
-                                            <td id="percentage">0%</</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Your Total Score</strong></td>
-                                            <td id="totalScore">0</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="box has-text-centered p-6" id="quizResult" style="margin-top: -10px;">
+                                <h2 class="subtitle secondary-font is-1">Quiz Result</h2>
+                                <p class="subtitle secondary-font is-2">Good Job!</p>
+                                
+                                <div class="columns is-centered is-vcentered mt-5">
+                                    
+                                    <div class="column is-3 has-text-centered">
+                                        <div class="is-flex is-align-items-center is-justify-content-center">
+                                            <p class="has-text-weight-bold" style="font-size: 6rem; color: #FFA500; margin-right: 4rem;" id="displayCorrectAnswers">0</p>
+                                            <p style="font-size: 24px;">Out Of</p>
+                                            <p class="has-text-weight-bold" style="font-size: 6rem; color: #007BFF; margin-left: 4rem;" id="displayTotalQuestions">0</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="columns is-centered mt-5">
+                                    <div class="column is-4 has-text-left">
+                                        <p style="font-size: 24px; margin-left: 60px;" id="displayCorrectAnswers">Total Questions: <span class="has-text-weight-bold" id="totalQuestions">0</span></p>
+                                        <p style="font-size: 24px; margin-left: 60px;" id="displayCorrectAnswers">Percentage: <span class="has-text-weight-bold" id="percentage">0%</span></p>
+                                    </div>
+                                    <div class="column is-4 has-text-left">
+                                        <p style="font-size: 24px; margin-left: 60px;" ><span class="has-text-weight-bold has-text-success">Correct Answers:</span> <span class="has-text-weight-bold has-text-success" id="correctAnswers">0</span></p>
+                                        <p style="font-size: 24px; margin-left: 60px;" ><span class="has-text-weight-bold has-text-danger">Wrong Answers:</span> <span class="has-text-weight-bold has-text-danger" id="wrongAnswers">0</span></p>
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
 
@@ -789,7 +486,7 @@ $conn->close();
         const studentId = <?php echo json_encode($id); ?>;
         console.log("Student ID from PHP:", studentId);
 
-        function checkQuizTaken() {
+    function checkQuizTaken() {
     fetch('../check_quiz_status.php', {
         method: 'POST',
         headers: {
@@ -798,22 +495,32 @@ $conn->close();
         body: JSON.stringify({
             student_id: studentId,
             quiz_id: 9,
-            lesson: 'MattEarth\'s Surfaceer'
+            lesson: 'Earth\'s Surface'
         })
     })
     .then(response => response.json())
     .then(data => {
         console.log('Server response:', data);
-        if (data.status === 'taken') {
-            rightButton.style.display = 'flex';
-        } else {
-            rightButton.style.display = 'none';
-        }
+
+
+        rightButton.onclick = (event) => {
+            if (data.status !== 'taken') {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+
+                showSection(11); 
+                updateEinsteinImageAndButtons();
+            } else {
+                if (currentSection < sections.length - 1) {
+                    showSection(currentSection + 1);
+                }
+            }
+        };
     })
     .catch(error => {
         console.error('Error checking quiz status:', error);
     });
 }
+
         function startSectionTimer() {
     console.log("Starting timer for section " + currentSection);
     sectionTimerInterval = setInterval(() => {
@@ -825,7 +532,7 @@ $conn->close();
 function stopSectionTimer() {
     if (sectionTimerInterval) {
         console.log(`Stopping timer for section ${currentSection}. Time spent: ${sectionTimeSpent[currentSection]} seconds`);
-        sendTimeData(studentId, 'Earths Surface', currentSection, 'Soil Erosion', sectionTimeSpent[currentSection]);
+        sendTimeData(studentId, 'Earths Surface', currentSection, 'Erosion', sectionTimeSpent[currentSection]);
         clearInterval(sectionTimerInterval);
         sectionTimerInterval = null;
     }
@@ -1078,7 +785,6 @@ const totalQuestionsDisplay = document.getElementById('totalQuestions');
 const correctAnswersDisplay = document.getElementById('correctAnswers');
 const wrongAnswersDisplay = document.getElementById('wrongAnswers');
 const percentageDisplay = document.getElementById('percentage');
-const totalScoreDisplay = document.getElementById('totalScore');
 
 // Function to load a question
 function loadQuestion() {
@@ -1156,12 +862,14 @@ function showResults() {
     const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
     quizContainer.style.display = 'none'; // Hide the quiz container
 
+document.getElementById('displayTotalQuestions').textContent = totalQuestions;
+document.getElementById('displayCorrectAnswers').textContent = correctAnswersCount;
+
     quizResult.style.display = 'block';
     totalQuestionsDisplay.textContent = totalQuestions;
     correctAnswersDisplay.textContent = correctAnswersCount;
     wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
     percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
 
     // Send the score to the server (optional)
     sendScoreToServer(correctAnswersCount);

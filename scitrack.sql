@@ -551,6 +551,15 @@ VALUES
     ("Which of these methods can help prevent surface erosion?", '["Clearing forests", "Planting vegetation", "Building more roads", "Burning fields"]', "../quizImage/surfaceImage10.png", "Planting vegetation", "Planting vegetation helps prevent surface erosion by stabilizing the soil with plant roots, reducing wind and water impact.");
 
 
+CREATE TABLE `tbl_achievements` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `student_id` INT NOT NULL,
+    `achievement_name` VARCHAR(255) NOT NULL,
+    `image_path` VARCHAR(255), -- Changed to store the path of the image
+    `date_earned` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

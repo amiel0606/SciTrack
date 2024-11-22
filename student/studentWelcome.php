@@ -181,7 +181,9 @@ $id = $_SESSION["id"];
                                             <figure class="image" style="width: 500px; height: 500px;">
                                                 <img src="../image/assessment.png" alt="Assessment Image">
                                             </figure>
-                                            <p class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">ASSESSMENTS</p>
+                                            <p
+                                                class="subtitle is-size-3-tablet is-size-4-mobile has-text-white dtext secondary-font">
+                                                ASSESSMENTS</p>
 
                                         </a>
                                     </div>
