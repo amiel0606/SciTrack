@@ -498,6 +498,7 @@ $conn->close();
         const audio3 = document.getElementById('matterAudio3');
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
+
         const medalPopup = document.getElementById('medalPopup');
         const closePopupButton = document.getElementById('closePopupButton');
 
@@ -775,6 +776,7 @@ function showMedalPopup() {
 }
 
 
+
         rightButton.addEventListener('click', function () {
             if (currentSection === 6) {
                 currentSection = 7;
@@ -979,6 +981,7 @@ function showMedalPopup() {
                     console.error("Error saving time data", error);
                 });
         }
+
 
         loadQuestion();
     });
