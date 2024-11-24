@@ -367,7 +367,7 @@ $conn->close();
                                         </p>
                                     </div>
                                     <figure class="image is-flex is-justify-content-center medal-image mt-5 mb-4">
-                                        <img src="../../image/medal1.png" alt="medal1">
+                                        <img src="../../image/med2.png" alt="medal1">
                                     </figure>
                                 </div>
                             </div>
@@ -443,17 +443,86 @@ $conn->close();
     .then(response => response.json())
     .then(data => {
         console.log('Server response:', data);
-        if (data.status === 'taken') {
-            rightButton.style.display = 'flex';
-        } else {
-            rightButton.style.display = 'none';
-        }
+
+
+        rightButton.onclick = (event) => {
+            if (data.status !== 'taken') {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+
+                showSection(8); 
+            } else {
+                if (currentSection < sections.length - 1) {
+                    showSection(currentSection + 1);
+                }
+            }
+        };
     })
     .catch(error => {
         console.error('Error checking quiz status:', error);
     });
 }
 
+function checkSectionComplete() {
+    // Check if the user is in the 'matterCompleted' section
+    if (currentSection === sections.length - 1) {  // 'matterCompleted' is the last section
+        // First, check if the quiz has been taken
+        checkQuizTaken();  // Check quiz status
+
+        // Only add the achievement if the quiz has been taken
+        fetch('../check_quiz_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                student_id: studentId,
+                quiz_id: 3,
+                lesson: 'Matter'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'taken') {
+
+                const achievementData = {
+                    student_id: studentId,
+                    achievement_name: 'gasComplete',  
+                    image_path: '../image/med2.png'  
+                };
+
+
+                fetch('../add_achievement.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(achievementData)
+                })
+                .then(response => response.json())
+                .then(achievementResponse => {
+                    console.log('Achievement added:', achievementResponse.message);
+                    console.log(achievementData);  
+                })
+                .catch(error => {
+                    console.error('Error adding achievement:', error);
+                });
+            } else {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+                showSection(8); // Show a section to encourage quiz completion
+            }
+        })
+        .catch(error => {
+            console.error('Error checking quiz status:', error);
+        });
+    }
+
+    // Logic for showing the next section (if needed)
+    rightButton.onclick = (event) => {
+        if (currentSection < sections.length - 1) {
+            showSection(currentSection + 1);
+        }
+    };
+}
         function startSectionTimer() {
     console.log("Starting timer for section " + currentSection);
     sectionTimerInterval = setInterval(() => {
@@ -620,6 +689,7 @@ function resetSectionTimer() {
                 goBackButton.style.display = 'none';
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'flex';
+                rightButton.style.display = 'flex';
                 checkQuizTaken();
 
                 examplesButton.style.marginLeft = '100%';  
@@ -631,6 +701,7 @@ function resetSectionTimer() {
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none';
+                checkSectionComplete();
             }
         }
 
@@ -695,7 +766,6 @@ function resetSectionTimer() {
         const correctAnswersDisplay = document.getElementById('correctAnswers');
         const wrongAnswersDisplay = document.getElementById('wrongAnswers');
         const percentageDisplay = document.getElementById('percentage');
-        const totalScoreDisplay = document.getElementById('totalScore');
 
         // Function to load a question
         function loadQuestion() {
@@ -763,7 +833,6 @@ function resetSectionTimer() {
             if (currentQuestionIndex >= quizData.length) {
                 // Call the showResults function to display the results
                 showResults();
-                checkQuizTaken();
             } else {
                 // Load the next question
                 loadQuestion();
@@ -782,7 +851,6 @@ function resetSectionTimer() {
             correctAnswersDisplay.textContent = correctAnswersCount;
             wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
             percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-            totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
 
             // Send the score to the server (optional)
             sendScoreToServer(correctAnswersCount);

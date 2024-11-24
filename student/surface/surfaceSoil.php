@@ -486,7 +486,7 @@ $conn->close();
         const studentId = <?php echo json_encode($id); ?>;
         console.log("Student ID from PHP:", studentId);
 
-        function checkQuizTaken() {
+    function checkQuizTaken() {
     fetch('../check_quiz_status.php', {
         method: 'POST',
         headers: {
@@ -495,22 +495,32 @@ $conn->close();
         body: JSON.stringify({
             student_id: studentId,
             quiz_id: 9,
-            lesson: 'MattEarth\'s Surfaceer'
+            lesson: 'Earth\'s Surface'
         })
     })
     .then(response => response.json())
     .then(data => {
         console.log('Server response:', data);
-        if (data.status === 'taken') {
-            rightButton.style.display = 'flex';
-        } else {
-            rightButton.style.display = 'none';
-        }
+
+
+        rightButton.onclick = (event) => {
+            if (data.status !== 'taken') {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+
+                showSection(11); 
+                updateEinsteinImageAndButtons();
+            } else {
+                if (currentSection < sections.length - 1) {
+                    showSection(currentSection + 1);
+                }
+            }
+        };
     })
     .catch(error => {
         console.error('Error checking quiz status:', error);
     });
 }
+
         function startSectionTimer() {
     console.log("Starting timer for section " + currentSection);
     sectionTimerInterval = setInterval(() => {
@@ -775,7 +785,6 @@ const totalQuestionsDisplay = document.getElementById('totalQuestions');
 const correctAnswersDisplay = document.getElementById('correctAnswers');
 const wrongAnswersDisplay = document.getElementById('wrongAnswers');
 const percentageDisplay = document.getElementById('percentage');
-const totalScoreDisplay = document.getElementById('totalScore');
 
 // Function to load a question
 function loadQuestion() {
@@ -861,7 +870,6 @@ document.getElementById('displayCorrectAnswers').textContent = correctAnswersCou
     correctAnswersDisplay.textContent = correctAnswersCount;
     wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
     percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-    totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
 
     // Send the score to the server (optional)
     sendScoreToServer(correctAnswersCount);

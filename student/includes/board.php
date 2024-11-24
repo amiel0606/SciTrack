@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SciTrack</title>
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://kit.fontawesome.com/bfc8b900f1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
@@ -76,7 +75,9 @@
                     <span class="icon is-medium mr-2"><i class="fas fa-user fa-lg"></i></span> 
                     Lessons
                 </a>
-                <a href="../admin/includes/logout.php" class="navbar-item has-text-white">
+
+                <a href="./../admin/includes/logout.php" class="navbar-item has-text-white">
+
                     <span class="icon is-medium mr-2"><i class="fas fa-sign-out-alt fa-lg"></i></span> 
                     Logout
                 </a>

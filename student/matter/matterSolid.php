@@ -437,6 +437,16 @@ $conn->close();
                             </div>
                         </div>
                     </div>
+                    <div id="medalOverlay" class="overlay" style="display: none;">
+    <div id="medalPopup" class="popup">
+        <div class="popup-content">
+            <p>You Have Received a Medal</p>
+            <img src="../../image/medal1.png" alt="Medal" class="medal-img" />
+            <button id="closePopupButton">Close</button>
+        </div>
+    </div>
+</div>
+
 
 
                     <!-- Left and Right Buttons -->
@@ -464,7 +474,6 @@ $conn->close();
 <audio id="matterAudio3" src="../../sounds/solid3.mp3"></audio>
 <audio id="matterAudio4" src="../../sounds/solid4.mp3"></audio>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
@@ -490,6 +499,10 @@ $conn->close();
         const audio4 = document.getElementById('matterAudio4');
         const solidVideo = document.getElementById('solidVideo');
 
+        const medalPopup = document.getElementById('medalPopup');
+        const closePopupButton = document.getElementById('closePopupButton');
+
+
         let currentSection = 0;
         const sections = [matterStates, matterSolid, matterChar, matterVideo, matterSolid2, matterExamples, matterExamples2, matterLetsTry, matterQuiz, matterCompleted];
         let sectionTimeSpent = new Array(sections.length).fill(0);
@@ -498,26 +511,108 @@ $conn->close();
         console.log("Student ID from PHP:", studentId);
 
         function checkQuizTaken() {
-            fetch('../check_quiz_status.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    student_id: studentId,
-                    quiz_id: 1,
-                    lesson: 'Matter'
-                })
+    fetch('../check_quiz_status.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            student_id: studentId,
+            quiz_id: 1,
+            lesson: 'Matter'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Server response:', data);
+
+
+        rightButton.onclick = (event) => {
+            if (data.status !== 'taken') {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+
+                showSection(8); 
+                
+            } else {
+                if (currentSection < sections.length - 1) {
+                    showSection(currentSection + 1);
+                    
+                }
+            }
+        };
+    })
+    .catch(error => {
+        console.error('Error checking quiz status:', error);
+    });
+}
+
+function checkSectionComplete() {
+    // Check if the user is in the 'matterCompleted' section
+    if (currentSection === sections.length - 1) {  // 'matterCompleted' is the last section
+        // First, check if the quiz has been taken
+        checkQuizTaken();  // Check quiz status
+
+        // Only add the achievement if the quiz has been taken
+        fetch('../check_quiz_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                student_id: studentId,
+                quiz_id: 1,
+                lesson: 'Matter'
             })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'taken') {
+                // Send the achievement data to the PHP script to add the medal
+                const achievementData = {
+                    student_id: studentId,
+                    achievement_name: 'solidComplete',  // Achievement name
+                    image_path: '../image/medal1.png'  // Path to the medal image
+                };
+
+                // Call the PHP script to add the achievement to the database
+                fetch('../add_achievement.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(achievementData)
+                })
                 .then(response => response.json())
-                .then(data => {
-                    console.log('Server response:', data);
-                    rightButton.style.display = data.status === 'taken' ? 'flex' : 'none';
+                .then(achievementResponse => {
+                    console.log('Achievement added:', achievementResponse.message);
+                    console.log(achievementData);  
                 })
                 .catch(error => {
-                    console.error('Error checking quiz status:', error);
+                    console.error('Error adding achievement:', error);
                 });
+            } else {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+                showSection(8); // Show a section to encourage quiz completion
+            }
+        })
+        .catch(error => {
+            console.error('Error checking quiz status:', error);
+        });
+    }
+
+    // Logic for showing the next section (if needed)
+    rightButton.onclick = (event) => {
+        if (currentSection < sections.length - 1) {
+            showSection(currentSection + 1);
         }
+    };
+}
+
+
+
+
+
+
 
         function startSectionTimer() {
             console.log("Starting timer for section " + currentSection);
@@ -630,8 +725,12 @@ $conn->close();
             } else {
                 stopVideo();
             }
-
-            // Manage visibility of buttons based on the current section
+            if (sections[index] === matterQuiz) {
+        checkQuizTaken();
+    }
+    if (sections[index] === matterCompleted) {
+        checkSectionComplete();
+    }
             if (index >= 0 && index <= 6) {
                 examplesButton.style.display = 'flex';
                 einsteinImage.style.display = 'block';
@@ -655,7 +754,7 @@ $conn->close();
                 goBackButton.style.display = 'none';
                 proceedToQuizButton.style.display = 'none';
                 leftButton.style.display = 'flex';
-                checkQuizTaken();
+                rightButton.style.display = 'flex';
                 examplesButton.style.marginLeft = '100%';
             } else if (sections[index] === matterCompleted) {
                 examplesButton.style.display = 'none';
@@ -667,6 +766,16 @@ $conn->close();
                 rightButton.style.display = 'none';
             }
         }
+
+        document.getElementById("closePopupButton").addEventListener("click", function() {
+    document.getElementById("medalOverlay").style.display = "none";
+});
+
+function showMedalPopup() {
+    document.getElementById("medalOverlay").style.display = "flex";
+}
+
+
 
         rightButton.addEventListener('click', function () {
             if (currentSection === 6) {
@@ -726,7 +835,6 @@ $conn->close();
         const correctAnswersDisplay = document.getElementById('correctAnswers');
         const wrongAnswersDisplay = document.getElementById('wrongAnswers');
         const percentageDisplay = document.getElementById('percentage');
-        const totalScoreDisplay = document.getElementById('totalScore');
 
         // Function to load a question
         function loadQuestion() {
@@ -785,29 +893,37 @@ $conn->close();
 
             if (currentQuestionIndex >= quizData.length) {
                 showResults();
-                checkQuizTaken();
             } else {
                 loadQuestion();
             }
         });
 
         function showResults() {
-            const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-            quizContainer.style.display = 'none'; // Hide the quiz container
+    const quizContainer = document.getElementById('quizContainer');
+    quizContainer.style.display = 'none'; // Hide the quiz container
 
-            document.getElementById('displayTotalQuestions').textContent = totalQuestions;
-            document.getElementById('displayCorrectAnswers').textContent = correctAnswersCount;
+    const displayTotalQuestions = document.getElementById('displayTotalQuestions');
+    const displayCorrectAnswers = document.getElementById('displayCorrectAnswers');
+    const quizResult = document.getElementById('quizResult');
+    
+    // Log to check for null values
+    console.log(displayTotalQuestions, displayCorrectAnswers, quizResult);
 
-            quizResult.style.display = 'block';
-            totalQuestionsDisplay.textContent = totalQuestions;
-            correctAnswersDisplay.textContent = correctAnswersCount;
-            wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-            percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
-            totalScoreDisplay.textContent = correctAnswersCount + ' / ' + totalQuestions;
+    if (displayTotalQuestions && displayCorrectAnswers && quizResult) {
+        displayTotalQuestions.textContent = totalQuestions;
+        displayCorrectAnswers.textContent = correctAnswersCount;
+        quizResult.style.display = 'block';
 
-            // Send the score to the server (optional)
-            sendScoreToServer(correctAnswersCount);
-        }
+        totalQuestionsDisplay.textContent = totalQuestions;
+        correctAnswersDisplay.textContent = correctAnswersCount;
+        wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+        percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+        sendScoreToServer(correctAnswersCount);
+    } else {
+        console.error("One or more elements not found in the DOM.");
+    }
+}
+
 
         // Function to send score to server
         function sendScoreToServer(score) {
@@ -865,6 +981,7 @@ $conn->close();
                     console.error("Error saving time data", error);
                 });
         }
+
 
         loadQuestion();
     });

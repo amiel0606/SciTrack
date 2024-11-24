@@ -31,7 +31,8 @@ if (isset($_POST["submit"])) {
         }
 
         fclose($file);
-        echo "CSV file has been successfully imported.";
+        header("Location: ../../adminTeacher.php?error=successEditTeacher");
+
     }
 
     $stmt->close();
