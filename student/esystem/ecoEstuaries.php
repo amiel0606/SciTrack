@@ -496,7 +496,7 @@ $conn->close();
                                         </p>
                                     </div>
                                     <figure class="image is-flex is-justify-content-center medal-image mt-5 mb-4">
-                                        <img src="../../image/medal1.png" alt="medal1">
+                                        <img src="../../image/med3.png" alt="medal1">
                                     </figure>
                                 </div>
                             </div>
@@ -571,6 +571,59 @@ $conn->close();
         const studentId = <?php echo json_encode($id); ?>;
         console.log("Student ID from PHP:", studentId);
 
+        function checkSectionComplete() {
+    // Check if the user is in the 'matterCompleted' section
+    if (currentSection === sections.length - 1) {  // 'matterCompleted' is the last section
+        // First, check if the quiz has been taken
+        checkQuizTaken();  // Check quiz status
+
+        // Only add the achievement if the quiz has been taken
+        fetch('../check_quiz_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                student_id: studentId,
+                quiz_id: 3,
+                lesson: 'Matter'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'taken') {
+
+                const achievementData = {
+                    student_id: studentId,
+                    achievement_name: 'ecoEstuariesComplete',  
+                    image_path: '../image/med3.png'  
+                };
+
+
+                fetch('../add_achievement.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(achievementData)
+                })
+                .then(response => response.json())
+                .then(achievementResponse => {
+                    console.log('Achievement added:', achievementResponse.message);
+                    console.log(achievementData);  
+                })
+                .catch(error => {
+                    console.error('Error adding achievement:', error);
+                });
+            } else {
+                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
+                showSection(8); // Show a section to encourage quiz completion
+            }
+        })
+        .catch(error => {
+            console.error('Error checking quiz status:', error);
+        });
+    }}
 
         function checkQuizTaken() {
     fetch('../check_quiz_status.php', {
@@ -593,7 +646,7 @@ $conn->close();
             if (data.status !== 'taken') {
                 alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
-                showSection(13); 
+                showSection(14); 
                 updateEinsteinImageAndButtons();
             } else {
                 if (currentSection < sections.length - 1) {
@@ -833,6 +886,9 @@ function resetSectionTimer() {
         if (sections[index] === ecoQuiz) {
             checkQuizTaken();
         } 
+        if (sections[index] === ecoCompleted) {
+            checkSectionComplete();
+        } 
     }
 
         rightButton.addEventListener('click', function () {
@@ -963,6 +1019,7 @@ nextButton.addEventListener('click', function () {
         loadQuestion();
     }
 });
+
 
 function showResults() {
     const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML

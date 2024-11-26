@@ -72,7 +72,7 @@ include_once './includes/sidebar.php'
                     style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div style="display: flex; justify-content: space-between; width: 100%;">
                         <p class="has-text-primary is-size-3 has-text-weight-bold">Students: <span
-                                class="studentCount has-text-primary is-size-4 has-text-weight-normal">15</span></p>
+                                class="studentCount has-text-primary is-size-4 has-text-weight-normal"></span></p>
                         <a href="./adminStudents.php" class="has-text-primary">View All</a>
                     </div>
 
@@ -99,7 +99,7 @@ include_once './includes/sidebar.php'
                     style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div style="display: flex; justify-content: space-between; width: 100%;">
                         <p class="has-text-primary is-size-3 has-text-weight-bold">Teachers: <span
-                                class="teacherCount has-text-primary is-size-4 has-text-weight-normal">5</span></p>
+                                class="teacherCount has-text-primary is-size-4 has-text-weight-normal"></span></p>
                         <a href="./adminTeachers.php" class="has-text-primary">View All</a>
                     </div>
                     <table id="teachers" class="table dash-table is-hoverable ">
