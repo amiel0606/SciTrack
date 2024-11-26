@@ -75,7 +75,9 @@
                     <span class="icon is-medium mr-2"><i class="fas fa-user fa-lg"></i></span> 
                     Lessons
                 </a>
+
                 <a href="./../admin/includes/logout.php" class="navbar-item has-text-white">
+
                     <span class="icon is-medium mr-2"><i class="fas fa-sign-out-alt fa-lg"></i></span> 
                     Logout
                 </a>
