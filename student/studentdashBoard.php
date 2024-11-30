@@ -12,7 +12,6 @@ $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Fetch students with achievements and their count
 $query = "
     SELECT s.id, s.name, COUNT(a.id) AS achievement_count
     FROM tbl_students s
@@ -21,7 +20,6 @@ $query = "
     ORDER BY achievement_count DESC
 ";
 
-// Execute query and fetch data
 $leadResult = $conn->query($query);
 
 $students = [];
@@ -57,15 +55,15 @@ $conn->close();
     <div class="hero-body">
         <div class="container">
             <div class="columns is-vcentered"> 
-                <div class="column is-full-mobile is-four-fifths-tablet"> 
+                <div class="column is-full-mobile is-four-fifths-tablet mt-2"> 
                     <div class="box dash has-shadow first-box">
                         <img class="aas" style="float: right;" src="../image/teach.png" alt="teach1">
-                        <p class="has-text-primary is-size-1 has-text-left mt-1 has-text-weight-bold">Welcome back, Student</p>
-                        <p class="has-text-primary is-size-3 has-text-left"> You completed <span class="has-text-success">--%</span> of your lessons!</p>
-                        <p class="has-text-primary is-size-3 has-text-left">Progress is <span class="has-text-success">very good</span></p>
+                        <p class="has-text-primary is-size-1 has-text-left mt-1 has-text-weight-bold">Hello, Student</p>
+                        <p class="has-text-primary is-size-3 has-text-left"> Welcome to SciTrack</p>
+                        <p class="has-text-primary is-size-3 has-text-left">Get ready to progress you Science knowledge!</span></p>
                     </div>
                 </div>                
-                <div class="column is-full-mobile is-two-fifths-tablet mt-5">
+                <div class="column is-full-mobile is-two-fifths-tablet">
                     <div class="box dash has-shadow second-box has-text-centered">
                         <p class="has-text-primary is-size-3 mt-1 has-text-weight-bold">Leaderboard</p>
                         <div class="small-box">
@@ -80,7 +78,7 @@ $conn->close();
 
                                     // Display top 10 leaderboard (you can adjust this number if necessary)
                                     if ($rank <= 10) {
-                                        echo "<p class='has-text-dark'>#$rank $name - Medals: $achievement_count</p>";
+                                        echo "<p class='has-text-dark'>Rank $rank: $name - Medals: $achievement_count</p>";
                                     }
                                     $rank++;
                                 }
@@ -93,10 +91,10 @@ $conn->close();
 
             <div class="columns is-vcentered">
     <!-- Third Box Column (Lessons Progress) -->
-    <div class="column is-full-mobile is-four-fifths-tablet third-box-container">
+    <div class="column is-full-mobile is-four-fifths-tablet third-box-container mt-5">
         <div class="box dash has-shadow has-text-left third-box">
             <div class="flex-container">
-                <p class="has-text-primary is-size-1 mt-1 has-text-weight-bold">Lessons Progress</p>
+                <p class="has-text-primary is-size-1 has-text-weight-bold">Lessons Progress</p>
                 <a href="studentWelcome.php" class="is-size-4">View Lessons</a>
             </div>
 
