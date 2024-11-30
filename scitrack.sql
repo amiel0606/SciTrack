@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2024 at 08:05 PM
+-- Generation Time: Nov 30, 2024 at 10:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -328,6 +328,27 @@ INSERT INTO `roles_permissions` (`id_role`, `id_permission`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_achievements`
+--
+
+CREATE TABLE `tbl_achievements` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `achievement_name` varchar(255) NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `date_earned` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_achievements`
+--
+
+INSERT INTO `tbl_achievements` (`id`, `student_id`, `achievement_name`, `image_path`, `date_earned`) VALUES
+(1, 39, 'solidComplete', '../image/medal1.png', '2024-11-26 15:07:07');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_lessons`
 --
 
@@ -345,7 +366,7 @@ CREATE TABLE `tbl_lessons` (
 --
 
 INSERT INTO `tbl_lessons` (`id`, `section`, `matter`, `ecosystem`, `motion`, `earth`) VALUES
-(1, 'Papaya', '2024-11-10', '2024-11-11', '2024-11-11', '2024-11-11'),
+(1, 'Papaya', '2024-11-30', '2024-11-30', '2024-12-01', '2024-11-11'),
 (2, 'Mango', 'Inactive', 'Inactive', 'Inactive', 'Inactive'),
 (3, 'Sampaloc', 'Inactive', 'Inactive', 'Inactive', 'Inactive'),
 (4, 'Sampaguita', 'Inactive', 'Inactive', 'Inactive', 'Inactive');
@@ -396,7 +417,7 @@ CREATE TABLE `tbl_quiz_scores` (
 --
 
 INSERT INTO `tbl_quiz_scores` (`id`, `student_id`, `quiz_id`, `lesson`, `score`, `date_taken`) VALUES
-(1, 39, 1, 'Matter', 6, '2024-11-10 18:48:54');
+(5, 39, 1, 'Matter', 8, '2024-11-30 23:51:51');
 
 -- --------------------------------------------------------
 
@@ -435,8 +456,8 @@ CREATE TABLE `tbl_students` (
 --
 
 INSERT INTO `tbl_students` (`id`, `name`, `section`, `username`, `status`) VALUES
-(39, 'Amiel Carhyl Lapid', 'Papaya', 'amiel06', 'Active'),
-(44, 'Nicole Heart Mendoza', 'Papaya', 'heart', 'Active');
+(39, 'Amiel Carhyl Lapid ', 'Papaya', 'amiel06', 'Active'),
+(44, 'Nicole Heart Mendoza ', 'Papaya', 'heart', 'Active');
 
 -- --------------------------------------------------------
 
@@ -583,7 +604,16 @@ INSERT INTO `tbl_time_tracking` (`id`, `student_id`, `lesson`, `section_index`, 
 (309, 44, 'Earths Surface', 7, 'Erosion', 0, '2024-11-10 18:54:50'),
 (310, 44, 'Earths Surface', 8, 'Erosion', 0, '2024-11-10 18:54:51'),
 (311, 44, 'Earths Surface', 9, 'Erosion', 0, '2024-11-10 18:54:51'),
-(312, 44, 'Earths Surface', 11, 'Erosion', 2, '2024-11-10 18:54:53');
+(312, 44, 'Earths Surface', 11, 'Erosion', 2, '2024-11-10 18:54:53'),
+(313, 39, 'Matter', 0, 'Solid', 91, '2024-11-26 15:02:34'),
+(314, 39, 'Matter', 1, 'Solid', 51, '2024-11-26 15:02:43'),
+(315, 39, 'Matter', 2, 'Solid', 40, '2024-11-26 15:02:55'),
+(316, 39, 'Matter', 3, 'Solid', 105, '2024-11-26 15:03:47'),
+(317, 39, 'Matter', 4, 'Solid', 24, '2024-11-26 15:03:57'),
+(318, 39, 'Matter', 5, 'Solid', 33, '2024-11-26 15:04:00'),
+(319, 39, 'Matter', 7, 'Solid', 0, '2024-11-26 15:04:06'),
+(320, 39, 'Matter', 6, 'Solid', 29, '2024-11-26 15:04:06'),
+(321, 39, 'Matter', 8, 'Solid', 4065, '2024-11-26 15:06:20');
 
 -- --------------------------------------------------------
 
@@ -598,17 +628,19 @@ CREATE TABLE `tbl_users` (
   `role` varchar(255) NOT NULL,
   `section` varchar(255) NOT NULL DEFAULT 'N/A',
   `firstName` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL
+  `lastname` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `username`, `password`, `role`, `section`, `firstName`, `lastname`) VALUES
-(39, 'amiel06', '$2y$10$3likkbprqDqGWA0mVnblEuuQ0z67IULdlbSyCWuiUIv.V1xjSswL6', 'Student', 'Papaya', 'Amiel Carhyl', 'Lapid'),
-(43, 'amiel', '$2y$10$fL3rofLrCgPOHiljAmBIEu3G88zDxzN73XLD/q.iYQeduymJ21J9q', 'Teacher', 'Papaya', 'Amiel Carhyl', 'Lapid'),
-(44, 'heart', '$2y$10$h3pRNtYFj6ZYFapzgmrBtOvaepo2w.5TFCAbF62JtjxmAnHmNuD7i', 'Student', 'Papaya', 'Nicole Heart', 'Mendoza');
+INSERT INTO `tbl_users` (`id`, `username`, `password`, `role`, `section`, `firstName`, `lastname`, `status`) VALUES
+(39, 'amiel06', '$2y$10$07PXgzE1ASMd7Osm1iFOsuGD4OoZ3fN0YvC748TO5mo1N1qAmm6gW', 'Student', 'Papaya', 'Amiel Carhyl', 'Lapid', 'Active'),
+(43, 'amiel', '$2y$10$fL3rofLrCgPOHiljAmBIEu3G88zDxzN73XLD/q.iYQeduymJ21J9q', 'Teacher', 'Papaya', 'Amiel Carhyl', 'Lapid', 'Active'),
+(44, 'heart', '$2y$10$bOJd9ResuROJ6jI6PXWyi.mLuodBe1JXD0AJAfkoOCU/jKlI1gDoC', 'Student', 'Papaya', 'Nicole Heart', 'Mendoza', 'Active'),
+(45, 'makmak', '$2y$10$4ozBe5./pzBvynvux1NdG.C8zONyqRX4W382sCjhWM81htDH9sCOe', 'Admin', 'N/A', 'Mark Nelson', 'Garcia', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -666,6 +698,12 @@ ALTER TABLE `quiz_questions_surfaceerosion`
 -- Indexes for table `quiz_questions_surfaceweathering`
 --
 ALTER TABLE `quiz_questions_surfaceweathering`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_achievements`
+--
+ALTER TABLE `tbl_achievements`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -776,6 +814,12 @@ ALTER TABLE `quiz_questions_surfaceweathering`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `tbl_achievements`
+--
+ALTER TABLE `tbl_achievements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_lessons`
 --
 ALTER TABLE `tbl_lessons`
@@ -791,7 +835,7 @@ ALTER TABLE `tbl_permissions`
 -- AUTO_INCREMENT for table `tbl_quiz_scores`
 --
 ALTER TABLE `tbl_quiz_scores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_roles`
@@ -803,13 +847,13 @@ ALTER TABLE `tbl_roles`
 -- AUTO_INCREMENT for table `tbl_time_tracking`
 --
 ALTER TABLE `tbl_time_tracking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables
@@ -821,15 +865,6 @@ ALTER TABLE `tbl_users`
 ALTER TABLE `tbl_quiz_scores`
   ADD CONSTRAINT `tbl_quiz_scores_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `tbl_students` (`id`);
 COMMIT;
-
-CREATE TABLE `tbl_achievements` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `student_id` INT NOT NULL,
-    `achievement_name` VARCHAR(255) NOT NULL,
-    `image_path` VARCHAR(255), -- Changed to store the path of the image
-    `date_earned` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
