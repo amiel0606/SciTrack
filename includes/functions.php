@@ -1,38 +1,39 @@
 <?php
-function emptyInputSignup($Fname,$Lname,$role,$UserName,$password,$ConfPassword) {
+function emptyInputSignup($Fname, $Lname, $role, $UserName, $password, $ConfPassword)
+{
     if (empty($Fname) || empty($Lname) || empty($role) || empty($UserName) || empty($password) || empty($ConfPassword)) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function InvalidUser($UserName) {
+function InvalidUser($UserName)
+{
     if (!preg_match("/^[a-zA-Z0-9]*$/", $UserName)) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function passMatch($password,$ConfPassword) {
+function passMatch($password, $ConfPassword)
+{
     if ($password != $ConfPassword) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function userExist($conn,$UserName) {
+function userExist($conn, $UserName)
+{
     $sql = "SELECT * FROM tbl_users WHERE username = ?";
     $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt,$sql)) {
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ./admin/adminDash.php?error=stmtFailed");
         exit();
     }
@@ -44,18 +45,18 @@ function userExist($conn,$UserName) {
 
     if ($row = mysqli_fetch_assoc($resultData)) {
         return $row;
-    }
-    else {
+    } else {
         $result = false;
         return $result;
     }
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn,$UserName,$Lname,$Fname,$role,$password){
+function createUser($conn, $UserName, $Lname, $Fname, $role, $password)
+{
     $sql = "INSERT INTO tbl_users(username, password, role, firstName, lastName) VALUES(?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt,$sql)) {
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ./admin/adminDash.php?error=stmtFailed");
         exit();
     }
@@ -69,18 +70,19 @@ function createUser($conn,$UserName,$Lname,$Fname,$role,$password){
     exit();
 }
 
-function emptyInputLogin($uName,$pwd) {
+function emptyInputLogin($uName, $pwd)
+{
     if (empty($uName) || empty($pwd)) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function loginUser($conn, $uName, $pwd) {
-    $UserExists = userExist($conn,$uName);
+function loginUser($conn, $uName, $pwd)
+{
+    $UserExists = userExist($conn, $uName);
 
     if ($UserExists == false) {
         header("location: ../index.php?error=WrongLogin");
@@ -92,29 +94,34 @@ function loginUser($conn, $uName, $pwd) {
     if ($checkPass === false) {
         header("location: ../index.php?error=WrongLogin");
         exit();
-    }
-    else if ($checkPass === true) {
+    } else if ($checkPass === true) {
         session_start();
-        $_SESSION["id"] = $UserExists["id"]; 
+        $_SESSION["id"] = $UserExists["id"];
         $_SESSION["username"] = $UserExists["username"];
         $_SESSION["role"] = $UserExists["role"];
         $_SESSION["firstName"] = $UserExists["firstName"];
         $_SESSION["lastName"] = $UserExists["lastname"];
+        $_SESSION["status"] = $UserExists["status"];
+        $_SESSION["isLoggedIn"] = true;
         $role = $_SESSION["role"];
-        if ($role=='Admin') {
+        $status = $_SESSION["status"];
+        if ($status == 'Inactive') {
+            echo "Your account is inactive. Please contact the administrator."; 
+            session_destroy();  
+            exit();  
+        }
+
+        if ($role == 'Admin' && $status == 'Active') {
             header("location: ../admin/adminDash.php");
             exit();
-        }
-        else if ($role=='Teacher') {
+        } else if ($role == 'Teacher' && $status == 'Active') {
             header("location: ../teacher/teacherDash.php");
             exit();
-        }
-        else if ($role=='Student') {
+        } else if ($role == 'Student' && $status == 'Active') {
             header("location: ../student/studentWelcome.php");
             exit();
-        }
-        else {
-            echo "Please contact the administrator";
+        } else {
+            echo "Please contact the administrator.";
             exit();
         }
     }

@@ -27,24 +27,15 @@ function fetchRoles($db){
 }
 
 function getCountActiveStudents($db) {
-    $result = $db->query('SELECT id, COUNT(*) as count FROM tbl_students WHERE status = "Active" GROUP BY id');
-    
-    $studentCount = [];
-    while ($row = $result->fetch_assoc()) {
-        $studentCount[$row['id']] = $row['count'];
-    }
-    
-    return $studentCount;
+    $result = $db->query('SELECT COUNT(*) as count FROM tbl_students WHERE status = "Active"');
+    $row = $result->fetch_assoc();
+    return $row['count'];   
 }
 
 function getCountActiveTeachers($db) {
-    $result = $db->query('SELECT id, COUNT(*) as count FROM tbl_teachers WHERE status = "Active" GROUP BY id');
-    
-    $studentCount = [];
-    while ($row = $result->fetch_assoc()) {
-        $studentCount[$row['id']] = $row['count'];
-    }
-    
-    return $studentCount;
+    $result = $db->query('SELECT COUNT(*) as count FROM tbl_teachers WHERE status = "Active"');
+    $row = $result->fetch_assoc();
+    return $row['count'];  
 }
+
 

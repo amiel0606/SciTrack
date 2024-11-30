@@ -12,6 +12,5 @@ if (isset($_POST["Login"])) {
         header("location: ../index.php?error=EmptyInput");
         exit();
     }
-
     loginUser($conn, $uName, $pwd);
 }

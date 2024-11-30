@@ -265,74 +265,90 @@ $id = $_SESSION["id"];
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var id = document.getElementById('myID').value;
-        var conn = new WebSocket('ws://localhost:8080');
-        const idsToProperties = {
-            'matter': 'matter',
-            'eco': 'ecosystem',
-            'motion': 'motion',
-            'earth': 'earth'
-        };
-        conn.onopen = function () {
-            conn.send(JSON.stringify({ type: 'loadStudentData', id: id }));
-            conn.send(JSON.stringify({ type: 'loadLessons', section: 'Papaya' }));
-        };
-        conn.onmessage = function (e) {
-            var data = JSON.parse(e.data);
-            console.log(data);
-            var matterImage = document.querySelector('#matters figure.image img');
-            var ecoImage = document.querySelector('#eco figure.image img');
-            var motionImage = document.querySelector('#motion figure.image img');
-            var earthImage = document.querySelector('#earth figure.image img');
+$(document).ready(function() {
+    $(document).ready(function() {
+    var id = $('#myID').val();
+    $.ajax({
+        url: './includes/welcomeStudent.php', 
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ type: 'loadStudentData', id: id }),
+        success: function(data) {
+            if (data.length > 0) {
+                $('#studentName').text(data[0].name); 
+            } else {
+                console.error('No student data found.');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error loading student data:', error);
+        }
+    });
+
+    $.ajax({
+        url: './includes/welcomeStudent.php', 
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ type: 'loadLessons', section: 'Papaya' }),
+        success: function(data) {
+            var matterImage = $('#matters figure.image img');
+            var ecoImage = $('#eco figure.image img');
+            var motionImage = $('#motion figure.image img');
+            var earthImage = $('#earth figure.image img');
             const today = new Date();
             const offset = today.getTimezoneOffset();
             const philippinesOffset = 360;
             const philippinesTime = new Date(today.getTime() + (philippinesOffset - offset) * 60000);
-            const formattedToday = philippinesTime.toISOString().slice(0, 10);
-
-            if (data.type === 'student') {
-                document.getElementById('studentName').innerText = data.name;
-            }
-            if (data.type === 'lessons') {
-                if (data.matter <= formattedToday) {
-                    matterImage.src = '../image/matterTopic1.gif';
-                    matterImage.parentNode.parentNode.style.pointerEvents = 'auto';
+            const formattedToday = philippinesTime.toISOString().slice(0, 10);            
+            data.forEach(lesson => {
+                console.log(lesson);
+                if (lesson.matter <= formattedToday) {
+                    matterImage.attr('src', '../image/matterTopic1.gif');
+                    matterImage.parent().parent().css('pointer-events', 'auto');
                     console.log('Matter is set to today');
                 } else {
-                    matterImage.src = '../image/matterlock.gif';
-                    matterImage.parentNode.parentNode.style.pointerEvents = 'none';
+                    matterImage.attr('src', '../image/matterlock.gif');
+                    matterImage.parent().parent().css('pointer-events', 'none');
                     console.log('Matter is not set to today');
                 }
-                if (data.ecosystem <= formattedToday) {
-                    ecoImage.src = '../image/ecosystemTopic1.gif';
-                    ecoImage.parentNode.parentNode.style.pointerEvents = 'auto';
+
+                if (lesson.ecosystem <= formattedToday) {
+                    ecoImage.attr('src', '../image/ecosystemTopic1.gif');
+                    ecoImage.parent().parent().css('pointer-events', 'auto');
                     console.log('Ecosystem is set to today');
                 } else {
-                    ecoImage.src = '../image/ecosystemlock.gif';
-                    ecoImage.parentNode.parentNode.style.pointerEvents = 'none';
+                    ecoImage.attr('src', '../image/ecosystemlock.gif');
+                    ecoImage.parent().parent().css('pointer-events', 'none');
                     console.log('Ecosystem is not set to today');
                 }
-                if (data.motion <= formattedToday) {
-                    motionImage.src = '../image/motionTopicx.gif';
-                    motionImage.parentNode.parentNode.style.pointerEvents = 'auto';
+
+                if (lesson.motion <= formattedToday) {
+                    motionImage.attr('src', '../image/motionTopicx.gif');
+                    motionImage.parent().parent().css('pointer-events', 'auto');
                     console.log('Motion is set to today');
                 } else {
-                    motionImage.src = '../image/motionlock.gif';
-                    motionImage.parentNode.parentNode.style.pointerEvents = 'none';
+                    motionImage.attr('src', '../image/motionlock.gif');
+                    motionImage.parent().parent().css('pointer-events', 'none');
                     console.log('Motion is not set to today');
                 }
-                if (data.earth <= formattedToday) {
-                    earthImage.src = '../image/surfaceTopic1.gif';
-                    earthImage.parentNode.parentNode.style.pointerEvents = 'auto';
+
+                if (lesson.earth <= formattedToday) {
+                    earthImage.attr('src', '../image/surfaceTopic1.gif');
+                    earthImage.parent().parent().css('pointer-events', 'auto');
                     console.log('Earth is set to today');
                 } else {
-                    earthImage.src = '../image/surfacelock.gif';
-                    earthImage.parentNode.parentNode.style.pointerEvents = 'none';
+                    earthImage.attr('src', '../image/surfacelock.gif');
+                    earthImage.parent().parent().css('pointer-events', 'none');
                     console.log('Earth is not set to today');
                 }
-            }
-        };
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error loading lessons:', error);
+        }
+    });
+});
+});
         const leftButton = document.getElementById('leftButton');
         const rightButton = document.getElementById('rightButton');
         const welcome = document.getElementById('welcome');
@@ -405,8 +421,6 @@ $id = $_SESSION["id"];
             showWelcome();
         }
 
-
-    });
 
     document.addEventListener('DOMContentLoaded', function () {
         const lessons = ['matters', 'eco', 'motion', 'earth'];

@@ -16,27 +16,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $table = 'tbl_teachers';
         } else {
             $response['message'] = 'Invalid role provided.';
-            echo json_encode($response);
+            echo json_encode($response); 
             exit;
         }
 
         $sql = "UPDATE $table SET status = 'Active' WHERE id = ?";
-        
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("i", $accountId); 
-            if ($stmt->execute()) {
-                if ($stmt->affected_rows > 0) {
-                    $response['success'] = true;
-                    $response['message'] = 'Account activated successfully.';
-                } else {
-                    $response['message'] = 'No account found with the provided ID.';
+        $sqlUser = "UPDATE tbl_users SET status = 'Active' WHERE id = ?";
+
+        $conn->begin_transaction();
+
+        try {
+            if ($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("i", $accountId); 
+                if (!$stmt->execute()) {
+                    throw new Exception("Error executing query on $table.");
                 }
+                $stmt->close();
             } else {
-                $response['message'] = 'Error executing the query.';
+                throw new Exception("Error preparing query on $table.");
             }
-            $stmt->close();
-        } else {
-            $response['message'] = 'Error preparing the statement.';
+
+            if ($stmtUser = $conn->prepare($sqlUser)) {
+                $stmtUser->bind_param("i", $accountId); 
+                if (!$stmtUser->execute()) {
+                    throw new Exception("Error executing query on tbl_users.");
+                }
+                $stmtUser->close();
+            } else {
+                throw new Exception("Error preparing query on tbl_users.");
+            }
+
+            $conn->commit();
+            $response['success'] = true;
+            $response['message'] = 'Account activated successfully.';
+
+        } catch (Exception $e) {
+            $conn->rollback();
+            $response['message'] = 'Error: ' . $e->getMessage();
         }
     } else {
         $response['message'] = 'Account ID or role not provided.';
@@ -46,4 +62,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
-echo json_encode($response);
+echo json_encode($response); 

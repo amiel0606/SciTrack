@@ -2,169 +2,129 @@
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/admin/includes/dbCon.php';
 require __DIR__ . '/admin/includes/userFunctions.php';
-require __DIR__ . '/teacher/includes/userFunctions.php'; 
-require __DIR__ . '/student/includes/userFunctions.php'; 
+require __DIR__ . '/teacher/includes/userFunctions.php';
+require __DIR__ . '/student/includes/userFunctions.php';
 
-use Ratchet\MessageComponentInterface;
-use Ratchet\ConnectionInterface;
-use React\EventLoop\Factory;
-use React\Socket\Server as SocketServer;
-use Ratchet\Server\IoServer;
-use Ratchet\Http\HttpServer;
-use Ratchet\WebSocket\WsServer;
+header('Content-Type: application/json');
+$type = $_POST['type'] ?? null;
 
-class UserLoader implements MessageComponentInterface {
-    protected $clients;
-    protected $db;
+$response = [];
 
-    public function __construct($db) {
-        $this->clients = new \SplObjectStorage;
-        $this->db = $db;
+if ($type === 'loadStudents') {
+    header('Content-Type: application/json');
+    $students = loadStudents($conn);
+    if (!$students) {
+        echo json_encode([]);
+        exit;
     }
+    echo json_encode($students);
+    exit;
+} elseif ($type === 'loadTeachers') {
+    $teachers = loadTeachers($conn);
+    if (!$teachers) {
+        echo json_encode([]);
+        exit;
+    }
+    echo json_encode($teachers);
+    exit;
+} elseif ($type === 'loadRoles') {
+    $response = loadRoles($conn);
+} elseif ($type === 'loadLessons') {
+    $section = $_POST['section'] ?? null;
+    $response = loadLessons($conn, $section);
+}  elseif ($type === 'loadStudentData') {
+    $id = $_POST['id'] ?? null;
+    $response = loadStudent($conn, $id);
+} elseif ($type === 'getLessons') {
+    $response = getLesson($conn);
+} elseif ($type === 'getCountStudents') {
+    header('Content-Type: application/json');
 
-    public function onOpen(ConnectionInterface $conn) {
-        $this->clients->attach($conn);
-        echo "New connection! ({$conn->resourceId})\n";
-    }
+    $studentCount = getCountActiveStudents($conn);
+    echo json_encode(['counts' => ['active' => $studentCount]]);
+    exit;
+} elseif ($type === 'getTeacherCounts') {
+    header('Content-Type: application/json');
 
-    public function onMessage(ConnectionInterface $from, $msg) {
-        $data = json_decode($msg, true);
-        if ($data['type'] === 'loadStudents') {
-            $this->loadStudents($from);
-        } elseif ($data['type'] === 'loadTeachers') {
-            $this->loadTeachers($from);
-        } elseif ($data['type'] === 'loadRoles') {
-            $this->loadRoles($from);
-        } elseif ($data['type'] === 'loadLessons') {
-            $this->loadLessons($from, $data['section']);
-        } elseif ($data['type'] === 'giveLesson') {
-            $section = $data['section'];
-            $lesson = $data['lesson'];
-            $date = $data['date'];
-            $success = $this->giveLessons($from, $section, $lesson, $date);
-            $response = [
-                'type' => 'updateLessonResponse',
-                'success' => $success
-            ];
-            $from->send(json_encode($response));
-        } elseif ($data['type'] === 'loadStudentData') {
-            $this->loadStudent($from, $data['id']);
-        } elseif ($data['type'] === 'getLessons') {
-            $this->getLesson($from);
-        } elseif ($data['type'] === 'getCountStudents') {
-            $this->getCountStudents($from);
-        } elseif ($data['type'] === 'getTeacherCounts') {
-            $this->getCountTeachers($from);
-        } elseif ($data['type'] === 'getQuizScores') { 
-            $this->sendQuizScores($from);
-        }
+    $teacherCount = getCountActiveTeachers($conn);
+    echo json_encode(['counts' => ['active' => $teacherCount]]);
+    exit;
+} elseif ($type === 'getQuizScores') {
+    $quizScores = sendQuizScores($conn);
+    if (!$quizScores) {
+        echo json_encode([]);
+        exit;
     }
-    
-    private function sendQuizScores(ConnectionInterface $conn) {
-        $quizScores = fetchQuizScores($this->db);
-        foreach ($quizScores as $quizScore) {
-            $quizScore['type'] = 'quiz_score';
-            $conn->send(json_encode($quizScore));
-        }
-    }
-
-    private function getCountStudents(ConnectionInterface $conn) {
-        $count = getCountActiveStudents($this->db);
-        $response = json_encode([
-            'type' => 'studentCount',
-            'counts' => $count
-        ]);
-        $conn->send($response);
-    }
-
-    private function getCountTeachers(ConnectionInterface $conn) {
-        $count = getCountActiveTeachers($this->db);
-        $response = json_encode([
-            'type' => 'teacherCount',
-            'counts' => $count
-        ]);
-        $conn->send($response);
-    }
-    
-    
-
-    private function getLesson(ConnectionInterface $conn) {
-        $lessons = getLessons($this->db);
-        foreach ($lessons as $lesson) {
-            $lesson['type'] = 'lesson';
-            $conn->send(json_encode($lesson));
-        }
-    }
-    private function loadStudent(ConnectionInterface $conn, $id) {
-        $students = getStudentSection($this->db, $id);
-        foreach ($students as $student) {
-            $student['type'] = 'student';
-            $conn->send(json_encode($student));
-        }
-    }
-
-    private function loadLessons(ConnectionInterface $conn, $section) {
-        $lessons = fetchLessons($this->db, $section);
-        foreach ($lessons as $lesson) {
-            $lesson['type'] = 'lessons';
-            $conn->send(json_encode($lesson));
-        }
-    }
-
-    private function giveLessons(ConnectionInterface $conn, $section, $lesson, $date) {
-        try {
-            $success = giveLesson($this->db, $section, $lesson, $date);
-            return $success;
-        } catch (Exception $e) {
-            error_log("Error updating lesson: " . $e->getMessage());
-            return false;
-        }
-    }
-    private function loadStudents(ConnectionInterface $conn) {
-        $students = fetchStudents($this->db);
-        foreach ($students as $student) {
-            $student['type'] = 'student';
-            $conn->send(json_encode($student));
-        }
-    }
-
-    private function loadTeachers(ConnectionInterface $conn) {
-        $teachers = fetchTeachers($this->db);
-        foreach ($teachers as $teacher) {
-            $teacher['type'] = 'teacher';
-            $conn->send(json_encode($teacher));
-        }
-    }
-
-    private function loadRoles(ConnectionInterface $conn) {
-        $roles = fetchRoles($this->db);
-        foreach ($roles as $role) {
-            $role['type'] = 'role';
-            $conn->send(json_encode($role));
-        }
-    }
-
-    public function onClose(ConnectionInterface $conn) {
-        $this->clients->detach($conn);
-        echo "Connection {$conn->resourceId} has disconnected\n";
-    }
-
-    public function onError(ConnectionInterface $conn, \Exception $e) {
-        echo "An error has occurred: {$e->getMessage()}\n";
-        $conn->close();
-    }
-
-
+    echo json_encode($quizScores);
+    exit;
+} else {
+    $response = ['error' => 'Invalid request type'];
 }
 
-$loop = Factory::create();
-$server = IoServer::factory(
-    new HttpServer(
-        new WsServer(
-            new UserLoader($conn)
-        )
-    ),
-    8080
-);
+echo json_encode($response);
 
-$server->run();
+// Helper functions
+function loadStudents($conn)
+{
+    return fetchStudents($conn);
+}
+
+function loadTeachers($conn)
+{
+    return fetchTeachers($conn);
+}
+
+function loadRoles($conn)
+{
+    return fetchRoles($conn);
+}
+
+function loadLessons($conn, $section)
+{
+    return fetchLessons($conn, $section);
+}
+
+function giveLessons($conn, $section, $lesson, $date)
+{
+    try {
+        return giveLesson($conn, $section, $lesson, $date);
+    } catch (Exception $e) {
+        error_log("Error updating lesson: " . $e->getMessage());
+        return false;
+    }
+}
+
+function loadStudent($conn, $id)
+{
+    return getStudentSection($conn, $id);
+}
+
+function getLesson($conn)
+{
+    return getLessons($conn);
+}
+
+function getCountStudents($conn)
+{
+    return [
+        'type' => 'studentCount',
+        'counts' => getCountActiveStudents($conn)
+    ];
+}
+
+function getCountTeachers($conn)
+{
+    return [
+        'type' => 'teacherCount',
+        'counts' => getCountActiveTeachers($conn)
+    ];
+}
+
+function sendQuizScores($conn)
+{
+    $quizScores = fetchQuizScores($conn);
+    foreach ($quizScores as &$quizScore) {
+        $quizScore['type'] = 'quiz_score';
+    }
+    return $quizScores;
+}
