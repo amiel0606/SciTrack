@@ -7,7 +7,6 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
     $id = $_SESSION["id"];
 } else {
-
     header("Location: index.php");
     exit();
 }
@@ -22,13 +21,15 @@ if ($result->num_rows > 0) {
         $row['choices'] = json_decode($row['choices']);
         $quiz_questions_solid[] = $row;
     }
+
+    shuffle($quiz_questions_solid);
 } else {
     echo "No quiz questions found.";
 }
 
-
 $conn->close();
 ?>
+
 
 <link rel="stylesheet" href="../css/solid.css">
 
@@ -346,7 +347,7 @@ $conn->close();
                             <!-- Quiz Result -->
                             <div class="box has-text-centered p-6" id="quizResult">
                                 <h2 class="subtitle secondary-font is-1">Quiz Result</h2>
-                                <p class="subtitle secondary-font is-2">Good Job!</p>
+                                <p class="subtitle secondary-font is-2 Feedback">Good Job!</p>
 
                                 <div class="columns is-centered is-vcentered mt-5">
 
@@ -591,7 +592,6 @@ function checkSectionComplete() {
                     console.error('Error adding achievement:', error);
                 });
             } else {
-                alert('Quiz not taken yet. Please complete the quiz before proceeding.');
                 showSection(8); // Show a section to encourage quiz completion
             }
         })
@@ -905,14 +905,26 @@ function showMedalPopup() {
     const displayTotalQuestions = document.getElementById('displayTotalQuestions');
     const displayCorrectAnswers = document.getElementById('displayCorrectAnswers');
     const quizResult = document.getElementById('quizResult');
-    
+    const feedbackDisplay = document.querySelector('.Feedback'); // Select the Feedback element
+
     // Log to check for null values
     console.log(displayTotalQuestions, displayCorrectAnswers, quizResult);
 
-    if (displayTotalQuestions && displayCorrectAnswers && quizResult) {
+    if (displayTotalQuestions && displayCorrectAnswers && quizResult && feedbackDisplay) {
         displayTotalQuestions.textContent = totalQuestions;
         displayCorrectAnswers.textContent = correctAnswersCount;
         quizResult.style.display = 'block';
+
+        // Feedback based on correct answers
+        if (correctAnswersCount === 0) {
+            feedbackDisplay.textContent = "You didn't score anything! Try again!";
+        } else if (correctAnswersCount > 0 && correctAnswersCount < 5) {
+            feedbackDisplay.textContent = "Nice Try!";
+        } else if (correctAnswersCount >= 5 && correctAnswersCount < 10) {
+            feedbackDisplay.textContent = "Good Job!";
+        } else if (correctAnswersCount === 10) {
+            feedbackDisplay.textContent = "Perfect!";
+        }
 
         totalQuestionsDisplay.textContent = totalQuestions;
         correctAnswersDisplay.textContent = correctAnswersCount;
@@ -923,6 +935,7 @@ function showMedalPopup() {
         console.error("One or more elements not found in the DOM.");
     }
 }
+
 
 
         // Function to send score to server

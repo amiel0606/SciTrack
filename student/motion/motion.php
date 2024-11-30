@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
         $row['choices'] = json_decode($row['choices']); 
         $quiz_questions_solid[] = $row;
     }
+    shuffle($quiz_questions_solid);
 } else {
     echo "No quiz questions found.";
 }
@@ -458,7 +459,7 @@ $conn->close();
                             <!-- Quiz Result -->
                             <div class="box has-text-centered p-6" id="quizResult" style="margin-top: -10px;">
                                 <h2 class="subtitle secondary-font is-1">Quiz Result</h2>
-                                <p class="subtitle secondary-font is-2">Good Job!</p>
+                                <p class="subtitle secondary-font is-2 Feedback">Good Job!</p>
                                 
                                 <div class="columns is-centered is-vcentered mt-5">
                                     
@@ -525,7 +526,7 @@ $conn->close();
                                         </p>
                                     </div>
                                     <figure class="image is-flex is-justify-content-center medal-image mt-5 mb-4">
-                                        <img src="../../image/medal1.png" alt="medal1">
+                                        <img src="../../image/med5.png" alt="medal1">
                                     </figure>
                                 </div>
                             </div>
@@ -610,6 +611,56 @@ $conn->close();
         let sectionTimerInterval;
         const studentId = <?php echo json_encode($id); ?>;
         console.log("Student ID from PHP:", studentId);
+
+        function checkSectionComplete() {
+    if (currentSection === sections.length - 1) {  // 'matterCompleted' is the last section
+        checkQuizTaken();  // Check quiz status
+
+        fetch('../check_quiz_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                student_id: studentId,
+                quiz_id: 6,
+                lesson: 'Motion'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'taken') {
+
+                const achievementData = {
+                    student_id: studentId,
+                    achievement_name: 'motionOneCompleted',  
+                    image_path: '../image/med5.png'  
+                };
+
+
+                fetch('../add_achievement.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(achievementData)
+                })
+                .then(response => response.json())
+                .then(achievementResponse => {
+                    console.log('Achievement added:', achievementResponse.message);
+                    console.log(achievementData);  
+                })
+                .catch(error => {
+                    console.error('Error adding achievement:', error);
+                });
+            } else {
+                showSection(15); // Show a section to encourage quiz completion
+            }
+        })
+        .catch(error => {
+            console.error('Error checking quiz status:', error);
+        });
+    }}
 
         function checkQuizTaken() {
     fetch('../check_quiz_status.php', {
@@ -917,7 +968,9 @@ function resetSectionTimer() {
         if (sections[index] === motionQuiz) {
             checkQuizTaken();
         }
-
+        if (sections[index] === motionCompleted) {
+            checkSectionComplete();
+        } 
         }
 
         rightButton.addEventListener('click', function () {
@@ -1046,21 +1099,32 @@ nextButton.addEventListener('click', function () {
 });
 
 function showResults() {
-    const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
-    quizContainer.style.display = 'none'; // Hide the quiz container
+            const quizContainer = document.getElementById('quizContainer'); // Ensure this ID matches your HTML
+            const feedbackDisplay = document.querySelector('.Feedback'); // Select the Feedback element
+            quizContainer.style.display = 'none'; // Hide the quiz container
 
-    document.getElementById('displayTotalQuestions').textContent = totalQuestions;
-    document.getElementById('displayCorrectAnswers').textContent = correctAnswersCount;
+            document.getElementById('displayTotalQuestions').textContent = totalQuestions;
+            document.getElementById('displayCorrectAnswers').textContent = correctAnswersCount;
 
-    quizResult.style.display = 'block';
-    totalQuestionsDisplay.textContent = totalQuestions;
-    correctAnswersDisplay.textContent = correctAnswersCount;
-    wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
-    percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+             // Feedback based on correct answers
+        if (correctAnswersCount === 0) {
+            feedbackDisplay.textContent = "You didn't score anything! Try again!";
+        } else if (correctAnswersCount > 0 && correctAnswersCount < 5) {
+            feedbackDisplay.textContent = "Nice Try!";
+        } else if (correctAnswersCount >= 5 && correctAnswersCount < 10) {
+            feedbackDisplay.textContent = "Good Job!";
+        } else if (correctAnswersCount === 10) {
+            feedbackDisplay.textContent = "Perfect!";
+        }
 
-    // Send the score to the server (optional)
-    sendScoreToServer(correctAnswersCount);
-}
+            quizResult.style.display = 'block';
+            totalQuestionsDisplay.textContent = totalQuestions;
+            correctAnswersDisplay.textContent = correctAnswersCount;
+            wrongAnswersDisplay.textContent = totalQuestions - correctAnswersCount;
+            percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
+            // Send the score to the server (optional)
+            sendScoreToServer(correctAnswersCount);
+        }
 
 // Function to send score to server
 function sendScoreToServer(score) {
@@ -1075,20 +1139,18 @@ function sendScoreToServer(score) {
     },
     body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
 })
-.then(response => {
-    if (!response.ok) {
-        return response.text().then(text => {
-            throw new Error(`Network response was not ok: ${text}`);
-        });
-    }
-    return response.json();
-})
-.then(data => {
-    console.log('Score saved successfully:', data);
-})
-.catch(error => {
-    console.error('There was a problem saving the score:', error);
-});
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'error') {
+                        alert(data.message); // Show alert if there's an error
+                    } else {
+                        console.log('Score saved successfully:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error saving score:', error);
+                    alert('There was a problem saving your score. Please try again later.');
+                });
 }
     // Load the first question
     loadQuestion();
