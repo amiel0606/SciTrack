@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+    <link rel="icon" href="../image/scitrack-icon.png" type="image/png">
 </head>
 
 <body>
@@ -98,8 +98,8 @@
 
     <div class="columns">
         <aside class="menu has-background-primary">
-            <p class="menu-label has-text-white is-size-1 ">LOGO</p>
-            <ul class="menu-list">
+        <img class="" class="" src="../image/scitrack-logo.png" alt="SciTrack Logo" style="max-width: 100%; height: auto;">
+        <ul class="menu-list">
                 <li>
                     <p class="menu-item has-background-primary mb-6 "><i
                             class="fa-regular fa-circle-user fa-4x icon is-large mr-4 has-text-white"></i><span
