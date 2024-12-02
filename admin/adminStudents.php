@@ -23,7 +23,6 @@ if ($_SESSION['role'] == 'Admin') {
 
     body {
         overflow: hidden;
-        /* Hide scrollbars */
         height: 100vh;
     }
 
@@ -143,7 +142,6 @@ if ($_SESSION['role'] == 'Admin') {
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
-
 <!-- END OF EDIT STUDENT MODAL -->
 
 <!-- ARCHIVE MODAL -->
@@ -241,8 +239,6 @@ if ($_SESSION['role'] == 'Admin') {
                         </tr>
                     </thead>
                     <tbody id="studentTableBody" class="has-text-centered">
-
-
                     </tbody>
                 </table>
             </div>
@@ -256,7 +252,6 @@ if ($_SESSION['role'] == 'Admin') {
                 </div>
             </div>
         </div>
-
     </div>
 
 </div>

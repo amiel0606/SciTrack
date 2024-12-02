@@ -51,6 +51,15 @@ $fname = $_SESSION['firstName'];
             padding: 25px;
         }
 
+        #manage-class-dropdown li {
+            margin-bottom: 15px;
+            margin-left: 25px;
+        }
+
+        #manage-class-dropdown li:last-child {
+            margin-bottom: 0;
+        }
+
         .menu .menu-label {
             font-size: 0.25rem;
         }
@@ -70,6 +79,9 @@ $fname = $_SESSION['firstName'];
             width: 100%;
         }
 
+        .is-hidden {
+            display: none;
+        }
 
         .table {
             --bulma-table-color: hsl(0, 2%, 58%);
@@ -120,7 +132,11 @@ $fname = $_SESSION['firstName'];
         'addStudentSuccess' => 'Added student Successfully.',
         'successEditStudent' => 'Edited Information Successfully.',
         'successEditTeacher' => 'Edited Information Successfully.',
-        'addTeacherSuccess' => 'Added Teacher Successfully'
+        'addTeacherSuccess' => 'Added Teacher Successfully',
+        'emptySectionName' => 'Empty section name',
+        'sectionExists' => 'Section already exists',
+        'sectionAdded' => 'Section added successfully',
+        'sectionUpdated' => 'Section updated successfully'
     ];
 
     if (isset($errorMessages[$error])) {
@@ -134,30 +150,53 @@ $fname = $_SESSION['firstName'];
     ?>
     <div class="columns">
         <aside class="menu has-background-primary">
-            <img class="" class="" src="../image/scitrack-logo.png" alt="SciTrack Logo" style="max-width: 100%; height: auto;">
+            <img class="" src="../image/scitrack-logo.png" alt="SciTrack Logo" style="max-width: 100%; height: auto;">
             <ul class="menu-list">
                 <li>
-                    <p class="menu-item has-background-primary mb-6 "><i
-                            class="fa-regular fa-circle-user fa-4x icon is-large mr-4 has-text-white"></i><span
-                            class="text has-text-white is-size-4"><?php echo $fname ?></span></p>
+                    <p class="menu-item has-background-primary mb-6">
+                        <i class="fa-regular fa-circle-user fa-4x icon is-large mr-4 has-text-white"></i>
+                        <span class="text has-text-white is-size-4"><?php echo $fname ?></span>
+                    </p>
                 </li>
-                <li><a href="./adminDash.php" class="menu-item has-background-primary mt-6"><i
-                            class="fa-solid fa-chart-line fa-2x icon is-large mr-4 has-text-white"></i><span
-                            class="text has-text-white is-size-4">Dashboard</span></a></li>
-                <li><a href="./adminStudents.php" class="menu-item has-background-primary mt-6"><i
-                            class="fa-solid fa-graduation-cap fa-2x icon is-large mr-4 has-text-white"></i><span
-                            class="text has-text-white is-size-4">Students</span></a></li>
-                <li><a href="./adminTeachers.php" class="menu-item has-background-primary mt-6"><i
-                            class="fa-solid fa-chalkboard-user fa-2x icon is-large mr-4 has-text-white"></i><span
-                            class="text has-text-white is-size-4">Teachers</span></a></li>
-                <li><a href="./adminRegister.php" class="menu-item has-background-primary mt-6"><i
-                            class="fa-solid fa-solid fa-plus fa-2x icon is-large mr-4 has-text-white"></i><span
-                            class="text has-text-white is-size-4">Add an Admin</span></a></li>
-                <li><a href="./viewArchivedAccounts.php" class="menu-item has-background-primary mt-6"><i
-                            class="fa-solid fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i><span
-                            class="text has-text-white is-size-4">Archived Accounts</span></a></li>
-                <li><a href="./includes/logout.php" class="menu-item has-background-primary mt-6"><i
-                            class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i><span
-                            class="text has-text-white is-size-4">Logout</span></a></li>
+                <li><a href="./adminDash.php" class="menu-item has-background-primary mt-6">
+                        <i class="fa-solid fa-chart-line fa-2x icon is-large mr-4 has-text-white"></i>
+                        <span class="text has-text-white is-size-4">Dashboard</span>
+                    </a></li>
+                <li><a href="./viewArchivedAccounts.php" class="menu-item has-background-primary mt-6">
+                        <i class="fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i>
+                        <span class="text has-text-white is-size-4">Archived Accounts</span>
+                    </a></li>
+
+                <a class="menu-item has-background-primary mt-6 dropdown-trigger"
+                    onclick="toggleDropdown('manage-class-dropdown')">
+                    <i class="fa-solid fa-layer-group fa-2x icon is-large mr-4 has-text-white"></i>
+                    <span class="text has-text-white is-size-4">Manage Class</span>
+                </a>
+                <ul id="manage-class-dropdown" class="menu-list is-hidden">
+                    <li><a href="./adminStudents.php" class="menu-item has-background-primary">
+                            <span class="text has-text-white is-size-4">Students</span>
+                        </a></li>
+                    <li>
+                        <a href="./adminTeachers.php" class="menu-item has-background-primary">
+                            <span class="text has-text-white is-size-4">Teachers</span>
+                        </a>
+                    </li>
+                    <li><a href="./manageSections.php" class="menu-item has-background-primary">
+                            <span class="text has-text-white is-size-4">Sections</span>
+                        </a></li>
+                </ul>
+                </li>
+                <li>
+                    <a href="./includes/logout.php" class="menu-item has-background-primary mt-6">
+                        <i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i>
+                        <span class="text has-text-white is-size-4">Logout</span>
+                    </a>
+                </li>
             </ul>
         </aside>
+        <script>
+            function toggleDropdown(dropdownId) {
+                const dropdown = document.getElementById(dropdownId);
+                dropdown.classList.toggle('is-hidden');
+            }
+        </script>

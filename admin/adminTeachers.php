@@ -75,7 +75,6 @@ if ($_SESSION['role'] == 'Admin') {
             <p class="has-text-primary is-size-3 has-text-weight-semibold has-text-centered mb-6">Add New Teacher</p>
             <form action="./includes/addStaff/uploadSingleTeacher.php" method="post" id="addTeachersForm"
                 enctype="multipart/form-data">
-
                 <div class="field">
                     <div class="control mb-5">
                         <input class="input" type="text" name="firstName" placeholder="Enter First Name">
@@ -86,21 +85,25 @@ if ($_SESSION['role'] == 'Admin') {
                         <input class="input " type="text" name="lastName" placeholder="Enter Last Name">
                     </div>
                 </div>
-
                 <div class="field">
                     <div class="control mb-5">
                         <input class="input " type="text" name="userName" placeholder="Enter  Username">
                     </div>
                 </div>
-
+                <div class="field">
+                    <div class="select">
+                        <select class="select-dropdown is-hovered" id="sectionDropdown">
+                            <option>Select Section</option>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
                 <div class="columns mt-6">
                     <div class="column is-8 has-background-white">
-
                     </div>
                     <div class="column has-background-white">
                         <button class="button is-primary has-text-white" type="submit" name="submit">Confirm</button>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -131,11 +134,19 @@ if ($_SESSION['role'] == 'Admin') {
                         <input id="lastName" class="input " type="text" name="lastName" placeholder="Edit Last Name">
                     </div>
                 </div>
-
                 <div class="field">
                     <label class="label is-size-6 has-text-primary" for="userName">Username</label>
                     <div class="control mb-1">
                         <input id="userName" class="input " type="text" name="userName" placeholder="Edit Username">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label is-size-6 has-text-primary" for="editSectionDropdown">Section</label>
+                    <div class="select">
+                        <select class="select-dropdown is-hovered" id="editSectionDropdown">
+                            <option>Select Section</option>
+                            <option></option>
+                        </select>
                     </div>
                 </div>
                 <div class="field">
@@ -150,18 +161,15 @@ if ($_SESSION['role'] == 'Admin') {
                     <div class="column has-background-white">
                         <button class="button is-primary has-text-white" type="submit">Confirm</button>
                     </div>
-
                 </div>
             </form>
         </div>
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
-
 <!-- END OF EDIT TEACHER MODAL -->
 
 <!-- ARCHIVE MODAL -->
-
 <div id="archiveModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
@@ -184,7 +192,6 @@ if ($_SESSION['role'] == 'Admin') {
 </div>
 <button class="modal-close is-large" aria-label="close"></button>
 </div>
-
 <!-- END OF ARCHIVE MODAL -->
 
 
@@ -252,6 +259,7 @@ if ($_SESSION['role'] == 'Admin') {
                         <tr>
                             <th>Name</th>
                             <th>Username</th>
+                            <th>Section</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -336,8 +344,6 @@ if ($_SESSION['role'] == 'Admin') {
             method: 'POST',
             data: { type: 'loadTeachers' },
             success: function (response) {
-                console.log(response);
-                
                 if (Array.isArray(response)) {
                     if (response.length > 0) {
                         var table = $('#teacher tbody');
@@ -410,6 +416,27 @@ if ($_SESSION['role'] == 'Admin') {
             },
             error: function (xhr, status, error) {
                 console.error('Error loading teachers:', error);
+            }
+        });
+        $.ajax({
+            url: './includes/showSections.php',
+            type: 'GET',
+            success: function (response) {
+                const dropdown = $('.select-dropdown');
+                dropdown.empty();
+                dropdown.append('<option value="">Select Section</option>');
+                if (Array.isArray(response) && response.length > 0) {
+                    response.forEach(section => {
+                        dropdown.append(
+                            `<option value="${section.section_name}">${section.section_name}</option>`
+                        );
+                    });
+                } else {
+                    dropdown.append('<option value="">No sections available</option>');
+                }
+            },
+            error: function () {
+                alert('An error occurred while fetching sections.');
             }
         });
     });
