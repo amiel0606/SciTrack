@@ -92,17 +92,18 @@ if ($_SESSION['role'] == 'Admin') {
                 </div>
                 <div class="field">
                     <div class="select">
-                        <select class="select-dropdown is-hovered" id="sectionDropdown">
+                        <select name="section" class="select-dropdown is-hovered" id="sectionDropdown">
                             <option>Select Section</option>
                             <option></option>
                         </select>
                     </div>
                 </div>
                 <div class="columns mt-6">
-                    <div class="column is-8 has-background-white">
+                    <div class="column is-10 has-background-white">
+                        <button class="button is-primary has-text-white" type="submit" name="submit">Confirm</button>
                     </div>
                     <div class="column has-background-white">
-                        <button class="button is-primary has-text-white" type="submit" name="submit">Confirm</button>
+                        <button type="button" class="modal-off button">Cancel</button>
                     </div>
                 </div>
             </form>
@@ -143,8 +144,8 @@ if ($_SESSION['role'] == 'Admin') {
                 <div class="field">
                     <label class="label is-size-6 has-text-primary" for="editSectionDropdown">Section</label>
                     <div class="select">
-                        <select class="select-dropdown is-hovered" id="editSectionDropdown">
-                            <option>Select Section</option>
+                        <select name="section" class="select-dropdown is-hovered" id="editSectionDropdown">
+                            <option selected>No sections available</option>
                             <option></option>
                         </select>
                     </div>
@@ -160,6 +161,9 @@ if ($_SESSION['role'] == 'Admin') {
                     </div>
                     <div class="column has-background-white">
                         <button class="button is-primary has-text-white" type="submit">Confirm</button>
+                    </div>
+                    <div class="column has-background-white">
+                        <button type="button" class="modal-off button">Cancel</button>
                     </div>
                 </div>
             </form>
@@ -184,9 +188,10 @@ if ($_SESSION['role'] == 'Admin') {
                 <div class="columns has-background-white">
                     <div class="column is-10 mt-6 has-background-white">
                         <button class="button is-success has-text-centered">Yes, Archive it</button>
+                        <button type="button" class="modal-off button">Cancel</button>
                     </div>
+                    
         </form>
-
     </div>
 </div>
 </div>
@@ -202,7 +207,6 @@ if ($_SESSION['role'] == 'Admin') {
         <div class="box uploadModal">
             <form action="./includes/addStaff/uploadTeacher.php" method="post" enctype="multipart/form-data">
                 <div class="columns has-background-white">
-
                     <div class="column ">
                         <label for="file" class="label">Upload a file</label>
                         <div class="file is-primary">
@@ -222,6 +226,7 @@ if ($_SESSION['role'] == 'Admin') {
                 <button class="button is-success" name="submit">
                     Submit
                 </button>
+                    <button type="button" class="modal-off button">Cancel</button>
             </form>
         </div>
     </div>
@@ -258,13 +263,12 @@ if ($_SESSION['role'] == 'Admin') {
                     <thead class="has-text-centered has-background-primary">
                         <tr>
                             <th>Name</th>
-                            <th>Username</th>
                             <th>Section</th>
+                            <th>Username</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="has-text-centered">
-
                     </tbody>
                 </table>
             </div>
@@ -325,7 +329,7 @@ if ($_SESSION['role'] == 'Admin') {
         });
 
         // Add click event on various child elements to close the parent modal
-        document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button').forEach(($close) => {
+        document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button, .modal-off').forEach(($close) => {
             const $target = $close.closest('.modal');
 
             $close.addEventListener('click', () => {
@@ -351,6 +355,7 @@ if ($_SESSION['role'] == 'Admin') {
                         response.forEach(function (teacher) {
                             var newRow = $('<tr>');
                             newRow.append($('<td>').text(teacher.name));
+                            newRow.append($('<td>').text(teacher.section));
                             newRow.append($('<td>').text(teacher.username));
                             var buttonCell = $('<td>');
                             var button1 = $('<a>')
@@ -359,6 +364,7 @@ if ($_SESSION['role'] == 'Admin') {
                                 .attr('data-id', teacher.id)
                                 .attr('data-name', teacher.name)
                                 .attr('data-username', teacher.username)
+                                .attr('data-section', teacher.section)
                                 .html(`
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
                             <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" fill="#fff"/>
@@ -378,22 +384,21 @@ if ($_SESSION['role'] == 'Admin') {
                             buttonCell.append(button1).append(button2);
                             newRow.append(buttonCell);
                             table.append(newRow);
-
                             button1.on('click', function () {
                                 const modal = $(this).data('target');
                                 const modalTarget = document.getElementById(modal);
                                 const teacherID = $(this).data('id');
                                 const fullName = $(this).data('name');
                                 const userName = $(this).data('username');
-
+                                const section = $(this).data('section');
                                 const nameParts = fullName.trim().split(' ');
                                 let lastName = nameParts.length > 1 ? nameParts.pop() : '';
                                 let firstName = nameParts.join(' ');
-
-                                $('#teacher-id').val(teacherID);
+                                $('#teacherID').val(teacherID);
                                 $('#firstName').val(firstName);
                                 $('#lastName').val(lastName);
                                 $('#userName').val(userName);
+                                $('#editSectionDropdown').val(section);
                                 openModal(modalTarget);
                             });
 
@@ -424,7 +429,6 @@ if ($_SESSION['role'] == 'Admin') {
             success: function (response) {
                 const dropdown = $('.select-dropdown');
                 dropdown.empty();
-                dropdown.append('<option value="">Select Section</option>');
                 if (Array.isArray(response) && response.length > 0) {
                     response.forEach(section => {
                         dropdown.append(
@@ -432,7 +436,7 @@ if ($_SESSION['role'] == 'Admin') {
                         );
                     });
                 } else {
-                    dropdown.append('<option value="">No sections available</option>');
+                    dropdown.append('<option value="0" selected>No sections available</option>');
                 }
             },
             error: function () {

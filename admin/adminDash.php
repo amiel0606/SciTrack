@@ -88,6 +88,7 @@ if ($_SESSION['role'] == 'Admin') {
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>Section</th>
                                     <th>Username</th>
                                 </tr>
                             </thead>
@@ -113,6 +114,7 @@ if ($_SESSION['role'] == 'Admin') {
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Section</th>
                                 <th>Username</th>
                             </tr>
                         </thead>
@@ -198,7 +200,6 @@ if ($_SESSION['role'] == 'Admin') {
         nextButton.addEventListener('click', () => changeMonth(1));
 
         generateCalendar(currentMonth, currentYear);
-        // Load students, teachers, and counts using AJAX requests
         $.ajax({
             url: '../server.php',
             method: 'POST',
@@ -206,11 +207,12 @@ if ($_SESSION['role'] == 'Admin') {
             success: function (response) {
                 if (Array.isArray(response)) {
                     var table = $('#students tbody');
-                    table.empty(); // Clear existing rows
+                    table.empty(); 
                     response.forEach(function (student) {
                         var newRow = $('<tr>');
                         newRow.append($('<td>').text(student.id));
                         newRow.append($('<td>').text(student.name));
+                        newRow.append($('<td>').text(student.section));
                         newRow.append($('<td>').text(student.username));
                         table.append(newRow);
                     });
@@ -228,11 +230,12 @@ if ($_SESSION['role'] == 'Admin') {
             success: function (response) {
                 if (Array.isArray(response)) {
                     var table = $('#teachers tbody');
-                    table.empty(); // Clear existing rows
+                    table.empty(); 
                     response.forEach(function (teacher) {
                         var newRow = $('<tr>');
                         newRow.append($('<td>').text(teacher.id));
                         newRow.append($('<td>').text(teacher.name));
+                        newRow.append($('<td>').text(teacher.section));
                         newRow.append($('<td>').text(teacher.username));
                         table.append(newRow);
                     });

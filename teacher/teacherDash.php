@@ -93,31 +93,31 @@ include_once './includes/sidebar.php'
                         <a href="./studentProgress.php" class="has-text-primary">View All</a>
                     </div>
                     <div class="table-container">
-                    <table class="table dash-table is-hoverable">
-                        <tbody class="has-text-centered">
-                        </tbody>
-                    </table>
-                </div>
+                        <table class="table dash-table is-hoverable">
+                            <tbody class="has-text-centered">
+                            </tbody>
+                        </table>
+                    </div>
 
+                </div>
             </div>
-        </div>
 
-        <div class="column is-half">
-            <div class="box dash-tables dash has-shadow"
-                style="display: flex; flex-direction: column; justify-content: space-between;">
-                <p class="has-text-primary is-size-3 has-text-weight-bold has-text-centered mt-2">Lessons</p>
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center;">
-                    <button class="button is-primary"><i class="fa-solid fa-caret-left"></i></button>
-                    <figure class="image mx-4">
-                        <img src="../image/matter.png" alt="Centered Image">
-                    </figure>
-                    <button class="button is-primary"><i class="fa-solid fa-caret-right"></i></button>
+            <div class="column is-half">
+                <div class="box dash-tables dash has-shadow"
+                    style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <p class="has-text-primary is-size-3 has-text-weight-bold has-text-centered mt-2">Lessons</p>
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center;">
+                        <button class="button is-primary"><i class="fa-solid fa-caret-left"></i></button>
+                        <figure class="image mx-4">
+                            <img src="../image/matter.png" alt="Centered Image">
+                        </figure>
+                        <button class="button is-primary"><i class="fa-solid fa-caret-right"></i></button>
+                    </div>
+                    <p class="has-text-centered has-text-success is-size-3 has-text-weight-semibold">On going</p>
                 </div>
-                <p class="has-text-centered has-text-success is-size-3 has-text-weight-semibold">On going</p>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
@@ -200,7 +200,7 @@ include_once './includes/sidebar.php'
                 tbody.empty();
                 const studentProgress = {};
                 response.section_counts.forEach(function (entry) {
-                    const studentId = entry.id; 
+                    const studentId = entry.student_id;
                     if (!studentProgress[studentId]) {
                         studentProgress[studentId] = {
                             id: studentId,
@@ -212,9 +212,11 @@ include_once './includes/sidebar.php'
                     studentProgress[studentId].section_count += entry.section_count;
                 });
                 const totalSections = 104;
-                Object.values(studentProgress).forEach(function (student) {
-                    const progressPercentage = Math.round((student.section_count / totalSections) * 100);
-                    const row = `
+                if (studentProgress.length > 0) {
+                    Object.values(studentProgress).forEach(function (student) {
+                        console.log(student);
+                        const progressPercentage = Math.round((student.section_count / totalSections) * 100);
+                        const row = `
                     <tr class="clickable-row" data-student-id="${student.id}">
                         <td class="is-name">
                             <figure class="image is-32x32" style="float: left;">
@@ -257,8 +259,16 @@ include_once './includes/sidebar.php'
                         <td>${progressPercentage}%</td>
                     </tr>
                 `;
+                        tbody.append(row);
+                    });
+                } else {
+                    const row = `
+                        <tr>
+                            <td colspan="4" class="has-text-centered">No student progress data found.</td>
+                        </tr>
+                    `;
                     tbody.append(row);
-                });
+                }
                 $('.table tbody').on('click', '.clickable-row', function () {
                     const studentID = $(this).data('student-id');
                     window.location.href = `progressDetails.php?studentID=${studentID}`;

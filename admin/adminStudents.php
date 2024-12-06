@@ -16,7 +16,7 @@ if ($_SESSION['role'] == 'Admin') {
 
     .addStudents {
         --bulma-box-background-color: hsl(0, 0%, 100%);
-        height: 561px;
+        height: 100%;
         width: 100%;
         font-family: 'InriaSans-Bold';
     }
@@ -75,16 +75,25 @@ if ($_SESSION['role'] == 'Admin') {
                     </div>
                 </div>
                 <div class="field">
+                    <div class="select">
+                        <select name="section" class="select-dropdown is-hovered" id="addSectionDropdown">
+                            <option selected>Select Section</option>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
                     <div class="control mb-5">
                         <input class="input " type="text" name="userName" placeholder="Enter  Username">
                     </div>
                 </div>
-
                 <div class="columns mt-6">
-                    <div class="column has-background-white">
+                    <div class="column is-10 has-background-white">
                         <button class="button is-primary has-text-white" name="submit" type="submit">Confirm</button>
                     </div>
-
+                    <div class="column has-background-white">
+                        <button type="button" class="modal-off button">Cancel</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -119,6 +128,15 @@ if ($_SESSION['role'] == 'Admin') {
                     <label class="label is-size-6 has-text-primary" for="userName">Username</label>
                     <div class="control mb-1">
                         <input id="userName" class="input " type="text" name="userName" placeholder="Edit Username">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label is-size-6 has-text-primary" for="editSectionDropdown">Section</label>
+                    <div class="select">
+                        <select name="section" class="select-dropdown is-hovered" id="editSectionDropdown">
+                            <option selected>No sections available</option>
+                            <option></option>
+                        </select>
                     </div>
                 </div>
                 <div class="field">
@@ -196,6 +214,7 @@ if ($_SESSION['role'] == 'Admin') {
                 <button class="button is-success" type="submit" name="submit">
                     Submit
                 </button>
+                    <button type="button" class="modal-off button">Cancel</button>
             </form>
         </div>
     </div>
@@ -234,6 +253,7 @@ if ($_SESSION['role'] == 'Admin') {
                         <tr>
                             <th>#</th>
                             <th>Name</th>
+                            <th>Section</th>
                             <th>Username</th>
                             <th>Actions</th>
                         </tr>
@@ -330,8 +350,8 @@ if ($_SESSION['role'] == 'Admin') {
                         var newRow = $('<tr>');
                         newRow.append($('<td>').text(student.id));
                         newRow.append($('<td>').text(student.name));
+                        newRow.append($('<td>').text(student.section));
                         newRow.append($('<td>').text(student.username));
-
                         var buttonCell = $('<td>');
                         var button1 = $('<a>')
                             .addClass('button is-success p-1 js-modal-trigger')
@@ -339,6 +359,7 @@ if ($_SESSION['role'] == 'Admin') {
                             .attr('data-id', student.id)
                             .attr('data-name', student.name)
                             .attr('data-userName', student.username)
+                            .attr('data-section', student.section)
                             .html(`
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
                             <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" fill="#fff"/>
@@ -358,20 +379,21 @@ if ($_SESSION['role'] == 'Admin') {
                         buttonCell.append(button1).append(button2);
                         newRow.append(buttonCell);
                         table.append(newRow);
-
                         button1.on('click', function () {
                             const modal = $(this).data('target');
                             const modalTarget = document.getElementById(modal);
                             const studentID = $(this).data('id');
                             const fullName = $(this).data('name');  
                             const userName = $(this).data('username');
+                            const section = $(this).data('section');
                             const nameParts = fullName.trim().split(' ');
                             let lastName = nameParts.length > 1 ? nameParts.pop() : '';  
                             let firstName = nameParts.join(' ');  
                             $('#student-id').val(studentID);
                             $('#firstName').val(firstName);  
                             $('#lastName').val(lastName);    
-                            $('#userName').val(userName); 
+                            $('#userName').val(userName);
+                            $('#editSectionDropdown').val(section);
                             openModal(modalTarget);
                         });
                         button2.on('click', function () {
@@ -389,6 +411,29 @@ if ($_SESSION['role'] == 'Admin') {
             },
             error: function (xhr, status, error) {
                 console.error('Error loading students:', error);
+            }
+        });
+        $.ajax({
+            url: './includes/showSections.php',
+            type: 'GET',
+            data: { type: 'sections' },
+            dataType: 'json',
+            success: function (response) {
+                const dropdown = $('.select-dropdown');
+                dropdown.empty();
+                dropdown.append('<option value="0" selected>Select a section</option>');
+                if (Array.isArray(response) && response.length > 0) {
+                    response.forEach(section => {
+                        dropdown.append(
+                            `<option value="${section.section_name}">${section.section_name}</option>`
+                        );
+                    });
+                } else {
+                    dropdown.append('<option value="0" selected>No sections available</option>');
+                }
+            },
+            error: function () {
+                alert('An error occurred while fetching sections.');
             }
         });
     });

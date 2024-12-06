@@ -41,14 +41,24 @@ $fname = $_SESSION['firstName'];
 
         .menu {
             position: sticky;
-            display: inline-block;
-            vertical-align: top;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             min-height: 100vh;
             overflow-y: auto;
             align-items: center;
             width: 400px;
             text-align: center;
             padding: 25px;
+        }
+
+        .menu-list {
+            flex-grow: 1;
+        }
+
+        .menu-list .menu-item {
+            margin-top: 5px;
+            font-size: 0.3rem;
         }
 
         #manage-class-dropdown li {
@@ -64,9 +74,6 @@ $fname = $_SESSION['firstName'];
             font-size: 0.25rem;
         }
 
-        .menu-list .menu-item {
-            font-size: 0.3rem;
-        }
 
         .menu-list .menu-item .icon {
             font-size: 1.4rem;
@@ -158,16 +165,16 @@ $fname = $_SESSION['firstName'];
                         <span class="text has-text-white is-size-4"><?php echo $fname ?></span>
                     </p>
                 </li>
-                <li><a href="./adminDash.php" class="menu-item has-background-primary mt-6">
+                <li><a href="./adminDash.php" class="menu-item has-background-primary">
                         <i class="fa-solid fa-chart-line fa-2x icon is-large mr-4 has-text-white"></i>
                         <span class="text has-text-white is-size-4">Dashboard</span>
                     </a></li>
-                <li><a href="./viewArchivedAccounts.php" class="menu-item has-background-primary mt-6">
+                <li><a href="./viewArchivedAccounts.php" class="menu-item has-background-primary">
                         <i class="fa-solid fa-gears fa-2x icon is-large mr-4 has-text-white"></i>
                         <span class="text has-text-white is-size-4">Archived Accounts</span>
                     </a></li>
 
-                <a class="menu-item has-background-primary mt-6 dropdown-trigger"
+                <a class="menu-item has-background-primary dropdown-trigger"
                     onclick="toggleDropdown('manage-class-dropdown')">
                     <i class="fa-solid fa-layer-group fa-2x icon is-large mr-4 has-text-white"></i>
                     <span class="text has-text-white is-size-4">Manage Class</span>
@@ -185,9 +192,8 @@ $fname = $_SESSION['firstName'];
                             <span class="text has-text-white is-size-4">Sections</span>
                         </a></li>
                 </ul>
-                </li>
                 <li>
-                    <a href="./includes/logout.php" class="menu-item has-background-primary mt-6">
+                    <a href="./includes/logout.php" class="menu-item has-background-primary" style="margin-top: auto;">
                         <i class="fa-solid fa-arrow-right-from-bracket fa-2x icon is-large mr-4 has-text-white"></i>
                         <span class="text has-text-white is-size-4">Logout</span>
                     </a>

@@ -185,6 +185,7 @@ if ($_SESSION['role'] == 'Admin') {
                     url: "./includes/showSections.php",
                     method: "GET",
                     dataType: "json",
+                    data: { type: "sections" },
                     success: function (data) {
                         $("#sectionBody").empty();
                         if (data.length > 0) {

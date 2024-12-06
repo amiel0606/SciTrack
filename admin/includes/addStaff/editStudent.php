@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userName = $_POST['userName'];
     $password = $_POST['password'];
     $name = $firstName . " " . $lastName . " ";
-    $section = 'Papaya'; 
+    $section = $_POST['section']; 
 
     $updateUser = "UPDATE tbl_users SET username=?, firstName=?, lastName=? WHERE id=?";
     if (!empty($password)) {

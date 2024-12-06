@@ -68,12 +68,20 @@ include_once './includes/sidebar.php';
             data: { type: 'getQuizScores' },
             dataType: 'json',
             success: function (response) {
+                var tableBody = document.querySelector('.table tbody');
+                tableBody.innerHTML = ''; 
                 if (response && response.length > 0) {
                     response.forEach(function (quizScore) {
                         displayQuizScore(quizScore);
                     });
                 } else {
-                    console.log("No quiz scores found.");
+                    var row = document.createElement('tr');
+                    var messageCell = document.createElement('td');
+                    messageCell.colSpan = 4;
+                    messageCell.textContent = "No quiz scores found.";
+                    messageCell.className = 'has-text-centered'; 
+                    row.appendChild(messageCell);
+                    tableBody.appendChild(row);
                 }
             },
             error: function (xhr, status, error) {
@@ -84,6 +92,7 @@ include_once './includes/sidebar.php';
         function displayQuizScore(quizScore) {
             var tableBody = document.querySelector('.table tbody');
             var row = document.createElement('tr');
+
             var nameCell = document.createElement('td');
             nameCell.textContent = quizScore.student_name;
             nameCell.className = 'has-text-centered';
