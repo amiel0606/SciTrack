@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2024 at 10:55 PM
+-- Generation Time: Dec 06, 2024 at 02:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -440,6 +440,28 @@ INSERT INTO `tbl_roles` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_sections`
+--
+
+CREATE TABLE `tbl_sections` (
+  `section_id` int(11) NOT NULL,
+  `section_name` varchar(255) NOT NULL,
+  `teacher` varchar(255) NOT NULL DEFAULT 'No Teacher Assigned Yet'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_sections`
+--
+
+INSERT INTO `tbl_sections` (`section_id`, `section_name`, `teacher`) VALUES
+(2, '4.1B', 'Darius Gavino'),
+(3, 'HM701', 'Jorenz Ferrer'),
+(4, 'BT705', 'Clarence Escoto'),
+(5, '4.1C', 'Darius Gavino');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_students`
 --
 
@@ -456,8 +478,9 @@ CREATE TABLE `tbl_students` (
 --
 
 INSERT INTO `tbl_students` (`id`, `name`, `section`, `username`, `status`) VALUES
-(39, 'Amiel Carhyl Lapid ', 'Papaya', 'amiel06', 'Active'),
-(44, 'Nicole Heart Mendoza ', 'Papaya', 'heart', 'Active');
+(39, 'Amiel Carhyl Lapid ', '4.1B', 'amiel06', 'Active'),
+(44, 'Nicole Heart Mendoza ', 'HM701', 'heart', 'Active'),
+(49, 'Willie Nelson Manalo', '4.1C', 'willie', 'Active');
 
 -- --------------------------------------------------------
 
@@ -478,7 +501,10 @@ CREATE TABLE `tbl_teachers` (
 --
 
 INSERT INTO `tbl_teachers` (`id`, `name`, `section`, `username`, `status`) VALUES
-(43, 'Amiel Carhyl Lapid', 'Papaya', 'amiel', 'Active');
+(43, 'Amiel Carhyl Lapid', '4.1B', 'amiel', 'Active'),
+(46, 'Jorenz Ferrer', 'HM701', 'jorenz', 'Active'),
+(47, 'Darius Gavino', '4.1C', 'lezgo', 'Active'),
+(48, 'Clarence Escoto', 'BT705', 'clark', 'Active');
 
 -- --------------------------------------------------------
 
@@ -501,119 +527,15 @@ CREATE TABLE `tbl_time_tracking` (
 --
 
 INSERT INTO `tbl_time_tracking` (`id`, `student_id`, `lesson`, `section_index`, `section_name`, `time_spent`, `timestamp`) VALUES
-(209, 44, 'Matter', 0, 'Solid', 1, '2024-11-10 18:50:04'),
-(210, 44, 'Matter', 1, 'Solid', 0, '2024-11-10 18:50:05'),
-(211, 44, 'Matter', 2, 'Solid', 0, '2024-11-10 18:50:05'),
-(212, 44, 'Matter', 3, 'Solid', 0, '2024-11-10 18:50:05'),
-(213, 44, 'Matter', 4, 'Solid', 0, '2024-11-10 18:50:06'),
-(214, 44, 'Matter', 5, 'Solid', 0, '2024-11-10 18:50:06'),
-(215, 44, 'Matter', 7, 'Solid', 0, '2024-11-10 18:50:07'),
-(216, 44, 'Matter', 6, 'Solid', 0, '2024-11-10 18:50:07'),
-(217, 44, 'Matter', 8, 'Solid', 0, '2024-11-10 18:50:08'),
-(218, 44, 'Matter', 0, 'Liquid', 1, '2024-11-10 18:50:21'),
-(219, 44, 'Matter', 1, 'Liquid', 0, '2024-11-10 18:50:21'),
-(220, 44, 'Matter', 2, 'Liquid', 0, '2024-11-10 18:50:22'),
-(221, 44, 'Matter', 3, 'Liquid', 0, '2024-11-10 18:50:22'),
-(222, 44, 'Matter', 4, 'Liquid', 0, '2024-11-10 18:50:22'),
-(223, 44, 'Matter', 5, 'Liquid', 0, '2024-11-10 18:50:23'),
-(224, 44, 'Matter', 7, 'Liquid', 0, '2024-11-10 18:50:23'),
-(225, 44, 'Matter', 6, 'Liquid', 0, '2024-11-10 18:50:23'),
-(226, 44, 'Matter', 8, 'Liquid', 0, '2024-11-10 18:50:24'),
-(227, 44, 'Matter', 0, 'Gas', 2, '2024-11-10 18:50:35'),
-(228, 44, 'Matter', 1, 'Gas', 2, '2024-11-10 18:50:38'),
-(229, 44, 'Matter', 2, 'Gas', 0, '2024-11-10 18:50:38'),
-(230, 44, 'Matter', 3, 'Gas', 0, '2024-11-10 18:50:38'),
-(231, 44, 'Matter', 4, 'Gas', 0, '2024-11-10 18:50:38'),
-(232, 44, 'Matter', 5, 'Gas', 0, '2024-11-10 18:50:38'),
-(233, 44, 'Matter', 7, 'Gas', 0, '2024-11-10 18:50:38'),
-(234, 44, 'Matter', 6, 'Gas', 0, '2024-11-10 18:50:39'),
-(235, 44, 'Matter', 8, 'Gas', 0, '2024-11-10 18:50:39'),
-(236, 44, 'Ecosystem', 0, 'Estuaries', 0, '2024-11-10 18:50:46'),
-(237, 44, 'Ecosystem', 1, 'Estuaries', 3, '2024-11-10 18:50:50'),
-(238, 44, 'Ecosystem', 2, 'Estuaries', 3, '2024-11-10 18:50:53'),
-(239, 44, 'Ecosystem', 3, 'Estuaries', 0, '2024-11-10 18:50:53'),
-(240, 44, 'Ecosystem', 4, 'Estuaries', 0, '2024-11-10 18:50:54'),
-(241, 44, 'Ecosystem', 5, 'Estuaries', 0, '2024-11-10 18:50:54'),
-(242, 44, 'Ecosystem', 6, 'Estuaries', 0, '2024-11-10 18:50:54'),
-(243, 44, 'Ecosystem', 7, 'Estuaries', 0, '2024-11-10 18:50:54'),
-(244, 44, 'Ecosystem', 8, 'Estuaries', 0, '2024-11-10 18:50:54'),
-(245, 44, 'Ecosystem', 9, 'Estuaries', 0, '2024-11-10 18:50:55'),
-(246, 44, 'Ecosystem', 10, 'Estuaries', 0, '2024-11-10 18:50:55'),
-(247, 44, 'Ecosystem', 11, 'Estuaries', 0, '2024-11-10 18:50:55'),
-(248, 44, 'Ecosystem', 13, 'Estuaries', 2, '2024-11-10 18:50:57'),
-(249, 44, 'Ecosystem', 0, 'Intertidal', 2, '2024-11-10 18:51:02'),
-(250, 44, 'Ecosystem', 1, 'Intertidal', 4, '2024-11-10 18:51:06'),
-(251, 44, 'Ecosystem', 2, 'Intertidal', 0, '2024-11-10 18:51:07'),
-(252, 44, 'Ecosystem', 3, 'Intertidal', 0, '2024-11-10 18:51:07'),
-(253, 44, 'Ecosystem', 4, 'Intertidal', 0, '2024-11-10 18:51:07'),
-(254, 44, 'Ecosystem', 5, 'Intertidal', 0, '2024-11-10 18:51:07'),
-(255, 44, 'Ecosystem', 6, 'Intertidal', 0, '2024-11-10 18:51:07'),
-(256, 44, 'Ecosystem', 7, 'Intertidal', 0, '2024-11-10 18:51:08'),
-(257, 44, 'Ecosystem', 8, 'Intertidal', 0, '2024-11-10 18:51:08'),
-(258, 44, 'Ecosystem', 9, 'Intertidal', 0, '2024-11-10 18:51:08'),
-(259, 44, 'Ecosystem', 10, 'Intertidal', 0, '2024-11-10 18:51:08'),
-(260, 44, 'Ecosystem', 11, 'Intertidal', 0, '2024-11-10 18:51:08'),
-(261, 44, 'Ecosystem', 12, 'Intertidal', 0, '2024-11-10 18:51:09'),
-(262, 44, 'Ecosystem', 13, 'Intertidal', 0, '2024-11-10 18:51:09'),
-(263, 44, 'Ecosystem', 14, 'Intertidal', 0, '2024-11-10 18:51:09'),
-(264, 44, 'Ecosystem', 16, 'Intertidal', 1, '2024-11-10 18:51:10'),
-(265, 44, 'Motion', 0, 'WhatisMotion', 1, '2024-11-10 18:51:18'),
-(266, 44, 'Motion', 1, 'WhatisMotion', 2, '2024-11-10 18:51:20'),
-(267, 44, 'Motion', 2, 'WhatisMotion', 0, '2024-11-10 18:51:21'),
-(268, 44, 'Motion', 3, 'WhatisMotion', 0, '2024-11-10 18:51:21'),
-(269, 44, 'Motion', 4, 'WhatisMotion', 0, '2024-11-10 18:51:22'),
-(270, 44, 'Motion', 5, 'WhatisMotion', 0, '2024-11-10 18:51:22'),
-(271, 44, 'Motion', 6, 'WhatisMotion', 0, '2024-11-10 18:51:22'),
-(272, 44, 'Motion', 7, 'WhatisMotion', 0, '2024-11-10 18:51:22'),
-(273, 44, 'Motion', 8, 'WhatisMotion', 0, '2024-11-10 18:51:22'),
-(274, 44, 'Motion', 9, 'WhatisMotion', 0, '2024-11-10 18:51:23'),
-(275, 44, 'Motion', 10, 'WhatisMotion', 0, '2024-11-10 18:51:23'),
-(276, 44, 'Motion', 11, 'WhatisMotion', 0, '2024-11-10 18:51:24'),
-(277, 44, 'Motion', 12, 'WhatisMotion', 0, '2024-11-10 18:51:24'),
-(278, 44, 'Motion', 13, 'WhatisMotion', 0, '2024-11-10 18:51:24'),
-(279, 44, 'Motion', 15, 'WhatisMotion', 2, '2024-11-10 18:51:26'),
-(280, 44, 'Motion', 0, 'Measuring', 1, '2024-11-10 18:51:30'),
-(281, 44, 'Motion', 1, 'Measuring', 1, '2024-11-10 18:51:32'),
-(282, 44, 'Motion', 2, 'Measuring', 0, '2024-11-10 18:51:32'),
-(283, 44, 'Motion', 3, 'Measuring', 0, '2024-11-10 18:51:32'),
-(284, 44, 'Motion', 4, 'Measuring', 0, '2024-11-10 18:51:33'),
-(285, 44, 'Motion', 5, 'Measuring', 0, '2024-11-10 18:51:33'),
-(286, 44, 'Motion', 6, 'Measuring', 0, '2024-11-10 18:51:33'),
-(287, 44, 'Motion', 7, 'Measuring', 0, '2024-11-10 18:51:34'),
-(288, 44, 'Motion', 8, 'Measuring', 0, '2024-11-10 18:51:34'),
-(289, 44, 'Motion', 9, 'Measuring', 0, '2024-11-10 18:51:35'),
-(290, 44, 'Motion', 10, 'Measuring', 0, '2024-11-10 18:51:35'),
-(291, 44, 'Motion', 12, 'Measuring', 2, '2024-11-10 18:51:37'),
-(292, 44, 'Earths Surface', 0, 'Weathering', 1, '2024-11-10 18:51:44'),
-(293, 44, 'Earths Surface', 1, 'Weathering', 70, '2024-11-10 18:54:32'),
-(294, 44, 'Earths Surface', 2, 'Weathering', 1, '2024-11-10 18:54:33'),
-(295, 44, 'Earths Surface', 3, 'Weathering', 0, '2024-11-10 18:54:33'),
-(296, 44, 'Earths Surface', 4, 'Weathering', 2, '2024-11-10 18:54:36'),
-(297, 44, 'Earths Surface', 5, 'Weathering', 0, '2024-11-10 18:54:36'),
-(298, 44, 'Earths Surface', 6, 'Weathering', 0, '2024-11-10 18:54:37'),
-(299, 44, 'Earths Surface', 7, 'Weathering', 0, '2024-11-10 18:54:37'),
-(300, 44, 'Earths Surface', 8, 'Weathering', 1, '2024-11-10 18:54:39'),
-(301, 44, 'Earths Surface', 10, 'Weathering', 2, '2024-11-10 18:54:41'),
-(302, 44, 'Earths Surface', 0, 'Erosion', 1, '2024-11-10 18:54:46'),
-(303, 44, 'Earths Surface', 1, 'Erosion', 2, '2024-11-10 18:54:49'),
-(304, 44, 'Earths Surface', 2, 'Erosion', 0, '2024-11-10 18:54:49'),
-(305, 44, 'Earths Surface', 3, 'Erosion', 0, '2024-11-10 18:54:49'),
-(306, 44, 'Earths Surface', 4, 'Erosion', 0, '2024-11-10 18:54:50'),
-(307, 44, 'Earths Surface', 5, 'Erosion', 0, '2024-11-10 18:54:50'),
-(308, 44, 'Earths Surface', 6, 'Erosion', 0, '2024-11-10 18:54:50'),
-(309, 44, 'Earths Surface', 7, 'Erosion', 0, '2024-11-10 18:54:50'),
-(310, 44, 'Earths Surface', 8, 'Erosion', 0, '2024-11-10 18:54:51'),
-(311, 44, 'Earths Surface', 9, 'Erosion', 0, '2024-11-10 18:54:51'),
-(312, 44, 'Earths Surface', 11, 'Erosion', 2, '2024-11-10 18:54:53'),
-(313, 39, 'Matter', 0, 'Solid', 91, '2024-11-26 15:02:34'),
-(314, 39, 'Matter', 1, 'Solid', 51, '2024-11-26 15:02:43'),
-(315, 39, 'Matter', 2, 'Solid', 40, '2024-11-26 15:02:55'),
-(316, 39, 'Matter', 3, 'Solid', 105, '2024-11-26 15:03:47'),
-(317, 39, 'Matter', 4, 'Solid', 24, '2024-11-26 15:03:57'),
-(318, 39, 'Matter', 5, 'Solid', 33, '2024-11-26 15:04:00'),
-(319, 39, 'Matter', 7, 'Solid', 0, '2024-11-26 15:04:06'),
-(320, 39, 'Matter', 6, 'Solid', 29, '2024-11-26 15:04:06'),
-(321, 39, 'Matter', 8, 'Solid', 4065, '2024-11-26 15:06:20');
+(322, 39, 'Matter', 0, 'Solid', 1, '2024-12-05 20:54:51'),
+(323, 39, 'Matter', 1, 'Solid', 1, '2024-12-05 20:54:51'),
+(324, 39, 'Matter', 2, 'Solid', 1, '2024-12-05 20:54:53'),
+(325, 39, 'Matter', 3, 'Solid', 1, '2024-12-05 20:54:54'),
+(326, 39, 'Matter', 4, 'Solid', 1, '2024-12-05 20:54:56'),
+(327, 39, 'Matter', 5, 'Solid', 3, '2024-12-05 20:54:59'),
+(328, 39, 'Matter', 7, 'Solid', 0, '2024-12-05 20:55:00'),
+(329, 39, 'Matter', 6, 'Solid', 1, '2024-12-05 20:55:00'),
+(330, 39, 'Matter', 8, 'Solid', 3, '2024-12-05 20:55:05');
 
 -- --------------------------------------------------------
 
@@ -640,7 +562,11 @@ INSERT INTO `tbl_users` (`id`, `username`, `password`, `role`, `section`, `first
 (39, 'amiel06', '$2y$10$07PXgzE1ASMd7Osm1iFOsuGD4OoZ3fN0YvC748TO5mo1N1qAmm6gW', 'Student', 'Papaya', 'Amiel Carhyl', 'Lapid', 'Active'),
 (43, 'amiel', '$2y$10$fL3rofLrCgPOHiljAmBIEu3G88zDxzN73XLD/q.iYQeduymJ21J9q', 'Teacher', 'Papaya', 'Amiel Carhyl', 'Lapid', 'Active'),
 (44, 'heart', '$2y$10$bOJd9ResuROJ6jI6PXWyi.mLuodBe1JXD0AJAfkoOCU/jKlI1gDoC', 'Student', 'Papaya', 'Nicole Heart', 'Mendoza', 'Active'),
-(45, 'makmak', '$2y$10$4ozBe5./pzBvynvux1NdG.C8zONyqRX4W382sCjhWM81htDH9sCOe', 'Admin', 'N/A', 'Mark Nelson', 'Garcia', 'Active');
+(45, 'makmak', '$2y$10$4ozBe5./pzBvynvux1NdG.C8zONyqRX4W382sCjhWM81htDH9sCOe', 'Admin', 'N/A', 'Mark Nelson', 'Garcia', 'Active'),
+(46, 'jorenz', '$2y$10$VG.Q6m/iYVH5RlRHuimrEOP9HPW5dQihUoNPjUFXUPmCe.PlSyyEa', 'Teacher', '4.1B', 'Jorenz', 'Ferrer', 'Active'),
+(47, 'lezgo', '$2y$10$T0IGxaSuIsFrFk.opwHDe.x3qVUf9Mqdau/mBI3JvYuxyMEUJ1TzW', 'Teacher', '4.1B', 'Darius', 'Gavino', 'Active'),
+(48, 'clark', '$2y$10$WVUen0X6tNkxrPybuuO9MuQF5sM3mdqOZ7R80h4Ohq0dO0po1vYVO', 'Teacher', 'BT705', 'Clarence', 'Escoto', 'Active'),
+(49, 'willie', '$2y$10$dhEXsFQ8ifyNDbDpO./pN.4/ujmcvwj8xKfJjhmvBiKrJs0CmVdue', 'Student', '4.1C', 'Willie Nelson', 'Manalo', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -730,6 +656,12 @@ ALTER TABLE `tbl_quiz_scores`
 --
 ALTER TABLE `tbl_roles`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_sections`
+--
+ALTER TABLE `tbl_sections`
+  ADD PRIMARY KEY (`section_id`);
 
 --
 -- Indexes for table `tbl_students`
@@ -844,16 +776,22 @@ ALTER TABLE `tbl_roles`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tbl_sections`
+--
+ALTER TABLE `tbl_sections`
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tbl_time_tracking`
 --
 ALTER TABLE `tbl_time_tracking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables
