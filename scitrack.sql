@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2024 at 02:47 PM
+-- Generation Time: Dec 08, 2024 at 12:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -219,24 +219,36 @@ CREATE TABLE `quiz_questions_solid` (
   `choices` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`choices`)),
   `quiz_image` varchar(255) DEFAULT NULL,
   `correct_answer` varchar(255) NOT NULL,
-  `additional_info` text DEFAULT NULL
+  `additional_info` text DEFAULT NULL,
+  `type` varchar(255) NOT NULL,
+  `difficulty` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `quiz_questions_solid`
 --
 
-INSERT INTO `quiz_questions_solid` (`id`, `question`, `choices`, `quiz_image`, `correct_answer`, `additional_info`) VALUES
-(1, 'What is a characteristic of a solid?', '[\"Has a definite shape and volume\", \"Takes the shape of its container\", \"Has no definite volume\", \"Flows easily\"]', '../quizImage/solidQuizImage1.png', 'Has a definite shape and volume', 'Solids have a fixed shape and volume because their particles are tightly packed together.'),
-(2, 'Which of the following is an example of a solid?', '[\"Water\", \"Air\", \"Ice\", \"Steam\"]', '../quizImage/solidQuizImage2.png', 'Ice', 'Ice is the solid form of water, with a fixed shape and volume.'),
-(3, 'What happens to the particles in most solids when they are heated?', '[\"They move faster\", \"They move slower\", \"They stop moving\", \"They stay the same\"]', '../quizImage/solidQuizImage3.png', 'They move faster', 'When solids are heated, the particles gain energy and move faster, which can cause the solid to melt if enough heat is applied.'),
-(4, 'Which of these objects is NOT a solid?', '[\"Rock\", \"Book\", \"Water\", \"Chair\"]', '../quizImage/solidQuizImage4.png', 'Water', 'Water is a liquid, not a solid. Solids like rocks and books have a definite shape.'),
-(5, 'Why do solids have a fixed shape?', '[\"Because their particles are tightly packed\", \"Because their particles move freely\", \"Because they have no volume\", \"Because they are soft\"]', '../quizImage/solidQuizImage5.png', 'Because their particles are tightly packed', 'The particles in solids are closely packed and do not move freely, which gives solids a fixed shape.'),
-(6, 'Which of the following is a solid material used in building houses?', '[\"Wood\", \"Water\", \"Air\", \"Milk\"]', '../quizImage/solidQuizImage1.png', 'Wood', 'Wood is a solid material used in construction because it is strong and durable.'),
-(7, 'What happens to a solid when you break it into smaller pieces?', '[\"It becomes a liquid\", \"It stays a solid\", \"It becomes a gas\", \"It disappears\"]', '../quizImage/solidQuizImage7.png', 'It stays a solid', 'When you break a solid into smaller pieces, it still remains a solid. The pieces just get smaller!'),
-(8, 'What is another example of a solid?', '[\"Apple\", \"Juice\", \"Smoke\", \"Air\"]', '../quizImage/solidQuizImage8.png', 'Apple', 'Apple is a solid, which has a definite shape and volume.'),
-(9, 'What is the state of matter of a pencil?', '[\"Solid\", \"Liquid\", \"Gas\", \"Plasma\"]', '../quizImage/solidQuizImage9.png', 'Solid', 'A pencil is a solid because it has a fixed shape and volume.'),
-(10, 'Which of these properties do all solids share?', '[\"They flow easily\", \"They have a fixed shape\", \"They can be poured\", \"They expand to fill a container\"]', '../quizImage/solidQuizImage10.png', 'They have a fixed shape', 'Solids maintain their shape, unlike liquids and gases which take the shape of their container.');
+INSERT INTO `quiz_questions_solid` (`id`, `question`, `choices`, `quiz_image`, `correct_answer`, `additional_info`, `type`, `difficulty`) VALUES
+(1, 'What is a characteristic of a solid?', '[\"Has a definite shape and volume\", \"Takes the shape of its container\", \"Has no definite volume\", \"Flows easily\"]', '../quizImage/solidQuizImage1.png', 'Has a definite shape and volume', 'Solids have a fixed shape and volume because their particles are tightly packed together.', '', ''),
+(2, 'Which of the following is an example of a solid?', '[\"Water\", \"Air\", \"Ice\", \"Steam\"]', '../quizImage/solidQuizImage2.png', 'Ice', 'Ice is the solid form of water, with a fixed shape and volume.', '', ''),
+(3, 'What happens to the particles in most solids when they are heated?', '[\"They move faster\", \"They move slower\", \"They stop moving\", \"They stay the same\"]', '../quizImage/solidQuizImage3.png', 'They move faster', 'When solids are heated, the particles gain energy and move faster, which can cause the solid to melt if enough heat is applied.', '', ''),
+(4, 'Which of these objects is NOT a solid?', '[\"Rock\", \"Book\", \"Water\", \"Chair\"]', '../quizImage/solidQuizImage4.png', 'Water', 'Water is a liquid, not a solid. Solids like rocks and books have a definite shape.', '', ''),
+(5, 'Why do solids have a fixed shape?', '[\"Because their particles are tightly packed\", \"Because their particles move freely\", \"Because they have no volume\", \"Because they are soft\"]', '../quizImage/solidQuizImage5.png', 'Because their particles are tightly packed', 'The particles in solids are closely packed and do not move freely, which gives solids a fixed shape.', '', ''),
+(6, 'Which of the following is a solid material used in building houses?', '[\"Wood\", \"Water\", \"Air\", \"Milk\"]', '../quizImage/solidQuizImage1.png', 'Wood', 'Wood is a solid material used in construction because it is strong and durable.', '', ''),
+(7, 'What happens to a solid when you break it into smaller pieces?', '[\"It becomes a liquid\", \"It stays a solid\", \"It becomes a gas\", \"It disappears\"]', '../quizImage/solidQuizImage7.png', 'It stays a solid', 'When you break a solid into smaller pieces, it still remains a solid. The pieces just get smaller!', '', ''),
+(8, 'What is another example of a solid?', '[\"Apple\", \"Juice\", \"Smoke\", \"Air\"]', '../quizImage/solidQuizImage8.png', 'Apple', 'Apple is a solid, which has a definite shape and volume.', '', ''),
+(9, 'What is the state of matter of a pencil?', '[\"Solid\", \"Liquid\", \"Gas\", \"Plasma\"]', '../quizImage/solidQuizImage9.png', 'Solid', 'A pencil is a solid because it has a fixed shape and volume.', '', ''),
+(10, 'Which of these properties do all solids share?', '[\"They flow easily\", \"They have a fixed shape\", \"They can be poured\", \"They expand to fill a container\"]', '../quizImage/solidQuizImage10.png', 'They have a fixed shape', 'Solids maintain their shape, unlike liquids and gases which take the shape of their container.', '', ''),
+(11, 'hehehello po?', '[\"Opo supereq wqw\",\"haha cno ka ba qwq\",\"hehe mejo q qq\",\"r u retard?q q\"]', NULL, '2', 'hehehe additionalqw eqwe asdasd  qe', 'pre', 'easy'),
+(12, 'hehezzz', '[\"q\",\"qq\",\"qqq\",\"qqqq\"]', NULL, '2', 'qqeqeqeq', 'pre', 'hard'),
+(13, 'gegegege', '[\"z\",\"zz\",\"zzz\",\"zzzz\"]', '', '2', 'eqeqeqeq', 'pre', 'average'),
+(14, 'hehzzzxc', '[\"11\",\"11\",\"111\",\"1111\"]', '', '3', 'egefqczxcxzcxc', 'pre', 'hard'),
+(15, 'sdxczxcaaa', '[\"2\",\"22\",\"222\",\"2222\"]', '', '2', 'aaaa', 'pre', 'average'),
+(16, 'zzxczxc', '[\"3\",\"33\",\"333\",\"3333\"]', '', '4', 'qweqwezxc', 'pre', 'average'),
+(17, 'zzxczxc', '[\"3\",\"33\",\"333\",\"3333\"]', '', '4', 'hahahaha', 'pre', 'average'),
+(18, 'zzxczxc', '[\"3\",\"33\",\"333\",\"3333\"]', '', '4', 'hnzxczxczxc', 'pre', 'average'),
+(19, 'qwezxczxxzbb', '[\"rrrr\",\"rrrr\",\"rqqq\",\"qqqq\"]', '', '1', 'ddd', 'pre', 'easy'),
+(20, 'eqeqeq', '[\"eqeqeqeq\",\"eqeqeqeq\",\"eqeqeqeq\",\"haha\"]', '', '2', 'zxczxc', 'pre', 'hard');
 
 -- --------------------------------------------------------
 
@@ -731,7 +743,7 @@ ALTER TABLE `quiz_questions_motion`
 -- AUTO_INCREMENT for table `quiz_questions_solid`
 --
 ALTER TABLE `quiz_questions_solid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `quiz_questions_surfaceerosion`
