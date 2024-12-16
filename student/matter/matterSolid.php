@@ -11,20 +11,40 @@ if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SES
     exit();
 }
 
-$sql = "SELECT question, choices, quiz_image, correct_answer, additional_info FROM quiz_questions_solid";
-$result = $conn->query($sql);
+// Fetch pre-assessment questions
+$preAssessmentData = [];
+$postAssessmentData = [];
 
-$quiz_questions_solid = [];
+// Fetch 'pre' questions
+$sqlPre = "SELECT question, choices, quiz_image, correct_answer, additional_info 
+           FROM quiz_questions_solid 
+           WHERE type = 'pre' 
+           ORDER BY RAND() 
+           LIMIT 5";
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+$resultPre = $conn->query($sqlPre);
+
+if ($resultPre->num_rows > 0) {
+    while ($row = $resultPre->fetch_assoc()) {
         $row['choices'] = json_decode($row['choices']);
-        $quiz_questions_solid[] = $row;
+        $preAssessmentData[] = $row;
     }
+}
 
-    shuffle($quiz_questions_solid);
-} else {
-    echo "No quiz questions found.";
+// Fetch 'post' questions
+$sqlPost = "SELECT question, choices, quiz_image, correct_answer, additional_info 
+            FROM quiz_questions_solid 
+            WHERE type = 'post' 
+            ORDER BY RAND() 
+            LIMIT 10";
+
+$resultPost = $conn->query($sqlPost);
+
+if ($resultPost->num_rows > 0) {
+    while ($row = $resultPost->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']);
+        $postAssessmentData[] = $row;
+    }
 }
 
 $conn->close();
@@ -864,7 +884,7 @@ $conn->close();
 <audio id="matterAudio2" src="../../sounds/solid2.mp3"></audio>
 <audio id="matterAudio3" src="../../sounds/solid3.mp3"></audio>
 <audio id="matterAudio4" src="../../sounds/solid4.mp3"></audio>
-
+<audio id="matterAudio5" src="../../sounds/letsTry.mp3"></audio>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const leftButton = document.getElementById('leftButton');
@@ -890,6 +910,7 @@ $conn->close();
         const audio2 = document.getElementById('matterAudio2');
         const audio3 = document.getElementById('matterAudio3');
         const audio4 = document.getElementById('matterAudio4');
+        const audio5 = document.getElementById('matterAudio5');
         const solidVideo = document.getElementById('solidVideo');
 
         const medalPopup = document.getElementById('medalPopup');
@@ -947,7 +968,8 @@ $conn->close();
                 body: JSON.stringify({
                     student_id: studentId,
                     quiz_id: 1,
-                    lesson: 'Matter'
+                    lesson: 'Solid'
+
                 })
             })
             .then(response => response.json())
@@ -959,7 +981,8 @@ $conn->close();
                     if (data.status !== 'taken') {
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
-                        showSection(9); 
+                        showSection(10); 
+
                         
                     } else {
                         if (currentSection < sections.length - 1) {
@@ -989,7 +1012,8 @@ $conn->close();
                     body: JSON.stringify({
                         student_id: studentId,
                         quiz_id: 1,
-                        lesson: 'Matter'
+                        lesson: 'Solid'
+
                     })
                 })
                 .then(response => response.json())
@@ -1019,7 +1043,9 @@ $conn->close();
                             console.error('Error adding achievement:', error);
                         });
                     } else {
-                        showSection(9); // Show a section to encourage quiz completion
+
+                        showSection(10); // Show a section to encourage quiz completion
+
                     }
                 })
                 .catch(error => {
@@ -1387,6 +1413,17 @@ $conn->close();
                 console.log("Autoplay prevented by browser, waiting for user interaction.");
             });
         }
+        function stopAudio5() {
+            audio5.pause();
+            audio5.currentTime = 0;
+        }
+
+        function playAudio5() {
+            audio5.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
+
 
         function showSection(index) {
             hideAllSections();
@@ -1422,12 +1459,18 @@ $conn->close();
             } else {
                 stopVideo();
             }
+            if (sections[index] === matterLetsTry) {
+                playAudio5();
+            } else {
+                stopAudio5();
+            }
             if (sections[index] === matterQuiz) {
                 checkQuizTaken();
             }
             if (sections[index] === matterCompleted) {
                 checkSectionComplete();
             }
+
             if (index >= 0 && index <= 7) {
                 examplesButton.style.display = 'flex';
                 einsteinImage.style.display = 'block';
@@ -1541,7 +1584,7 @@ $conn->close();
         showSection(0);
 
         // Quiz Data
-        const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
+        const quizData = <?php echo json_encode($postAssessmentData); ?>;
 
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;
@@ -1666,12 +1709,137 @@ $conn->close();
             }
         }
 
+// Pre-Assessment Data
+const preAssessmentData = <?php echo json_encode($preAssessmentData); ?>;
 
+let preCurrentQuestionIndex = 0;
+let preCorrectAnswersCount = 0;
+const preTotalQuestions = preAssessmentData.length;
+let preSelectedAnswer = null;
+const preChoices = document.querySelectorAll('.preAssessment-choice-btn');
+const preNextButton = document.getElementById('preAssessmentNextButton');
+const preExtraInfoBox = document.getElementById('preAssessmentExtraInfoBox');
+const preQuestionNumber = document.getElementById('preAssessmentQuestionNumber');
+const preQuestionText = document.getElementById('preAssessmentQuestionText');
+const preAssessmentImage = document.getElementById('preAssessmentImage');
+const preExtraInfoText = document.getElementById('preAssessmentExtraInfoText');
+const preAssessmentResult = document.getElementById('preAssessmentResult');
+const preTotalQuestionsDisplay = document.getElementById('preAssessmentTotal');
+const preCorrectAnswersDisplay = document.getElementById('preAssessmentCorrectAnswers');
+const preWrongAnswersDisplay = document.getElementById('preAssessmentWrongAnswers');
+const prePercentageDisplay = document.getElementById('preAssessmentPercent');
+
+// Function to load a Pre-Assessment question
+function loadPreAssessmentQuestion() {
+    const currentQuestion = preAssessmentData[preCurrentQuestionIndex];
+
+    preQuestionNumber.textContent = `Question ${preCurrentQuestionIndex + 1}`;
+    preQuestionText.textContent = currentQuestion.question;
+    preAssessmentImage.src = currentQuestion.quiz_image;
+
+    preChoices.forEach((button, index) => {
+        button.textContent = currentQuestion.choices[index];
+        button.classList.remove('correct', 'wrong');
+        button.style.display = 'inline-block';
+        button.style.color = 'black';
+    });
+
+    preExtraInfoBox.style.display = 'none';
+    preNextButton.disabled = true;
+    preSelectedAnswer = null;
+}
+
+preChoices.forEach(button => {
+    button.addEventListener('click', function () {
+        if (preSelectedAnswer) return;
+
+        preSelectedAnswer = button.textContent;
+        const correctAnswer = preAssessmentData[preCurrentQuestionIndex].correct_answer;
+
+        preChoices.forEach(btn => {
+            if (btn.textContent !== correctAnswer && btn.textContent !== preSelectedAnswer) {
+                btn.style.display = 'none';
+            } else {
+                btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                btn.style.color = 'white';
+            }
+        });
+
+        preExtraInfoText.textContent = preAssessmentData[preCurrentQuestionIndex].additional_info;
+        preExtraInfoBox.style.display = 'block';
+        preNextButton.disabled = false;
+
+        if (preSelectedAnswer === correctAnswer) {
+            preCorrectAnswersCount++;
+            correctSound.play();
+        } else {
+            incorrectSound.play();
+            incorrectSound.addEventListener('ended', () => {
+                buzzer.play();
+            });
+        }
+    });
+});
+
+// Function to handle next Pre-Assessment question
+preNextButton.addEventListener('click', function () {
+    if (!preSelectedAnswer) {
+        alert('Please select an answer!');
+        return;
+    }
+
+    preCurrentQuestionIndex++;
+
+    if (preCurrentQuestionIndex >= preAssessmentData.length) {
+        showPreAssessmentResults();
+    } else {
+        loadPreAssessmentQuestion();
+    }
+});
+
+function showPreAssessmentResults() {
+    const preAssessmentContainer = document.getElementById('preAssessmentContainer');
+    preAssessmentContainer.style.display = 'none'; // Hide the Pre-Assessment container
+
+    const displayPreTotalQuestions = document.getElementById('preAssessmentDisplayTotalQuestions');
+    const displayPreCorrectAnswers = document.getElementById('preAssessmentDisplayCorrectAnswers');
+    const preAssessmentResult = document.getElementById('preAssessmentResult');
+    const preFeedbackDisplay = document.querySelector('.Feedback'); // Select the Feedback element
+
+    console.log(displayPreTotalQuestions, displayPreCorrectAnswers, preAssessmentResult);
+    if (displayPreTotalQuestions && displayPreCorrectAnswers && preAssessmentResult && preFeedbackDisplay) {
+        displayPreTotalQuestions.textContent = preTotalQuestions;
+        displayPreCorrectAnswers.textContent = preCorrectAnswersCount;
+        preAssessmentResult.style.display = 'block';
+
+        // Feedback based on correct answers
+        if (preCorrectAnswersCount === 0) {
+            preFeedbackDisplay.textContent = "You didn't score anything! Try again!";
+        } else if (preCorrectAnswersCount > 0 && preCorrectAnswersCount < 5) {
+            preFeedbackDisplay.textContent = "Nice Try!";
+        } else if (preCorrectAnswersCount >= 5 && preCorrectAnswersCount < 10) {
+            preFeedbackDisplay.textContent = "Good Job!";
+        } else if (preCorrectAnswersCount === 10) {
+            preFeedbackDisplay.textContent = "Perfect!";
+        }
+
+        preTotalQuestionsDisplay.textContent = preTotalQuestions;
+        preCorrectAnswersDisplay.textContent = preCorrectAnswersCount;
+        preAssessmentWrongAnswers.textContent = preTotalQuestions - preCorrectAnswersCount;
+        prePercentageDisplay.textContent = ((preCorrectAnswersCount / preTotalQuestions) * 100).toFixed(2) + '%';
+    } else {
+        console.error("One or more elements not found in the DOM.");
+    }
+}
+
+
+// Load the first Pre-Assessment question
+loadPreAssessmentQuestion();
 
         // Function to send score to server
         function sendScoreToServer(score) {
             const quizId = 1;
-            const lesson = "Matter";
+            const lesson = "Solid";
 
             fetch('../save_quiz_score.php', {
                 method: 'POST',

@@ -234,15 +234,15 @@ $conn->close();
                 }
 
                 $allQuizzes = [
-                    ['lesson' => 'Matter', 'quiz_id' => 1, 'lesson_name' => 'Solid'],
-                    ['lesson' => 'Matter', 'quiz_id' => 2, 'lesson_name' => 'Liquid'],
-                    ['lesson' => 'Matter', 'quiz_id' => 3, 'lesson_name' => 'Gas'],
-                    ['lesson' => 'Ecosystem', 'quiz_id' => 4, 'lesson_name' => 'Estuaries'],
-                    ['lesson' => 'Ecosystem', 'quiz_id' => 5, 'lesson_name' => 'Intertidal Zones'],
+                    ['lesson' => 'Solid', 'quiz_id' => 1, 'lesson_name' => 'Solid'],
+                    ['lesson' => 'Liquid', 'quiz_id' => 2, 'lesson_name' => 'Liquid'],
+                    ['lesson' => 'Gas', 'quiz_id' => 3, 'lesson_name' => 'Gas'],
+                    ['lesson' => 'Estuaries', 'quiz_id' => 4, 'lesson_name' => 'Estuaries'],
+                    ['lesson' => 'Intertidal', 'quiz_id' => 5, 'lesson_name' => 'Intertidal Zones'],
                     ['lesson' => 'Motion', 'quiz_id' => 6, 'lesson_name' => 'What is Motion?'],
-                    ['lesson' => 'Motion', 'quiz_id' => 7, 'lesson_name' => 'Measuring Distance and Time'],
-                    ['lesson' => 'Earth\'s Surface', 'quiz_id' => 8, 'lesson_name' => 'Weathering and Soil Formation'],
-                    ['lesson' => 'Earth\'s Surface', 'quiz_id' => 9, 'lesson_name' => 'Effects of Soil Erosion'],
+                    ['lesson' => 'Measuring', 'quiz_id' => 7, 'lesson_name' => 'Measuring Distance and Time'],
+                    ['lesson' => 'Weathering', 'quiz_id' => 8, 'lesson_name' => 'Weathering and Soil Formation'],
+                    ['lesson' => 'Erosion', 'quiz_id' => 9, 'lesson_name' => 'Effects of Soil Erosion'],
                 ];
 
                 $quizzesByLesson = [];

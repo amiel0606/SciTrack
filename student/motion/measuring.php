@@ -1,31 +1,51 @@
 <?php
-session_start(); 
-include_once('./includes/board.php'); 
-include_once('../../admin/includes/dbCon.php'); 
+session_start();
+include_once('./includes/board.php');
+include_once('../../admin/includes/dbCon.php');
 
 if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["id"])) {
     $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
-    $id = $_SESSION["id"]; 
+    $id = $_SESSION["id"];
 } else {
-    
-    header("Location: index.php"); 
+    header("Location: index.php");
     exit();
 }
-$sql = "SELECT question, choices, quiz_image, correct_answer, additional_info FROM quiz_questions_measure";
-$result = $conn->query($sql);
 
-$quiz_questions_solid = [];
+// Fetch pre-assessment questions
+$preAssessmentData = [];
+$postAssessmentData = [];
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $row['choices'] = json_decode($row['choices']); 
-        $quiz_questions_solid[] = $row;
+// Fetch 'pre' questions
+$sqlPre = "SELECT question, choices, quiz_image, correct_answer, additional_info 
+           FROM quiz_questions_measure 
+           WHERE type = 'pre' 
+           ORDER BY RAND() 
+           LIMIT 5";
+
+$resultPre = $conn->query($sqlPre);
+
+if ($resultPre->num_rows > 0) {
+    while ($row = $resultPre->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']);
+        $preAssessmentData[] = $row;
     }
-    shuffle($quiz_questions_solid);
-} else {
-    echo "No quiz questions found.";
 }
 
+// Fetch 'post' questions
+$sqlPost = "SELECT question, choices, quiz_image, correct_answer, additional_info 
+            FROM quiz_questions_measure
+            WHERE type = 'post' 
+            ORDER BY RAND() 
+            LIMIT 10";
+
+$resultPost = $conn->query($sqlPost);
+
+if ($resultPost->num_rows > 0) {
+    while ($row = $resultPost->fetch_assoc()) {
+        $row['choices'] = json_decode($row['choices']);
+        $postAssessmentData[] = $row;
+    }
+}
 
 $conn->close();
 ?>
@@ -48,7 +68,7 @@ $conn->close();
 
                             <!-- Content Layout -->
                             <div class="is-centered">
-                                <p class="subtitle description2 has-text-white main-font mb-6"> At the end of the lesson you will able to:</p>
+                                <p class="subtitle description2 has-text-white main-font mb-6"> At the end of the lesson you will be able to:</p>
                                 <!-- Text Column -->
                                 <div class="column is-full mt-4">
                                     <div class="subtitle description2 has-text-white">
@@ -890,6 +910,8 @@ $conn->close();
 <audio id="motionAudio6" src="../../sounds/measure6.mp3"></audio>
 <audio id="motionAudio7" src="../../sounds/measure7.mp3"></audio>
 <audio id="motionAudio8" src="../../sounds/measure8.mp3"></audio>
+<audio id="motionAudio9" src="../../sounds/motionObj2.mp3"></audio>
+<audio id="motionAudio10" src="../../sounds/letsTry.mp3"></audio>
 
 
 <script>
@@ -961,6 +983,8 @@ $conn->close();
         const audio6 = document.getElementById('motionAudio6');
         const audio7 = document.getElementById('motionAudio7');
         const audio8 = document.getElementById('motionAudio8');
+        const audio9 = document.getElementById('motionAudio9');
+        const audio10 = document.getElementById('motionAudio10');
         let currentSection = 0;
         const sections = [objectives, motionPreAssessment, motionMeasuring1, motionMeasuring2, motionRuler, motionTape, motionOdo, motionSpeedo, 
                             motionSurvey, motionCaliper, motionMicrometer,  motionVideo, motionActivity, letsTry, motionQuiz, motionCompleted];
@@ -981,7 +1005,8 @@ $conn->close();
                     body: JSON.stringify({
                         student_id: studentId,
                         quiz_id: 7,
-                        lesson: 'Motion'
+                        lesson: 'Measuring'
+
                     })
                 })
                 .then(response => response.json())
@@ -1009,7 +1034,8 @@ $conn->close();
                         console.error('Error adding achievement:', error);
                     });
                 } else {
-                    showSection(12); // Show a section to encourage quiz completion
+                    showSection(14); // Show a section to encourage quiz completion
+
                 }
             })
             .catch(error => {
@@ -1026,7 +1052,8 @@ $conn->close();
                 body: JSON.stringify({
                     student_id: studentId,
                     quiz_id: 7,
-                    lesson: 'Motion'
+                    lesson: 'Measuring'
+
                 })
             })
             .then(response => response.json())
@@ -1038,7 +1065,9 @@ $conn->close();
                     if (data.status !== 'taken') {
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
-                        showSection(12); 
+
+                        showSection(14); 
+
                         updateEinsteinImageAndButtons();
                     } else {
                         if (currentSection < sections.length - 1) {
@@ -1395,6 +1424,26 @@ $conn->close();
                 section.classList.add('motion-content');
             });
         }
+        function stopAudio9() {
+            audio9.pause();
+            audio9.currentTime = 0; 
+        }
+
+        function playAudio9() {
+            audio9.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
+        function stopAudio10() {
+            audio10.pause();
+            audio10.currentTime = 0; 
+        }
+
+        function playAudio10() {
+            audio10.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
         function stopAudio() {
             audio.pause();
             audio.currentTime = 0; 
@@ -1524,6 +1573,16 @@ $conn->close();
                 rightButton.style.display = 'none';
             } 
 
+            if (sections[index] === objectives) {
+                playAudio9(); 
+            } else {
+                stopAudio9();
+            }
+            if (sections[index] === letsTry) {
+                playAudio10(); 
+            } else {
+                stopAudio10();
+            }
 
             if (sections[index] === motionMeasuring1) {
                 playAudio(); 
@@ -1631,7 +1690,8 @@ $conn->close();
         showSection(0); 
 
         // Quiz Data
-        const quizData = <?php echo json_encode($quiz_questions_solid); ?>;
+        const quizData = <?php echo json_encode($postAssessmentData); ?>;
+
 
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;
@@ -1665,6 +1725,7 @@ $conn->close();
                 button.style.display = 'inline-block';
                 button.style.color = 'black'; 
             });
+
 
             extraInfoBox.style.display = 'none';
             nextButton.disabled = true;
@@ -1755,11 +1816,138 @@ $conn->close();
                     // Send the score to the server (optional)
                     sendScoreToServer(correctAnswersCount);
                 }
+                // Pre-Assessment Data
+const preAssessmentData = <?php echo json_encode($preAssessmentData); ?>;
+
+let preCurrentQuestionIndex = 0;
+let preCorrectAnswersCount = 0;
+const preTotalQuestions = preAssessmentData.length;
+let preSelectedAnswer = null;
+const preChoices = document.querySelectorAll('.preAssessment-choice-btn');
+const preNextButton = document.getElementById('preAssessmentNextButton');
+const preExtraInfoBox = document.getElementById('preAssessmentExtraInfoBox');
+const preQuestionNumber = document.getElementById('preAssessmentQuestionNumber');
+const preQuestionText = document.getElementById('preAssessmentQuestionText');
+const preAssessmentImage = document.getElementById('preAssessmentImage');
+const preExtraInfoText = document.getElementById('preAssessmentExtraInfoText');
+const preAssessmentResult = document.getElementById('preAssessmentResult');
+const preTotalQuestionsDisplay = document.getElementById('preAssessmentTotal');
+const preCorrectAnswersDisplay = document.getElementById('preAssessmentCorrectAnswers');
+const preWrongAnswersDisplay = document.getElementById('preAssessmentWrongAnswers');
+const prePercentageDisplay = document.getElementById('preAssessmentPercent');
+
+// Function to load a Pre-Assessment question
+function loadPreAssessmentQuestion() {
+    const currentQuestion = preAssessmentData[preCurrentQuestionIndex];
+
+    preQuestionNumber.textContent = `Question ${preCurrentQuestionIndex + 1}`;
+    preQuestionText.textContent = currentQuestion.question;
+    preAssessmentImage.src = currentQuestion.quiz_image;
+
+    preChoices.forEach((button, index) => {
+        button.textContent = currentQuestion.choices[index];
+        button.classList.remove('correct', 'wrong');
+        button.style.display = 'inline-block';
+        button.style.color = 'black';
+    });
+
+    preExtraInfoBox.style.display = 'none';
+    preNextButton.disabled = true;
+    preSelectedAnswer = null;
+}
+
+preChoices.forEach(button => {
+    button.addEventListener('click', function () {
+        if (preSelectedAnswer) return;
+
+        preSelectedAnswer = button.textContent;
+        const correctAnswer = preAssessmentData[preCurrentQuestionIndex].correct_answer;
+
+        preChoices.forEach(btn => {
+            if (btn.textContent !== correctAnswer && btn.textContent !== preSelectedAnswer) {
+                btn.style.display = 'none';
+            } else {
+                btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
+                btn.style.color = 'white';
+            }
+        });
+
+        preExtraInfoText.textContent = preAssessmentData[preCurrentQuestionIndex].additional_info;
+        preExtraInfoBox.style.display = 'block';
+        preNextButton.disabled = false;
+
+        if (preSelectedAnswer === correctAnswer) {
+            preCorrectAnswersCount++;
+            correctSound.play();
+        } else {
+            incorrectSound.play();
+            incorrectSound.addEventListener('ended', () => {
+                buzzer.play();
+            });
+        }
+    });
+});
+
+// Function to handle next Pre-Assessment question
+preNextButton.addEventListener('click', function () {
+    if (!preSelectedAnswer) {
+        alert('Please select an answer!');
+        return;
+    }
+
+    preCurrentQuestionIndex++;
+
+    if (preCurrentQuestionIndex >= preAssessmentData.length) {
+        showPreAssessmentResults();
+    } else {
+        loadPreAssessmentQuestion();
+    }
+});
+
+function showPreAssessmentResults() {
+    const preAssessmentContainer = document.getElementById('preAssessmentContainer');
+    preAssessmentContainer.style.display = 'none'; // Hide the Pre-Assessment container
+
+    const displayPreTotalQuestions = document.getElementById('preAssessmentDisplayTotalQuestions');
+    const displayPreCorrectAnswers = document.getElementById('preAssessmentDisplayCorrectAnswers');
+    const preAssessmentResult = document.getElementById('preAssessmentResult');
+    const preFeedbackDisplay = document.querySelector('.Feedback'); // Select the Feedback element
+
+    console.log(displayPreTotalQuestions, displayPreCorrectAnswers, preAssessmentResult);
+    if (displayPreTotalQuestions && displayPreCorrectAnswers && preAssessmentResult && preFeedbackDisplay) {
+        displayPreTotalQuestions.textContent = preTotalQuestions;
+        displayPreCorrectAnswers.textContent = preCorrectAnswersCount;
+        preAssessmentResult.style.display = 'block';
+
+        // Feedback based on correct answers
+        if (preCorrectAnswersCount === 0) {
+            preFeedbackDisplay.textContent = "You didn't score anything! Try again!";
+        } else if (preCorrectAnswersCount > 0 && preCorrectAnswersCount < 5) {
+            preFeedbackDisplay.textContent = "Nice Try!";
+        } else if (preCorrectAnswersCount >= 5 && preCorrectAnswersCount < 10) {
+            preFeedbackDisplay.textContent = "Good Job!";
+        } else if (preCorrectAnswersCount === 10) {
+            preFeedbackDisplay.textContent = "Perfect!";
+        }
+
+        preTotalQuestionsDisplay.textContent = preTotalQuestions;
+        preCorrectAnswersDisplay.textContent = preCorrectAnswersCount;
+        preAssessmentWrongAnswers.textContent = preTotalQuestions - preCorrectAnswersCount;
+        prePercentageDisplay.textContent = ((preCorrectAnswersCount / preTotalQuestions) * 100).toFixed(2) + '%';
+    } else {
+        console.error("One or more elements not found in the DOM.");
+    }
+}
+
+// Load the first Pre-Assessment question
+loadPreAssessmentQuestion();
+
             // Function to send score to server
             function sendScoreToServer(score) {
                 const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
                 const quizId = 7; 
-                const lesson = "Motion"; 
+                const lesson = "Measuring"; 
+
 
                 fetch('../save_quiz_score.php', {
                 method: 'POST',

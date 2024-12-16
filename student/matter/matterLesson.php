@@ -130,6 +130,9 @@
         </div>
     </div>
 </section>
+<audio id="matterAudio" src="../../sounds/matterL1.mp3"></audio>
+<audio id="matterAudio2" src="../../sounds/matterL2.mp3"></audio>
+<audio id="matterAudio3" src="../../sounds/matterL3.mp3"></audio>
 
 
 <script>
@@ -143,6 +146,42 @@
         const matterTopic = document.getElementById('matterTopic');
         const lessonImageLink = document.getElementById('lessonImageLink');
         const urlParams = new URLSearchParams(window.location.search);
+        const audio = document.getElementById('matterAudio');
+        const audio2 = document.getElementById('matterAudio2');
+        const audio3 = document.getElementById('matterAudio3');
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        function playAudio() {
+            audio.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
+
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0;
+        }
+
+        function playAudio2() {
+            audio2.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
+
+        function stopAudio3() {
+            audio3.pause();
+            audio3.currentTime = 0;
+        }
+
+        function playAudio3() {
+            audio3.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
 
         function showMatterLesson() {
             matterLesson.style.display = 'block';
@@ -152,6 +191,9 @@
             rightButton.style.display = 'none';
             objectives.style.display = 'none';
             matterTopic.style.display = 'none';
+            playAudio();
+            stopAudio2();
+            stopAudio3();
         }
 
         function showExamplesButton() {
@@ -172,6 +214,9 @@
             einsteinImage.style.display = 'flex';
             objectives.style.display = 'block';
             matterTopic.style.display = 'none';
+            playAudio2();
+            stopAudio();
+            stopAudio3();
         }
 
         function showMatterTopic() {
@@ -181,6 +226,9 @@
             leftButton.style.display = 'block';
             rightButton.style.display = 'none';
             einsteinImage.style.display = 'flex';
+            playAudio3();
+            stopAudio();
+            stopAudio2();
         }
         if (urlParams.get('show') === 'matterTopic') {
             showMatterTopic();
