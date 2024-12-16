@@ -1101,6 +1101,7 @@ $conn->close();
                         student_id: studentId,
                         quiz_id: 5,
                         lesson: 'Intertidal'
+
                     })
                 })
                 .then(response => response.json())
@@ -1131,6 +1132,7 @@ $conn->close();
                     });
                 } else {
                     showSection(18); // Show a section to encourage quiz completion
+
                 }
             })
             .catch(error => {
@@ -1148,6 +1150,7 @@ $conn->close();
                     student_id: studentId,
                     quiz_id: 5,
                     lesson: 'Intertidal'
+
                 })
             })
             .then(response => response.json())
@@ -1158,7 +1161,6 @@ $conn->close();
                 rightButton.onclick = (event) => {
                     if (data.status !== 'taken') {
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
-
                         showSection(18); 
                         updateEinsteinImageAndButtons();
                     } else {
@@ -1915,8 +1917,7 @@ preChoices.forEach(button => {
             if (btn.textContent !== correctAnswer && btn.textContent !== preSelectedAnswer) {
                 btn.style.display = 'none';
             } else {
-                btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
-                btn.style.color = 'white';
+                loadQuestion();
             }
         });
 
@@ -1977,6 +1978,7 @@ function showPreAssessmentResults() {
         } else if (preCorrectAnswersCount === 10) {
             preFeedbackDisplay.textContent = "Perfect!";
         }
+
 
         preTotalQuestionsDisplay.textContent = preTotalQuestions;
         preCorrectAnswersDisplay.textContent = preCorrectAnswersCount;

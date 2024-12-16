@@ -1006,6 +1006,7 @@ $conn->close();
                         student_id: studentId,
                         quiz_id: 7,
                         lesson: 'Measuring'
+
                     })
                 })
                 .then(response => response.json())
@@ -1034,6 +1035,7 @@ $conn->close();
                     });
                 } else {
                     showSection(14); // Show a section to encourage quiz completion
+
                 }
             })
             .catch(error => {
@@ -1051,6 +1053,7 @@ $conn->close();
                     student_id: studentId,
                     quiz_id: 7,
                     lesson: 'Measuring'
+
                 })
             })
             .then(response => response.json())
@@ -1062,7 +1065,9 @@ $conn->close();
                     if (data.status !== 'taken') {
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
+
                         showSection(14); 
+
                         updateEinsteinImageAndButtons();
                     } else {
                         if (currentSection < sections.length - 1) {
@@ -1578,6 +1583,7 @@ $conn->close();
             } else {
                 stopAudio10();
             }
+
             if (sections[index] === motionMeasuring1) {
                 playAudio(); 
             } else {
@@ -1686,6 +1692,7 @@ $conn->close();
         // Quiz Data
         const quizData = <?php echo json_encode($postAssessmentData); ?>;
 
+
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;
         const totalQuestions = quizData.length;
@@ -1718,6 +1725,7 @@ $conn->close();
                 button.style.display = 'inline-block';
                 button.style.color = 'black'; 
             });
+
 
             extraInfoBox.style.display = 'none';
             nextButton.disabled = true;
@@ -1933,11 +1941,13 @@ function showPreAssessmentResults() {
 
 // Load the first Pre-Assessment question
 loadPreAssessmentQuestion();
+
             // Function to send score to server
             function sendScoreToServer(score) {
                 const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
                 const quizId = 7; 
                 const lesson = "Measuring"; 
+
 
                 fetch('../save_quiz_score.php', {
                 method: 'POST',

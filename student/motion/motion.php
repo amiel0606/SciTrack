@@ -1109,6 +1109,7 @@ $conn->close();
                         });
                     } else {
                         showSection(17); // Show a section to encourage quiz completion
+
                     }
                 })
                 .catch(error => {
@@ -1138,6 +1139,7 @@ $conn->close();
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
                         showSection(17); 
+
                         updateEinsteinImageAndButtons();
                     } else {
                         if (currentSection < sections.length - 1) {
@@ -1819,6 +1821,7 @@ $conn->close();
 
         // Quiz Data
         const quizData = <?php echo json_encode($postAssessmentData); ?>;
+
 
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;

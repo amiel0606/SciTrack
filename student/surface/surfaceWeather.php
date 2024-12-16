@@ -940,6 +940,7 @@ $conn->close();
                         student_id: studentId,
                         quiz_id: 8,
                         lesson: 'Weathering'
+
                     })
                 })
                 .then(response => response.json())
@@ -970,6 +971,7 @@ $conn->close();
                     });
                 } else {
                     showSection(12); // Show a section to encourage quiz completion
+
                 }
             })
             .catch(error => {
@@ -988,6 +990,7 @@ $conn->close();
                     student_id: studentId,
                     quiz_id: 8,
                     lesson: 'Weathering'
+
                 })
             })
             .then(response => response.json())
@@ -1000,6 +1003,7 @@ $conn->close();
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
                         showSection(12); 
+
                         updateEinsteinImageAndButtons();
                     } else {
                         if (currentSection < sections.length - 1) {
@@ -1494,6 +1498,7 @@ $conn->close();
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none';
             } 
+
             if (sections[index] === objectives) {
                 playAudio8(); 
             } else {
@@ -1504,6 +1509,7 @@ $conn->close();
             } else {
                 stopAudio9();
             }
+
             if (sections[index] === surfaceWeathering) {
                 playAudio(); 
             } else {
@@ -1605,6 +1611,7 @@ $conn->close();
 
         // Quiz Data
         const quizData = <?php echo json_encode($postAssessmentData); ?>;
+
 
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;

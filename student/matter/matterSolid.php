@@ -969,6 +969,7 @@ $conn->close();
                     student_id: studentId,
                     quiz_id: 1,
                     lesson: 'Solid'
+
                 })
             })
             .then(response => response.json())
@@ -981,6 +982,7 @@ $conn->close();
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
                         showSection(10); 
+
                         
                     } else {
                         if (currentSection < sections.length - 1) {
@@ -1011,6 +1013,7 @@ $conn->close();
                         student_id: studentId,
                         quiz_id: 1,
                         lesson: 'Solid'
+
                     })
                 })
                 .then(response => response.json())
@@ -1040,7 +1043,9 @@ $conn->close();
                             console.error('Error adding achievement:', error);
                         });
                     } else {
+
                         showSection(10); // Show a section to encourage quiz completion
+
                     }
                 })
                 .catch(error => {
@@ -1465,7 +1470,6 @@ $conn->close();
             if (sections[index] === matterCompleted) {
                 checkSectionComplete();
             }
-            
 
             if (index >= 0 && index <= 7) {
                 examplesButton.style.display = 'flex';
@@ -1827,6 +1831,7 @@ function showPreAssessmentResults() {
         console.error("One or more elements not found in the DOM.");
     }
 }
+
 
 // Load the first Pre-Assessment question
 loadPreAssessmentQuestion();

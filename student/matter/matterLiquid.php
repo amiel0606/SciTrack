@@ -935,6 +935,7 @@ $conn->close();
                         student_id: studentId,
                         quiz_id: 2,
                         lesson: 'Liquid'
+
                     })
                 })
                 .then(response => response.json())
@@ -965,10 +966,12 @@ $conn->close();
                         });
                     } else {
                         showSection(10); // Show a section to encourage quiz completion
+
                     }
                 })
                 .catch(error => {
                     console.error('Error checking quiz status:', error);
+
                 });
             }
 
@@ -1175,6 +1178,7 @@ $conn->close();
                     activityContainer2.style.display = 'block'; 
                 }, 3000); 
             } else {
+
                 incorrectSound.play();
                 incorrectSound.addEventListener('ended', () => {
                     buzzer.play();
@@ -1182,9 +1186,11 @@ $conn->close();
                 wrongAnswerModal.style.display = 'block';
                 setTimeout(() => {
                     wrongAnswerModal.style.display = 'none';
+
                 }, 3000); 
             }
         });
+
 
         submitAct2.addEventListener('click', function() {
             const answer = input2.value.trim().toLowerCase();
@@ -1224,6 +1230,7 @@ $conn->close();
                 }, 3000); 
             }
         });
+
 
         submitAct3.addEventListener('click', function() {
             const answer = input3.value.trim();
@@ -1513,8 +1520,8 @@ $conn->close();
 
         
     
-        // Quiz Data
         const quizData = <?php echo json_encode($postAssessmentData); ?>;
+
 
 
             let currentQuestionIndex = 0;
@@ -1638,6 +1645,7 @@ $conn->close();
                 percentageDisplay.textContent = ((correctAnswersCount / totalQuestions) * 100).toFixed(2) + '%';
                 // Send the score to the server (optional)
                 sendScoreToServer(correctAnswersCount);
+
             }
 // Pre-Assessment Data
 const preAssessmentData = <?php echo json_encode($preAssessmentData); ?>;
@@ -1692,8 +1700,9 @@ preChoices.forEach(button => {
             } else {
                 btn.classList.add(btn.textContent === correctAnswer ? 'correct' : 'wrong');
                 btn.style.color = 'white';
+
             }
-        });
+
 
         preExtraInfoText.textContent = preAssessmentData[preCurrentQuestionIndex].additional_info;
         preExtraInfoBox.style.display = 'block';
@@ -1764,11 +1773,14 @@ function showPreAssessmentResults() {
 
 // Load the first Pre-Assessment question
 loadPreAssessmentQuestion();
+
             // Function to send score to server
             function sendScoreToServer(score) {
                 const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
                 const quizId = 2; // Quiz ID for "Matter"
+
                 const lesson = "Liquid"; // Set lesson name as "Matter"
+
 
                 fetch('../save_quiz_score.php', {
                 method: 'POST',

@@ -956,6 +956,7 @@ $conn->close();
                         student_id: studentId,
                         quiz_id: 9,
                         lesson: 'Erosion'
+
                     })
                 })
                 .then(response => response.json())
@@ -986,6 +987,7 @@ $conn->close();
                     });
                 } else {
                     showSection(13); // Show a section to encourage quiz completion
+
                 }
             })
             .catch(error => {
@@ -1004,6 +1006,7 @@ $conn->close();
                     student_id: studentId,
                     quiz_id: 9,
                     lesson: 'Erosion'
+
                 })
             })
             .then(response => response.json())
@@ -1015,7 +1018,9 @@ $conn->close();
                     if (data.status !== 'taken') {
                         alert('Quiz not taken yet. Please complete the quiz before proceeding.');
 
+
                         showSection(13); 
+
                         updateEinsteinImageAndButtons();
                     } else {
                         if (currentSection < sections.length - 1) {
@@ -1274,6 +1279,7 @@ $conn->close();
             }
         });
 
+
         submitAct3.addEventListener('click', function() {
             const answer = input3.value.trim();
             const correctAnswer = "POLLUTION";
@@ -1521,6 +1527,7 @@ $conn->close();
                 leftButton.style.display = 'none';
                 rightButton.style.display = 'none';
             } 
+
             if (sections[index] === objectives) {
             playAudio9(); 
         } else {
@@ -1531,6 +1538,7 @@ $conn->close();
         } else {
             stopAudio10();
         }
+
         if (sections[index] === surfaceEffects) {
             playAudio(); 
         } else {
@@ -1875,6 +1883,7 @@ function showPreAssessmentResults() {
             preFeedbackDisplay.textContent = "Perfect!";
         }
 
+
         preTotalQuestionsDisplay.textContent = preTotalQuestions;
         preCorrectAnswersDisplay.textContent = preCorrectAnswersCount;
         preAssessmentWrongAnswers.textContent = preTotalQuestions - preCorrectAnswersCount;
@@ -1884,13 +1893,16 @@ function showPreAssessmentResults() {
     }
 }
 
+
 // Load the first Pre-Assessment question
 loadPreAssessmentQuestion();
+
         // Function to send score to server
         function sendScoreToServer(score) {
             const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
             const quizId = 9; 
             const lesson = "Erosion"; 
+
 
             fetch('../save_quiz_score.php', {
             method: 'POST',

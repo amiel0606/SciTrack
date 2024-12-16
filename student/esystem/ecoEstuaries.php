@@ -1020,6 +1020,7 @@ $conn->close();
         const audio9 = document.getElementById('ecoEstAudio9');
         const audio10 = document.getElementById('ecoEstAudio10');
         const audio11 = document.getElementById('ecoEstAudio11');
+
         const sections = [objectives, ecoPreAssessment, ecoDef, ecoBefore, ecoBiotic, ecoAbiotic, eco1, ecoVideo, eco2, eco3, ecoExamples, eco4, eco5, ecoActivity, letsTry, ecoQuiz, ecoCompleted];
         let sectionTimeSpent = new Array(sections.length).fill(0); 
         let sectionTimerInterval;
@@ -1190,6 +1191,7 @@ $conn->close();
                         return;
                     }
                 }
+
             });
 
             zone.addEventListener('click', (e) => {
@@ -1983,11 +1985,13 @@ function showPreAssessmentResults() {
 
 // Load the first Pre-Assessment question
 loadPreAssessmentQuestion();
+
             // Function to send score to server
             function sendScoreToServer(score) {
                 const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
                 const quizId = 4; 
                 const lesson = "Estuaries"; 
+
 
                 fetch('../save_quiz_score.php', {
                 method: 'POST',

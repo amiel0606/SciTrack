@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2024 at 08:05 AM
+
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -277,6 +277,7 @@ CREATE TABLE `quiz_questions_solid` (
 --
 
 INSERT INTO `quiz_questions_solid` (`id`, `question`, `choices`, `quiz_image`, `correct_answer`, `additional_info`, `type`, `difficulty`) VALUES
+
 (1, 'What is a characteristic of a solid?', '[\"Has a definite shape and volume\", \"Takes the shape of its container\", \"Has no definite volume\", \"Flows easily\"]', '../quizImage/solidQuizImage1.png', 'Has a definite shape and volume', 'Solids have a fixed shape and volume because their particles are tightly packed together.', 'post', 'easy'),
 (2, 'Which of the following is an example of a solid?', '[\"Water\", \"Air\", \"Ice\", \"Steam\"]', '../quizImage/solidQuizImage2.png', 'Ice', 'Ice is the solid form of water, with a fixed shape and volume.', 'post', 'easy'),
 (3, 'What happens to the particles in most solids when they are heated?', '[\"They move faster\", \"They move slower\", \"They stop moving\", \"They stay the same\"]', '../quizImage/solidQuizImage3.png', 'They move faster', 'When solids are heated, the particles gain energy and move faster, which can cause the solid to melt if enough heat is applied.', 'post', 'easy'),
@@ -293,6 +294,7 @@ INSERT INTO `quiz_questions_solid` (`id`, `question`, `choices`, `quiz_image`, `
 (14, 'Which one?', '[\"1\",\"11\",\"111\",\"1111\"]', '', '111', '111 kasi', 'pre', 'hard'),
 (15, 'Who?', '[\"dog\",\"cat\",\"rat\",\"fish\"]', '', 'cat', 'catto', 'pre', 'average'),
 (16, 'What?', '[\"Yes\",\"No\",\"Maybe\",\"Okay\"]', '', 'Yes', 'Yes sir', 'pre', 'average');
+
 
 -- --------------------------------------------------------
 
@@ -490,6 +492,7 @@ CREATE TABLE `tbl_quiz_scores` (
 INSERT INTO `tbl_quiz_scores` (`id`, `student_id`, `quiz_id`, `lesson`, `score`, `date_taken`) VALUES
 (7, 39, 1, 'Solid', 15, '2024-12-16 14:58:48');
 
+
 -- --------------------------------------------------------
 
 --
@@ -592,6 +595,17 @@ CREATE TABLE `tbl_time_tracking` (
   `time_spent` int(11) DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `tbl_time_tracking` (`id`, `student_id`, `lesson`, `section_index`, `section_name`, `time_spent`, `timestamp`) VALUES
+(322, 39, 'Matter', 0, 'Solid', 1, '2024-12-05 20:54:51'),
+(323, 39, 'Matter', 1, 'Solid', 1, '2024-12-05 20:54:51'),
+(324, 39, 'Matter', 2, 'Solid', 1, '2024-12-05 20:54:53'),
+(325, 39, 'Matter', 3, 'Solid', 1, '2024-12-05 20:54:54'),
+(326, 39, 'Matter', 4, 'Solid', 1, '2024-12-05 20:54:56'),
+(327, 39, 'Matter', 5, 'Solid', 3, '2024-12-05 20:54:59'),
+(328, 39, 'Matter', 7, 'Solid', 0, '2024-12-05 20:55:00'),
+(329, 39, 'Matter', 6, 'Solid', 1, '2024-12-05 20:55:00'),
+(330, 39, 'Matter', 8, 'Solid', 3, '2024-12-05 20:55:05');
 
 -- --------------------------------------------------------
 
@@ -825,6 +839,7 @@ ALTER TABLE `tbl_permissions`
 ALTER TABLE `tbl_quiz_scores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
+
 --
 -- AUTO_INCREMENT for table `tbl_roles`
 --
@@ -842,6 +857,7 @@ ALTER TABLE `tbl_sections`
 --
 ALTER TABLE `tbl_time_tracking`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
+
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

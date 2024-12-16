@@ -960,6 +960,7 @@ $conn->close();
                     });
                 } else {
                     showSection(10); // Show a section to encourage quiz completion
+
                 }
             })
             .catch(error => {
@@ -1500,7 +1501,6 @@ $conn->close();
 
         // Quiz Data
         const quizData = <?php echo json_encode($postAssessmentData); ?>;
-
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;
         const totalQuestions = quizData.length;
@@ -1748,11 +1748,13 @@ function showPreAssessmentResults() {
 
 // Load the first Pre-Assessment question
 loadPreAssessmentQuestion();
+
         // Function to send score to server
         function sendScoreToServer(score) {
             const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
             const quizId = 3; // Quiz ID for "Matter"
             const lesson = "Gas"; // Set lesson name as "Matter"
+
 
             fetch('../save_quiz_score.php', {
             method: 'POST',
