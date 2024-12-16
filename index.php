@@ -14,7 +14,6 @@
         --bulma-info-l: 83%;
         --bulma-link-h: 0deg;
     }
-
     .input {
         height: 45px;
         --bulma-input-focus-h: 310deg;

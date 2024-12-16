@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
         $filename = $_FILES["file"]["tmp_name"];
         $file = fopen($filename, "r");
 
-        fgetcsv($file); // Skip the header row
+        fgetcsv($file);
 
         while (($row = fgetcsv($file, 10000, ",")) !== FALSE) {
             $username = $row[0];
@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
             $lastName = $row[2];
             $password = $lastName;
             $name = $firstName. " ". $lastName;
-            $section = 'Papaya';
+            $section = "";
             $role = "Student";
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);

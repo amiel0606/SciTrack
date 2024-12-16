@@ -61,37 +61,60 @@ include_once './includes/sidebar.php';
     </div>
 </div>
 <script>
-    // Websocket connection
-    var conn = new WebSocket('ws://localhost:8080/ws/');
-    conn.onopen = function () {
-        conn.send(JSON.stringify({ type: 'getQuizScores' }));
-    }
-    conn.onmessage = function (e) {
-        var data = JSON.parse(e.data);
-        // console.log(data);
-        if (data.type === 'quiz_score') {
-            displayQuizScore(data);
+    $(document).ready(function () {
+        $.ajax({
+            url: '../server.php',
+            type: 'POST',
+            data: { type: 'getQuizScores' },
+            dataType: 'json',
+            success: function (response) {
+                var tableBody = document.querySelector('.table tbody');
+                tableBody.innerHTML = ''; 
+                if (response && response.length > 0) {
+                    response.forEach(function (quizScore) {
+                        displayQuizScore(quizScore);
+                    });
+                } else {
+                    var row = document.createElement('tr');
+                    var messageCell = document.createElement('td');
+                    messageCell.colSpan = 4;
+                    messageCell.textContent = "No quiz scores found.";
+                    messageCell.className = 'has-text-centered'; 
+                    row.appendChild(messageCell);
+                    tableBody.appendChild(row);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX Error: ", status, error);
+            }
+        });
+
+        function displayQuizScore(quizScore) {
+            var tableBody = document.querySelector('.table tbody');
+            var row = document.createElement('tr');
+
+            var nameCell = document.createElement('td');
+            nameCell.textContent = quizScore.student_name;
+            nameCell.className = 'has-text-centered';
+            row.appendChild(nameCell);
+
+            var scoreCell = document.createElement('td');
+            scoreCell.textContent = `${quizScore.score}/10`;
+            scoreCell.className = 'has-text-centered';
+            row.appendChild(scoreCell);
+
+            var lessonCell = document.createElement('td');
+            lessonCell.textContent = quizScore.lesson;
+            lessonCell.className = 'has-text-centered';
+            row.appendChild(lessonCell);
+
+            var dateTakenCell = document.createElement('td');
+            dateTakenCell.textContent = quizScore.date_taken;
+            dateTakenCell.className = 'has-text-centered';
+            row.appendChild(dateTakenCell);
+
+            tableBody.appendChild(row);
         }
-    }
-    function displayQuizScore(quizScore) {
-        var tableBody = document.querySelector('.table tbody');
-        var row = document.createElement('tr');
-        var nameCell = document.createElement('td');
-        nameCell.textContent = quizScore.student_name;
-        nameCell.className = 'has-text-centered';
-        row.appendChild(nameCell);
-        var scoreCell = document.createElement('td');
-        scoreCell.textContent = `${quizScore.score}/10`;
-        scoreCell.className = 'has-text-centered';
-        row.appendChild(scoreCell);
-        var lessonCell = document.createElement('td');
-        lessonCell.textContent = quizScore.lesson;
-        lessonCell.className = 'has-text-centered';
-        row.appendChild(lessonCell);
-        var dateTakenCell = document.createElement('td');
-        dateTakenCell.textContent = quizScore.date_taken;
-        dateTakenCell.className = 'has-text-centered';
-        row.appendChild(dateTakenCell);
-        tableBody.appendChild(row);
-    }
+    });
+
 </script>

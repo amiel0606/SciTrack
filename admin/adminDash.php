@@ -1,6 +1,12 @@
 <?php
-include_once './includes/sidebar.php'
-    ?>
+session_start();
+if ($_SESSION['role'] == 'Admin') {
+    include_once './includes/sidebar.php';
+} else {
+    header("Location: ../index.php");
+    exit();
+}
+?>
 <style>
     .footer {
         margin-top: 390px;
@@ -82,6 +88,7 @@ include_once './includes/sidebar.php'
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>Section</th>
                                     <th>Username</th>
                                 </tr>
                             </thead>
@@ -107,6 +114,7 @@ include_once './includes/sidebar.php'
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Section</th>
                                 <th>Username</th>
                             </tr>
                         </thead>
@@ -127,7 +135,7 @@ include_once './includes/sidebar.php'
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    $(document).ready(function () {
         const calendarBody = document.getElementById('calendar-body');
         const monthElement = document.getElementById('month');
         const prevButton = document.getElementById('month-prev');
@@ -192,51 +200,88 @@ include_once './includes/sidebar.php'
         nextButton.addEventListener('click', () => changeMonth(1));
 
         generateCalendar(currentMonth, currentYear);
-        // WebSocket connection
-        var conn = new WebSocket('ws://localhost:8080/ws/');
-        conn.onopen = function () {
-            conn.send(JSON.stringify({ type: 'loadStudents' }));
-            conn.send(JSON.stringify({ type: 'loadTeachers' }));
-            conn.send(JSON.stringify({ type: 'getCountStudents' }));
-            conn.send(JSON.stringify({ type: 'getTeacherCounts' }));
-        };
-        conn.onmessage = function (e) {
-            var data = JSON.parse(e.data);
-            console.log(data);
-            if (data.type === "student") {
-                var table = document.getElementById('students').getElementsByTagName('tbody')[0];
-                var newRow = table.insertRow();
-                newRow.insertCell(0).innerText = data.id;
-                newRow.insertCell(1).innerText = data.name;
-                newRow.insertCell(2).innerText = data.username;
-            } else if (data.type === "teacher") {
-                var table = document.getElementById('teachers').getElementsByTagName('tbody')[0];
-                var newRow = table.insertRow();
-                newRow.insertCell(0).innerText = data.id;
-                newRow.insertCell(1).innerText = data.name;
-                newRow.insertCell(2).innerText = data.username;
-            } else if (data.type === "studentCount") {
-                const totalCount = Object.values(data.counts).reduce((sum, count) => sum + parseInt(count, 10), 0);
-                document.querySelector('.studentCount').innerText = totalCount;
-            } else if (data.type === "teacherCount") {
-                const totalCount = Object.values(data.counts).reduce((sum, count) => sum + parseInt(count, 10), 0);
-                document.querySelector('.teacherCount').innerText = totalCount;
+        $.ajax({
+            url: '../server.php',
+            method: 'POST',
+            data: { type: 'loadStudents' },
+            success: function (response) {
+                if (Array.isArray(response)) {
+                    var table = $('#students tbody');
+                    table.empty(); 
+                    response.forEach(function (student) {
+                        var newRow = $('<tr>');
+                        newRow.append($('<td>').text(student.id));
+                        newRow.append($('<td>').text(student.name));
+                        newRow.append($('<td>').text(student.section));
+                        newRow.append($('<td>').text(student.username));
+                        table.append(newRow);
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error loading students:', error);
             }
+        });
 
+        $.ajax({
+            url: '../server.php',
+            method: 'POST',
+            data: { type: 'loadTeachers' },
+            success: function (response) {
+                if (Array.isArray(response)) {
+                    var table = $('#teachers tbody');
+                    table.empty(); 
+                    response.forEach(function (teacher) {
+                        var newRow = $('<tr>');
+                        newRow.append($('<td>').text(teacher.id));
+                        newRow.append($('<td>').text(teacher.name));
+                        newRow.append($('<td>').text(teacher.section));
+                        newRow.append($('<td>').text(teacher.username));
+                        table.append(newRow);
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error loading teachers:', error);
+            }
+        });
 
+        $.ajax({
+            url: '../server.php',
+            method: 'POST',
+            data: { type: 'getCountStudents' },
+            success: function (response) {
+                if (response && response.counts) {
+                    const totalCount = Object.values(response.counts).reduce((sum, count) => {
+                        return sum + parseInt(count, 10); 
+                    }, 0);
+                    $('.studentCount').text(totalCount);
+                } else {
+                    console.log('No counts found in student response');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching student count:', error);
+            }
+        });
 
-        };
-
-        // Error handling for WebSocket
-        conn.onerror = function (error) {
-            console.error('WebSocket Error: ', error);
-        };
-
-        conn.onclose = function () {
-            console.log('WebSocket connection closed');
-        };
-
+        $.ajax({
+            url: '../server.php',
+            method: 'POST',
+            data: { type: 'getTeacherCounts' },
+            success: function (response) {
+                if (response && response.counts) {
+                    const totalCount = Object.values(response.counts).reduce((sum, count) => {
+                        return sum + parseInt(count, 10); 
+                    }, 0);
+                    $('.teacherCount').text(totalCount);
+                } else {
+                    console.log('No counts found in teacher response');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching teacher count:', error);
+            }
+        });
     });
-
-
 </script>

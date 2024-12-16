@@ -219,33 +219,31 @@ include_once './includes/sidebar.php';
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        $(function () {
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
+    $(document).ready(function () {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
 
-            const datepicker = document.getElementById('datepicker');
+        const datepicker = $('#datepicker');
+        datepicker.attr('min', `${year}-${month}-${day}`);
 
-            datepicker.min = `${year}-${month}-${day}`;
-            $(".selectDateBtn").click(function () {
-                $("#dateModal").css("display", "block");
-            });
-
-            $("#confirmBtn").click(function () {
-                let selectedDate = $("#datepicker").val();
-                alert("You selected: " + selectedDate);
-                $("#dateModal").css("display", "none");
-            });
-
-            $(window).click(function (event) {
-                if ($(event.target).is("#dateModal")) {
-                    $("#dateModal").css("display", "none");
-                }
-            });
+        $(".selectDateBtn").click(function () {
+            $("#dateModal").css("display", "block");
         });
-        // WebSocket connection
+
+        $("#confirmBtn").click(function () {
+            let selectedDate = datepicker.val();
+            alert("You selected: " + selectedDate);
+            $("#dateModal").css("display", "none");
+        });
+
+        $(window).click(function (event) {
+            if ($(event.target).is("#dateModal")) {
+                $("#dateModal").css("display", "none");
+            }
+        });
+
         const url = new URL(window.location.href);
         const params = new URLSearchParams(url.search);
         const section = params.get('section');
@@ -255,68 +253,94 @@ include_once './includes/sidebar.php';
             'motion': 'motion',
             'earth': 'earth'
         };
+
         function getPhilippinesDate(date) {
             const options = { timeZone: 'Asia/Manila', year: 'numeric', month: '2-digit', day: '2-digit' };
-            const philippinesDate = new Date(date.toLocaleString('en-PH', options));
-            return philippinesDate;
+            return new Date(date.toLocaleString('en-PH', options));
         }
+
         function offsetDateByOneDay(date) {
             const newDate = new Date(date);
             newDate.setDate(date.getDate() + 1);
             return newDate;
         }
-        var conn = new WebSocket('ws://localhost:8080/ws/');
-        conn.onopen = function () {
-            conn.send(JSON.stringify({ type: 'loadLessons', section: "Papaya" }));
-        };
-        conn.onmessage = function (e) {
-            var data = JSON.parse(e.data);
-            const today = new Date();
-            let philippinesToday = getPhilippinesDate(today);
-            philippinesToday = offsetDateByOneDay(philippinesToday);
-            // console.log('Formatted Today in Philippines (with +1 offset):', philippinesToday.toISOString().slice(0, 10));
-            Object.keys(idsToProperties).forEach(id => {
-                const element = document.querySelector(`.${id}`);
-                const buttonElement = document.querySelector(`.btn-${id}`);
-                if (element) {
-                    const property = idsToProperties[id];
-                    const databaseDate = new Date(data[property]);
-                    let philippinesDatabaseDate = getPhilippinesDate(databaseDate);
-                    philippinesDatabaseDate = offsetDateByOneDay(philippinesDatabaseDate);
-                    // console.log('Formatted Database Date in Philippines (with +1 offset):', philippinesDatabaseDate.toISOString().slice(0, 10));
-                    if (philippinesDatabaseDate <= philippinesToday) {
-                        element.classList.add('no-way');
-                    } else {
-                        element.classList.remove('no-way');
-                    }
-                    buttonElement.textContent = data[property];
-                    if (data[property] !== "Set Date") {
-                        buttonElement.classList.remove('is-success');
-                        buttonElement.classList.add('has-background-dark');
-                        buttonElement.classList.add('has-text-white');
-                    }
-                } else {
-                    console.error(`Element with class "${id}" not found.`);
+
+        function loadLessons() {
+            $.ajax({
+                url: '../server.php',
+                method: 'POST',
+                data: { type: 'loadLessons', section: "Papaya" },
+                dataType: 'json',
+                success: function (data) {
+                    const today = new Date();
+                    let philippinesToday = getPhilippinesDate(today);
+                    data.forEach(lesson => {
+                        Object.keys(idsToProperties).forEach(id => {
+                            const element = $(`.${id}`);
+                            const buttonElement = $(`.btn-${id}`);
+                            if (element.length) {
+                                const property = idsToProperties[id];
+                                const databaseDate = new Date(lesson[property]);
+                                let philippinesDatabaseDate = getPhilippinesDate(databaseDate);
+                                if (philippinesDatabaseDate > philippinesToday || philippinesDatabaseDate == philippinesToday) {
+                                    element.removeClass('no-way');
+                                } else {
+                                    element.addClass('no-way');
+                                }
+                                buttonElement.text(lesson[property]);
+                                if (lesson[property] !== "Set Date") {
+                                    buttonElement.removeClass('is-success').addClass('has-background-dark has-text-white');
+                                }
+                            } else {
+                                console.error(`Element with class "${id}" not found.`);
+                            }
+                        });
+                    });
+                },
+                error: function (error) {
+                    console.error('Error loading lessons:', error);
                 }
             });
-        };
+        }
 
-        document.addEventListener('click', function (event) {
-            if (event.target.closest('.lesson-btn')) {
-                var button = event.target.closest('.lesson-btn');
-                var lesson_value = button.getAttribute('data-lesson');
-                $("#lesson-name").val(lesson_value);
-            } else if (event.target.closest('#confirmBtn')) {
-                var lesson = $("#lesson-name").val();
-                var date = $("#datepicker").val();
-                console.log(date);
-                if (conn.readyState === WebSocket.OPEN) {
-                    conn.send(JSON.stringify({ type: 'giveLesson', section: "Papaya", lesson: lesson, date: date }));
-                    conn.send(JSON.stringify({ type: 'loadLessons', section: "Papaya" }));
-                } else {
-                    console.error('WebSocket connection is not open.');
-                }
+        $(document).on('click', '.lesson-btn', function (event) {
+            var lesson_value = $(this).data('lesson');
+            $("#lesson-name").val(lesson_value);
+        });
+
+        $(document).on('click', '#confirmBtn', function () {
+            var lesson = $("#lesson-name").val();
+            var date = $("#datepicker").val();
+            if (lesson && date) {
+                $.ajax({
+                    url: './includes/updateLesson.php', 
+                    method: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        type: 'lessonGive',
+                        section: "Papaya",
+                        lesson: lesson,
+                        date: date
+                    }),
+                    success: function (response) {
+                        if (response.success) {
+                            console.log('Lesson updated successfully:', response);
+                            loadLessons();  
+                        } else {
+                            console.error('Error in response:', response);
+                            alert(response.error || 'Failed to update the lesson.');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('AJAX Error:', error);
+                        alert('An error occurred while updating the lesson. Check the console for details.');
+                    }
+                });
+            } else {
+                alert('Please fill in all fields before confirming.');
             }
         });
+        loadLessons();
     });
 </script>

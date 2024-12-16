@@ -68,6 +68,8 @@
     </div>
 </section>
 
+<audio id="motionAudio" src="../../sounds/motionL1.mp3"></audio>
+<audio id="motionAudio2" src="../../sounds/motionL2.mp3"></audio>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const images = document.querySelectorAll('.lesson-image');
@@ -77,9 +79,40 @@
         const leftLessonbtn = document.getElementById('leftLessonbtn');
         const rightLessonbtn = document.getElementById('rightLessonbtn');
         const urlParams = new URLSearchParams(window.location.search);
+        const audio = document.getElementById('motionAudio');
+        const audio2 = document.getElementById('motionAudio2');
         let currentIndex = 0;
 
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0; 
+        }
+
+        function playAudio() {
+            audio.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
+        function stopAudio2() {
+            audio2.pause();
+            audio2.currentTime = 0; 
+        }
+
+        function playAudio2() {
+            audio2.play().catch(function (error) {
+                console.log("Autoplay prevented by browser, waiting for user interaction.");
+            });
+        }
+
         function showContent(index) {
+            if (currentIndex > 0) {
+                playAudio2();
+                stopAudio();
+            }
+            else {
+                playAudio();
+                stopAudio2();
+            }
             images.forEach((img, i) => {
                 img.classList.toggle('is-hidden', i !== index);
                 links[i].classList.toggle('is-hidden', i !== index);

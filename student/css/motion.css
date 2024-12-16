@@ -320,3 +320,374 @@
 .ecosys{
     margin-top: -10%;
 }
+
+
+
+
+/* Exercise/Activity */
+#activityContainer1, #activityContainer2, #activityContainer3 {
+    width: 80%; 
+    max-width: 90%; 
+    height: 100%; 
+    max-height: 950px; 
+    padding: 30px; 
+    margin-top: 40px;
+}
+
+.actHeader{
+    font-size: 3.5rem;
+    font-family: 'Haniley';
+}
+
+.actStatement{
+    font-family: 'verdana';
+    animation: slideInFromLeft 1s ease-out;
+    margin-top: 30px;
+}
+
+.imageAct{
+    min-width: 220px;
+    width: 45%;
+    max-width: 70%;
+    height: 190px;  
+    animation: slideInFromLeft 1s ease-out;
+    cursor: pointer; 
+    position: relative; 
+    overflow: hidden; 
+}
+.imageAct img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+#imageAct2 {
+    margin-left: -20%;
+}
+
+#imageAct3 {
+    margin-left: -40%;
+}
+
+#imageAct4, #imageAct5 {
+    margin-left: 40%;
+}
+.dropZone {
+    min-width: 220px;
+    width: 45%;
+    max-width: 70%;
+    height: 190px;  
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideInFromLeft 1s ease-out;
+}
+#dropZone1{
+    margin-left: -35%;
+}
+#dropZone2{
+    margin-left: 10%;
+}
+#dropZone3{
+    margin-left: 15%;
+}
+
+.dropZone:hover {
+    background-color: #e6e6e6;
+}
+.imageAct.selected-box {
+    border: 3px solid #4CAF50;
+    opacity: 0.8;
+}
+
+.dropZone.hovered {
+    background-color: #d4edda; 
+    border: 2px dashed #4CAF50; 
+}
+
+#submitAct1 {
+    width: 30%;
+    animation: slideInFromLeft 1s ease-out;
+}
+
+.imageAct2{
+    min-width: 250px;
+    width: 40%;
+    max-width: 100%;
+    height: 250px;
+    margin-top: 50px;  
+    animation: slideInFromLeft 1s ease-out;
+    position: relative; 
+    overflow: hidden; 
+}
+.imageAct2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.actStatement2, .actStatement3{
+    font-family: 'verdana';
+    animation: slideInFromLeft 1s ease-out;
+    width: 80%;
+    margin-top: -470px;
+    margin-left: 90%;
+}
+.actStatement3 {
+    margin-top: -550px;
+}
+
+.jLetters{
+    font-family: 'verdana';
+    animation: slideInFromLeft 1s ease-out;
+    width: 80%;
+    margin-top: 70px;
+    margin-left: 70%;
+}
+
+#imageAct8, #imageAct9, #imageAct12, #imageAct13{
+    margin-left: -450px;
+}
+
+
+.input, .input2 {
+    width: 50%;
+    margin-top: 150px;
+    margin-left: 100%;
+    border: none;
+    border-bottom: 1px solid #808080;  
+    outline: none;  
+    padding: 10px 0;  
+    font-size: 1.2rem; 
+    background: none;
+    border-radius: 0px;
+}
+.input2{
+    margin-top: 10px;
+    pointer-events: none; 
+    background-color: #f0f0f0;
+}
+.input:focus, .input2:focus {
+    box-shadow: none; 
+}
+
+#submitAct2{
+    margin-top: 130px;
+    margin-left: 100%;
+    width: 50%;
+}
+
+#submitAct3{
+    margin-top: -10px;
+    margin-left: 100%;
+    width: 50%;
+
+}
+
+.info-icon {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ff8400;
+}
+.info-icon:hover {
+    color: rgb(242, 155, 63);
+}
+
+/* Instruction Modal */
+.instruction-modal {
+    display: none;
+    position: fixed;
+    background-color: #ffffff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.instruction-content {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.instruction-modal p {
+    font-size: 1.4rem;
+}
+
+.instruction-modal button {
+    margin-top: 50px;
+}
+.letterChoicesBox {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    top: 0%;
+    left: 105%;
+    animation: slideInFromLeft 1s ease-out;
+}
+.tileLetter{
+    text-align: center;
+    font-size: 1.5em;
+    animation: slideInFromLeft 1s ease-out;
+}
+.tileLetter:hover {
+    background-color: #d3d3d3;
+}
+.answerMod{
+    width: 40%;
+}
+#correctAnswerModal{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+#wrongAnswerModal{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+#correctAnswerModal img{
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    transform: scale(0.8);
+    animation: bounce 0.5s ease-out forwards;
+
+}
+#wrongAnswerModal img{
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    transform: scale(0.8); 
+    animation: fadeInShake 0.5s ease-out forwards;
+}
+#noAnswerModal{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+@keyframes slideInFromLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0); 
+    }
+}
+@keyframes bounce {
+    0% {
+        transform: scale(0.8) translateY(0);
+    }
+    50% {
+        transform: scale(1.1) translateY(-10px); 
+    }
+    70% {
+        transform: scale(1) translateY(5px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+@keyframes fadeInShake {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateX(0);
+    }
+    25% {
+        transform: scale(1) translateX(-10px); 
+    }
+    50% {
+        transform: scale(1) translateX(10px); 
+    }
+    75% {
+        transform: scale(1) translateX(-5px); 
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateX(0); 
+    }
+}
+
+/* Pre-Assessment */
+#headerPreAssessment{
+    font-size: 4rem;
+    margin-top: -4%;
+}
+
+#preAssessmentContainer{
+    margin-top: 30px;
+}
+#preAssessmentImage{
+    max-width: 70%; 
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#preAssessmentResult{
+    display: none; 
+    width: 100%; 
+    max-width: 90%; 
+    padding: 30px; 
+    z-index: 2; 
+    margin-top: 30px;
+}
+
+.preAssessment-choice-btn {
+    background-color: #d3d3d3;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Left-to-right fill effect */
+.preAssessment-choice-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: transparent;
+    z-index: -1;
+    transition: width 0.6s ease, background-color 0.6s ease;
+}
+
+/* Correct answer - green fill */
+.preAssessment-choice-btn.correct::before {
+    background-color: #48c774;
+    width: 100%;
+}
+
+/* Wrong answer - red fill */
+.preAssessment-choice-btn.wrong::before {
+    background-color: #f14668; 
+    width: 100%;
+}
+
+.preAssessment-choice-btn {
+    z-index: 1;
+}
