@@ -5,9 +5,10 @@ include_once('../admin/includes/dbCon.php');
 $name = $_SESSION["firstName"] . " " . $_SESSION["lastName"];
 $id = $_SESSION["id"];
 
-// Fetch students with achievements count
-$query = "SELECT s.name, COUNT(a.achievement_name) as badge_count, 
-          GROUP_CONCAT(a.image_path) as image_paths
+// Fetch students with achievements count and corresponding lesson names (achievement_name)
+$query = "SELECT s.name, COUNT(a.achievement_name) AS badge_count, 
+                 GROUP_CONCAT(a.image_path) AS image_paths, 
+                 GROUP_CONCAT(DISTINCT a.achievement_name) AS lesson_names
           FROM tbl_students s
           LEFT JOIN tbl_achievements a ON s.id = a.student_id
           GROUP BY s.name
@@ -23,6 +24,7 @@ if ($result) {
     }
 }
 ?>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <link rel="stylesheet" href="./css/leaderboards.css">
 
@@ -88,68 +90,93 @@ if ($result) {
 
 
 <script>
-    document.getElementById('saveButton').addEventListener('click', function () {
-        const { jsPDF } = window.jspdf;
+ document.getElementById('saveButton').addEventListener('click', function () {
+    const { jsPDF } = window.jspdf;
+
+    const studentName = "<?php echo $_SESSION['firstName'] . ' ' . $_SESSION['lastName']; ?>";
+    
+    // Fetch lesson names (achievement_name) and corresponding badge images (grouped by lesson)
+    <?php
+    // Fetch lesson names and badge images grouped by lesson
+    $query = "
+        SELECT a.achievement_name, a.image_path
+        FROM tbl_achievements a
+        WHERE a.student_id = '$id'
+        ORDER BY a.achievement_name";
+    
+    $result = $conn->query($query);
+    $lessonData = [];
+    
+    while ($row = $result->fetch_assoc()) {
+        $lessonData[$row['achievement_name']][] = $row['image_path'];
+    }
+    ?>
+    
+    var lessonData = <?php echo json_encode($lessonData); ?>;
+
+    // Loop through each lesson and create a PDF with all badges for that lesson
+    Object.keys(lessonData).forEach(function (lessonName) {
         const doc = new jsPDF({ orientation: 'landscape', unit: 'px', format: 'a4' });
 
-        const studentName = "<?php echo $_SESSION['firstName'] . ' ' . $_SESSION['lastName']; ?>";
-
+        // Page background color
         doc.setFillColor(255, 255, 240);
         doc.rect(0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height, 'F');
 
+        // Header background
         doc.setFillColor(74, 144, 226);
         doc.rect(0, 0, doc.internal.pageSize.width, 80, 'F');
+
+        // Header Text
         doc.setFontSize(36);
         doc.setTextColor(255, 255, 255);
         doc.text("Student Achievement Award", doc.internal.pageSize.width / 2, 50, { align: "center" });
 
+        // Awarded to text
         doc.setFontSize(32);
         doc.setTextColor(0, 0, 0);
         doc.text("Awarded to:", doc.internal.pageSize.width / 2, 120, { align: "center" });
 
+        // Student's Name
         doc.setFontSize(40);
         doc.setFont('times', 'bold');
         doc.text(studentName, doc.internal.pageSize.width / 2, 160, { align: "center" });
 
+        // Lesson Name (achievement_name) - displayed only once as lesson name
+        doc.setFontSize(24);
+        doc.setFont('times', 'normal');
+        doc.text("For Completing the Lesson:", doc.internal.pageSize.width / 2, 210, { align: "center" });
+        doc.setFontSize(28);
+        doc.setFont('times', 'bold');
+        doc.text(lessonName, doc.internal.pageSize.width / 2, 240, { align: "center" });
+
+        // Divider line
         doc.setDrawColor(74, 144, 226);
         doc.setLineWidth(1.5);
-        doc.line(30, 170, doc.internal.pageSize.width - 30, 170);
+        doc.line(30, 250, doc.internal.pageSize.width - 30, 250);
 
-        <?php
-        $query = "SELECT image_path FROM tbl_achievements WHERE student_id = '$id'";
-        $result = $conn->query($query);
-        $imagePaths = [];
-        if ($result) {
-            while ($row = $result->fetch_assoc()) {
-                $imagePaths[] = $row['image_path'];
-            }
-        }
-        ?>
+        // Calculate center position for the badge image
+        const badgeSize = 80; // Size of the badge
+        const xPosition = (doc.internal.pageSize.width - badgeSize) / 2;  // Center horizontally
+        let yPosition = 270;  // Start position for the first badge
 
-        var images = <?php echo json_encode($imagePaths); ?>;
-        let yPosition = 180;
-        let xPosition = 30;
-        let badgeSize = 80;
-        let badgesPerRow = 6;
+        // Loop through badges for this lesson and add each badge image
+        lessonData[lessonName].forEach(function (imagePath, index) {
+            // Add image (badge)
+            doc.addImage(imagePath, 'JPEG', xPosition, yPosition, badgeSize, badgeSize);
 
-        if (images.length > 0) {
-            images.forEach(function (imagePath, index) {
-                doc.addImage(imagePath, 'JPEG', xPosition, yPosition, badgeSize, badgeSize);
-                xPosition += badgeSize + 20;
-                if ((index + 1) % badgesPerRow === 0) {
-                    xPosition = 30;
-                    yPosition += badgeSize + 20;
-                }
-            });
-        } else {
-            doc.setFontSize(16);
-            doc.text("No Achievements Earned", 30, yPosition);
-        }
+            // Increment Y position for the next badge
+            yPosition += badgeSize + 20; // Adjust this to control the spacing between badges
+        });
 
+        // Footer Text
         doc.setFontSize(10);
         doc.setTextColor(100);
         doc.text("Generated by SciTrack", doc.internal.pageSize.width / 2, doc.internal.pageSize.height - 20, { align: "center" });
 
-        doc.save(studentName + '_badges.pdf');
+        // Save the PDF with a unique filename based on the lesson name
+        doc.save(studentName + '_certificate_for_' + lessonName + '.pdf');
     });
+});
+
+
 </script>

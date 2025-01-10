@@ -482,15 +482,13 @@ CREATE TABLE `tbl_quiz_scores` (
   `quiz_id` int(11) NOT NULL,
   `lesson` varchar(255) NOT NULL,
   `score` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
   `date_taken` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_quiz_scores`
 --
-
-INSERT INTO `tbl_quiz_scores` (`id`, `student_id`, `quiz_id`, `lesson`, `score`, `date_taken`) VALUES
-(7, 39, 1, 'Solid', 15, '2024-12-16 14:58:48');
 
 
 -- --------------------------------------------------------

@@ -31,12 +31,11 @@ if ($resultPre->num_rows > 0) {
     }
 }
 
-// Fetch 'post' questions
+// Fetch 'post' questions with IDs 1-10
 $sqlPost = "SELECT question, choices, quiz_image, correct_answer, additional_info 
             FROM quiz_questions_solid 
-            WHERE type = 'post' 
-            ORDER BY RAND() 
-            LIMIT 10";
+            WHERE type = 'post' AND id BETWEEN 1 AND 10
+            ORDER BY RAND()";
 
 $resultPost = $conn->query($sqlPost);
 
@@ -47,8 +46,18 @@ if ($resultPost->num_rows > 0) {
     }
 }
 
+// If we have post-assessment questions with images, randomly assign a post-assessment image to pre-assessment questions
+if (count($postAssessmentData) > 0) {
+    foreach ($preAssessmentData as &$preQuestion) {
+        // Randomly pick an image from the post-assessment questions (IDs 1-10)
+        $randomPostQuestion = $postAssessmentData[array_rand($postAssessmentData)];
+        $preQuestion['quiz_image'] = $randomPostQuestion['quiz_image'];
+    }
+}
+
 $conn->close();
 ?>
+
 
 
 <link rel="stylesheet" href="../css/solid.css">
@@ -967,7 +976,7 @@ $conn->close();
                 },
                 body: JSON.stringify({
                     student_id: studentId,
-                    quiz_id: 1,
+                    quiz_id: 2,
                     lesson: 'Solid'
 
                 })
@@ -1011,7 +1020,7 @@ $conn->close();
                     },
                     body: JSON.stringify({
                         student_id: studentId,
-                        quiz_id: 1,
+                        quiz_id: 2,
                         lesson: 'Solid'
 
                     })
@@ -1022,7 +1031,7 @@ $conn->close();
                         // Send the achievement data to the PHP script to add the medal
                         const achievementData = {
                             student_id: studentId,
-                            achievement_name: 'solidComplete',  // Achievement name
+                            achievement_name: 'Matter: Solid',  // Achievement name
                             image_path: '../image/medal1.png'  // Path to the medal image
                         };
 
@@ -1043,9 +1052,6 @@ $conn->close();
                             console.error('Error adding achievement:', error);
                         });
                     } else {
-
-                        showSection(10); // Show a section to encourage quiz completion
-
                     }
                 })
                 .catch(error => {
@@ -1466,6 +1472,7 @@ $conn->close();
             }
             if (sections[index] === matterQuiz) {
                 checkQuizTaken();
+                loadQuestion();
             }
             if (sections[index] === matterCompleted) {
                 checkSectionComplete();
@@ -1604,24 +1611,69 @@ $conn->close();
         const percentageDisplay = document.getElementById('percentage');
 
         // Function to load a question
-        function loadQuestion() {
-            const currentQuestion = quizData[currentQuestionIndex];
+        // Function to load a question
+function loadQuestion() {
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
 
-            questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-            questionText.textContent = currentQuestion.question;
-            quizImage.src = currentQuestion.quiz_image;
+    const currentQuestion = quizData[currentQuestionIndex];
 
-            choices.forEach((button, index) => {
-                button.textContent = currentQuestion.choices[index];
-                button.classList.remove('correct', 'wrong');
-                button.style.display = 'inline-block';
-                button.style.color = 'black';
-            });
+    questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+    questionText.textContent = currentQuestion.question;
+    quizImage.src = currentQuestion.quiz_image;
 
-            extraInfoBox.style.display = 'none';
-            nextButton.disabled = true;
-            selectedAnswer = null;
+    choices.forEach((button, index) => {
+        button.textContent = currentQuestion.choices[index];
+        button.classList.remove('correct', 'wrong');
+        button.style.display = 'inline-block';
+        button.style.color = 'black';
+    });
+
+    extraInfoBox.style.display = 'none';
+    nextButton.disabled = true;
+    selectedAnswer = null;
+
+    // Call the function to read the question and choices aloud
+    readQuestionAndChoices(currentQuestion);
+}
+
+// Function to read the question and choices aloud
+function readQuestionAndChoices(currentQuestion) {
+    // Create a SpeechSynthesisUtterance instance
+    const utterance = new SpeechSynthesisUtterance();
+
+    // Set up the speech parameters (male voice, rate, pitch, etc.)
+    utterance.voice = getMaleVoice();
+    utterance.pitch = 1; // Set pitch to a default value (you can adjust this)
+    utterance.rate = 1;  // Speed of the voice (1 is normal speed)
+
+    // Read the question
+    utterance.text = currentQuestion.question;
+    window.speechSynthesis.speak(utterance);
+
+    // Wait for the question to finish before reading choices
+    utterance.onend = function () {
+        // After the question is read, read the choices
+        const choicesText = currentQuestion.choices.join(', '); // Join choices as a comma-separated string
+        const choicesUtterance = new SpeechSynthesisUtterance(choicesText);
+        choicesUtterance.voice = utterance.voice; // Use the same voice as the question
+        window.speechSynthesis.speak(choicesUtterance);
+    };
+}
+
+// Function to get a male voice (this may vary by browser and OS)
+function getMaleVoice() {
+    const voices = window.speechSynthesis.getVoices();
+    // Loop through voices and find a male voice (based on 'male' in the name)
+    for (let i = 0; i < voices.length; i++) {
+        if (voices[i].name.toLowerCase().includes('male')) {
+            return voices[i];
         }
+    }
+    // If no male voice found, return the first available voice
+    return voices[0];
+}
+
 
         choices.forEach(button => {
             button.addEventListener('click', function () {
@@ -1827,6 +1879,7 @@ function showPreAssessmentResults() {
         preCorrectAnswersDisplay.textContent = preCorrectAnswersCount;
         preAssessmentWrongAnswers.textContent = preTotalQuestions - preCorrectAnswersCount;
         prePercentageDisplay.textContent = ((preCorrectAnswersCount / preTotalQuestions) * 100).toFixed(2) + '%';
+        sendScoreToServer2(preCorrectAnswersCount);
     } else {
         console.error("One or more elements not found in the DOM.");
     }
@@ -1838,15 +1891,43 @@ loadPreAssessmentQuestion();
 
         // Function to send score to server
         function sendScoreToServer(score) {
-            const quizId = 1;
+            const quizId = 2;
             const lesson = "Solid";
+            const type = "post";
 
             fetch('../save_quiz_score.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
+                body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, type: type, score: score }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'error') {
+                        alert(data.message); // Show alert if there's an error
+                    } else {
+                        console.log('Score saved successfully:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error saving score:', error);
+                    alert('There was a problem saving your score. Please try again later.');
+                });
+        }
+
+
+        function sendScoreToServer2(score) {
+            const quizId = 1;
+            const lesson = "Solid";
+            const type = "pre";
+
+            fetch('../save_quiz_score.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, type: type, score: score }),
             })
                 .then(response => response.json())
                 .then(data => {
@@ -1893,7 +1974,7 @@ loadPreAssessmentQuestion();
                 });
         }
 
-        loadQuestion();
+        
 
     });
 </script>

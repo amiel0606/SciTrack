@@ -29,6 +29,7 @@ function fetchQuizScores($db) {
             qs.lesson, 
             qs.score,
             qs.date_taken,
+            qs.type AS quizType,
             s.name AS student_name
         FROM 
             tbl_quiz_scores AS qs

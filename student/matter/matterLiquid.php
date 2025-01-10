@@ -31,12 +31,11 @@ if ($resultPre->num_rows > 0) {
     }
 }
 
-// Fetch 'post' questions
+// Fetch 'post' questions with IDs 1-10
 $sqlPost = "SELECT question, choices, quiz_image, correct_answer, additional_info 
             FROM quiz_questions_liquid
-            WHERE type = 'post' 
-            ORDER BY RAND() 
-            LIMIT 10";
+            WHERE type = 'post' AND id BETWEEN 1 AND 10
+            ORDER BY RAND()";
 
 $resultPost = $conn->query($sqlPost);
 
@@ -44,6 +43,15 @@ if ($resultPost->num_rows > 0) {
     while ($row = $resultPost->fetch_assoc()) {
         $row['choices'] = json_decode($row['choices']);
         $postAssessmentData[] = $row;
+    }
+}
+
+// If we have post-assessment questions with images, randomly assign a post-assessment image to pre-assessment questions
+if (count($postAssessmentData) > 0) {
+    foreach ($preAssessmentData as &$preQuestion) {
+        // Randomly pick an image from the post-assessment questions (IDs 1-10)
+        $randomPostQuestion = $postAssessmentData[array_rand($postAssessmentData)];
+        $preQuestion['quiz_image'] = $randomPostQuestion['quiz_image'];
     }
 }
 
@@ -893,7 +901,7 @@ $conn->close();
                 },
                 body: JSON.stringify({
                 student_id: studentId,
-                quiz_id: 2,
+                quiz_id: 4,
                 lesson: 'Liquid'
             })
         })
@@ -933,7 +941,7 @@ $conn->close();
                     },
                     body: JSON.stringify({
                         student_id: studentId,
-                        quiz_id: 2,
+                        quiz_id: 4,
                         lesson: 'Liquid'
 
                     })
@@ -944,7 +952,7 @@ $conn->close();
 
                         const achievementData = {
                             student_id: studentId,
-                            achievement_name: 'liquidComplete',  
+                            achievement_name: 'Matter: Liquid',  
                             image_path: '../image/med1.png'  
                         };
 
@@ -1452,6 +1460,7 @@ $conn->close();
                 leftButton.style.display = 'flex';
                 rightButton.style.display = 'flex';
                 checkQuizTaken();
+                loadQuestion();
 
                 examplesButton.style.marginLeft = '100%';  
             } else if (sections[index] === matterCompleted) {
@@ -1517,7 +1526,6 @@ $conn->close();
 
         hideAllSections();
         showSection(0); 
-
         
     
         const quizData = <?php echo json_encode($postAssessmentData); ?>;
@@ -1542,25 +1550,67 @@ $conn->close();
             const wrongAnswersDisplay = document.getElementById('wrongAnswers');
             const percentageDisplay = document.getElementById('percentage');
 
-            // Function to load a question
             function loadQuestion() {
-                const currentQuestion = quizData[currentQuestionIndex];
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
 
-                questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
-                questionText.textContent = currentQuestion.question;
-                quizImage.src = currentQuestion.quiz_image;
+    const currentQuestion = quizData[currentQuestionIndex];
 
-                choices.forEach((button, index) => {
-                    button.textContent = currentQuestion.choices[index];
-                    button.classList.remove('correct', 'wrong');
-                    button.style.display = 'inline-block';
-                    button.style.color = 'black'; 
-                });
+    questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+    questionText.textContent = currentQuestion.question;
+    quizImage.src = currentQuestion.quiz_image;
 
-                extraInfoBox.style.display = 'none';
-                nextButton.disabled = true;
-                selectedAnswer = null;
-            }
+    choices.forEach((button, index) => {
+        button.textContent = currentQuestion.choices[index];
+        button.classList.remove('correct', 'wrong');
+        button.style.display = 'inline-block';
+        button.style.color = 'black';
+    });
+
+    extraInfoBox.style.display = 'none';
+    nextButton.disabled = true;
+    selectedAnswer = null;
+
+    // Call the function to read the question and choices aloud
+    readQuestionAndChoices(currentQuestion);
+}
+
+// Function to read the question and choices aloud
+function readQuestionAndChoices(currentQuestion) {
+    // Create a SpeechSynthesisUtterance instance
+    const utterance = new SpeechSynthesisUtterance();
+
+    // Set up the speech parameters (male voice, rate, pitch, etc.)
+    utterance.voice = getMaleVoice();
+    utterance.pitch = 1; // Set pitch to a default value (you can adjust this)
+    utterance.rate = 1;  // Speed of the voice (1 is normal speed)
+
+    // Read the question
+    utterance.text = currentQuestion.question;
+    window.speechSynthesis.speak(utterance);
+
+    // Wait for the question to finish before reading choices
+    utterance.onend = function () {
+        // After the question is read, read the choices
+        const choicesText = currentQuestion.choices.join(', '); // Join choices as a comma-separated string
+        const choicesUtterance = new SpeechSynthesisUtterance(choicesText);
+        choicesUtterance.voice = utterance.voice; // Use the same voice as the question
+        window.speechSynthesis.speak(choicesUtterance);
+    };
+}
+
+// Function to get a male voice (this may vary by browser and OS)
+function getMaleVoice() {
+    const voices = window.speechSynthesis.getVoices();
+    // Loop through voices and find a male voice (based on 'male' in the name)
+    for (let i = 0; i < voices.length; i++) {
+        if (voices[i].name.toLowerCase().includes('male')) {
+            return voices[i];
+        }
+    }
+    // If no male voice found, return the first available voice
+    return voices[0];
+}
 
             // Adding click event listeners to choices
             choices.forEach(button => {
@@ -1702,7 +1752,7 @@ preChoices.forEach(button => {
                 btn.style.color = 'white';
 
             }
-
+        });
 
         preExtraInfoText.textContent = preAssessmentData[preCurrentQuestionIndex].additional_info;
         preExtraInfoBox.style.display = 'block';
@@ -1766,6 +1816,7 @@ function showPreAssessmentResults() {
         preCorrectAnswersDisplay.textContent = preCorrectAnswersCount;
         preAssessmentWrongAnswers.textContent = preTotalQuestions - preCorrectAnswersCount;
         prePercentageDisplay.textContent = ((preCorrectAnswersCount / preTotalQuestions) * 100).toFixed(2) + '%';
+        sendScoreToServer2(preCorrectAnswersCount);
     } else {
         console.error("One or more elements not found in the DOM.");
     }
@@ -1774,12 +1825,38 @@ function showPreAssessmentResults() {
 // Load the first Pre-Assessment question
 loadPreAssessmentQuestion();
 
+function sendScoreToServer2(score) {
+            const quizId = 3;
+            const lesson = "Liquid";
+            const type = "pre";
+
+            fetch('../save_quiz_score.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, type: type, score: score }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'error') {
+                        alert(data.message); // Show alert if there's an error
+                    } else {
+                        console.log('Score saved successfully:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error saving score:', error);
+                    alert('There was a problem saving your score. Please try again later.');
+                });
+        }
             // Function to send score to server
             function sendScoreToServer(score) {
                 const studentId = "<?php echo $id; ?>"; // Get the student ID from the PHP session
-                const quizId = 2; // Quiz ID for "Matter"
+                const quizId = 4; // Quiz ID for "Matter"
 
                 const lesson = "Liquid"; // Set lesson name as "Matter"
+                const type = "post";
 
 
                 fetch('../save_quiz_score.php', {
@@ -1787,7 +1864,7 @@ loadPreAssessmentQuestion();
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, score: score }),
+                body: JSON.stringify({ student_id: studentId, quiz_id: quizId, lesson: lesson, type: type, score: score }),
             })
             .then(response => response.json())
                 .then(data => {
@@ -1803,7 +1880,6 @@ loadPreAssessmentQuestion();
                 });
             }
             // Load the first question
-            loadQuestion();
     });
     
 </script>
